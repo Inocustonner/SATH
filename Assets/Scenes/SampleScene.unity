@@ -1099,10 +1099,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2285705641419088115, guid: a2b0dd50f2b8ff644ad62ca0d4319972, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.15
-      objectReference: {fileID: 0}
     - target: {fileID: 2420375836450646370, guid: a2b0dd50f2b8ff644ad62ca0d4319972, type: 3}
       propertyPath: _inputService
       value: 
@@ -1150,10 +1146,6 @@ PrefabInstance:
     - target: {fileID: 8437936679500266834, guid: a2b0dd50f2b8ff644ad62ca0d4319972, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9080912431783577374, guid: a2b0dd50f2b8ff644ad62ca0d4319972, type: 3}
-      propertyPath: m_SpriteSortPoint
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
