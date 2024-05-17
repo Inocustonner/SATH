@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Code.CustomActions
+namespace Code.CustomActions.Actions
 {
     public abstract class CustomAction : MonoBehaviour
     {

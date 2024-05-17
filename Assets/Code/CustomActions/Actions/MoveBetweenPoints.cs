@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections;
-using Code.CustomActions;
-using TMPro.EditorUtilities;
+﻿using System.Collections;
 using UnityEngine;
 
-namespace Code.Entities
+namespace Code.CustomActions.Actions
 {
     public class MoveBetweenPoints : CustomAction
     {
