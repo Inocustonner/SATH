@@ -3,8 +3,7 @@
     public enum MenuType
     {
         None,
-        Main,
-        Quiz,
-        Result
+        Setting,
+        Replica,
     }
 }

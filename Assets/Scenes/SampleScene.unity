@@ -834,6 +834,7 @@ GameObject:
   - component: {fileID: 1027904604}
   - component: {fileID: 1027904603}
   - component: {fileID: 1027904602}
+  - component: {fileID: 1027904605}
   m_Layer: 5
   m_Name: Menu_Replica
   m_TagString: Untagged
@@ -888,6 +889,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   windowTransform: {fileID: 1057106697}
+  _animatedText: {fileID: 0}
 --- !u!114 &1027904604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -902,6 +904,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Model: {fileID: 1027904602}
   View: {fileID: 1027904603}
+--- !u!114 &1027904605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1027904600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ce8ef057a1748e29a32cda2eddb0f2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _replica: {fileID: 0}
+  _language: 0
+  _presenter: {fileID: 1027904604}
+  _model: {fileID: 1027904602}
+  _view: {fileID: 1027904603}
 --- !u!1 &1057106696
 GameObject:
   m_ObjectHideFlags: 0
