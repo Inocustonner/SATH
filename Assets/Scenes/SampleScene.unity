@@ -304,7 +304,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: "<color=#FF888800>bla bla</color>\u0442\u0440\u0438 <b><color=#000000FF>\u0434\u0432\u0430</color></b><i><color=#AB7E7EFF>\u0447\u0430\u0442\u044B\u0440\u0435</color></i>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1ffb8c3515fb6dc4688eff5a7e48200f, type: 2}
   m_sharedMaterial: {fileID: 7453642021753212536, guid: 1ffb8c3515fb6dc4688eff5a7e48200f, type: 2}
@@ -889,7 +889,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   windowTransform: {fileID: 1057106697}
-  _animatedText: {fileID: 0}
+  _animatedText: {fileID: 37247962}
 --- !u!114 &1027904604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -916,7 +916,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ce8ef057a1748e29a32cda2eddb0f2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _replica: {fileID: 0}
+  _replica: {fileID: 11400000, guid: 060c48f26d48cbe458430d63aef87941, type: 2}
   _language: 0
   _presenter: {fileID: 1027904604}
   _model: {fileID: 1027904602}
