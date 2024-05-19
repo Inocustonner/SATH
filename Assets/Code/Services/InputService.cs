@@ -1,9 +1,10 @@
 using System;
+using Code.Infrastructure.DI;
 using UnityEngine;
 
 namespace Code.Services
 {
-    public class InputService : MonoBehaviour
+    public class InputService : MonoBehaviour, IService
     {
         private Vector2 _direction;
         private KeyCode _interactionKey = KeyCode.Space;

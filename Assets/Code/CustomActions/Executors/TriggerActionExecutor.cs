@@ -7,7 +7,7 @@ namespace Code.CustomActions.Executors
     public class TriggerActionExecutor : MonoBehaviour
     {
         [SerializeField] private CollisionObserver _collisionObserver;
-        [SerializeField] private CustomAction _customAction;
+        [SerializeField] private CustomAction[] _customActions;
         [Header("Debug")] 
         [SerializeField] private bool _isOnTrigger;
         private void Awake()
@@ -36,13 +36,19 @@ namespace Code.CustomActions.Executors
 
         private void OnEnter(GameObject obj)
         {
-            _customAction.StartAction();
+            foreach (var action in _customActions)
+            {
+                action.StartAction();
+            }
             _isOnTrigger = true;
         }
 
         private void OnExit(GameObject obj)
         {
-            _customAction.StopAction();
+            foreach (var action in _customActions)
+            {
+                action.StopAction();
+            }
             _isOnTrigger = false;
         }
     }
