@@ -19,7 +19,7 @@ namespace Code.Infrastructure.Save
         private List<IProgressReader> _progressReader = new();
         public void GameLoad()
         {
-            _progressReader = Container.Instance.GetProgressReaders();
+            _progressReader = Container.Instance.GetContainerComponents<IProgressReader>();
             foreach (var progressReader in _progressReader)
             {
                 if (progressReader is IProgressWriter writer)

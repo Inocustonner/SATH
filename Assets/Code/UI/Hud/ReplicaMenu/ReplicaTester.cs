@@ -29,7 +29,7 @@ namespace Code.UI.Hud.ReplicaMenu
 
             if (_replica.TryGetLocalizedReplica(_language, out var replica))
             {
-                _view.SetReplica(replica);
+                _view.StartWrite(replica, _replica.WriteSpeed);
             }
             else
             {

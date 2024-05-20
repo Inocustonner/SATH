@@ -9,6 +9,8 @@ namespace Code.Data.Configs
     [CreateAssetMenu(fileName = "Replica_", menuName = "Config/Replica", order = 0)]
     public class ReplicaConfig : ScriptableObject
     {
+        public bool IsBlockMovement = true;
+        public float WriteSpeed ;
         public LocalizedReplica[] Replicas;
 
         public bool TryGetLocalizedReplica(Lan language, out string replica)

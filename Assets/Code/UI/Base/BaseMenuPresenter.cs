@@ -1,10 +1,15 @@
 ﻿using System;
+using Code.Infrastructure.GameLoop;
 using UnityEngine;
 
 
 namespace Code.UI.Base
 {
-    public abstract class BaseMenuPresenter<TModel, TView> : MonoBehaviour, IMenuPresenter
+    public abstract class BaseMenuPresenter<TModel, TView> : MonoBehaviour, 
+        IMenuPresenter, 
+        IGameInitListener,
+        IGameStartListener,
+        IGameExitListener
         where TModel : BaseMenuModel<TModel>
         where TView : BaseMenuView
     {
@@ -13,15 +18,20 @@ namespace Code.UI.Base
 
         public event Action<MenuType> OnOtherMenuCall;
 
-        private void Awake()
+        public void GameInit()
         {
             Init();
+        }
+
+        public void GameStart()
+        {
             SubscribeToEvents(true);
         }
 
-        private void OnDestroy()
+        public void GameExit()
         {
             SubscribeToEvents(false);
+            Destruct();
         }
 
         public virtual void ChangeMenuState(MenuState state, Action onComplete = null)
@@ -47,15 +57,18 @@ namespace Code.UI.Base
                 }
             }
         }
+
         protected virtual void Init() { }
-        
+
+        protected virtual void Destruct() { }
+
         protected abstract void SubscribeToEvents(bool flag);
 
         protected void OtherMenuCall(MenuType menuType)
         {
             OnOtherMenuCall?.Invoke(menuType);
         }
-        
+
         protected virtual void Validate()
         {
             if (View == null && !TryGetComponent(out View))

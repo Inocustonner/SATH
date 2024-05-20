@@ -2,7 +2,7 @@
 
 namespace Code.CustomActions.Actions
 {
-    public class LoadNextScene : MonoBehaviour
+    public class LoadNextSceneAction : MonoBehaviour
     {
         [SerializeField] private int SceneId;
         

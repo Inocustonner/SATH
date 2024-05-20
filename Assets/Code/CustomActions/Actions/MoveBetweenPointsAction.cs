@@ -3,15 +3,13 @@ using UnityEngine;
 
 namespace Code.CustomActions.Actions
 {
-    public class MoveBetweenPoints : CustomAction
+    public class MoveBetweenPointsAction : CustomAction
     {
         [SerializeField] private float _speed = 2;
         [SerializeField] private float _distance = 1;
         [Header("Debug")] 
         [SerializeField] private float _currentDistance;
         [SerializeField] private bool _isMoveToOriginal;
-
-        
         
         private Vector2 _originalPosition;
         private Vector2 _targetPosition => _originalPosition + new Vector2(_distance, 0);

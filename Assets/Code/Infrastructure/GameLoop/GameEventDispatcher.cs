@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Code.Infrastructure.DI;
 using UnityEngine;
 
@@ -8,14 +6,12 @@ namespace Code.Infrastructure.GameLoop
 {
     public class GameEventDispatcher : MonoBehaviour
     {
-        [SerializeField] private bool _isTestInit;
-
         private readonly List<IGameInitListener> _initListeners = new();
         private readonly List<IGameLoadListener> _loadListeners = new();
         private readonly List<IGameStartListener> _startListeners = new();
         private readonly List<IGameTickListener> _tickListeners = new();
+        private readonly List<IGameFixedTickListener> _fixedTickListeners = new();
         private readonly List<IGameExitListener> _exitListeners = new();
-
 
         public void Awake()
         {
@@ -23,7 +19,6 @@ namespace Code.Infrastructure.GameLoop
             NotifyGameInit();
             NotifyGameLoad();
         }
-
 
         private void Start()
         {
@@ -35,6 +30,11 @@ namespace Code.Infrastructure.GameLoop
             NotifyGameTick();
         }
 
+        private void FixedUpdate()
+        {
+            NotifyGameFixedTick();
+        }
+
         private void OnApplicationQuit()
         {
             NotifyGameExit();
@@ -42,7 +42,7 @@ namespace Code.Infrastructure.GameLoop
 
         private void InitializeListeners()
         {
-            var gameListeners = Container.Instance.GetGameListeners();
+            var gameListeners = Container.Instance.GetContainerComponents<IGameListeners>();
 
             foreach (var listener in gameListeners)
             {
@@ -54,6 +54,8 @@ namespace Code.Infrastructure.GameLoop
                     _startListeners.Add(startListener);
                 if (listener is IGameTickListener tickListener)
                     _tickListeners.Add(tickListener);
+                if (listener is IGameFixedTickListener fixedTickListener)
+                    _fixedTickListeners.Add(fixedTickListener);
                 if (listener is IGameExitListener exitListener)
                     _exitListeners.Add(exitListener);
             }
@@ -91,6 +93,14 @@ namespace Code.Infrastructure.GameLoop
             }
         }
 
+        private void NotifyGameFixedTick()
+        {
+            foreach (var listener in _fixedTickListeners)
+            {
+                listener.GameFixedTick();
+            }
+        }
+        
         private void NotifyGameExit()
         {
             foreach (var listener in _exitListeners)

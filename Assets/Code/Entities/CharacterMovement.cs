@@ -1,17 +1,19 @@
 using Code.Data.Configs;
 using Code.Data.StaticData;
+using Code.Infrastructure.DI;
+using Code.Infrastructure.GameLoop;
 using Code.Services;
 using UnityEngine;
 
 namespace Code.Entities
 {
-    public class CharacterMovement : MonoBehaviour
+    public class CharacterMovement : MonoBehaviour, IGameInitListener, IGameTickListener, IGameFixedTickListener
     {
-        [Header("Services")] 
-        [SerializeField] private InputService _inputService;
         [Header("Components")] 
         [SerializeField] private Rigidbody2D _rb;
-        [SerializeField] private CharacterConfig _characterConfig;
+        [Header("Services")] 
+        private InputService _inputService;
+        private MoveLimiter _moveLimiter;
         [Header("Debug")] 
         [SerializeField] private MovementData _data;
   
@@ -23,26 +25,33 @@ namespace Code.Entities
         private float _turnSpeed;
         private bool _pressingKey;
 
-        private void Awake()
+        public void GameInit()
         {
-            _data = _characterConfig.Movement;
+            _data = Container.Instance.FindConfig<CharacterConfig>().Movement;
+            _inputService = Container.Instance.FindService<InputService>();
+            _moveLimiter = Container.Instance.FindService<MoveLimiter>();
         }
-    
-        private void Update()
+
+        public void GameTick()
         {
-            /*
-        if (!moveLimit.characterCanMove && !itsTheIntro)
-        {
-            directionX = 0;
-        }
-        */
+            if (!gameObject.activeSelf || !_moveLimiter.IsCanMove)
+            {
+                _rb.velocity = Vector2.zero;
+                _desiredVelocity = Vector2.zero;
+                return;
+            }
 
             _pressingKey = _inputService.GetDirection() != Vector2.zero;
             _desiredVelocity = _inputService.GetDirection() * Mathf.Max(_data.MaxSpeed - _data.Friction, 0f);
         }
 
-        private void FixedUpdate()
+        public void GameFixedTick()
         {
+            if (!gameObject.activeSelf || !_moveLimiter.IsCanMove)
+            {
+                return;
+            }
+            
             _velocity = _rb.velocity;
             RunWithAcceleration();
         }
@@ -70,6 +79,5 @@ namespace Code.Entities
         
             _rb.velocity = _velocity;
         }
-
     }
 }

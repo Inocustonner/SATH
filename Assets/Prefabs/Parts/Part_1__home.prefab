@@ -78,6 +78,7 @@ GameObject:
   - component: {fileID: 2306509244334501980}
   - component: {fileID: 1215570909711709594}
   - component: {fileID: 7522027376930462119}
+  - component: {fileID: 1811459313662824588}
   m_Layer: 0
   m_Name: Dad
   m_TagString: Untagged
@@ -130,8 +131,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _collisionObserver: {fileID: 6880840495028807421}
-  _customAction: {fileID: 1215570909711709594}
+  _customActions:
+  - {fileID: 1215570909711709594}
+  - {fileID: 1811459313662824588}
   _isOnTrigger: 0
+--- !u!114 &1811459313662824588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110938477284192823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d91308c178e49f3871abf115f96ecf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _replicaConfig: {fileID: 11400000, guid: 5069cdc7d4852cb4998fd6cef1652cf3, type: 2}
+  _isCanRepeat: 1
 --- !u!1 &560087274769977508
 GameObject:
   m_ObjectHideFlags: 0
@@ -950,6 +967,7 @@ GameObject:
   - component: {fileID: 6534413250911216020}
   - component: {fileID: 4662525600095150167}
   - component: {fileID: 7770965158713996675}
+  - component: {fileID: 3635772643786705884}
   m_Layer: 0
   m_Name: Mom
   m_TagString: Untagged
@@ -1002,8 +1020,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _collisionObserver: {fileID: 1146621023995949305}
-  _customAction: {fileID: 4662525600095150167}
+  _customActions:
+  - {fileID: 4662525600095150167}
+  - {fileID: 3635772643786705884}
   _isOnTrigger: 0
+--- !u!114 &3635772643786705884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6316462928297629771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d91308c178e49f3871abf115f96ecf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _replicaConfig: {fileID: 11400000, guid: edfa9a5960af39348b6d508abcf9b5fb, type: 2}
+  _isCanRepeat: 1
 --- !u!1 &7668297848465431834
 GameObject:
   m_ObjectHideFlags: 0

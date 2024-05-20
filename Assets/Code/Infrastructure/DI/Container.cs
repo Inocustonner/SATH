@@ -5,6 +5,7 @@ using System.Reflection;
 
 using Code.Infrastructure.GameLoop;
 using Code.Infrastructure.Save;
+using Code.UI.Base;
 using UnityEngine;
 
 namespace Code.Infrastructure.DI
@@ -17,6 +18,8 @@ namespace Code.Infrastructure.DI
         private MonoBehaviour[] _allObjects;
         private List<IService> _services = new();
         private List<IMono> _mono = new();
+        private List<IMenuPresenter> _presenters = new();
+        
         
         private void Awake()
         {
@@ -28,9 +31,10 @@ namespace Code.Infrastructure.DI
             DontDestroyOnLoad(gameObject);
             Instance = this;
 
-            _allObjects = FindObjectsOfType<MonoBehaviour>();
+            _allObjects = FindAllObjectsOfType<MonoBehaviour>().ToArray();
             InitList(ref _services);
             InitList(ref _mono);
+            InitList(ref _presenters);
         }
 
         private void InitList<T>(ref List<T> list)
@@ -53,11 +57,8 @@ namespace Code.Infrastructure.DI
             {
                 list.AddRange(mbServices);
             }
-
-     
         }
-
-     
+        
         public T FindConfig<T>() where T : ScriptableObject
         {
             foreach (var scriptableObject in _configs)
@@ -80,23 +81,22 @@ namespace Code.Infrastructure.DI
                     return findService;
                 }
             }
-
             return default;
         }
-
-      
-
-        public List<IGameListeners> GetGameListeners()
+        
+        public T FindUIPresenter<T>() where T : IService
         {
-            return GetContainerComponents<IGameListeners>();
+            foreach (var presenter in _presenters)
+            {
+                if (presenter is T findUIPresenter)
+                {
+                    return findUIPresenter;
+                }
+            }
+            return default;
         }
-
-        public List<IProgressReader> GetProgressReaders()
-        {
-            return GetContainerComponents<IProgressReader>();
-        }
-
-        private List<T> GetContainerComponents<T>()
+        
+        public List<T> GetContainerComponents<T>()
         {
             var list = new List<T>();
 
@@ -111,8 +111,27 @@ namespace Code.Infrastructure.DI
                     list.Add(mbListener);
                 }
             }
-
             return list;
+        }
+        
+        private List<T> FindAllObjectsOfType<T>() where T : UnityEngine.Object
+        {
+            List<T> results = new List<T>();
+            Type type = typeof(T);
+            BindingFlags bindingFlags = BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.Public;
+
+            MethodInfo method = typeof(UnityEngine.Object).GetMethod("FindObjectsOfTypeAll", bindingFlags);
+
+            if (method == null)
+            {
+                Debug.LogError("Method 'FindObjectsOfTypeAll' not found.");
+                return results;
+            }
+
+            var objects = (UnityEngine.Object[])method.Invoke(null, new object[] { type });
+            results.AddRange(objects.OfType<T>());
+            
+            return results;
         }
     }
 }

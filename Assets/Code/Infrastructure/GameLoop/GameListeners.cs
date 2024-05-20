@@ -25,6 +25,11 @@
         void GameTick();
     }
 
+    public interface IGameFixedTickListener : IGameListeners
+    {
+        void GameFixedTick();
+    }
+
 
     public interface IGameExitListener : IGameListeners
     {
