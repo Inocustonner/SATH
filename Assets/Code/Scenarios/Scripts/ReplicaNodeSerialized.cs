@@ -6,11 +6,11 @@ using UnityEngine;
 namespace Code.Scenarios.Scripts
 {
     [Serializable]
-    public struct DialogueNodeSerialized
+    public struct ReplicaNodeSerialized
     {
         public string ID;
         public string Message;
-        public List<TextCondition> Conditions;
+        public List<ReplicaCondition> Conditions;
         public Vector2 EditorPosition;
     }
 }

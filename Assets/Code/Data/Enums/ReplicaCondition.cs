@@ -1,6 +1,6 @@
 ﻿namespace Code.Data.Enums
 {
-    public enum TextCondition
+    public enum ReplicaCondition
     {
         None,
         EnterWhiteRoom,

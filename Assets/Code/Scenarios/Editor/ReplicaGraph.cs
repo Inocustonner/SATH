@@ -6,9 +6,9 @@ using UnityEngine.UIElements;
 
 namespace Code.Scenarios.Editor
 {
-    public class DialogueGraph : GraphView
+    public class ReplicaGraph : GraphView
     {
-        public DialogueGraph()
+        public ReplicaGraph()
         {
             AddBackground();
             AddStyles();
@@ -18,7 +18,7 @@ namespace Code.Scenarios.Editor
 
         private void AddManipulators()
         {
-            this.AddManipulator(new SelectionDragger());//only first
+            this.AddManipulator(new SelectionDragger()); //only first
             this.AddManipulator(new ContentDragger());
             this.AddManipulator(new ContentZoomer());
             this.AddManipulator(new RectangleSelector());
@@ -40,15 +40,15 @@ namespace Code.Scenarios.Editor
         private void AddStyles()
         {
             StyleSheet graphStyle = (StyleSheet)EditorGUIUtility.Load(
-                "Assets/Code/Scenarios/Styles/DialogueGraph.uss"
+                "Assets/Code/Scenarios/Styles/ReplicaGraph.uss"
             );
 
             StyleSheet nodeStyle = (StyleSheet)EditorGUIUtility.Load(
-                "Assets/Code/Scenarios/Styles/DialogueNode.uss"
+                "Assets/Code/Scenarios/Styles/ReplicaNode.uss"
             );
 
             styleSheets.Add(graphStyle);
-          styleSheets.Add(nodeStyle);
+            styleSheets.Add(nodeStyle);
         }
 
         private void OnCreateNode(DropdownMenuAction menuAction)
@@ -57,9 +57,9 @@ namespace Code.Scenarios.Editor
             CreateNode(nodePosition);
         }
 
-        public DialogueNode CreateNode(Vector2 position)
+        public ReplicaNode CreateNode(Vector2 position)
         {
-            DialogueNode node = new DialogueNode();
+            ReplicaNode node = new ReplicaNode();
             node.SetPosition(new Rect(position, Vector2.zero));
             AddElement(node);
             return node;

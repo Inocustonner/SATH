@@ -10,14 +10,14 @@ using Edge = UnityEditor.Experimental.GraphView.Edge;
 
 namespace Code.Scenarios.Editor
 {
-    public class DialogueCondition : VisualElement
+    public class ReplicaCondition : VisualElement
     {
-        private readonly DialogueNode node;
+        private readonly ReplicaNode node;
         public Port OutputPort;
-        public TextCondition Condition;
-        public event Action<DialogueCondition> OnPressDeleteCondition;
+        public Data.Enums.ReplicaCondition Condition;
+        public event Action<ReplicaCondition> OnPressDeleteCondition;
 
-        public DialogueCondition(DialogueNode node)
+        public ReplicaCondition(ReplicaNode node)
         {
             this.node = node;
 
@@ -30,7 +30,7 @@ namespace Code.Scenarios.Editor
         private void AddConditions()
         {
             var condition =
-                new PopupField<TextCondition>(Enum.GetValues(typeof(TextCondition)).Cast<TextCondition>().ToList(), 0)
+                new PopupField<Data.Enums.ReplicaCondition>(Enum.GetValues(typeof(Data.Enums.ReplicaCondition)).Cast<Data.Enums.ReplicaCondition>().ToList(), 0)
                 {
                     label = "Condition",
                     style =

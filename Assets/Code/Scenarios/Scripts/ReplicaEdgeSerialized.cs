@@ -3,7 +3,7 @@ using System;
 namespace Code.Scenarios.Scripts
 {
     [Serializable]
-    public struct DialogueEdgeSerialized
+    public struct ReplicaEdgeSerialized
     {
         public string SourceNode;
         public string TargetNode;

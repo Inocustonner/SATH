@@ -1,14 +1,13 @@
 #if UNITY_EDITOR
 using Code.Scenarios.Scripts;
-using Lessons.MetaGame.Dialogs;
 using UnityEditor.UIElements;
 using UnityEngine.UIElements;
 
 namespace Code.Scenarios.Editor
 {
-    public sealed class DialogueToolbar : Toolbar
+    public sealed class ReplicaToolbar : Toolbar
     {
-        public DialogueToolbar(DialogueGraph graph)
+        public ReplicaToolbar(ReplicaGraph graph)
         {
             this.graph = graph;
             AddDialogField();
@@ -17,14 +16,14 @@ namespace Code.Scenarios.Editor
             AddResetButton();
         }
 
-        private readonly DialogueGraph graph;
+        private readonly ReplicaGraph graph;
         private ObjectField dialogField;
 
         private void AddDialogField()
         {
-            dialogField = new ObjectField("Selected Dialog")
+            dialogField = new ObjectField("Selected Replica")
             {
-                objectType = typeof(DialogueConfig),
+                objectType = typeof(ReplicaConfig),
                 allowSceneObjects = false
             };
 
@@ -68,7 +67,7 @@ namespace Code.Scenarios.Editor
         {
             graph.Reset();
 
-            var config = dialogField.value as DialogueConfig;
+            var config = dialogField.value as ReplicaConfig;
             /*
             if (config != null)
             {
@@ -76,19 +75,19 @@ namespace Code.Scenarios.Editor
             }
             */
 
-            DialogueSaveLoader.LoadDialog(graph, config);
+            ReplicaSaveLoader.LoadDialog(graph, config);
         }
 
         private void OnSaveDialog()
         {
-            var config = dialogField.value as DialogueConfig;
+            var config = dialogField.value as ReplicaConfig;
             if (config != null)
             {
-                DialogueSaveLoader.SaveDialog(graph, config);
+                ReplicaSaveLoader.SaveDialog(graph, config);
             }
             else
             {
-                DialogueSaveLoader.CreateDialog(graph, out config);
+                ReplicaSaveLoader.CreateDialog(graph, out config);
                 dialogField.value = config;
             }
         }

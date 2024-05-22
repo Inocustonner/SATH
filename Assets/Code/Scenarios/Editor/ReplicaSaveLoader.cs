@@ -1,25 +1,23 @@
 using System.Collections.Generic;
 using System.Linq;
-using Code.Data.Enums;
-using Code.Scenarios.Editor;
 using Code.Scenarios.Scripts;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-namespace Lessons.MetaGame.Dialogs
+namespace Code.Scenarios.Editor
 {
-    public sealed class DialogueSaveLoader
+    public sealed class ReplicaSaveLoader
     {
-        public static void LoadDialog(DialogueGraph graphView, DialogueConfig config)
+        public static void LoadDialog(ReplicaGraph graphView, ReplicaConfig config)
         {
             if (config == null)
             {
-                Debug.LogWarning("Dialog is null!");
+                Debug.LogWarning("Replica is null!");
                 return;
             }
 
-            var nodes = new List<DialogueNode>();
+            var nodes = new List<ReplicaNode>();
             foreach (var serializedNode in config.nodes)
             {
                 var node = graphView.CreateNode(serializedNode.EditorPosition);
@@ -48,10 +46,10 @@ namespace Lessons.MetaGame.Dialogs
             }
         }
 
-        public static void CreateDialog(DialogueGraph graph, out DialogueConfig config)
+        public static void CreateDialog(ReplicaGraph graph, out ReplicaConfig config)
         {
             var path = EditorUtility.SaveFilePanelInProject("Save file", "Dialog", "asset", "");
-            config = ScriptableObject.CreateInstance<DialogueConfig>();
+            config = ScriptableObject.CreateInstance<ReplicaConfig>();
             
             SaveDialog(graph, config);
             
@@ -59,21 +57,21 @@ namespace Lessons.MetaGame.Dialogs
             AssetDatabase.SaveAssets();
         }
 
-        public static void SaveDialog(DialogueGraph graph, DialogueConfig config)
+        public static void SaveDialog(ReplicaGraph graph, ReplicaConfig config)
         {
             config.nodes = ConvertNodesData(graph);
             config.edges = ConvertEdgesToData(graph);
             EditorUtility.SetDirty(config);
         }
         
-        private static List<DialogueNodeSerialized> ConvertNodesData(GraphView graphView)
+        private static List<ReplicaNodeSerialized> ConvertNodesData(GraphView graphView)
         {
-            var result = new List<DialogueNodeSerialized>();
+            var result = new List<ReplicaNodeSerialized>();
             
             foreach (var node in graphView.nodes)
             {
-                var dialogueNode = (DialogueNode) node;
-                var serializedNode = new DialogueNodeSerialized
+                var dialogueNode = (ReplicaNode) node;
+                var serializedNode = new ReplicaNodeSerialized
                 {
                     ID = dialogueNode.ID,
                     Message = dialogueNode.MessageText,
@@ -87,9 +85,9 @@ namespace Lessons.MetaGame.Dialogs
             return result;
         }
 
-        private static List<TextCondition> ConvertChoicesToData(DialogueNode nodeView)
+        private static List<Data.Enums.ReplicaCondition> ConvertChoicesToData(ReplicaNode nodeView)
         {
-            var serializedChoices = new List<TextCondition>();
+            var serializedChoices = new List<Data.Enums.ReplicaCondition>();
             foreach (var choice in nodeView.Conditions)
             {
                 var serializedChoice = choice.Condition;
@@ -99,19 +97,19 @@ namespace Lessons.MetaGame.Dialogs
             return serializedChoices;
         }
 
-        private static List<DialogueEdgeSerialized> ConvertEdgesToData(GraphView graphView)
+        private static List<ReplicaEdgeSerialized> ConvertEdgesToData(GraphView graphView)
         {
-            var serializedEdges = new List<DialogueEdgeSerialized>();
+            var serializedEdges = new List<ReplicaEdgeSerialized>();
             
             foreach (var edge in graphView.edges)
             {
                 var outputPort = edge.output;
                 var inputPort = edge.input;
                 
-                var outputNode = (DialogueNode) outputPort.node;
-                var inputNode = (DialogueNode) inputPort.node;
+                var outputNode = (ReplicaNode) outputPort.node;
+                var inputNode = (ReplicaNode) inputPort.node;
 
-                var serializedEdge = new DialogueEdgeSerialized
+                var serializedEdge = new ReplicaEdgeSerialized
                 {
                     SourceNode = outputNode.ID,
                     TargetNode = inputNode.ID,

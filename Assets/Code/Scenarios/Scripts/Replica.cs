@@ -3,22 +3,22 @@ using Code.Data.Enums;
 
 namespace Code.Scenarios.Scripts
 {
-    public sealed class Dialogue
+    public sealed class Replica
     {
-        private readonly DialogueConfig config;
-        private DialogueNodeSerialized currentNode;
+        private readonly ReplicaConfig config;
+        private ReplicaNodeSerialized currentNode;
         
         public string CurrentMessage
         {
             get { return this.currentNode.Message; }
         }
 
-        public TextCondition[] CurrentChoices
+        public ReplicaCondition[] CurrentConditions
         {
             get { return this.currentNode.Conditions.ToArray(); }
         }
 
-        public Dialogue(DialogueConfig config)
+        public Replica(ReplicaConfig config)
         {
             if (!config.FindStartNode(out var node))
             {

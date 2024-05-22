@@ -9,16 +9,16 @@ using UnityEngine.UIElements;
 
 namespace Code.Scenarios.Editor
 {
-    public class DialogueNode : Node
+    public class ReplicaNode : Node
     {
         public TextMarkup Markup;
         public TextEffect Effect;
         public string MessageText;
         public string ID;
 
-        public List<DialogueCondition> Conditions = new();
+        public List<ReplicaCondition> Conditions = new();
         public Port InputPort;
-        public DialogueNode()
+        public ReplicaNode()
         {
             AddIdText(0);
             AddMessageText(1);
@@ -40,7 +40,7 @@ namespace Code.Scenarios.Editor
 
         private void AddCondition()
         {
-            var condition = new DialogueCondition(this);
+            var condition = new ReplicaCondition(this);
             Conditions.Add(condition);
            
             condition.OnPressDeleteCondition += dialogueCondition =>
@@ -108,9 +108,9 @@ namespace Code.Scenarios.Editor
             mainContainer.Insert(index ,markup);
         }
 
-        public void CreateCondition(TextCondition textCondition)
+        public void CreateCondition(Data.Enums.ReplicaCondition replicaCondition)
         {
-            var condition = new DialogueCondition(this);
+            var condition = new ReplicaCondition(this);
             Conditions.Add(condition);
            
             condition.OnPressDeleteCondition += dialogueCondition =>

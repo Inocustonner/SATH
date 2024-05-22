@@ -7,19 +7,19 @@ namespace Code.Scenarios.Scripts
         fileName = "DialogueConfig",
         menuName = "Lessons/New DialogueConfig"
     )]
-    public sealed class DialogueConfig : ScriptableObject
+    public sealed class ReplicaConfig : ScriptableObject
     {
         public string startNode;
-        public List<DialogueNodeSerialized> nodes;
-        public List<DialogueEdgeSerialized> edges;
+        public List<ReplicaNodeSerialized> nodes;
+        public List<ReplicaEdgeSerialized> edges;
 
-        public bool FindStartNode(out DialogueNodeSerialized node)
+        public bool FindStartNode(out ReplicaNodeSerialized node)
         {
             var nodeID = startNode != "" ? startNode : nodes[0].ID;
             return FindNode(nodeID, out node);
         }
 
-        private bool FindNode(string id, out DialogueNodeSerialized result)
+        private bool FindNode(string id, out ReplicaNodeSerialized result)
         {
             foreach (var node in this.nodes)
             {
@@ -34,7 +34,7 @@ namespace Code.Scenarios.Scripts
             return false;
         }
 
-        public bool FindNextNode(string sourceNode, int choiceIndex, out DialogueNodeSerialized nextNode)
+        public bool FindNextNode(string sourceNode, int choiceIndex, out ReplicaNodeSerialized nextNode)
         {
             for (int i = 0, count = this.edges.Count; i < count; i++)
             {

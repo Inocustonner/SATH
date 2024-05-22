@@ -3,9 +3,9 @@ using UnityEngine.UIElements;
 
 namespace Code.Scenarios.Editor
 {
-    public class DialogueWindow : EditorWindow
+    public class ReplicaWindow : EditorWindow
     {
-        private DialogueGraph graph;
+        private ReplicaGraph graph;
         
         private void OnEnable()
         {
@@ -15,21 +15,21 @@ namespace Code.Scenarios.Editor
 
         private void AddDialogueGraph()
         {
-            graph = new DialogueGraph();
+            graph = new ReplicaGraph();
             graph.StretchToParentSize();
             rootVisualElement.Add(graph);
         }
 
         private void AddToolbar()
         {
-            DialogueToolbar toolbar = new DialogueToolbar(graph);
+            ReplicaToolbar toolbar = new ReplicaToolbar(graph);
             rootVisualElement.Add(toolbar);
         }
 
-        [MenuItem("Lessons/Show Dialogue Window")]
+        [MenuItem("Lessons/Show Replica Window")]
         public static void ShowDialogueWindow()
         {
-            GetWindow<DialogueWindow>("Dialogue Window");
+            GetWindow<ReplicaWindow>("Replica Window");
         }
     }
 }
