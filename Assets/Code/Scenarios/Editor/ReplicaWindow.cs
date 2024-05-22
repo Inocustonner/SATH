@@ -26,7 +26,7 @@ namespace Code.Scenarios.Editor
             rootVisualElement.Add(toolbar);
         }
 
-        [MenuItem("Lessons/Show Replica Window")]
+        [MenuItem("SATH/Show Replica Window")]
         public static void ShowDialogueWindow()
         {
             GetWindow<ReplicaWindow>("Replica Window");
