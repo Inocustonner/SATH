@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using Code.Data.Enums;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -11,21 +8,43 @@ namespace Code.Scenarios.Editor
 {
     public class ReplicaNode : Node
     {
-        public TextMarkup Markup;
-        public TextEffect Effect;
-        public string MessageText;
         public string ID;
-
-        public List<ReplicaCondition> Conditions = new();
         public Port InputPort;
+        public List<ReplicaConditionElement> Conditions = new();
+        public List<ReplicaPartElement> Parts = new();
+
+        private VisualElement _partsContainer;
+
         public ReplicaNode()
         {
             AddIdText(0);
-            AddMessageText(1);
-            AddMarkup(2);
-            AddConditionButton(3);
+
+            AddConditionButton(1);
             AddCondition();
             AddInputPort();
+            AddListParts();
+        }
+
+        private void AddListParts()
+        {
+            _partsContainer = new VisualElement
+            {
+                style =
+                {
+                    flexDirection = FlexDirection.Column
+                }
+            };
+            mainContainer.Add(_partsContainer);
+
+            var addPartButton = new Button(AddReplicaPart) { text = "Add Part" };
+            mainContainer.Add(addPartButton);
+        }
+
+        private void AddReplicaPart()
+        {
+            var part = new ReplicaPartElement();
+            Parts.Add(part);
+            _partsContainer.Add(part);
         }
 
         private void AddConditionButton(int index)
@@ -34,15 +53,15 @@ namespace Code.Scenarios.Editor
             {
                 text = "Add Condition"
             };
-       
+
             mainContainer.Insert(index, button);
         }
 
         private void AddCondition()
         {
-            var condition = new ReplicaCondition(this);
+            var condition = new ReplicaConditionElement(this);
             Conditions.Add(condition);
-           
+
             condition.OnPressDeleteCondition += dialogueCondition =>
             {
                 if (Conditions.Count > 1)
@@ -50,8 +69,8 @@ namespace Code.Scenarios.Editor
                     Conditions.Remove(condition);
                     outputContainer.Remove(dialogueCondition);
                 }
-            }; 
-            
+            };
+
             outputContainer.Add(condition);
         }
 
@@ -62,28 +81,9 @@ namespace Code.Scenarios.Editor
                 value = "ID"
             };
             textId.AddToClassList("node_id");
-            textId.RegisterValueChangedCallback(evt =>
-            {
-                ID = evt.newValue;
-            });
+            textId.RegisterValueChangedCallback(evt => { ID = evt.newValue; });
             textId.SetValueWithoutNotify(ID);
             titleContainer.Insert(index, textId);
-        }
-
-        private void AddMessageText(int index)
-        {
-            var messageText = new TextField()
-            {
-                multiline = true,
-                value = "Message"
-            };
-            messageText.AddToClassList("node_message");
-            messageText.RegisterValueChangedCallback(evt =>
-            {
-                MessageText = evt.newValue;
-            });
-            messageText.SetValueWithoutNotify(MessageText);
-            mainContainer.Insert(index,messageText);
         }
 
         private void AddInputPort()
@@ -93,26 +93,12 @@ namespace Code.Scenarios.Editor
             InputPort.portColor = Color.white;
             inputContainer.Add(InputPort);
         }
-        
-        private void AddMarkup(int index)
-        {
-            var markup = new PopupField<TextMarkup>(Enum.GetValues(typeof(TextMarkup)).Cast<TextMarkup>().ToList(), 0)
-            {
-                label = "Markup"
-            };
-            markup.RegisterValueChangedCallback(evt =>
-            {
-                Markup = evt.newValue;
-            });
-            markup.SetValueWithoutNotify(Markup);
-            mainContainer.Insert(index ,markup);
-        }
 
-        public void CreateCondition(Data.Enums.ReplicaCondition replicaCondition)
+        public void CreateCondition(ReplicaCondition replicaCondition)
         {
-            var condition = new ReplicaCondition(this);
+            var condition = new ReplicaConditionElement(this);
             Conditions.Add(condition);
-           
+
             condition.OnPressDeleteCondition += dialogueCondition =>
             {
                 if (Conditions.Count > 1)
@@ -120,8 +106,8 @@ namespace Code.Scenarios.Editor
                     Conditions.Remove(condition);
                     outputContainer.Remove(dialogueCondition);
                 }
-            }; 
-            
+            };
+
             outputContainer.Add(condition);
         }
     }

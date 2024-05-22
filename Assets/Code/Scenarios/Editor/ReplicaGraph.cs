@@ -13,12 +13,11 @@ namespace Code.Scenarios.Editor
             AddBackground();
             AddStyles();
             AddManipulators();
-            CreateNode(Vector2.zero);
         }
 
         private void AddManipulators()
         {
-            this.AddManipulator(new SelectionDragger()); //only first
+            this.AddManipulator(new SelectionDragger()); //Important! This line should be the first
             this.AddManipulator(new ContentDragger());
             this.AddManipulator(new ContentZoomer());
             this.AddManipulator(new RectangleSelector());
@@ -27,7 +26,7 @@ namespace Code.Scenarios.Editor
 
         private void OnMenuEvent(ContextualMenuPopulateEvent menuEvent)
         {
-            menuEvent.menu.AppendAction("Create Node", OnCreateNode);
+            menuEvent.menu.AppendAction("Create Node", OnPressCreateNode);
         }
 
         private void AddBackground()
@@ -51,18 +50,41 @@ namespace Code.Scenarios.Editor
             styleSheets.Add(nodeStyle);
         }
 
-        private void OnCreateNode(DropdownMenuAction menuAction)
+        private void OnPressCreateNode(DropdownMenuAction menuAction)
         {
-            var nodePosition = menuAction.eventInfo.localMousePosition;
+            var nodePosition = contentViewContainer.WorldToLocal(menuAction.eventInfo.localMousePosition);
             CreateNode(nodePosition);
         }
 
         public ReplicaNode CreateNode(Vector2 position)
         {
-            ReplicaNode node = new ReplicaNode();
+            ReplicaNode node = new ReplicaNode();//todo нужен уникальный айдишник сделать в конструкторе
             node.SetPosition(new Rect(position, Vector2.zero));
             AddElement(node);
             return node;
+        }
+
+        public void CreateEdge(Port inputPort, Port outputPort)
+        {
+            Edge edge = new Edge
+            {
+                input = inputPort,
+                output = outputPort
+            };
+            AddElement(edge);
+        }
+
+        public void Reset()
+        {
+            foreach (var edge in edges)
+            {
+                RemoveElement(edge);
+            }
+
+            foreach (var node in nodes)
+            {
+                RemoveElement(node);
+            }
         }
 
         public override List<Port> GetCompatiblePorts(Port startPort, NodeAdapter nodeAdapter)
@@ -90,29 +112,6 @@ namespace Code.Scenarios.Editor
             }
 
             return compatiblePorts;
-        }
-
-        public void CreateEdge(Port inputPort, Port outputPort)
-        {
-            Edge edge = new Edge
-            {
-                input = inputPort,
-                output = outputPort
-            };
-            AddElement(edge);
-        }
-
-        public void Reset()
-        {
-            foreach (var edge in edges)
-            {
-                RemoveElement(edge);
-            }
-
-            foreach (var node in nodes)
-            {
-                RemoveElement(node);
-            }
         }
     }
 }

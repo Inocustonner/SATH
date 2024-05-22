@@ -9,11 +9,11 @@ namespace Code.Scenarios.Editor
 {
     public sealed class ReplicaSaveLoader
     {
-        public static void LoadDialog(ReplicaGraph graphView, ReplicaConfig config)
+        public static void LoadReplica(ReplicaGraph graphView, ReplicaConfig config)
         {
             if (config == null)
             {
-                Debug.LogWarning("Replica is null!");
+                Debug.LogWarning("Replica config is null!");
                 return;
             }
 
@@ -22,7 +22,7 @@ namespace Code.Scenarios.Editor
             {
                 var node = graphView.CreateNode(serializedNode.EditorPosition);
                 node.ID = serializedNode.ID;
-                node.MessageText = serializedNode.Message;
+               //node.MessageText = serializedNode.Message;
 
                 foreach (var serializedChoice in serializedNode.Conditions)
                 {
@@ -46,18 +46,18 @@ namespace Code.Scenarios.Editor
             }
         }
 
-        public static void CreateDialog(ReplicaGraph graph, out ReplicaConfig config)
+        public static void CreateReplica(ReplicaGraph graph, out ReplicaConfig config)
         {
             var path = EditorUtility.SaveFilePanelInProject("Save file", "Dialog", "asset", "");
             config = ScriptableObject.CreateInstance<ReplicaConfig>();
             
-            SaveDialog(graph, config);
+            SaveReplica(graph, config);
             
             AssetDatabase.CreateAsset(config, path);
             AssetDatabase.SaveAssets();
         }
 
-        public static void SaveDialog(ReplicaGraph graph, ReplicaConfig config)
+        public static void SaveReplica(ReplicaGraph graph, ReplicaConfig config)
         {
             config.nodes = ConvertNodesData(graph);
             config.edges = ConvertEdgesToData(graph);
@@ -74,9 +74,9 @@ namespace Code.Scenarios.Editor
                 var serializedNode = new ReplicaNodeSerialized
                 {
                     ID = dialogueNode.ID,
-                    Message = dialogueNode.MessageText,
+                    //Message = dialogueNode.MessageText,
                     EditorPosition = dialogueNode.GetPosition().center,
-                    Conditions = ConvertChoicesToData(dialogueNode)
+                    Conditions = ConvertConditionsToData(dialogueNode)
                 };
 
                 result.Add(serializedNode);
@@ -85,16 +85,9 @@ namespace Code.Scenarios.Editor
             return result;
         }
 
-        private static List<Data.Enums.ReplicaCondition> ConvertChoicesToData(ReplicaNode nodeView)
+        private static List<Data.Enums.ReplicaCondition> ConvertConditionsToData(ReplicaNode nodeView)
         {
-            var serializedChoices = new List<Data.Enums.ReplicaCondition>();
-            foreach (var choice in nodeView.Conditions)
-            {
-                var serializedChoice = choice.Condition;
-                serializedChoices.Add(serializedChoice);
-            }
-            
-            return serializedChoices;
+            return nodeView.Conditions.Select(choice => choice.Condition).ToList();
         }
 
         private static List<ReplicaEdgeSerialized> ConvertEdgesToData(GraphView graphView)

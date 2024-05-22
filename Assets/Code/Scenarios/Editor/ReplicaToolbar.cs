@@ -75,7 +75,7 @@ namespace Code.Scenarios.Editor
             }
             */
 
-            ReplicaSaveLoader.LoadDialog(graph, config);
+            ReplicaSaveLoader.LoadReplica(graph, config);
         }
 
         private void OnSaveDialog()
@@ -83,11 +83,11 @@ namespace Code.Scenarios.Editor
             var config = dialogField.value as ReplicaConfig;
             if (config != null)
             {
-                ReplicaSaveLoader.SaveDialog(graph, config);
+                ReplicaSaveLoader.SaveReplica(graph, config);
             }
             else
             {
-                ReplicaSaveLoader.CreateDialog(graph, out config);
+                ReplicaSaveLoader.CreateReplica(graph, out config);
                 dialogField.value = config;
             }
         }
