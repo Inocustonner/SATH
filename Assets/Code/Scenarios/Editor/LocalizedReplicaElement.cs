@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Code.Data.Configs;
+using Code.Utils;
+using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace Code.Scenarios.Editor
@@ -27,7 +29,8 @@ namespace Code.Scenarios.Editor
                     label = "Language",
                     style =
                     {
-                        width = 300 
+                        width = 300,
+                        backgroundColor = Constance.PurpleColor
                     }
                 };
             condition.RegisterValueChangedCallback(evt =>
@@ -50,6 +53,8 @@ namespace Code.Scenarios.Editor
             Add(_partsContainer);
 
             var addPartButton = new Button(AddReplicaPart) { text = "Add Part" };
+            addPartButton.style.color = new StyleColor(Constance.PurpleColor);
+            addPartButton.style.backgroundColor = new StyleColor(Color.white);
             Add(addPartButton);
         }
 
@@ -60,4 +65,7 @@ namespace Code.Scenarios.Editor
             _partsContainer.Add(part);
         }
     }
+    
+ 
 }
+

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Code.Data.Enums;
+using Code.Utils;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -14,7 +15,7 @@ namespace Code.Scenarios.Editor
         public Color Color; 
         public string MessageText;
 
-        private readonly Color _propertyColor = new Color(0.4941177f, 0.1411765f, 0.4941177f);
+        
         public ReplicaPartElement()
         {
             style.backgroundColor = new StyleColor(Color.white);
@@ -33,7 +34,7 @@ namespace Code.Scenarios.Editor
             {
                 label = "Markup"
             };
-            property.labelElement.style.color = new StyleColor(_propertyColor);
+            property.labelElement.style.color = new StyleColor(Constance.PurpleColor);
         
             property.RegisterValueChangedCallback(evt =>
             {
@@ -50,7 +51,7 @@ namespace Code.Scenarios.Editor
             {
                 label = "Effect",
             };
-            property.labelElement.style.color = new StyleColor(_propertyColor);
+            property.labelElement.style.color = new StyleColor(Constance.PurpleColor);
         
             property.RegisterValueChangedCallback(evt =>
             {
@@ -67,7 +68,7 @@ namespace Code.Scenarios.Editor
             {
                 label = "Color"
             };
-            property.labelElement.style.color = new StyleColor(_propertyColor);
+            property.labelElement.style.color = new StyleColor(Constance.PurpleColor);
 
             property.UnregisterValueChangedCallback(evt =>
             {
@@ -84,7 +85,7 @@ namespace Code.Scenarios.Editor
                 multiline = true,
                 value = "Message",
             };
-            messageText.labelElement.style.color = new StyleColor(_propertyColor);
+            messageText.labelElement.style.color = new StyleColor(Constance.PurpleColor);
             messageText.AddToClassList("node_message");
           
             messageText.RegisterValueChangedCallback(evt =>

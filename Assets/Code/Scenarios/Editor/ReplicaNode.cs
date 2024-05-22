@@ -11,7 +11,7 @@ namespace Code.Scenarios.Editor
         public string ID;
         public Port InputPort;
         public List<ReplicaConditionElement> Conditions = new();
-        public List<ReplicaPartElement> Parts = new();
+        public List<LocalizedReplicaElement> Parts = new();
 
         private VisualElement _partsContainer;
 
@@ -22,10 +22,10 @@ namespace Code.Scenarios.Editor
             AddConditionButton(1);
             AddCondition();
             AddInputPort();
-            AddListParts();
+            AddListLocalizedReplicas();
         }
 
-        private void AddListParts()
+        private void AddListLocalizedReplicas()
         {
             _partsContainer = new VisualElement
             {
@@ -36,13 +36,13 @@ namespace Code.Scenarios.Editor
             };
             mainContainer.Add(_partsContainer);
 
-            var addPartButton = new Button(AddReplicaPart) { text = "Add Part" };
+            var addPartButton = new Button(AddLocalizedReplica) { text = "Add Localization" };
             mainContainer.Add(addPartButton);
         }
 
-        private void AddReplicaPart()
+        private void AddLocalizedReplica()
         {
-            var part = new ReplicaPartElement();
+            var part = new LocalizedReplicaElement();
             Parts.Add(part);
             _partsContainer.Add(part);
         }
