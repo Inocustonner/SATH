@@ -9,14 +9,17 @@ namespace Code.Scenarios.Scripts
     )]
     public sealed class ReplicaConfig : ScriptableObject
     {
-        public string startNode;
         public List<ReplicaNodeSerialized> nodes;
         public List<ReplicaEdgeSerialized> edges;
 
         public bool FindStartNode(out ReplicaNodeSerialized node)
         {
-            var nodeID = startNode != "" ? startNode : nodes[0].ID;
-            return FindNode(nodeID, out node);
+            if (nodes == null || nodes.Count == 0)
+            {
+                node = default;
+                return false;
+            }
+            return FindNode(nodes[0].ID, out node);
         }
 
         private bool FindNode(string id, out ReplicaNodeSerialized result)

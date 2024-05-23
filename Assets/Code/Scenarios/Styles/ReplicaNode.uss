@@ -1,8 +1,8 @@
 .node_id > .unity-text-field__input
 {
-    min-width: 240px;
-    max-width: 240px;
-    background-color: #1f1f21;
+    min-width: 500px;
+    border-color: #7E247E;
+    background-color: #282a2d;
     padding: 8px;
 }
 

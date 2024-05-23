@@ -10,7 +10,7 @@ namespace Code.Scenarios.Scripts
         
         public string CurrentMessage
         {
-            get { return this.currentNode.Message; }
+            get { return /* this.currentNode.Message;*/""; }
         }
 
         public ReplicaCondition[] CurrentConditions

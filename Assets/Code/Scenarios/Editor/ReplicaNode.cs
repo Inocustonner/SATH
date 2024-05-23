@@ -1,5 +1,6 @@
-﻿using System.Collections.Generic;
-using Code.Data.Enums;
+﻿using System;
+using System.Collections.Generic;
+using Code.Utils;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -8,10 +9,10 @@ namespace Code.Scenarios.Editor
 {
     public class ReplicaNode : Node
     {
-        public string ID;
-        public Port InputPort;
-        public List<ReplicaConditionElement> Conditions = new();
-        public List<LocalizedReplicaElement> Parts = new();
+        public string ID { get; private set; }
+        public Port InputPort{ get; private set; }
+        public List<ReplicaConditionElement> Conditions { get; private set; } = new();
+        public List<LocalizedReplicaElement> Localizations { get; private set; } = new();
 
         private VisualElement _partsContainer;
 
@@ -20,9 +21,66 @@ namespace Code.Scenarios.Editor
             AddIdText(0);
 
             AddConditionButton(1);
-            AddCondition();
+            AddConditionElement();
             AddInputPort();
             AddListLocalizedReplicas();
+        }
+        
+        public ReplicaNode(string id, List<ReplicaConditionElement> conditions,List<LocalizedReplicaElement> localizations)
+        {
+            AddIdText(0, id);
+
+            AddConditionButton(1);
+            AddInputPort();
+            AddListLocalizedReplicas();
+
+            foreach (var condition in conditions)
+            {
+                AddConditionElement(condition);
+            }
+
+            foreach (var localization in localizations)
+            {
+                AddLocalizedReplicaElement(localization);
+            }
+        }
+        
+        private void AddIdText(int index, string id = "")
+        {
+            if (id == "")
+            {
+                id = Guid.NewGuid().ToString();
+            }
+            var textId = new TextField
+            {
+                value = "ID"
+            };
+            textId.AddToClassList("node_id");
+            
+            textId.RegisterValueChangedCallback(evt => { ID = evt.newValue; });
+            textId.SetValueWithoutNotify(ID);
+            textId.value = id;
+            ID = id;
+            
+            titleContainer.Insert(index, textId);
+        }
+
+        private void AddInputPort()
+        {
+            InputPort = Port.Create<Edge>(Orientation.Horizontal, Direction.Input, Port.Capacity.Multi, typeof(bool));
+            InputPort.portName = "Input Connection";
+            InputPort.portColor = Color.white;
+            inputContainer.Add(InputPort);
+        }
+
+        private  void AddConditionButton(int index)
+        {
+            var button = new Button(() => AddConditionElement())
+            {
+                text = "Add Condition"
+            };
+
+            mainContainer.Insert(index, button);
         }
 
         private void AddListLocalizedReplicas()
@@ -36,32 +94,30 @@ namespace Code.Scenarios.Editor
             };
             mainContainer.Add(_partsContainer);
 
-            var addPartButton = new Button(AddLocalizedReplica) { text = "Add Localization" };
-            mainContainer.Add(addPartButton);
-        }
-
-        private void AddLocalizedReplica()
-        {
-            var part = new LocalizedReplicaElement();
-            Parts.Add(part);
-            _partsContainer.Add(part);
-        }
-
-        private void AddConditionButton(int index)
-        {
-            var button = new Button(AddCondition)
+            var addLocalizationButton = new Button(() => AddLocalizedReplicaElement())
             {
-                text = "Add Condition"
+                text = "Add Localization",
+                style =
+                {
+                    backgroundColor = Constance.PurpleColor,
+                    color = Color.white
+                }
             };
-
-            mainContainer.Insert(index, button);
+            mainContainer.Add(addLocalizationButton);
         }
 
-        private void AddCondition()
+        private void AddLocalizedReplicaElement(LocalizedReplicaElement localization = null)
         {
-            var condition = new ReplicaConditionElement(this);
+            localization ??= new LocalizedReplicaElement();
+            Localizations.Add(localization);
+            _partsContainer.Add(localization);
+        }
+        
+        private void AddConditionElement(ReplicaConditionElement condition = null)
+        {
+            condition ??= new ReplicaConditionElement();
             Conditions.Add(condition);
-
+            
             condition.OnPressDeleteCondition += dialogueCondition =>
             {
                 if (Conditions.Count > 1)
@@ -70,44 +126,6 @@ namespace Code.Scenarios.Editor
                     outputContainer.Remove(dialogueCondition);
                 }
             };
-
-            outputContainer.Add(condition);
-        }
-
-        private void AddIdText(int index)
-        {
-            var textId = new TextField
-            {
-                value = "ID"
-            };
-            textId.AddToClassList("node_id");
-            textId.RegisterValueChangedCallback(evt => { ID = evt.newValue; });
-            textId.SetValueWithoutNotify(ID);
-            titleContainer.Insert(index, textId);
-        }
-
-        private void AddInputPort()
-        {
-            InputPort = Port.Create<Edge>(Orientation.Horizontal, Direction.Input, Port.Capacity.Multi, typeof(bool));
-            InputPort.portName = "Input Connection";
-            InputPort.portColor = Color.white;
-            inputContainer.Add(InputPort);
-        }
-
-        public void CreateCondition(ReplicaCondition replicaCondition)
-        {
-            var condition = new ReplicaConditionElement(this);
-            Conditions.Add(condition);
-
-            condition.OnPressDeleteCondition += dialogueCondition =>
-            {
-                if (Conditions.Count > 1)
-                {
-                    Conditions.Remove(condition);
-                    outputContainer.Remove(dialogueCondition);
-                }
-            };
-
             outputContainer.Add(condition);
         }
     }

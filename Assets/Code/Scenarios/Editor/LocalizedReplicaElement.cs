@@ -12,7 +12,6 @@ namespace Code.Scenarios.Editor
     {
         public Lan Language;
         public List<ReplicaPartElement> Parts = new();
-      
         private VisualElement _partsContainer;
         
         public LocalizedReplicaElement()
@@ -21,9 +20,21 @@ namespace Code.Scenarios.Editor
             AddListParts();
         }
 
-        private void AddLanguageProperty()
+        public LocalizedReplicaElement(Lan language, List<ReplicaPartElement> parts)
         {
-            var condition =
+            AddLanguageProperty(language);
+            AddListParts();
+            
+            Language = language;
+            foreach (var part in parts)
+            {
+                AddReplicaPart(part);
+            }
+        }
+        
+        private void AddLanguageProperty(Lan language = Lan.Rus)
+        {
+            var property =
                 new PopupField<Lan>(Enum.GetValues(typeof(Lan)).Cast<Lan>().ToList(), 0)
                 {
                     label = "Language",
@@ -33,12 +44,13 @@ namespace Code.Scenarios.Editor
                         backgroundColor = Constance.PurpleColor
                     }
                 };
-            condition.RegisterValueChangedCallback(evt =>
+            property.RegisterValueChangedCallback(evt =>
             {
                 Language = evt.newValue;
             });
-            condition.SetValueWithoutNotify(Language);
-            Add(condition);
+            property.value = language;
+            property.SetValueWithoutNotify(Language);
+            Add(property);
         }
 
         private void AddListParts()
@@ -64,8 +76,12 @@ namespace Code.Scenarios.Editor
             Parts.Add(part);
             _partsContainer.Add(part);
         }
+
+        private void AddReplicaPart(ReplicaPartElement part)
+        {
+            Parts.Add(part);
+            _partsContainer.Add(part);
+        }
     }
-    
- 
 }
 

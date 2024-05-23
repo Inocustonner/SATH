@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using Code.Scenarios.Scripts;
+using Code.Utils;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -58,11 +60,41 @@ namespace Code.Scenarios.Editor
 
         public ReplicaNode CreateNode(Vector2 position)
         {
-            ReplicaNode node = new ReplicaNode();//todo нужен уникальный айдишник сделать в конструкторе
+            ReplicaNode node = new ReplicaNode(); //todo нужен уникальный айдишник сделать в конструкторе
             node.SetPosition(new Rect(position, Vector2.zero));
             AddElement(node);
             return node;
         }
+
+        public ReplicaNode CreateNode(ReplicaNodeSerialized replicaNodeSerialized)
+        {
+            var conditions = new List<ReplicaConditionElement>();
+            for (var index = 0; index < replicaNodeSerialized.Conditions.Count; index++)
+            {
+                var condition = replicaNodeSerialized.Conditions[index];
+                conditions.Add(new ReplicaConditionElement(condition));
+            }
+
+            var localizations = new List<LocalizedReplicaElement>();
+            for (int i = 0; i < replicaNodeSerialized.Localization.Count; i++)
+            {
+                var localization = replicaNodeSerialized.Localization[i];
+                var parts = new List<ReplicaPartElement>();
+                for (int j = 0; j < localization.Parts.Count; j++)
+                {
+                    var part = localization.Parts[j];
+                    parts.Add(new ReplicaPartElement(part.Markup, part.Effect, part.Color, part.MessageText));
+                }
+
+                localizations.Add(new LocalizedReplicaElement(localization.Language, parts));
+            }
+
+            ReplicaNode node = new ReplicaNode(replicaNodeSerialized.ID, conditions, localizations);
+            node.SetPosition(new Rect(replicaNodeSerialized.EditorPosition, Vector2.zero));
+            AddElement(node);
+            return node;
+        }
+
 
         public void CreateEdge(Port inputPort, Port outputPort)
         {
@@ -71,6 +103,7 @@ namespace Code.Scenarios.Editor
                 input = inputPort,
                 output = outputPort
             };
+            edge.style.color = new StyleColor(Color.white);
             AddElement(edge);
         }
 

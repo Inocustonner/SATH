@@ -20,15 +20,7 @@ namespace Code.Scenarios.Editor
             var nodes = new List<ReplicaNode>();
             foreach (var serializedNode in config.nodes)
             {
-                var node = graphView.CreateNode(serializedNode.EditorPosition);
-                node.ID = serializedNode.ID;
-               //node.MessageText = serializedNode.Message;
-
-                foreach (var serializedChoice in serializedNode.Conditions)
-                {
-                    node.CreateCondition(serializedChoice);
-                }
-
+                var node = graphView.CreateNode(serializedNode);
                 nodes.Add(node);
             }
 
@@ -48,7 +40,7 @@ namespace Code.Scenarios.Editor
 
         public static void CreateReplica(ReplicaGraph graph, out ReplicaConfig config)
         {
-            var path = EditorUtility.SaveFilePanelInProject("Save file", "Dialog", "asset", "");
+            var path = EditorUtility.SaveFilePanelInProject("Save file", "Replica_", "asset", "");
             config = ScriptableObject.CreateInstance<ReplicaConfig>();
             
             SaveReplica(graph, config);
@@ -70,13 +62,36 @@ namespace Code.Scenarios.Editor
             
             foreach (var node in graphView.nodes)
             {
-                var dialogueNode = (ReplicaNode) node;
+                var replicaNode = (ReplicaNode) node;
+
+                var localizationsSerialized = new List<LocalizationSerialized>();
+                foreach (var localization in replicaNode.Localizations)
+                {
+                    var partsSerialized = new List<ReplicaPartSerialized>();
+                    foreach (var part in localization.Parts)
+                    {
+                        partsSerialized.Add(new ReplicaPartSerialized()
+                        {
+                            Color = part.Color,
+                            Effect = part.Effect,
+                            Markup = part.Markup,
+                            MessageText = part.MessageText
+                        });
+                    }
+                    
+                    localizationsSerialized.Add(new LocalizationSerialized()
+                    {
+                        Language = localization.Language,
+                        Parts = partsSerialized
+                    });
+                }
+
                 var serializedNode = new ReplicaNodeSerialized
                 {
-                    ID = dialogueNode.ID,
-                    //Message = dialogueNode.MessageText,
-                    EditorPosition = dialogueNode.GetPosition().center,
-                    Conditions = ConvertConditionsToData(dialogueNode)
+                    ID = replicaNode.ID,
+                    Localization = localizationsSerialized,
+                    EditorPosition = replicaNode.GetPosition().center,
+                    Conditions = ConvertConditionsToData(replicaNode)
                 };
 
                 result.Add(serializedNode);

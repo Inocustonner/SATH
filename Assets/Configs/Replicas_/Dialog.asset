@@ -10,19 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48e56e729e8a46f58050bf2e2c16e7d8, type: 3}
-  m_Name: TestDialog
+  m_Name: Dialog
   m_EditorClassIdentifier: 
   startNode: 
   nodes:
-  - ID: 1
-    Message: first
+  - ID: 
     Conditions: 00000000
-    EditorPosition: {x: 249, y: 101.5}
-  - ID: 2
-    Message: second
-    Conditions: 00000000
-    EditorPosition: {x: 785, y: 101.5}
-  edges:
-  - SourceNode: 1
-    TargetNode: 2
-    Index: 0
+    Localization:
+    - Language: 0
+      Parts:
+      - Markup: 0
+        Effect: 1
+        Color: {r: 0, g: 0, b: 0, a: 0}
+        MessageText: "\u041F\u0440\u0438\u0432\u0435\u0442"
+    - Language: 1
+      Parts:
+      - Markup: 1
+        Effect: 0
+        Color: {r: 0, g: 0, b: 0, a: 0}
+        MessageText: Hallo
+    EditorPosition: {x: 600, y: 459.5}
+  edges: []

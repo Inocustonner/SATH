@@ -8,61 +8,73 @@ using UnityEngine.UIElements;
 
 namespace Code.Scenarios.Editor
 {
-    public class ReplicaPartElement: VisualElement
+    public sealed class ReplicaPartElement : VisualElement
     {
-        public TextMarkup Markup;
-        public TextEffect Effect;
-        public Color Color; 
-        public string MessageText;
+        public TextMarkup Markup { get; private set; }
+        public TextEffect Effect { get; private set; }
+        public Color Color { get; private set; }
+        public string MessageText { get; private set; }
 
-        
         public ReplicaPartElement()
         {
             style.backgroundColor = new StyleColor(Color.white);
-            style.minWidth = 100; 
-            style.minHeight = 20; 
+            style.minWidth = 100;
+            style.minHeight = 20;
 
             AddMarkupProperty(0);
             AddEffectProperty(1);
             AddColorProperty(2);
-            AddMessageText(3);
+            AddMessageTextField(3);
         }
-        
-        private void AddMarkupProperty(int index)
+
+        public ReplicaPartElement(TextMarkup markup, TextEffect effect, Color color, string messageText)
+        {
+            style.backgroundColor = new StyleColor(Color.white);
+            style.minWidth = 100;
+            style.minHeight = 20;
+
+            AddMarkupProperty(0, markup);
+            AddEffectProperty(1, effect);
+            AddColorProperty(2, color);
+            AddMessageTextField(3, messageText);
+
+            Markup = markup;
+            Effect = effect;
+            Color = color;
+            MessageText = messageText;
+        }
+
+        private void AddMarkupProperty(int index, TextMarkup markup = TextMarkup.Default)
         {
             var property = new PopupField<TextMarkup>(Enum.GetValues(typeof(TextMarkup)).Cast<TextMarkup>().ToList(), 0)
             {
                 label = "Markup"
             };
             property.labelElement.style.color = new StyleColor(Constance.PurpleColor);
-        
-            property.RegisterValueChangedCallback(evt =>
-            {
-                Markup = evt.newValue;
-            });
+            
+            property.RegisterValueChangedCallback(evt => { Markup = evt.newValue; });
             property.SetValueWithoutNotify(Markup);
-           
-            Insert(index,property);
+            property.value = markup;
+
+            Insert(index, property);
         }
 
-        private void AddEffectProperty(int index)
+        private void AddEffectProperty(int index, TextEffect effect = TextEffect.Default)
         {
             var property = new PopupField<TextEffect>(Enum.GetValues(typeof(TextEffect)).Cast<TextEffect>().ToList(), 0)
             {
                 label = "Effect",
             };
             property.labelElement.style.color = new StyleColor(Constance.PurpleColor);
-        
-            property.RegisterValueChangedCallback(evt =>
-            {
-                Effect = evt.newValue;
-            });
+
+            property.RegisterValueChangedCallback(evt => { Effect = evt.newValue; });
             property.SetValueWithoutNotify(Effect);
-         
-            Insert(index,property);
+            property.value = effect;
+            
+            Insert(index, property);
         }
 
-        private void AddColorProperty(int index)
+        private void AddColorProperty(int index, Color color = default)
         {
             var property = new ColorField()
             {
@@ -70,31 +82,28 @@ namespace Code.Scenarios.Editor
             };
             property.labelElement.style.color = new StyleColor(Constance.PurpleColor);
 
-            property.UnregisterValueChangedCallback(evt =>
-            {
-                Color = evt.newValue;
-            });
+            property.UnregisterValueChangedCallback(evt => { Color = evt.newValue; });
             property.SetValueWithoutNotify(Color);
+            property.value = color;
             
-            Insert(index,property);
+            Insert(index, property);
         }
-        private void AddMessageText(int index)
+
+        private void AddMessageTextField(int index, string text = "")
         {
-            var messageText = new TextField()
+            var textField = new TextField()
             {
                 multiline = true,
                 value = "Message",
             };
-            messageText.labelElement.style.color = new StyleColor(Constance.PurpleColor);
-            messageText.AddToClassList("node_message");
-          
-            messageText.RegisterValueChangedCallback(evt =>
-            {
-                MessageText = evt.newValue;
-            });
-            messageText.SetValueWithoutNotify(MessageText);
+            textField.labelElement.style.color = new StyleColor(Constance.PurpleColor);
+            textField.AddToClassList("node_message");
+
+            textField.RegisterValueChangedCallback(evt => { MessageText = evt.newValue; });
+            textField.SetValueWithoutNotify(MessageText);
+            textField.value = text;
             
-            Insert(index,messageText);
+            Insert(index, textField);
         }
     }
 }
