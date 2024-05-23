@@ -1,45 +1,55 @@
+using Code.Data.Configs;
+using Code.Infrastructure.Services;
 using UnityEngine;
 
 namespace Code.Scenarios.Scripts
 {
     public sealed class ReplicaTest : MonoBehaviour
     {
-        [SerializeField]
-        private ReplicaConfig config;
+        [SerializeField] private Lan _lan;
+        [SerializeField] private ReplicaConfig _config;
+
+        private GameConditionService _conditionService = new();
         private Replica _replica;
 
-        [SerializeField]
-        private int choiceIndex;
 
         private void Start()
         {
-            this._replica = new Replica(this.config);
-            this.PrintDialog();
+            _replica = new Replica(_config);
+            PrintDialog();
         }
 
-        [ContextMenu("Select Choice")]
-        public void SelectChoice()
-        {
-            if (this._replica.MoveNext(this.choiceIndex))
-            {
-                this.PrintDialog();
-            }
-            else
-            {
-                Debug.Log("Dialog finished!");
-            }
-        }
-        
+        [ContextMenu("Я хочу умереть")]
         private void PrintDialog()
         {
             Debug.Log("----");
-            Debug.Log($"Message: {this._replica.CurrentMessage}");
-
-            foreach (var choice in _replica.CurrentConditions)
+            if (_replica.TryGetCurrentMessage(_lan, out var replicaMessage))
             {
-                Debug.Log($"Choice: {choice}");
+                Debug.Log($"Message: {replicaMessage}");
+                if (_replica.TryGetCurrentConditions(out var gameConditions))
+                {
+                    for (var index = 0; index < gameConditions.Length; index++)
+                    {
+                        var gameCondition = gameConditions[index];
+                        if (_conditionService.GetValue(gameCondition))
+                        {
+                            Debug.Log($"Condition is true: {gameCondition}");
+                            _replica.MoveNext(index);
+                        }
+                    }
+                }
+                else
+                {
+                Debug.Log($"кондишены проебаны)");
+                    
+                }
             }
-            
+            else
+            {
+                Debug.Log($"Suck my dick bitch");
+            }
+
+
             Debug.Log("----");
         }
     }

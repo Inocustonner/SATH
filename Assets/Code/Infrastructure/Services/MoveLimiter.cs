@@ -1,7 +1,7 @@
 ﻿using System;
 using Code.Infrastructure.DI;
 
-namespace Code.Services
+namespace Code.Infrastructure.Services
 {
     public class MoveLimiter : IService
     {

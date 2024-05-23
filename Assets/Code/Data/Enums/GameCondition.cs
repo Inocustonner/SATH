@@ -1,6 +1,6 @@
 ﻿namespace Code.Data.Enums
 {
-    public enum ReplicaCondition
+    public enum GameCondition
     {
         None,
         EnterWhiteRoom,

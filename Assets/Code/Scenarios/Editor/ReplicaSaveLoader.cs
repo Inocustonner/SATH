@@ -18,13 +18,13 @@ namespace Code.Scenarios.Editor
             }
 
             var nodes = new List<ReplicaNode>();
-            foreach (var serializedNode in config.nodes)
+            foreach (var serializedNode in config.Nodes)
             {
                 var node = graphView.CreateNode(serializedNode);
                 nodes.Add(node);
             }
 
-            foreach (var serializedEdge in config.edges)
+            foreach (var serializedEdge in config.Edges)
             {
                 var outputId = serializedEdge.SourceNode;
                 var outputNode = nodes.First(it => it.ID == outputId);
@@ -51,8 +51,8 @@ namespace Code.Scenarios.Editor
 
         public static void SaveReplica(ReplicaGraph graph, ReplicaConfig config)
         {
-            config.nodes = ConvertNodesData(graph);
-            config.edges = ConvertEdgesToData(graph);
+            config.Nodes = ConvertNodesData(graph);
+            config.Edges = ConvertEdgesToData(graph);
             EditorUtility.SetDirty(config);
         }
         
@@ -100,7 +100,7 @@ namespace Code.Scenarios.Editor
             return result;
         }
 
-        private static List<Data.Enums.ReplicaCondition> ConvertConditionsToData(ReplicaNode nodeView)
+        private static List<Data.Enums.GameCondition> ConvertConditionsToData(ReplicaNode nodeView)
         {
             return nodeView.Conditions.Select(choice => choice.Condition).ToList();
         }

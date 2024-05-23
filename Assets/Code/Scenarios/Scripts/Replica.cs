@@ -1,39 +1,54 @@
 using System;
+using System.Linq;
+using Code.Data.Configs;
 using Code.Data.Enums;
+using Core.Infrastructure.Utils;
 
 namespace Code.Scenarios.Scripts
 {
     public sealed class Replica
     {
-        private readonly ReplicaConfig config;
-        private ReplicaNodeSerialized currentNode;
+        private readonly ReplicaConfig _config;
+        private ReplicaNodeSerialized _currentNode;
         
-        public string CurrentMessage
+        public bool  TryGetCurrentConditions(out GameCondition[] conditions)
         {
-            get { return /* this.currentNode.Message;*/""; }
-        }
-
-        public ReplicaCondition[] CurrentConditions
-        {
-            get { return this.currentNode.Conditions.ToArray(); }
+            conditions =  _currentNode.Conditions.ToArray();
+            return conditions != null || conditions.Length > 0;
         }
 
         public Replica(ReplicaConfig config)
         {
-            if (!config.FindStartNode(out var node))
+            if (!config.TryFindStartNode(out var node))
             {
                 throw new Exception("Entry point is absent!");
             }
 
-            this.config = config;
-            this.currentNode = node;
+            _config = config;
+            _currentNode = node;
         }
 
-        public bool MoveNext(int choiceIndex)
+        public bool TryGetCurrentMessage(Lan language, out string replica)
         {
-            if (this.config.FindNextNode(this.currentNode.ID, choiceIndex, out var nextNode))
+            replica = "";
+            var localization = _currentNode.Localization.FirstOrDefault(l => l.Language == language);
+            if (localization.Parts != null && localization.Parts.Count > 0)
             {
-                this.currentNode = nextNode;
+                foreach (var part in localization.Parts)
+                {
+                    replica += part.MessageText + " ";
+                }
+                return true;
+            }
+
+            return false;
+        }
+        public bool MoveNext(int conditionIndex)
+        { 
+            if (_config.TryFindNextNode(_currentNode.ID, conditionIndex, out var nextNode))
+            {
+                _currentNode = nextNode;
+                this.Log($"реплика смогла перейти на следующую часть {_currentNode.ID}");
                 return true;
             }
 

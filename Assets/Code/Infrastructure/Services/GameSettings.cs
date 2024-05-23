@@ -2,7 +2,7 @@
 using Code.Data.Configs;
 using Code.Infrastructure.DI;
 
-namespace Code.Services
+namespace Code.Infrastructure.Services
 {
     public class GameSettings: IService
     {

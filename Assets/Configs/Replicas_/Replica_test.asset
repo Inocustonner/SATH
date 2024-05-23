@@ -1,0 +1,107 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48e56e729e8a46f58050bf2e2c16e7d8, type: 3}
+  m_Name: Replica_test
+  m_EditorClassIdentifier: 
+  Nodes:
+  - ID: d82c03a2-0fba-43a4-84e7-260e5f10121f
+    Conditions: 0100000000000000
+    Localization:
+    - Language: 0
+      Parts:
+      - Markup: 1
+        Effect: 0
+        Color: {r: 0, g: 0, b: 0, a: 0}
+        MessageText: "\u041F\u0435\u0440\u0432\u0430\u044F \u0447\u0430\u0441\u0442\u044C
+          \u043F\u0435\u0440\u0432\u043E\u0439 \u0440\u0435\u043F\u043B\u0438\u043A\u0438"
+      - Markup: 0
+        Effect: 0
+        Color: {r: 0, g: 0, b: 0, a: 0}
+        MessageText: "\u0432\u0442\u043E\u0440\u0430\u044F \u0447\u0430\u0441\u0442\u044C
+          \u043F\u0435\u0440\u0432\u043E\u0439 \u0440\u0435\u043F\u043B\u0438\u043A\u0438"
+    - Language: 1
+      Parts:
+      - Markup: 1
+        Effect: 0
+        Color: {r: 0, g: 0, b: 0, a: 0}
+        MessageText: 'Pervaya chast` pervoy replici '
+      - Markup: 0
+        Effect: 0
+        Color: {r: 0, g: 0, b: 0, a: 0}
+        MessageText: vtoraya chast` pervoy replici
+    EditorPosition: {x: 525.5, y: 581.5}
+  - ID: f1ff57e8-31ab-4caf-8d6a-0d7164bcb031
+    Conditions: 00000000
+    Localization:
+    - Language: 0
+      Parts:
+      - Markup: 0
+        Effect: 0
+        Color: {r: 0, g: 0, b: 0, a: 0}
+        MessageText: "\u0412\u0442\u043E\u0440\u0430\u044F \u0440\u0435\u043F\u043B\u0438\u043A\u0430
+          \u043F\u043E\u0441\u043B\u0435 \u0443\u0441\u043B\u043E\u0432\u0438\u044F
+          \"Enter white room\""
+    - Language: 1
+      Parts:
+      - Markup: 0
+        Effect: 0
+        Color: {r: 0, g: 0, b: 0, a: 0}
+        MessageText: Vtoraya replica posle usloviya "Enter white room"
+    EditorPosition: {x: 1417.5, y: 131.5}
+  - ID: 3cb82ea3-6b43-469b-b086-4491e113e96f
+    Conditions: 00000000
+    Localization:
+    - Language: 0
+      Parts:
+      - Markup: 0
+        Effect: 0
+        Color: {r: 0, g: 0, b: 0, a: 0}
+        MessageText: "\u0412\u0442\u043E\u0440\u0430\u044F \u0440\u0435\u043F\u043B\u0438\u043A\u0430
+          \u043F\u043E\u0441\u043B\u0435 \u0443\u0441\u043B\u043E\u0432\u0438\u044F
+          \"None\" "
+      - Markup: 0
+        Effect: 0
+        Color: {r: 0, g: 0, b: 0, a: 0}
+        MessageText: 
+    - Language: 1
+      Parts:
+      - Markup: 0
+        Effect: 0
+        Color: {r: 0, g: 0, b: 0, a: 0}
+        MessageText: Vtoraya replica posle uslovia "None"
+    EditorPosition: {x: 1417.5, y: 785.5}
+  - ID: e71cf274-d3d8-459b-8a10-43fb6c855b3c
+    Conditions: 00000000
+    Localization:
+    - Language: 0
+      Parts:
+      - Markup: 0
+        Effect: 0
+        Color: {r: 0, g: 0, b: 0, a: 0}
+        MessageText: "\u0424\u0438\u043D\u0430\u043B\u044C\u043D\u0430\u044F \u0440\u0435\u043F\u043B\u0438\u043A\u0430"
+    - Language: 1
+      Parts:
+      - Markup: 0
+        Effect: 0
+        Color: {r: 0, g: 0, b: 0, a: 0}
+        MessageText: Final`naya replica
+    EditorPosition: {x: 2228.5, y: 755.5}
+  Edges:
+  - SourceNode: d82c03a2-0fba-43a4-84e7-260e5f10121f
+    TargetNode: f1ff57e8-31ab-4caf-8d6a-0d7164bcb031
+    Index: 0
+  - SourceNode: d82c03a2-0fba-43a4-84e7-260e5f10121f
+    TargetNode: 3cb82ea3-6b43-469b-b086-4491e113e96f
+    Index: 1
+  - SourceNode: 3cb82ea3-6b43-469b-b086-4491e113e96f
+    TargetNode: e71cf274-d3d8-459b-8a10-43fb6c855b3c
+    Index: 0

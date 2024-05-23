@@ -10,8 +10,9 @@ namespace Code.Scenarios.Editor
 {
     public class LocalizedReplicaElement : VisualElement
     {
-        public Lan Language;
-        public List<ReplicaPartElement> Parts = new();
+        public Lan Language { get; private set; }
+        public List<ReplicaPartElement> Parts { get; private set; } = new();
+        
         private VisualElement _partsContainer;
         
         public LocalizedReplicaElement()
@@ -64,9 +65,15 @@ namespace Code.Scenarios.Editor
             };
             Add(_partsContainer);
 
-            var addPartButton = new Button(AddReplicaPart) { text = "Add Part" };
-            addPartButton.style.color = new StyleColor(Constance.PurpleColor);
-            addPartButton.style.backgroundColor = new StyleColor(Color.white);
+            var addPartButton = new Button(AddReplicaPart)
+            {
+                text = "Add Replica Part",
+                style =
+                {
+                    color = new StyleColor(Constance.PurpleColor),
+                    backgroundColor = new StyleColor(Color.white)
+                }
+            };
             Add(addPartButton);
         }
 

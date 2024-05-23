@@ -12,7 +12,7 @@ namespace Code.Scenarios.Editor
 {
     public class ReplicaConditionElement : VisualElement
     {
-        public ReplicaCondition Condition { get; private set; }
+        public GameCondition Condition { get; private set; }
         public Port OutputPort { get; private set; }
         public event Action<ReplicaConditionElement> OnPressDeleteCondition;
 
@@ -23,7 +23,7 @@ namespace Code.Scenarios.Editor
             AddDeleteChoiceButton();
         }
 
-        public ReplicaConditionElement(ReplicaCondition condition)
+        public ReplicaConditionElement(GameCondition condition)
         {
             AddPort();
             AddConditions(condition);
@@ -35,7 +35,7 @@ namespace Code.Scenarios.Editor
         private void AddConditions()
         {
             var condition =
-                new PopupField<ReplicaCondition>(Enum.GetValues(typeof(ReplicaCondition)).Cast<ReplicaCondition>().ToList(), 0)
+                new PopupField<GameCondition>(Enum.GetValues(typeof(GameCondition)).Cast<GameCondition>().ToList(), 0)
                 {
                     label = "Condition",
                     style =
@@ -51,10 +51,10 @@ namespace Code.Scenarios.Editor
             OutputPort.Add(condition);
         }
 
-        private void AddConditions(ReplicaCondition replicaCondition)
+        private void AddConditions(GameCondition gameCondition)
         {
             var condition =
-                new PopupField<ReplicaCondition>(Enum.GetValues(typeof(ReplicaCondition)).Cast<ReplicaCondition>().ToList(), 0)
+                new PopupField<GameCondition>(Enum.GetValues(typeof(GameCondition)).Cast<GameCondition>().ToList(), 0)
                 {
                     label = "Condition",
                     style =
@@ -67,7 +67,7 @@ namespace Code.Scenarios.Editor
                 Condition = evt.newValue;
             });
             condition.SetValueWithoutNotify(Condition);
-            condition.value = replicaCondition;
+            condition.value = gameCondition;
             OutputPort.Add(condition);
         }
 

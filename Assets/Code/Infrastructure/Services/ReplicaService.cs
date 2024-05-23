@@ -7,7 +7,7 @@ using Code.Infrastructure.GameLoop;
 using Core.Infrastructure.Utils;
 using UnityEngine;
 
-namespace Code.Services
+namespace Code.Infrastructure.Services
 {
     public class ReplicaService : IService, IGameInitListener, IGameStartListener, IGameExitListener
     {

@@ -4,7 +4,7 @@ using Code.Infrastructure.DI;
 using Code.Infrastructure.GameLoop;
 using UnityEngine;
 
-namespace Code.Services
+namespace Code.Infrastructure.Services
 {
     public class CoroutineRunner : MonoBehaviour, IService,  IGameExitListener
     {

@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using Code.Data.Configs;
 using Code.Infrastructure.DI;
-using Code.Services;
+using Code.Infrastructure.Services;
 using Code.UI.Base;
 using UnityEngine;
 
