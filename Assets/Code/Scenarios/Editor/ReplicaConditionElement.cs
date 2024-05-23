@@ -2,9 +2,7 @@
 using System.Linq;
 using Code.Data.Enums;
 using Code.Utils;
-using Core.Infrastructure.Utils;
 using UnityEditor.Experimental.GraphView;
-using UnityEngine;
 using UnityEngine.UIElements;
 using Edge = UnityEditor.Experimental.GraphView.Edge;
 
@@ -74,8 +72,7 @@ namespace Code.Scenarios.Editor
         
         private void AddPort()
         {
-            OutputPort = Port.Create<Edge>(Orientation.Horizontal, Direction.Output, Port.Capacity.Single,
-                typeof(bool));
+            OutputPort = Port.Create<Edge>(Orientation.Horizontal, Direction.Output, Port.Capacity.Single, typeof(bool));
             OutputPort.portName = "";
             OutputPort.portColor = Constance.PurpleColor;
             Add(OutputPort);
@@ -85,8 +82,6 @@ namespace Code.Scenarios.Editor
         {
             var button = new Button(() =>
             {
-                this.Log("Press delete condition");
-
                 OnPressDeleteCondition?.Invoke(this);
             })
             {

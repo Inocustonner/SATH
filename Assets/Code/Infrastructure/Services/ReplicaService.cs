@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Code.CustomActions.Actions;
-using Code.Data.Configs;
 using Code.Infrastructure.DI;
 using Code.Infrastructure.GameLoop;
+using Code.Scenarios.Scripts;
 using Core.Infrastructure.Utils;
 using UnityEngine;
 
@@ -63,7 +63,8 @@ namespace Code.Infrastructure.Services
         private void OnTryStartReplica(ReplicaConfig replicaConfig)
         {
             this.Log($"try start {replicaConfig.name}");
-            if (replicaConfig.TryGetLocalizedReplica(_gameSettings.Language, out var replica))
+            //todo восстановить функционал
+            /*if (replicaConfig.TryGetLocalizedReplica(_gameSettings.Language, out var replica))
             {
                 this.Log($"invoke start {replicaConfig.name}");
 
@@ -79,7 +80,7 @@ namespace Code.Infrastructure.Services
                         _moveLimiter.Unblock();
                     }
                 });
-            }
+            }*/
         }
 
         private void OnPressInteractionKey()

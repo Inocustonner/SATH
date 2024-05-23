@@ -9,7 +9,7 @@
         Pend,
         Rainb,
         Rot,
-        Snake,
+        Shake,
         Incr,
         Slide,
         Swing,

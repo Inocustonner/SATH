@@ -89,6 +89,7 @@ namespace Code.Scenarios.Editor
                 var serializedNode = new ReplicaNodeSerialized
                 {
                     ID = replicaNode.ID,
+                    TypingSpeed = replicaNode.TypingSpeed,
                     Localization = localizationsSerialized,
                     EditorPosition = replicaNode.GetPosition().center,
                     Conditions = ConvertConditionsToData(replicaNode)

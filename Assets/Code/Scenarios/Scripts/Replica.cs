@@ -1,8 +1,13 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using Code.Data.Configs;
+using Code.Data.DynamicData;
 using Code.Data.Enums;
+using Code.Infrastructure.Services;
 using Core.Infrastructure.Utils;
+using UnityEngine;
 
 namespace Code.Scenarios.Scripts
 {
@@ -10,41 +15,70 @@ namespace Code.Scenarios.Scripts
     {
         private readonly ReplicaConfig _config;
         private ReplicaNodeSerialized _currentNode;
+        private readonly GameConditionService _gameConditionService;
         
-        public bool  TryGetCurrentConditions(out GameCondition[] conditions)
-        {
-            conditions =  _currentNode.Conditions.ToArray();
-            return conditions != null || conditions.Length > 0;
-        }
-
-        public Replica(ReplicaConfig config)
+        public Replica(ReplicaConfig config, GameConditionService gameConditionService)
         {
             if (!config.TryFindStartNode(out var node))
             {
-                throw new Exception("Entry point is absent!");
+                this.LogError("Entry point is absent!");
             }
 
+            _gameConditionService = gameConditionService;
             _config = config;
             _currentNode = node;
         }
 
-        public bool TryGetCurrentMessage(Lan language, out string replica)
+        public bool TryGetListAcceleratedText(Lan language, out List<AcceleratedText> list)
         {
-            replica = "";
+            list = new List<AcceleratedText>();
+            for (int i = 0; i < _config.Nodes.Count; i++)
+            {
+                if (TryGetAcceleratedText(language, out var text))
+                {
+                    list.Add(text);
+
+                    int conditionIndex;
+                    for (conditionIndex = 0; conditionIndex < _currentNode.Conditions.Count; conditionIndex++)
+                    {
+                        if (_gameConditionService.GetValue(_currentNode.Conditions[conditionIndex]))
+                        {
+                            break;
+                        }
+                    }
+
+                    if (!MoveNext(conditionIndex))
+                    {
+                        break;
+                    }
+                }
+            }
+
+            return list.Count > 0;
+        }
+
+        private bool TryGetAcceleratedText(Lan language, out AcceleratedText replicas)
+        {
+            replicas = new AcceleratedText();
+            var text = "";
             var localization = _currentNode.Localization.FirstOrDefault(l => l.Language == language);
             if (localization.Parts != null && localization.Parts.Count > 0)
             {
                 foreach (var part in localization.Parts)
                 {
-                    replica += part.MessageText + " ";
+                    text += GetFormatReplica(part) + " ";
                 }
+
+                replicas.Text = text;
+                replicas.Speed = _currentNode.TypingSpeed;
                 return true;
             }
 
             return false;
         }
-        public bool MoveNext(int conditionIndex)
-        { 
+
+        private bool MoveNext(int conditionIndex)
+        {
             if (_config.TryFindNextNode(_currentNode.ID, conditionIndex, out var nextNode))
             {
                 _currentNode = nextNode;
@@ -53,6 +87,40 @@ namespace Code.Scenarios.Scripts
             }
 
             return false;
+        }
+
+        private string GetFormatReplica(ReplicaPartSerialized part)
+        {
+            StringBuilder formattedText = new StringBuilder();
+
+            string text = part.MessageText;
+
+            if (part.Color != new Color() && part.Color != Color.white)
+            {
+                string hexCode = ColorUtility.ToHtmlStringRGBA(part.Color);
+
+                text = $"<color=#{hexCode}>{text}</color>";
+            }
+
+            if (part.Markup != TextMarkup.Default)
+            {
+                text = part.Markup switch
+                {
+                    TextMarkup.Bold => $"<b>{text}</b>",
+                    TextMarkup.Italic => $"<i>{text}</i>",
+                    TextMarkup.Underline => $"<u>{text}</u>",
+                    _ => text
+                };
+            }
+
+            if (part.Effect != TextEffect.Default)
+            {
+                text = $"<{part.Effect.ToString().ToLower()}>{text}</{part.Effect.ToString().ToLower()}>";
+            }
+
+            formattedText.Append(text);
+
+            return formattedText.ToString();
         }
     }
 }

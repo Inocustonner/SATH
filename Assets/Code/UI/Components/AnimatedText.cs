@@ -1,4 +1,5 @@
 ﻿using System;
+using Code.Data.DynamicData;
 using Code.Infrastructure.GameLoop;
 using Febucci.UI;
 using TMPro;
@@ -14,6 +15,9 @@ namespace Code.UI
         public bool IsTyping { get; private set; }
         public event Action OnEndWrite;
 
+        private int _index;
+        private AcceleratedText[] _acceleratedTexts;
+        
         public void GameInit()
         {
             _defaultSpeed = _textAnimatorPlayer.waitForNormalChars;
@@ -21,8 +25,15 @@ namespace Code.UI
             _textAnimatorPlayer.onTypewriterStart.AddListener(() => IsTyping = true);
             _textAnimatorPlayer.onTextShowed.AddListener(() =>
             {
-                IsTyping = false;
-                OnEndWrite?.Invoke();
+                if (_acceleratedTexts != null && _index < _acceleratedTexts.Length - 1)
+                {
+                    StartWriteNext();
+                }
+                else
+                {
+                    IsTyping = false;
+                    OnEndWrite?.Invoke();
+                }
             });
         }
 
@@ -46,6 +57,8 @@ namespace Code.UI
         public void Reset()
         {
             _text.SetText("");
+            _index = 0;
+            _acceleratedTexts = null;
         }
 
         public void StartWrite(string text, float speed)
@@ -59,10 +72,30 @@ namespace Code.UI
             _textAnimatorPlayer.ShowText(text);
         }
 
+        public void StartWrite(AcceleratedText[] replicas)
+        {
+            if (!gameObject.activeInHierarchy)
+            {
+                return;
+            }
+
+            _index = 0;
+            _acceleratedTexts = replicas;
+            var currentReplica = replicas[_index];
+            StartWrite(currentReplica.Text, currentReplica.Speed);
+        }
 
         public void StopWrite()
         {
             _textAnimatorPlayer.SkipTypewriter();
         }
+
+        private void StartWriteNext()
+        {
+            _index++;
+            var currentReplica = _acceleratedTexts[_index];
+            StartWrite(currentReplica.Text, currentReplica.Speed);
+        }
+        
     }
 }

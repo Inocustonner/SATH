@@ -10,6 +10,7 @@ namespace Code.Scenarios.Scripts
     public struct ReplicaNodeSerialized
     {
         public string ID;
+        public float TypingSpeed;
         public List<GameCondition> Conditions;
         public List<LocalizationSerialized> Localization;
         public Vector2 EditorPosition;

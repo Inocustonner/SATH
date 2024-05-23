@@ -58,14 +58,6 @@ namespace Code.Scenarios.Editor
             CreateNode(nodePosition);
         }
 
-        public ReplicaNode CreateNode(Vector2 position)
-        {
-            ReplicaNode node = new ReplicaNode(); //todo нужен уникальный айдишник сделать в конструкторе
-            node.SetPosition(new Rect(position, Vector2.zero));
-            AddElement(node);
-            return node;
-        }
-
         public ReplicaNode CreateNode(ReplicaNodeSerialized replicaNodeSerialized)
         {
             var conditions = new List<ReplicaConditionElement>();
@@ -89,8 +81,16 @@ namespace Code.Scenarios.Editor
                 localizations.Add(new LocalizedReplicaElement(localization.Language, parts));
             }
 
-            ReplicaNode node = new ReplicaNode(replicaNodeSerialized.ID, conditions, localizations);
+            ReplicaNode node = new ReplicaNode(replicaNodeSerialized.ID, replicaNodeSerialized.TypingSpeed, conditions, localizations);
             node.SetPosition(new Rect(replicaNodeSerialized.EditorPosition, Vector2.zero));
+            AddElement(node);
+            return node;
+        }
+
+        public ReplicaNode CreateNode(Vector2 position)
+        {
+            ReplicaNode node = new ReplicaNode();
+            node.SetPosition(new Rect(position, Vector2.zero));
             AddElement(node);
             return node;
         }

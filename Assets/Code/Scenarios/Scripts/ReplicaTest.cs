@@ -13,7 +13,7 @@ namespace Code.Scenarios.Scripts
         private Replica _replica;
 
 
-        private void Start()
+        /*private void Start()
         {
             _replica = new Replica(_config);
             PrintDialog();
@@ -23,7 +23,7 @@ namespace Code.Scenarios.Scripts
         private void PrintDialog()
         {
             Debug.Log("----");
-            if (_replica.TryGetCurrentMessage(_lan, out var replicaMessage))
+            if (_replica.TryGetAcceleratedText(_lan, out var replicaMessage))
             {
                 Debug.Log($"Message: {replicaMessage}");
                 if (_replica.TryGetCurrentConditions(out var gameConditions))
@@ -51,6 +51,6 @@ namespace Code.Scenarios.Scripts
 
 
             Debug.Log("----");
-        }
+        }*/
     }
 }

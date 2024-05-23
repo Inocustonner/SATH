@@ -14,8 +14,8 @@ namespace Code.Scenarios.Editor
         public TextEffect Effect { get; private set; }
         public Color Color { get; private set; }
         public string MessageText { get; private set; }
-
         public event Action<ReplicaPartElement> OnPressDeletePart; 
+        
         public ReplicaPartElement()
         {
             style.backgroundColor = new StyleColor(Color.white);
@@ -26,7 +26,7 @@ namespace Code.Scenarios.Editor
             AddEffectProperty(1);
             AddColorProperty(2);
             AddMessageTextField(3);
-            AddDeleteButton(4);
+            AddDeletePartButton(4);
         }
 
         public ReplicaPartElement(TextMarkup markup, TextEffect effect, Color color, string messageText)
@@ -39,12 +39,7 @@ namespace Code.Scenarios.Editor
             AddEffectProperty(1, effect);
             AddColorProperty(2, color);
             AddMessageTextField(3, messageText);
-            AddDeleteButton(4);
-            
-            Markup = markup;
-            Effect = effect;
-            Color = color;
-            MessageText = messageText;
+            AddDeletePartButton(4);
         }
 
         private void AddMarkupProperty(int index, TextMarkup markup = TextMarkup.Default)
@@ -58,7 +53,8 @@ namespace Code.Scenarios.Editor
             property.RegisterValueChangedCallback(evt => { Markup = evt.newValue; });
             property.SetValueWithoutNotify(Markup);
             property.value = markup;
-
+            Markup = markup;
+            
             Insert(index, property);
         }
 
@@ -73,6 +69,7 @@ namespace Code.Scenarios.Editor
             property.RegisterValueChangedCallback(evt => { Effect = evt.newValue; });
             property.SetValueWithoutNotify(Effect);
             property.value = effect;
+            Effect = effect;
             
             Insert(index, property);
         }
@@ -88,6 +85,7 @@ namespace Code.Scenarios.Editor
             property.UnregisterValueChangedCallback(evt => { Color = evt.newValue; });
             property.SetValueWithoutNotify(Color);
             property.value = color;
+            Color = color;
             
             Insert(index, property);
         }
@@ -105,19 +103,22 @@ namespace Code.Scenarios.Editor
             textField.RegisterValueChangedCallback(evt => { MessageText = evt.newValue; });
             textField.SetValueWithoutNotify(MessageText);
             textField.value = text;
+            MessageText = text;
             
             Insert(index, textField);
         }
 
-        private void AddDeleteButton(int index)
+        private void AddDeletePartButton(int index)
         {
             var addPartButton = new Button(() => OnPressDeletePart?.Invoke(this))
             {
-                text = "Delete Replica Part",
+                text = "x",
                 style =
                 {
-                    color = new StyleColor(Constance.PurpleColor),
+                    color = new StyleColor(Color.white),
                     backgroundColor = new StyleColor(Color.gray),
+                    maxWidth = 15,
+                    maxHeight = 15,
                 }
             };
             Insert(index, addPartButton);

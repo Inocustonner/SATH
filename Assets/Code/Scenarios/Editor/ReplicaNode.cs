@@ -10,6 +10,8 @@ namespace Code.Scenarios.Editor
     public class ReplicaNode : Node
     {
         public string ID { get; private set; }
+        
+        public float TypingSpeed { get; private set; }
         public Port InputPort{ get; private set; }
         public List<ReplicaConditionElement> Conditions { get; private set; } = new();
         public List<LocalizedReplicaElement> Localizations { get; private set; } = new();
@@ -19,18 +21,18 @@ namespace Code.Scenarios.Editor
         public ReplicaNode()
         {
             AddIdText(0);
-
-            AddConditionButton(1);
+            AddTypingSpeedProperty(1);
+            AddConditionButton(2);
             AddConditionElement();
             AddInputPort();
             AddListLocalizedReplicas();
         }
         
-        public ReplicaNode(string id, List<ReplicaConditionElement> conditions,List<LocalizedReplicaElement> localizations)
+        public ReplicaNode(string id, float typingSpeed,List<ReplicaConditionElement> conditions,List<LocalizedReplicaElement> localizations)
         {
             AddIdText(0, id);
-
-            AddConditionButton(1);
+            AddTypingSpeedProperty(1, typingSpeed);
+            AddConditionButton(2);
             AddInputPort();
             AddListLocalizedReplicas();
 
@@ -44,17 +46,14 @@ namespace Code.Scenarios.Editor
                 AddLocalizedReplicaElement(localization);
             }
         }
-        
+
         private void AddIdText(int index, string id = "")
         {
             if (id == "")
             {
                 id = Guid.NewGuid().ToString();
             }
-            var textId = new TextField
-            {
-                value = "ID"
-            };
+            var textId = new TextField();
             textId.AddToClassList("node_id");
             
             textId.RegisterValueChangedCallback(evt => { ID = evt.newValue; });
@@ -63,6 +62,18 @@ namespace Code.Scenarios.Editor
             ID = id;
             
             titleContainer.Insert(index, textId);
+        }
+
+        private void AddTypingSpeedProperty(int index, float typingSpeed = 0)
+        {
+            var property = new FloatField();
+            
+            property.RegisterValueChangedCallback(evt => { TypingSpeed = evt.newValue; });
+            property.SetValueWithoutNotify(TypingSpeed);
+            property.value = typingSpeed;
+            TypingSpeed = typingSpeed;
+            
+            titleContainer.Insert(index, property);
         }
 
         private void AddInputPort()
