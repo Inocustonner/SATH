@@ -83,6 +83,22 @@ namespace Code.Scenarios.Editor
             mainContainer.Insert(index, button);
         }
 
+        private void AddConditionElement(ReplicaConditionElement condition = null)
+        {
+            condition ??= new ReplicaConditionElement();
+            Conditions.Add(condition);
+            
+            condition.OnPressDeleteCondition += dialogueCondition =>
+            {
+                if (Conditions.Count > 1)
+                {
+                    Conditions.Remove(condition);
+                    outputContainer.Remove(dialogueCondition);
+                }
+            };
+            outputContainer.Add(condition);
+        }
+
         private void AddListLocalizedReplicas()
         {
             _partsContainer = new VisualElement
@@ -109,24 +125,13 @@ namespace Code.Scenarios.Editor
         private void AddLocalizedReplicaElement(LocalizedReplicaElement localization = null)
         {
             localization ??= new LocalizedReplicaElement();
+            localization.OnPressDeleteLocalization += element =>
+            {
+                Localizations.Remove(element);
+                _partsContainer.Remove(element);
+            };
             Localizations.Add(localization);
             _partsContainer.Add(localization);
-        }
-        
-        private void AddConditionElement(ReplicaConditionElement condition = null)
-        {
-            condition ??= new ReplicaConditionElement();
-            Conditions.Add(condition);
-            
-            condition.OnPressDeleteCondition += dialogueCondition =>
-            {
-                if (Conditions.Count > 1)
-                {
-                    Conditions.Remove(condition);
-                    outputContainer.Remove(dialogueCondition);
-                }
-            };
-            outputContainer.Add(condition);
         }
     }
 }

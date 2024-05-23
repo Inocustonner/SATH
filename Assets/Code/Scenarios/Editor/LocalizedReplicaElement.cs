@@ -14,16 +14,19 @@ namespace Code.Scenarios.Editor
         public List<ReplicaPartElement> Parts { get; private set; } = new();
         
         private VisualElement _partsContainer;
+        public event Action<LocalizedReplicaElement> OnPressDeleteLocalization;
         
         public LocalizedReplicaElement()
         {
-            AddLanguageProperty();
+            AddLanguageProperty(0);
+            AddDeleteButton(1);
             AddListParts();
         }
 
         public LocalizedReplicaElement(Lan language, List<ReplicaPartElement> parts)
         {
-            AddLanguageProperty(language);
+            AddLanguageProperty(0,language);
+            AddDeleteButton(1);
             AddListParts();
             
             Language = language;
@@ -33,7 +36,7 @@ namespace Code.Scenarios.Editor
             }
         }
         
-        private void AddLanguageProperty(Lan language = Lan.Rus)
+        private void AddLanguageProperty(int index,Lan language = Lan.Rus)
         {
             var property =
                 new PopupField<Lan>(Enum.GetValues(typeof(Lan)).Cast<Lan>().ToList(), 0)
@@ -51,7 +54,7 @@ namespace Code.Scenarios.Editor
             });
             property.value = language;
             property.SetValueWithoutNotify(Language);
-            Add(property);
+            Insert(index, property);
         }
 
         private void AddListParts()
@@ -80,6 +83,11 @@ namespace Code.Scenarios.Editor
         private void AddReplicaPart()
         {
             var part = new ReplicaPartElement();
+            part.OnPressDeletePart += element =>
+            {
+                Parts.Remove(element);
+                _partsContainer.Remove(element);
+            }; 
             Parts.Add(part);
             _partsContainer.Add(part);
         }
@@ -88,6 +96,22 @@ namespace Code.Scenarios.Editor
         {
             Parts.Add(part);
             _partsContainer.Add(part);
+        }
+        
+        private void AddDeleteButton(int index)
+        {
+            var addPartButton = new Button(() => OnPressDeleteLocalization?.Invoke(this))
+            {
+                text = "Delete Localization",
+                style =
+                {
+                    color = new StyleColor(Color.white),
+                    backgroundColor = new StyleColor(Constance.DarkPurpleColor),
+                    maxWidth = 120,
+                    minHeight = 10
+                }
+            };
+            Insert(index, addPartButton);
         }
     }
 }
