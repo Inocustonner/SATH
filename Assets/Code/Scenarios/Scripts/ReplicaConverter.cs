@@ -68,6 +68,7 @@ namespace Code.Scenarios.Scripts
             replicas = new AcceleratedText();
             var text = "";
             var localization = _currentNode.Localization.FirstOrDefault(l => l.Language == language);
+                    Debug.Log($"Добавлена реплика в список {localization.Parts != null}  {localization.Parts.Count}");
             if (localization.Parts != null && localization.Parts.Count > 0)
             {
                 foreach (var part in localization.Parts)
@@ -101,7 +102,7 @@ namespace Code.Scenarios.Scripts
 
             string text = part.MessageText;
 
-            if (part.Color != new Color() && part.Color != Color.white)
+            if (part.Color != new Color() && part.Color != Color.white && part.Color.a != 0)
             {
                 string hexCode = ColorUtility.ToHtmlStringRGBA(part.Color);
 

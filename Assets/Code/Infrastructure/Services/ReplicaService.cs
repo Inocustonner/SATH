@@ -5,6 +5,7 @@ using Code.Data.DynamicData;
 using Code.Infrastructure.DI;
 using Code.Infrastructure.GameLoop;
 using Code.Scenarios.Scripts;
+using Code.UI;
 using Core.Infrastructure.Utils;
 using UnityEngine;
 
@@ -20,7 +21,7 @@ namespace Code.Infrastructure.Services
         [Header("Static data")]
         private GameSettings _gameSettings;
         private List<ReplicaAction> _actions;
-        public event Action<AcceleratedText[], Action> OnStartReplica;
+        public event Action<AcceleratedText[], AnimatedTextWaiter.Mode, Action> OnStartReplica;
         public event Action OnStopReplicaPart;
 
         public void GameInit()
@@ -78,7 +79,11 @@ namespace Code.Infrastructure.Services
                     _moveLimiter.Block();
                 }
                 
-                OnStartReplica?.Invoke(replicas, () =>
+                var waitedMode = replicaConfig.IsBlockMovement
+                    ? AnimatedTextWaiter.Mode.PressKey
+                    : AnimatedTextWaiter.Mode.Time;
+                
+                OnStartReplica?.Invoke(replicas, waitedMode, () =>
                 {
                     if (replicaConfig.IsBlockMovement)
                     {

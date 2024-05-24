@@ -40,7 +40,7 @@ MonoBehaviour:
         Effect: 0
         Color: {r: 0, g: 0, b: 0, a: 0}
         MessageText: vtoraya chast` pervoy replici
-    EditorPosition: {x: 1100, y: 1519.5}
+    EditorPosition: {x: 1674, y: 2457.5}
   - ID: f1ff57e8-31ab-4caf-8d6a-0d7164bcb031
     TypingSpeed: 0
     Conditions: 00000000
@@ -59,7 +59,7 @@ MonoBehaviour:
         Effect: 0
         Color: {r: 0, g: 0, b: 0, a: 0}
         MessageText: Vtoraya replica posle usloviya "Enter white room"
-    EditorPosition: {x: 1992, y: 719.5}
+    EditorPosition: {x: 2566, y: 1307.5}
   - ID: 3cb82ea3-6b43-469b-b086-4491e113e96f
     TypingSpeed: 0
     Conditions: 00000000
@@ -82,7 +82,7 @@ MonoBehaviour:
         Effect: 0
         Color: {r: 0, g: 0, b: 0, a: 0}
         MessageText: Vtoraya replica posle uslovia "None"
-    EditorPosition: {x: 1992, y: 1536}
+    EditorPosition: {x: 2566, y: 2286}
   - ID: e71cf274-d3d8-459b-8a10-43fb6c855b3c
     TypingSpeed: 0
     Conditions: 00000000
@@ -100,7 +100,7 @@ MonoBehaviour:
         Effect: 0
         Color: {r: 0, g: 0, b: 0, a: 0}
         MessageText: Final`naya replica
-    EditorPosition: {x: 2803, y: 1343.5}
+    EditorPosition: {x: 3377, y: 1931.5}
   Edges:
   - SourceNode: d82c03a2-0fba-43a4-84e7-260e5f10121f
     TargetNode: f1ff57e8-31ab-4caf-8d6a-0d7164bcb031

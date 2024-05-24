@@ -29,7 +29,6 @@ namespace Code.Scenarios.Editor
             AddDeleteButton(1);
             AddListParts();
             
-            Language = language;
             foreach (var part in parts)
             {
                 AddReplicaPart(part);
@@ -52,8 +51,10 @@ namespace Code.Scenarios.Editor
             {
                 Language = evt.newValue;
             });
-            property.value = language;
             property.SetValueWithoutNotify(Language);
+            property.value = language;
+            Language = language;
+            
             Insert(index, property);
         }
 

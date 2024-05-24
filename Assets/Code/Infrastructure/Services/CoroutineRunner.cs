@@ -6,9 +6,9 @@ using UnityEngine;
 
 namespace Code.Infrastructure.Services
 {
-    public class CoroutineRunner : MonoBehaviour, IService,  IGameExitListener
+    public class CoroutineRunner : MonoBehaviour, IService
     {
-        public void GameExit()
+        public void OnDisable()
         {
             StopAllCoroutines();
         }

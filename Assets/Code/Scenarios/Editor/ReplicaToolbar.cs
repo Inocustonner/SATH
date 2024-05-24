@@ -68,12 +68,6 @@ namespace Code.Scenarios.Editor
             graph.Reset();
 
             var config = dialogField.value as ReplicaConfig;
-            /*
-            if (config != null)
-            {
-                DialogueSaveLoader.SaveDialog(graph, config);
-            }
-            */
 
             ReplicaSaveLoader.LoadReplica(graph, config);
         }

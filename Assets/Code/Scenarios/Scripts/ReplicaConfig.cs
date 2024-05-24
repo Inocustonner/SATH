@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Code.Scenarios.Scripts
@@ -18,7 +19,7 @@ namespace Code.Scenarios.Scripts
                 node = default;
                 return false;
             }
-            return TryFindNode(Nodes[0].ID, out node);
+            return TryFindNode("0", out node);
         }
 
         public bool TryFindNextNode(string sourceNode, int conditionIndex, out ReplicaNodeSerialized nextNode)

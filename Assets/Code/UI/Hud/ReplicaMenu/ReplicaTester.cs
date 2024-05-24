@@ -48,7 +48,12 @@ namespace Code.UI.Hud.ReplicaMenu
 
             if (_replicaConverter.TryGetAcceleratedTexts(_language, out var acceleratedText))
             {
-                _view.StartWrite(acceleratedText);
+                var waitedMode = _replicaConfig.IsBlockMovement
+                    ? AnimatedTextWaiter.Mode.PressKey
+                    : AnimatedTextWaiter.Mode.Time;
+
+                _acceleratedTexts = acceleratedText;
+                _view.StartWrite(acceleratedText, waitedMode);
             }
             else
             {

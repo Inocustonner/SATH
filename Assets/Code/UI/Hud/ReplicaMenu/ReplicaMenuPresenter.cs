@@ -36,7 +36,7 @@ namespace Code.UI.Hud.ReplicaMenu
             }
         }
 
-        private void OnStartReplica(AcceleratedText[] replicas, Action action)
+        private void OnStartReplica(AcceleratedText[] replicas, AnimatedTextWaiter.Mode waitedMode, Action action)
         {
             if (!Model.IsValidating)
             {
@@ -44,7 +44,7 @@ namespace Code.UI.Hud.ReplicaMenu
             }
 
             OnEndWriteReplicas = action;
-            View.StartWrite(replicas);
+            View.StartWrite(replicas,waitedMode);
         }
 
         private void OnEndWrite()
