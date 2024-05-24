@@ -65,14 +65,13 @@ namespace Code.Scenarios.Editor
 
         private void AddTypingSpeedProperty(int index, float typingSpeed = 0)
         {
-            var property = new FloatField();
-            
+            var property = new FloatField("Typing Speed");
             property.RegisterValueChangedCallback(evt => { TypingSpeed = evt.newValue; });
             property.SetValueWithoutNotify(TypingSpeed);
             property.value = typingSpeed;
             TypingSpeed = typingSpeed;
             
-            titleContainer.Insert(index, property);
+            mainContainer.Insert(index, property);
         }
 
         private void AddInputPort()
