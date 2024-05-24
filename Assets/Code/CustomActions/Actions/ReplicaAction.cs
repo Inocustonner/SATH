@@ -1,5 +1,5 @@
 ﻿using System;
-using Code.Data.Configs;
+using Code.Scenarios.Scripts;
 using UnityEngine;
 
 namespace Code.CustomActions.Actions

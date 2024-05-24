@@ -94,11 +94,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ce8ef057a1748e29a32cda2eddb0f2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _replica: {fileID: 11400000, guid: 060c48f26d48cbe458430d63aef87941, type: 2}
+  _replicaConfig: {fileID: 0}
   _language: 0
   _presenter: {fileID: 2872812118226203397}
   _model: {fileID: 6877550686897725529}
   _view: {fileID: 7924223745147888816}
+  _acceleratedTexts: []
 --- !u!1 &2470802946704147573
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,7 +260,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3738255134337279371
 RectTransform:
   m_ObjectHideFlags: 0

@@ -2,7 +2,7 @@ using Code.Data.Configs;
 using Code.Data.StaticData;
 using Code.Infrastructure.DI;
 using Code.Infrastructure.GameLoop;
-using Code.Services;
+using Code.Infrastructure.Services;
 using UnityEngine;
 
 namespace Code.Entities
@@ -34,7 +34,7 @@ namespace Code.Entities
 
         public void GameTick()
         {
-            if (!gameObject.activeSelf /*|| !_moveLimiter.IsCanMove*/)
+            if (!gameObject.activeSelf || !_moveLimiter.IsCanMove)
             {
                 _rb.velocity = Vector2.zero;
                 _desiredVelocity = Vector2.zero;
@@ -47,7 +47,7 @@ namespace Code.Entities
 
         public void GameFixedTick()
         {
-            if (!gameObject.activeSelf /*|| !_moveLimiter.IsCanMove*/)
+            if (!gameObject.activeSelf || !_moveLimiter.IsCanMove)
             {
                 return;
             }

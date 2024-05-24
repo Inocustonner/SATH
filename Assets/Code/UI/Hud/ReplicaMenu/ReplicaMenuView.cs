@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using Code.Data.DynamicData;
 using Code.Infrastructure.GameLoop;
 using Code.UI.Base;
 using UnityEngine;
@@ -24,10 +26,12 @@ namespace Code.UI.Hud.ReplicaMenu
         {
             windowTransform.gameObject.SetActive(false);
         }
-
-        public void StartWrite(string replica, float speed)
+        
+        
+        public void StartWrite(AcceleratedText[] replicas, AnimatedTextWaiter.Mode waitedMode)
         {
-            _animatedText.StartWrite(replica, speed);
+            _animatedText.ResetText();
+            _animatedText.StartWrite(replicas, waitedMode);
         }
 
         public void StopWrite()

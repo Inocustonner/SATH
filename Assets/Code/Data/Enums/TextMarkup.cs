@@ -5,6 +5,7 @@
         Default,
         Bold,
         Italic,
-        Underline
+        Underline,
+        Strikethrough
     }
 }
