@@ -82,11 +82,11 @@ namespace Code.Scenarios.Editor
             };
             property.labelElement.style.color = new StyleColor(Constance.PurpleColor);
 
-            property.UnregisterValueChangedCallback(evt => { Color = evt.newValue; });
+            property.RegisterValueChangedCallback(evt => { Color = evt.newValue; });
             property.SetValueWithoutNotify(Color);
             property.value = color;
             Color = color;
-            
+        
             Insert(index, property);
         }
 
