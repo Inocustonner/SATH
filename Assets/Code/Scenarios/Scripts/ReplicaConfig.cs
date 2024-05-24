@@ -6,6 +6,8 @@ namespace Code.Scenarios.Scripts
     [CreateAssetMenu(fileName = "ReplicaConfig", menuName = "Config/Graph/Replica")]
     public sealed class ReplicaConfig : ScriptableObject
     {
+        public bool IsBlockMovement = true;
+        [Header("Replica window data")]
         public List<ReplicaNodeSerialized> Nodes;
         public List<ReplicaEdgeSerialized> Edges;
 

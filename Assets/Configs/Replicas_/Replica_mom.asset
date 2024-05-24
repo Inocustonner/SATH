@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48e56e729e8a46f58050bf2e2c16e7d8, type: 3}
-  m_Name: Replica_test
+  m_Name: Replica_mom
   m_EditorClassIdentifier: 
   Nodes:
   - ID: d82c03a2-0fba-43a4-84e7-260e5f10121f

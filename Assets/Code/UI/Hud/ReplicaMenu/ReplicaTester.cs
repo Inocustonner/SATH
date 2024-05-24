@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Code.Data.Configs;
+﻿using Code.Data.Configs;
 using Code.Data.DynamicData;
 using Code.Infrastructure.DI;
 using Code.Infrastructure.GameLoop;
@@ -10,7 +9,7 @@ using UnityEngine;
 
 namespace Code.UI.Hud.ReplicaMenu
 {
-    public class ReplicaTester : MonoBehaviour, IGameInitListener/*, IGameStartListener*/
+    public class ReplicaTester : MonoBehaviour, IGameInitListener
     {
         [SerializeField] private ReplicaConfig _replicaConfig;
         [SerializeField] private Lan _language;
@@ -18,12 +17,12 @@ namespace Code.UI.Hud.ReplicaMenu
         [SerializeField] private ReplicaMenuPresenter _presenter;
         [SerializeField] private ReplicaMenuModel _model;
         [SerializeField] private ReplicaMenuView _view;
-        [Header("Service")] 
+        [Header("Service")]
         private GameConditionService _conditionService;
-        
-       private Replica _replica;
-       [Header("Debug")] 
-       [SerializeField] private AcceleratedText[] _acceleratedTexts;
+        private ReplicaConverter _replicaConverter;
+        [Header("Debug")] 
+        [SerializeField] private AcceleratedText[] _acceleratedTexts;
+
         public void GameInit()
         {
             _conditionService = Container.Instance.FindService<GameConditionService>();
@@ -31,8 +30,8 @@ namespace Code.UI.Hud.ReplicaMenu
 
         public void Start()
         {
-            _replica = new Replica(_replicaConfig, _conditionService);
-            
+            _replicaConverter = new ReplicaConverter(_conditionService);
+            _replicaConverter.SetConfig(_replicaConfig);
         }
 
         public void StopWrite()
@@ -47,16 +46,14 @@ namespace Code.UI.Hud.ReplicaMenu
                 _presenter.ChangeMenuState(MenuState.Active);
             }
 
-            if (_replica.TryGetListAcceleratedText(_language, out var acceleratedText))
+            if (_replicaConverter.TryGetAcceleratedTexts(_language, out var acceleratedText))
             {
-                _acceleratedTexts = acceleratedText.ToArray();
-                _view.StartWrite(_acceleratedTexts);
+                _view.StartWrite(acceleratedText);
             }
             else
             {
                 Debug.Log($"Suck my dick bitch");
             }
         }
-        
     }
 }

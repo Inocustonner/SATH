@@ -10,7 +10,7 @@ namespace Code.Scenarios.Scripts
         [SerializeField] private ReplicaConfig _config;
 
         private GameConditionService _conditionService = new();
-        private Replica _replica;
+        private ReplicaConverter _replicaConverter;
 
 
         /*private void Start()

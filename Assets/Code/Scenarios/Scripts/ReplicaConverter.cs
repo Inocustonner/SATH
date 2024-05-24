@@ -11,27 +11,32 @@ using UnityEngine;
 
 namespace Code.Scenarios.Scripts
 {
-    public sealed class Replica
+    public sealed class ReplicaConverter
     {
-        private readonly ReplicaConfig _config;
+        private ReplicaConfig _config;
         private ReplicaNodeSerialized _currentNode;
         private readonly GameConditionService _gameConditionService;
+
+        public ReplicaConverter(GameConditionService gameConditionService)
+        {
+            _gameConditionService = gameConditionService;
+        }
         
-        public Replica(ReplicaConfig config, GameConditionService gameConditionService)
+        
+        public void SetConfig(ReplicaConfig config)
         {
             if (!config.TryFindStartNode(out var node))
             {
                 this.LogError("Entry point is absent!");
             }
 
-            _gameConditionService = gameConditionService;
             _config = config;
             _currentNode = node;
         }
 
-        public bool TryGetListAcceleratedText(Lan language, out List<AcceleratedText> list)
+        public bool TryGetAcceleratedTexts(Lan language, out AcceleratedText[] texts)
         {
-            list = new List<AcceleratedText>();
+            var list = new List<AcceleratedText>();
             for (int i = 0; i < _config.Nodes.Count; i++)
             {
                 if (TryGetAcceleratedText(language, out var text))
@@ -54,7 +59,8 @@ namespace Code.Scenarios.Scripts
                 }
             }
 
-            return list.Count > 0;
+            texts = list.ToArray();
+            return texts.Length > 0;
         }
 
         private bool TryGetAcceleratedText(Lan language, out AcceleratedText replicas)

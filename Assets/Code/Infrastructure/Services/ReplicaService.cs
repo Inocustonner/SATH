@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Code.CustomActions.Actions;
+using Code.Data.DynamicData;
 using Code.Infrastructure.DI;
 using Code.Infrastructure.GameLoop;
 using Code.Scenarios.Scripts;
@@ -14,12 +15,13 @@ namespace Code.Infrastructure.Services
         [Header("Services")]
         private InputService _inputService;
         private MoveLimiter _moveLimiter;
+        private GameConditionService _gameConditionService;
+        private ReplicaConverter _replicaConverter;
         [Header("Static data")]
         private GameSettings _gameSettings;
         private List<ReplicaAction> _actions;
-
-        public event Action<string, float, Action> OnStartReplica;
-        public event Action OnStopReplica;
+        public event Action<AcceleratedText[], Action> OnStartReplica;
+        public event Action OnStopReplicaPart;
 
         public void GameInit()
         {
@@ -27,6 +29,7 @@ namespace Code.Infrastructure.Services
             _inputService = Container.Instance.FindService<InputService>();
             _moveLimiter = Container.Instance.FindService<MoveLimiter>();
             _actions = Container.Instance.GetContainerComponents<ReplicaAction>();
+            _replicaConverter = new ReplicaConverter(Container.Instance.FindService<GameConditionService>());
         }
 
         public void GameStart()
@@ -64,7 +67,9 @@ namespace Code.Infrastructure.Services
         {
             this.Log($"try start {replicaConfig.name}");
             //todo восстановить функционал
-            /*if (replicaConfig.TryGetLocalizedReplica(_gameSettings.Language, out var replica))
+            
+            _replicaConverter.SetConfig(replicaConfig);
+            if (_replicaConverter.TryGetAcceleratedTexts(_gameSettings.Language, out var replicas))
             {
                 this.Log($"invoke start {replicaConfig.name}");
 
@@ -73,19 +78,19 @@ namespace Code.Infrastructure.Services
                     _moveLimiter.Block();
                 }
                 
-                OnStartReplica?.Invoke(replica, replicaConfig.WriteSpeed, () =>
+                OnStartReplica?.Invoke(replicas, () =>
                 {
                     if (replicaConfig.IsBlockMovement)
                     {
                         _moveLimiter.Unblock();
                     }
                 });
-            }*/
+            }
         }
 
         private void OnPressInteractionKey()
         {
-            OnStopReplica?.Invoke();
+            OnStopReplicaPart?.Invoke();
         }
     }
 }

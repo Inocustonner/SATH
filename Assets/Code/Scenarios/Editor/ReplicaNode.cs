@@ -10,7 +10,6 @@ namespace Code.Scenarios.Editor
     public class ReplicaNode : Node
     {
         public string ID { get; private set; }
-        
         public float TypingSpeed { get; private set; }
         public Port InputPort{ get; private set; }
         public List<ReplicaConditionElement> Conditions { get; private set; } = new();
