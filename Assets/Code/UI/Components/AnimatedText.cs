@@ -31,7 +31,7 @@ namespace Code.UI
             _animatedTextWaiter = Container.Instance.FindService<AnimatedTextWaiter>();
             
             var uiConfig = Container.Instance.FindConfig<UIConfig>();
-            _defaultSpeed = uiConfig.TypingSpeed;
+            _defaultSpeed = uiConfig.DefaultTypingSpeed;
             
             _textAnimatorPlayer.onCharacterVisible.AddListener(PlayTypeAudio);
             _textAnimatorPlayer.onTypewriterStart.AddListener(() => IsTyping = true);

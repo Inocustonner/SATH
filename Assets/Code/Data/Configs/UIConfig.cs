@@ -6,7 +6,7 @@ namespace Code.Data.Configs
     public class UIConfig : ScriptableObject
     {
         [Header("Text params")]
-        public float ReplicaDelay = 0.7f;
-        public float TypingSpeed = 0.05f;
+        public float ReplicaDelaySeconds = 0.7f;
+        public float DefaultTypingSpeed = 0.05f;
     }
 }

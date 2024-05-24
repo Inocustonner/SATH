@@ -29,7 +29,7 @@ namespace Code.UI
         {
             _inputService = Container.Instance.FindService<InputService>();
             _coroutineRunner = Container.Instance.FindService<CoroutineRunner>();
-            _waitTime = Container.Instance.FindConfig<UIConfig>().ReplicaDelay;
+            _waitTime = Container.Instance.FindConfig<UIConfig>().ReplicaDelaySeconds;
         }
         
         private void SubscribeToEvents(bool flag)
