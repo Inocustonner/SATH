@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,13 +20,12 @@ namespace Code.Scenarios.Scripts
         {
             _gameConditionService = gameConditionService;
         }
-        
-        
+
         public void SetConfig(ReplicaConfig config)
         {
             if (!config.TryFindStartNode(out var node))
             {
-                this.LogError("Entry point is absent!");
+                this.LogError($"Could not find replica with ID [0] in the config {config.name}");
             }
 
             _config = config;
@@ -68,7 +66,6 @@ namespace Code.Scenarios.Scripts
             replicas = new AcceleratedText();
             var text = "";
             var localization = _currentNode.Localization.FirstOrDefault(l => l.Language == language);
-                    Debug.Log($"Добавлена реплика в список {localization.Parts != null}  {localization.Parts.Count}");
             if (localization.Parts != null && localization.Parts.Count > 0)
             {
                 foreach (var part in localization.Parts)
@@ -89,7 +86,6 @@ namespace Code.Scenarios.Scripts
             if (_config.TryFindNextNode(_currentNode.ID, conditionIndex, out var nextNode))
             {
                 _currentNode = nextNode;
-                this.Log($"реплика смогла перейти на следующую часть {_currentNode.ID}");
                 return true;
             }
 

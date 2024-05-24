@@ -32,7 +32,7 @@ MonoBehaviour:
         Effect: 0
         Color: {r: 0, g: 0, b: 0, a: 0}
         MessageText: Vtoraya replica posle usloviya "Enter white room"
-    EditorPosition: {x: 3714, y: 2483.5}
+    EditorPosition: {x: 3990.5, y: 2787}
   - ID: 3cb82ea3-6b43-469b-b086-4491e113e96f
     TypingSpeed: 0
     Conditions: 00000000
@@ -51,8 +51,26 @@ MonoBehaviour:
         Effect: 0
         Color: {r: 0, g: 0, b: 0, a: 0}
         MessageText: Vtoraya replica posle uslovia "None"
-    EditorPosition: {x: 3714, y: 3299.5}
-  - ID: d82c03a2-0fba-43a4-84e7-260e5f10121f
+    EditorPosition: {x: 3990.5, y: 3603}
+  - ID: e71cf274-d3d8-459b-8a10-43fb6c855b3c
+    TypingSpeed: 0
+    Conditions: 00000000
+    Localization:
+    - Language: 0
+      Parts:
+      - Markup: 0
+        Effect: 0
+        Color: {r: 0, g: 0, b: 0, a: 0}
+        MessageText: "\u041C\u0430\u043C\u0430: \u0424\u0438\u043D\u0430\u043B\u044C\u043D\u0430\u044F
+          \u0440\u0435\u043F\u043B\u0438\u043A\u0430"
+    - Language: 1
+      Parts:
+      - Markup: 0
+        Effect: 0
+        Color: {r: 0, g: 0, b: 0, a: 0}
+        MessageText: Final`naya replica
+    EditorPosition: {x: 4801.5, y: 3411}
+  - ID: 0
     TypingSpeed: 0
     Conditions: 0100000000000000
     Localization:
@@ -78,30 +96,12 @@ MonoBehaviour:
         Effect: 0
         Color: {r: 0, g: 0, b: 0, a: 0}
         MessageText: vtoraya chast` pervoy replici
-    EditorPosition: {x: 2822, y: 4333.5}
-  - ID: e71cf274-d3d8-459b-8a10-43fb6c855b3c
-    TypingSpeed: 0
-    Conditions: 00000000
-    Localization:
-    - Language: 0
-      Parts:
-      - Markup: 0
-        Effect: 0
-        Color: {r: 0, g: 0, b: 0, a: 0}
-        MessageText: "\u041C\u0430\u043C\u0430: \u0424\u0438\u043D\u0430\u043B\u044C\u043D\u0430\u044F
-          \u0440\u0435\u043F\u043B\u0438\u043A\u0430"
-    - Language: 1
-      Parts:
-      - Markup: 0
-        Effect: 0
-        Color: {r: 0, g: 0, b: 0, a: 0}
-        MessageText: Final`naya replica
-    EditorPosition: {x: 4525, y: 3107.5}
+    EditorPosition: {x: 3224.5, y: 3272}
   Edges:
-  - SourceNode: d82c03a2-0fba-43a4-84e7-260e5f10121f
+  - SourceNode: 0
     TargetNode: f1ff57e8-31ab-4caf-8d6a-0d7164bcb031
     Index: 0
-  - SourceNode: d82c03a2-0fba-43a4-84e7-260e5f10121f
+  - SourceNode: 0
     TargetNode: 3cb82ea3-6b43-469b-b086-4491e113e96f
     Index: 1
   - SourceNode: 3cb82ea3-6b43-469b-b086-4491e113e96f

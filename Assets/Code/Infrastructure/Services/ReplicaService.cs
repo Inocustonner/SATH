@@ -6,7 +6,6 @@ using Code.Infrastructure.DI;
 using Code.Infrastructure.GameLoop;
 using Code.Scenarios.Scripts;
 using Code.UI;
-using Core.Infrastructure.Utils;
 using UnityEngine;
 
 namespace Code.Infrastructure.Services
@@ -48,7 +47,6 @@ namespace Code.Infrastructure.Services
             if (flag)
             {
                 _inputService.OnPressInteractionKey += OnPressInteractionKey;
-                this.Log($"subscribe {_actions.Count}");
                 foreach (var action in _actions)
                 {
                     action.OnTryStartReplica += OnTryStartReplica;
@@ -66,14 +64,9 @@ namespace Code.Infrastructure.Services
 
         private void OnTryStartReplica(ReplicaConfig replicaConfig)
         {
-            this.Log($"try start {replicaConfig.name}");
-            //todo восстановить функционал
-            
             _replicaConverter.SetConfig(replicaConfig);
             if (_replicaConverter.TryGetAcceleratedTexts(_gameSettings.Language, out var replicas))
             {
-                this.Log($"invoke start {replicaConfig.name}");
-
                 if (replicaConfig.IsBlockMovement)
                 {
                     _moveLimiter.Block();

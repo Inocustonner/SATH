@@ -4,7 +4,6 @@ using Code.Data.Configs;
 using Code.Data.DynamicData;
 using Code.Infrastructure.DI;
 using Code.Infrastructure.GameLoop;
-using Core.Infrastructure.Utils;
 using Febucci.UI;
 using TMPro;
 using UnityEngine;
@@ -40,14 +39,12 @@ namespace Code.UI
             {
                 if (_acceleratedTexts != null && _index < _acceleratedTexts.Length - 1)
                 {
-                    this.Log("1");
                     _text.SetText(_acceleratedTexts[_index].Text);
                     TryStopCoroutine();
                     _coroutine = StartCoroutine(WaitWhenCanStartWriteNext());
                 }
                 else
                 {
-                    this.Log("2");
                     IsTyping = false;
                     ResetText();
                     OnEndWrite?.Invoke();
@@ -109,7 +106,6 @@ namespace Code.UI
 
         public void StopWrite()
         {
-            this.Log("stop write");
             _textAnimatorPlayer.SkipTypewriter();
         }
         
