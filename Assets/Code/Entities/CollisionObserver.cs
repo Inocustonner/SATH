@@ -18,6 +18,10 @@ namespace Code.Entities
 
         private void OnTriggerExit2D(Collider2D col)
         {
+            if (!gameObject.activeSelf || !gameObject.activeInHierarchy)
+            {
+                return;
+            }
             OnExit?.Invoke(col.gameObject);
         }
 
@@ -28,6 +32,10 @@ namespace Code.Entities
 
         private void OnCollisionExit2D(Collision2D col)
         {
+            if (!gameObject.activeSelf || !gameObject.activeInHierarchy)
+            {
+                return;
+            }
             OnExit?.Invoke(col.gameObject);
         }
 

@@ -14,7 +14,67 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsBlockMovement: 1
   Nodes:
-  - ID: d82c03a2-0fba-43a4-84e7-260e5f10121f
+  - ID: f1ff57e8-31ab-4caf-8d6a-0d7164bcb031
+    TypingSpeed: 0
+    Conditions: 00000000
+    Localization:
+    - Language: 0
+      Parts:
+      - Markup: 0
+        Effect: 0
+        Color: {r: 0, g: 0, b: 0, a: 0}
+        MessageText: "\u041F\u0430\u043F\u0430: \u0412\u0442\u043E\u0440\u0430\u044F
+          \u0440\u0435\u043F\u043B\u0438\u043A\u0430 \u043F\u043E\u0441\u043B\u0435
+          \u0443\u0441\u043B\u043E\u0432\u0438\u044F \"Enter white room\""
+    - Language: 1
+      Parts:
+      - Markup: 0
+        Effect: 0
+        Color: {r: 0, g: 0, b: 0, a: 0}
+        MessageText: Vtoraya replica posle usloviya "Enter white room"
+    EditorPosition: {x: 2842.5, y: 1611}
+  - ID: 3cb82ea3-6b43-469b-b086-4491e113e96f
+    TypingSpeed: 0
+    Conditions: 00000000
+    Localization:
+    - Language: 0
+      Parts:
+      - Markup: 0
+        Effect: 7
+        Color: {r: 0, g: 0, b: 0, a: 0}
+        MessageText: "\u041F\u0430\u043F\u0430: \u0412\u0442\u043E\u0440\u0430\u044F
+          \u0440\u0435\u043F\u043B\u0438\u043A\u0430 \u043F\u043E\u0441\u043B\u0435
+          \u0443\u0441\u043B\u043E\u0432\u0438\u044F \"None\" "
+      - Markup: 0
+        Effect: 0
+        Color: {r: 0, g: 0, b: 0, a: 0}
+        MessageText: 
+    - Language: 1
+      Parts:
+      - Markup: 0
+        Effect: 0
+        Color: {r: 0, g: 0, b: 0, a: 0}
+        MessageText: Vtoraya replica posle uslovia "None"
+    EditorPosition: {x: 2842.5, y: 2670.5}
+  - ID: e71cf274-d3d8-459b-8a10-43fb6c855b3c
+    TypingSpeed: 0
+    Conditions: 00000000
+    Localization:
+    - Language: 0
+      Parts:
+      - Markup: 0
+        Effect: 0
+        Color: {r: 0, g: 0, b: 0, a: 0}
+        MessageText: "\u041F\u0430\u043F\u0430: \u0424\u0438\u043D\u0430\u043B\u044C\u043D\u0430\u044F
+          \u0440\u0435\u043F\u043B\u0438\u043A\u0430"
+    - Language: 1
+      Parts:
+      - Markup: 0
+        Effect: 0
+        Color: {r: 0, g: 0, b: 0, a: 0}
+        MessageText: Final`naya replica
+    EditorPosition: {x: 3653.5, y: 2235}
+  - ID: 0
     TypingSpeed: 0
     Conditions: 0100000000000000
     Localization:
@@ -40,72 +100,12 @@ MonoBehaviour:
         Effect: 0
         Color: {r: 0, g: 0, b: 0, a: 0}
         MessageText: vtoraya chast` pervoy replici
-    EditorPosition: {x: 1674, y: 2457.5}
-  - ID: f1ff57e8-31ab-4caf-8d6a-0d7164bcb031
-    TypingSpeed: 0
-    Conditions: 00000000
-    Localization:
-    - Language: 0
-      Parts:
-      - Markup: 0
-        Effect: 0
-        Color: {r: 0, g: 0, b: 0, a: 0}
-        MessageText: "\u041F\u0430\u043F\u0430: \u0412\u0442\u043E\u0440\u0430\u044F
-          \u0440\u0435\u043F\u043B\u0438\u043A\u0430 \u043F\u043E\u0441\u043B\u0435
-          \u0443\u0441\u043B\u043E\u0432\u0438\u044F \"Enter white room\""
-    - Language: 1
-      Parts:
-      - Markup: 0
-        Effect: 0
-        Color: {r: 0, g: 0, b: 0, a: 0}
-        MessageText: Vtoraya replica posle usloviya "Enter white room"
-    EditorPosition: {x: 2566, y: 1307.5}
-  - ID: 3cb82ea3-6b43-469b-b086-4491e113e96f
-    TypingSpeed: 0
-    Conditions: 00000000
-    Localization:
-    - Language: 0
-      Parts:
-      - Markup: 0
-        Effect: 7
-        Color: {r: 0, g: 0, b: 0, a: 0}
-        MessageText: "\u041F\u0430\u043F\u0430: \u0412\u0442\u043E\u0440\u0430\u044F
-          \u0440\u0435\u043F\u043B\u0438\u043A\u0430 \u043F\u043E\u0441\u043B\u0435
-          \u0443\u0441\u043B\u043E\u0432\u0438\u044F \"None\" "
-      - Markup: 0
-        Effect: 0
-        Color: {r: 0, g: 0, b: 0, a: 0}
-        MessageText: 
-    - Language: 1
-      Parts:
-      - Markup: 0
-        Effect: 0
-        Color: {r: 0, g: 0, b: 0, a: 0}
-        MessageText: Vtoraya replica posle uslovia "None"
-    EditorPosition: {x: 2566, y: 2286}
-  - ID: e71cf274-d3d8-459b-8a10-43fb6c855b3c
-    TypingSpeed: 0
-    Conditions: 00000000
-    Localization:
-    - Language: 0
-      Parts:
-      - Markup: 0
-        Effect: 0
-        Color: {r: 0, g: 0, b: 0, a: 0}
-        MessageText: "\u041F\u0430\u043F\u0430: \u0424\u0438\u043D\u0430\u043B\u044C\u043D\u0430\u044F
-          \u0440\u0435\u043F\u043B\u0438\u043A\u0430"
-    - Language: 1
-      Parts:
-      - Markup: 0
-        Effect: 0
-        Color: {r: 0, g: 0, b: 0, a: 0}
-        MessageText: Final`naya replica
-    EditorPosition: {x: 3377, y: 1931.5}
+    EditorPosition: {x: 1966.5, y: 2346}
   Edges:
-  - SourceNode: d82c03a2-0fba-43a4-84e7-260e5f10121f
+  - SourceNode: 0
     TargetNode: f1ff57e8-31ab-4caf-8d6a-0d7164bcb031
     Index: 0
-  - SourceNode: d82c03a2-0fba-43a4-84e7-260e5f10121f
+  - SourceNode: 0
     TargetNode: 3cb82ea3-6b43-469b-b086-4491e113e96f
     Index: 1
   - SourceNode: 3cb82ea3-6b43-469b-b086-4491e113e96f

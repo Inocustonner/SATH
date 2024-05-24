@@ -55,7 +55,7 @@ namespace Code.UI.Hud.ReplicaMenu
 
         private void OnStopReplicaPart()
         {
-            View.StopWrite();
+            View.Skip();
         }
 
     }

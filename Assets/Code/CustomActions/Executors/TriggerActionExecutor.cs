@@ -45,6 +45,10 @@ namespace Code.CustomActions.Executors
 
         private void OnExit(GameObject obj)
         {
+            if (!gameObject.activeSelf)
+            {
+             return;
+            }
             foreach (var action in _customActions)
             {
                 action.StopAction();

@@ -45,9 +45,8 @@ namespace Code.UI
                 }
                 else
                 {
-                    IsTyping = false;
-                    ResetText();
-                    OnEndWrite?.Invoke();
+                    TryStopCoroutine();
+                    _coroutine = StartCoroutine(WaitDelayAfterEnd());
                 }
             });
         }
@@ -67,7 +66,7 @@ namespace Code.UI
         private void OnDisable()
         {
             TryStopCoroutine();
-            StopWrite();
+            Skip();
         }
 
         public void ResetText()
@@ -75,6 +74,11 @@ namespace Code.UI
             _text.SetText("");
             _index = 0;
             _acceleratedTexts = null;
+        }
+
+        public void Skip()
+        {
+            _textAnimatorPlayer.SkipTypewriter();
         }
 
         public void StartWrite(AcceleratedText[] replicas, AnimatedTextWaiter.Mode waitedMode)
@@ -86,34 +90,9 @@ namespace Code.UI
 
             _index = 0;
             _acceleratedTexts = replicas;
-            _animatedTextWaiter.Reset();
             _animatedTextWaiter.SetMode(waitedMode);
             var currentReplica = replicas[_index];
             StartWrite(currentReplica.Text, currentReplica.Speed);
-        }
-
-        public void StartWrite(string text, float speed)
-        {
-            if (!gameObject.activeInHierarchy)
-            {
-                return;
-            }
-
-            _animatedTextWaiter.Reset();
-            _textAnimatorPlayer.waitForNormalChars = speed > 0 ? speed : _defaultSpeed;
-            _textAnimatorPlayer.ShowText(text);
-        }
-
-        public void StopWrite()
-        {
-            _textAnimatorPlayer.SkipTypewriter();
-        }
-        
-        private IEnumerator WaitWhenCanStartWriteNext()
-        {
-            _animatedTextWaiter.StartWait();
-            yield return new WaitUntil(() => _animatedTextWaiter.IsReady);
-            StartWriteNext();
         }
 
         private void StartWriteNext()
@@ -121,6 +100,30 @@ namespace Code.UI
             _index++;
             var currentReplica = _acceleratedTexts[_index];
             StartWrite(currentReplica.Text, currentReplica.Speed);
+        }
+
+        private void StartWrite(string text, float speed)
+        {
+            _animatedTextWaiter.Reset();
+            _textAnimatorPlayer.waitForNormalChars = speed > 0 ? speed : _defaultSpeed;
+            _textAnimatorPlayer.ShowText(text);
+        }
+
+        private IEnumerator WaitWhenCanStartWriteNext()
+        {
+            _animatedTextWaiter.StartWait();
+            yield return new WaitUntil(() => _animatedTextWaiter.IsReady);
+            StartWriteNext();
+        }
+
+        private IEnumerator WaitDelayAfterEnd()
+        {
+            _animatedTextWaiter.Reset();
+            _animatedTextWaiter.SetMode(AnimatedTextWaiter.Mode.Time);
+            _animatedTextWaiter.StartWait();
+            yield return new WaitUntil(() => _animatedTextWaiter.IsReady);
+            IsTyping = false;
+            OnEndWrite?.Invoke();
         }
 
         private void TryStopCoroutine()

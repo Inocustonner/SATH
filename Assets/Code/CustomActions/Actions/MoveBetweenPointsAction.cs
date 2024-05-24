@@ -28,10 +28,6 @@ namespace Code.CustomActions.Actions
         
         public override void StartAction()
         {
-            if (!gameObject.activeSelf)
-            {
-                return;
-            }
             TryStopCoroutine();
             _coroutine = StartCoroutine(Move(to: _targetPosition));
             _isMoveToOriginal = false;
@@ -39,10 +35,6 @@ namespace Code.CustomActions.Actions
 
         public override void StopAction()
         {
-            if (!gameObject.activeSelf)
-            {
-                return;
-            }
             TryStopCoroutine();
             _coroutine = StartCoroutine(Move(to: _originalPosition));
             _isMoveToOriginal = true;
