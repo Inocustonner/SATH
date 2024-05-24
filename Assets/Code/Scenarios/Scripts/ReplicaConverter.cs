@@ -115,6 +115,7 @@ namespace Code.Scenarios.Scripts
                     TextMarkup.Bold => $"<b>{text}</b>",
                     TextMarkup.Italic => $"<i>{text}</i>",
                     TextMarkup.Underline => $"<u>{text}</u>",
+                    TextMarkup.Strikethrough => $"<s>{text}</s>",
                     _ => text
                 };
             }
