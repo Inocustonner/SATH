@@ -68,7 +68,7 @@ namespace Code.Scenarios.Editor
             };
             Add(_partsContainer);
 
-            var addPartButton = new Button(AddReplicaPart)
+            var addPartButton = new Button(() => AddReplicaPart())
             {
                 text = "Add Replica Part",
                 style =
@@ -80,20 +80,15 @@ namespace Code.Scenarios.Editor
             Add(addPartButton);
         }
 
-        private void AddReplicaPart()
+        
+        private void AddReplicaPart(ReplicaPartElement part = null)
         {
-            var part = new ReplicaPartElement();
+            part ??= new ReplicaPartElement();
             part.OnPressDeletePart += element =>
             {
                 Parts.Remove(element);
                 _partsContainer.Remove(element);
             }; 
-            Parts.Add(part);
-            _partsContainer.Add(part);
-        }
-
-        private void AddReplicaPart(ReplicaPartElement part)
-        {
             Parts.Add(part);
             _partsContainer.Add(part);
         }
