@@ -9,8 +9,10 @@ namespace Code.Infrastructure.Services
     {
         private Vector2 _direction;
         private KeyCode _interactionKey = KeyCode.E;
+        private KeyCode _pauseKey = KeyCode.Escape;
     
         public event Action OnPressInteractionKey;
+        public event Action OnPressPauseKey;
 
         public void GameTick()
         {
@@ -20,6 +22,11 @@ namespace Code.Infrastructure.Services
             if (Input.GetKeyDown(_interactionKey))
             {
                 OnPressInteractionKey?.Invoke();
+            }
+
+            if (Input.GetKeyDown(_pauseKey))
+            {
+                OnPressPauseKey?.Invoke();
             }
         }
         

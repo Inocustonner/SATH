@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Code.Infrastructure.DI;
+using Core.Infrastructure.Utils;
 using UnityEngine;
 
 namespace Code.Infrastructure.GameLoop
@@ -18,6 +19,7 @@ namespace Code.Infrastructure.GameLoop
             InitializeListeners();
             NotifyGameInit();
             NotifyGameLoad();
+            this.Log("Awake");
         }
 
         private void Start()

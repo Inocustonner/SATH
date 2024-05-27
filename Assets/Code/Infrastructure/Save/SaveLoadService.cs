@@ -35,7 +35,6 @@ namespace Code.Infrastructure.Save
         public void GameExit()
         {
             SaveProgress();
-            this.Log($"Game save");
         }
 
         private void SaveProgress()
@@ -49,6 +48,7 @@ namespace Code.Infrastructure.Save
                  
             var data = PlayerPrefs.GetString(progressKey);
 
+            this.Log($"Game save {data}");
         }
 
         private void LoadProgress()

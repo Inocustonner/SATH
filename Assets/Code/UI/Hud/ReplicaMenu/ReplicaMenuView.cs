@@ -28,7 +28,7 @@ namespace Code.UI.Hud.ReplicaMenu
         }
         
         
-        public void StartWrite(AcceleratedText[] replicas, AnimatedTextWaiter.Mode waitedMode)
+        public void StartWrite(AcceleratedTextData[] replicas, AnimatedTextWaiter.Mode waitedMode)
         {
             _animatedText.ResetText();
             _animatedText.StartWrite(replicas, waitedMode);

@@ -32,9 +32,9 @@ namespace Code.Scenarios.Scripts
             _currentNode = node;
         }
 
-        public bool TryGetAcceleratedTexts(Lan language, out AcceleratedText[] texts)
+        public bool TryGetAcceleratedTexts(Lan language, out AcceleratedTextData[] texts)
         {
-            var list = new List<AcceleratedText>();
+            var list = new List<AcceleratedTextData>();
             for (int i = 0; i < _config.Nodes.Count; i++)
             {
                 if (TryGetAcceleratedText(language, out var text))
@@ -61,9 +61,9 @@ namespace Code.Scenarios.Scripts
             return texts.Length > 0;
         }
 
-        private bool TryGetAcceleratedText(Lan language, out AcceleratedText replicas)
+        private bool TryGetAcceleratedText(Lan language, out AcceleratedTextData replicas)
         {
-            replicas = new AcceleratedText();
+            replicas = new AcceleratedTextData();
             var text = "";
             var localization = _currentNode.Localization.FirstOrDefault(l => l.Language == language);
             if (localization.Parts != null && localization.Parts.Count > 0)

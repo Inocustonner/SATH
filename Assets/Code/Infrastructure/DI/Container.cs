@@ -6,6 +6,7 @@ using System.Reflection;
 using Code.Infrastructure.GameLoop;
 using Code.Infrastructure.Save;
 using Code.UI.Base;
+using Core.Infrastructure.Utils;
 using UnityEngine;
 
 namespace Code.Infrastructure.DI
@@ -31,7 +32,7 @@ namespace Code.Infrastructure.DI
             DontDestroyOnLoad(gameObject);
             Instance = this;
 
-            _allObjects = FindAllObjectsOfType<MonoBehaviour>().ToArray();
+            _allObjects = FindObjectsOfType<MonoBehaviour>().ToArray();
             InitList(ref _services);
             InitList(ref _mono);
             InitList(ref _presenters);
@@ -130,8 +131,26 @@ namespace Code.Infrastructure.DI
 
             var objects = (UnityEngine.Object[])method.Invoke(null, new object[] { type });
             results.AddRange(objects.OfType<T>());
-            
-            return results;
+
+            foreach (var o in objects)
+            {
+                this.Log($"{typeof(T).Name} {o.name}");
+            }
+
+            var uniqueList = new List<T>();
+
+            foreach (var result in results)
+            {
+                if (uniqueList.Any(r => r.GetHashCode() == result.GetHashCode()))
+                {
+                    continue;
+                }
+                else
+                {
+                    uniqueList.Add(result);
+                }
+            }
+            return uniqueList;
         }
     }
 }
