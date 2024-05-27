@@ -70,8 +70,5 @@ namespace Code.Infrastructure.Save
                 progressReader.LoadProgress(_playerProgress);
             }
         }
-        
-
-
     }
 }

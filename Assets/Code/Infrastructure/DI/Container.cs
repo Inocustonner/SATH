@@ -16,10 +16,10 @@ namespace Code.Infrastructure.DI
         public static Container Instance;
         [SerializeField] private List<ScriptableObject> _configs;
 
-        private MonoBehaviour[] _allObjects;
-        private List<IService> _services = new();
-        private List<IMono> _mono = new();
-        private List<IMenuPresenter> _presenters = new();
+        [SerializeReference] private MonoBehaviour[] _allObjects;
+        [SerializeReference] private List<IService> _services = new();
+        [SerializeReference] private List<IMono> _mono = new();
+        [SerializeReference] private List<IMenuPresenter> _presenters = new();
         
         
         private void Awake()
@@ -32,7 +32,7 @@ namespace Code.Infrastructure.DI
             DontDestroyOnLoad(gameObject);
             Instance = this;
 
-            _allObjects = FindObjectsOfType<MonoBehaviour>().ToArray();
+            _allObjects = FindAllObjectsOfType<MonoBehaviour>().ToArray();
             InitList(ref _services);
             InitList(ref _mono);
             InitList(ref _presenters);

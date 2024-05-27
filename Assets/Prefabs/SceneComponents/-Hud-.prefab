@@ -398,7 +398,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 3590680850524069953}
   m_FillRect: {fileID: 5161126763657171763}
   m_HandleRect: {fileID: 6637928888607555385}
@@ -406,7 +406,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.51093227
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -774,7 +774,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -889,7 +889,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3738255134337279371
 RectTransform:
   m_ObjectHideFlags: 0
@@ -988,7 +988,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 8560260159750910967}
   m_FillRect: {fileID: 3249864989667762660}
   m_HandleRect: {fileID: 4795864511501750139}
@@ -1431,8 +1431,8 @@ MonoBehaviour:
       _imageMute: {fileID: 7084504914481809140}
     _audioVolumeData:
       Music: 0
-      Effects: 0.51093227
-      IsEnabled: 0
+      Effects: 1
+      IsEnabled: 1
 --- !u!114 &5780842036412274278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1510,7 +1510,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3459046991358850199
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1638,6 +1638,10 @@ PrefabInstance:
     - target: {fileID: 5472607087296345748, guid: 52d31395f08ef82468a0cd4b53b83c41, type: 3}
       propertyPath: _audioEvent._eventReference.Guid.Data4
       value: 1236171948
+      objectReference: {fileID: 0}
+    - target: {fileID: 5905350710518336221, guid: 52d31395f08ef82468a0cd4b53b83c41, type: 3}
+      propertyPath: m_text
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5905350710518336221, guid: 52d31395f08ef82468a0cd4b53b83c41, type: 3}
       propertyPath: m_fontSize
