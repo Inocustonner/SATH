@@ -1,11 +1,7 @@
-﻿using System;
-using System.Diagnostics;
-using System.Threading.Tasks;
-using Code.Data.Configs;
+﻿using Code.Data.Configs;
 using Code.Infrastructure.DI;
 using Code.Infrastructure.GameLoop;
 using Code.Infrastructure.Services;
-using Core.Infrastructure.Utils;
 using UnityEngine;
 
 namespace Code.UI
@@ -33,10 +29,9 @@ namespace Code.UI
         {
             _inputService = Container.Instance.FindService<InputService>();
             _coroutineRunner = Container.Instance.FindService<CoroutineRunner>();
-            _waitTime = Container.Instance.FindConfig<UIConfig>().ReplicaDelay;
+            _waitTime = Container.Instance.FindConfig<UIConfig>().ReplicaDelaySeconds;
         }
-
-
+        
         private void SubscribeToEvents(bool flag)
         {
             if (flag)
@@ -57,7 +52,6 @@ namespace Code.UI
 
         public void StartWait()
         {
-            this.Log("start wait");
             switch (_currentMode)
             {
                 case Mode.Time:
@@ -66,14 +60,11 @@ namespace Code.UI
                 case Mode.PressKey:
                     SubscribeToEvents(true);
                     break;
-                default:
-                    break;
             }
         }
 
         public void Reset()
         {
-            this.Log("reset");
             _isReady = false;
             if (_currentMode == Mode.PressKey)
             {
@@ -83,11 +74,7 @@ namespace Code.UI
 
         private void OnPressInteractionKey()
         {
-            this.Log("press");
             _isReady = true;
         }
-        
-        
     }
-    
 }

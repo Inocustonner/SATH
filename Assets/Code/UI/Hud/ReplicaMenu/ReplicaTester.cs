@@ -34,9 +34,9 @@ namespace Code.UI.Hud.ReplicaMenu
             _replicaConverter.SetConfig(_replicaConfig);
         }
 
-        public void StopWrite()
+        public void Skip()
         {
-            _view.StopWrite();
+            _view.Skip();
         }
 
         public void StartWrite()

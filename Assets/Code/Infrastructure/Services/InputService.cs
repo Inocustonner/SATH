@@ -8,7 +8,7 @@ namespace Code.Infrastructure.Services
     public class InputService :  IService, IGameTickListener
     {
         private Vector2 _direction;
-        private KeyCode _interactionKey = KeyCode.Space;
+        private KeyCode _interactionKey = KeyCode.E;
     
         public event Action OnPressInteractionKey;
 

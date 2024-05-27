@@ -34,9 +34,9 @@ namespace Code.UI.Hud.ReplicaMenu
             _animatedText.StartWrite(replicas, waitedMode);
         }
 
-        public void StopWrite()
+        public void Skip()
         {
-            _animatedText.StopWrite();
+            _animatedText.Skip();
         }
 
         private void AnimatedTextOnOnEndWrite()

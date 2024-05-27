@@ -19,6 +19,7 @@ namespace Code.Scenarios.Scripts
                 node = default;
                 return false;
             }
+            
             return TryFindNode("0", out node);
         }
 

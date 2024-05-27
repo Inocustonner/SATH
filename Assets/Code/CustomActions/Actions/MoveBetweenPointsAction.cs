@@ -5,6 +5,7 @@ namespace Code.CustomActions.Actions
 {
     public class MoveBetweenPointsAction : CustomAction
     {
+        [SerializeField] private Transform _object;
         [SerializeField] private float _speed = 2;
         [SerializeField] private float _distance = 1;
         [Header("Debug")] 
@@ -17,7 +18,7 @@ namespace Code.CustomActions.Actions
 
         private void Awake()
         {
-            _originalPosition = transform.position;
+            _originalPosition = _object.position;
         }
 
         private void OnDestroy()
@@ -44,8 +45,8 @@ namespace Code.CustomActions.Actions
             var period = new WaitForEndOfFrame();
             while (Vector3.Distance(transform.position, to) > 0.01f)
             {
-                transform.position = Vector3.Lerp(transform.position, to, _speed * Time.deltaTime);
-                _currentDistance = Vector3.Distance(transform.position, to);
+                _object.position = Vector3.Lerp(_object.position, to, _speed * Time.deltaTime);
+                _currentDistance = Vector3.Distance(_object.position, to);
                 yield return period;
             }
         }
@@ -60,8 +61,12 @@ namespace Code.CustomActions.Actions
 
         private void OnDrawGizmos()
         {
+            if (_object == null)
+            {
+                return;
+            }
             Gizmos.color = Color.green;
-            Gizmos.DrawLine(transform.position, transform.position + new Vector3(_distance,0,0));
+            Gizmos.DrawLine(_object.position, _object.position + new Vector3(_distance,0,0));
         }
     }
 }

@@ -13,7 +13,7 @@ namespace Code.UI.Editor
             ReplicaTester text = (ReplicaTester)target;
 
             if (GUILayout.Button("Start Write")) text.StartWrite();
-            if (GUILayout.Button("Stop Write")) text.StopWrite();
+            if (GUILayout.Button("Skip")) text.Skip();
 
         }
     }
