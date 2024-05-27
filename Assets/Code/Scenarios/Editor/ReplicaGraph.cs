@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Code.Scenarios.Scripts;
-using Code.Utils;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -43,13 +42,18 @@ namespace Code.Scenarios.Editor
             StyleSheet graphStyle = (StyleSheet)EditorGUIUtility.Load(
                 "Assets/Code/Scenarios/Styles/ReplicaGraph.uss"
             );
+            if (graphStyle != null)
+            {
+                styleSheets.Add(graphStyle);
+            }
 
             StyleSheet nodeStyle = (StyleSheet)EditorGUIUtility.Load(
                 "Assets/Code/Scenarios/Styles/ReplicaNode.uss"
             );
-
-            styleSheets.Add(graphStyle);
-            styleSheets.Add(nodeStyle);
+            if (nodeStyle != null)
+            {
+                styleSheets.Add(nodeStyle);
+            }
         }
 
         private void OnPressCreateNode(DropdownMenuAction menuAction)
