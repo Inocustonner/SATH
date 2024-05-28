@@ -16,11 +16,11 @@ namespace Code.Audio.AudioEvents
                 PlayAudioEvent();
             }
         }
-
         public void SetEventReference(EventReference eventReference)
         {
             _eventReference = eventReference;
         }
+        
         public void PlayAudioEvent()
         {
             if (_eventReference.IsNull)

@@ -80,7 +80,7 @@ namespace Code.Infrastructure.DI
             return default;
         }
 
-        public List<T> GetContainerComponents<T>()
+        public T[] GetContainerComponents<T>()
         {
             var components = _entities.OfType<T>().ToList();
             var objectComponents = _allObjects.OfType<T>();
@@ -92,7 +92,7 @@ namespace Code.Infrastructure.DI
                 }
             }
 
-            return components;
+            return components.ToArray();
         }
 
         private List<T> FindAllObjectsOfType<T>() where T : UnityEngine.Object

@@ -9,15 +9,17 @@ using UnityEngine.Rendering.VirtualTexturing;
 
 namespace Code.Infrastructure.Save
 {
-    public class SaveLoadService: IService, IGameLoadListener, IGameExitListener
+    public class SaveLoadService: IService, IGameInitListener,IGameLoadListener, IGameExitListener
     {
         private const string progressKey = "Progress";
 
         private  SavedData _playerProgress;
 
+        private IProgressReader[] _progressReader;
+
         private List<IProgressWriter> _progressWriters = new();
-        private List<IProgressReader> _progressReader = new();
-        public void GameLoad()
+
+        public void GameInit()
         {
             _progressReader = Container.Instance.GetContainerComponents<IProgressReader>();
             foreach (var progressReader in _progressReader)
@@ -27,9 +29,11 @@ namespace Code.Infrastructure.Save
                     _progressWriters.Add(writer);
                 }
             }
-            
+        }
+
+        public void GameLoad()
+        {
             LoadProgress();
-            
             this.Log($"Game load");
         }
 

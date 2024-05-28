@@ -2,7 +2,7 @@
 
 namespace Code.Data.Enums
 {
-    public enum PartName
+    public enum GamePartName
     {
         None,
         Part_1__home,
