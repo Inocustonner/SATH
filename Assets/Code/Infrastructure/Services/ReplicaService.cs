@@ -20,7 +20,7 @@ namespace Code.Infrastructure.Services
         [Header("Static data")]
         private GameSettings _gameSettings;
         private List<ReplicaAction> _actions;
-        public event Action<AcceleratedText[], AnimatedTextWaiter.Mode, Action> OnStartReplica;
+        public event Action<AcceleratedTextData[], AnimatedTextWaiter.Mode, Action> OnStartReplica;
         public event Action OnStopReplicaPart;
 
         public void GameInit()

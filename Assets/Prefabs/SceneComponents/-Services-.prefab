@@ -78,6 +78,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5357326300176139558}
   - component: {fileID: 3572712869898645637}
+  - component: {fileID: 4673521513599275661}
   m_Layer: 0
   m_Name: -Services-
   m_TagString: Untagged
@@ -118,6 +119,25 @@ MonoBehaviour:
   _configs:
   - {fileID: 11400000, guid: 9b81180525586d14ca17e26dfd02a887, type: 2}
   - {fileID: 11400000, guid: b4c536643550bae48a79b7aa4008ddc3, type: 2}
+--- !u!114 &4673521513599275661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1829135398529503386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97f028145d974b488d0f659053122d4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _musicEvent:
+    Guid:
+      Data1: 1925408088
+      Data2: 1190779812
+      Data3: 1289914254
+      Data4: 2005927639
+    Path: event:/Music/Music
 --- !u!1 &4670411337442172293
 GameObject:
   m_ObjectHideFlags: 0

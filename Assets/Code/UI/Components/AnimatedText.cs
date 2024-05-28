@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Code.Audio.AudioEvents;
 using Code.Data.Configs;
 using Code.Data.DynamicData;
 using Code.Infrastructure.DI;
@@ -15,13 +16,14 @@ namespace Code.UI
         [Header("Components")]
         [SerializeField] private TextMeshProUGUI _text;
         [SerializeField] private TextAnimatorPlayer _textAnimatorPlayer;
+        [SerializeField] private AudioEvent _audioEvent;
         [Header("Services")]
         private AnimatedTextWaiter _animatedTextWaiter;
         [Header("Static data")]
         private float _defaultSpeed;
         [Header("Dinamyc data")]
         private int _index;
-        private AcceleratedText[] _acceleratedTexts;
+        private AcceleratedTextData[] _acceleratedTexts;
         private Coroutine _coroutine;
         public bool IsTyping { get; private set; }
         public event Action OnEndWrite;
@@ -51,7 +53,7 @@ namespace Code.UI
             });
         }
 
-        private static void PlayTypeAudio(char c)
+        private  void PlayTypeAudio(char c)
         {
             if (c == ' ')
             {
@@ -59,7 +61,7 @@ namespace Code.UI
             }
             else
             {
-                //todo звук печатанья 
+                _audioEvent.PlayAudioEvent();
             }
         }
 
@@ -81,7 +83,7 @@ namespace Code.UI
             _textAnimatorPlayer.SkipTypewriter();
         }
 
-        public void StartWrite(AcceleratedText[] replicas, AnimatedTextWaiter.Mode waitedMode)
+        public void StartWrite(AcceleratedTextData[] replicas, AnimatedTextWaiter.Mode waitedMode)
         {
             if (!gameObject.activeInHierarchy)
             {

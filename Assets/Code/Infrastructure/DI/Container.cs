@@ -6,6 +6,7 @@ using System.Reflection;
 using Code.Infrastructure.GameLoop;
 using Code.Infrastructure.Save;
 using Code.UI.Base;
+using Core.Infrastructure.Utils;
 using UnityEngine;
 
 namespace Code.Infrastructure.DI
@@ -15,10 +16,10 @@ namespace Code.Infrastructure.DI
         public static Container Instance;
         [SerializeField] private List<ScriptableObject> _configs;
 
-        private MonoBehaviour[] _allObjects;
-        private List<IService> _services = new();
-        private List<IMono> _mono = new();
-        private List<IMenuPresenter> _presenters = new();
+        [SerializeReference] private MonoBehaviour[] _allObjects;
+        [SerializeReference] private List<IService> _services = new();
+        [SerializeReference] private List<IMono> _mono = new();
+        [SerializeReference] private List<IMenuPresenter> _presenters = new();
         
         
         private void Awake()
@@ -130,8 +131,26 @@ namespace Code.Infrastructure.DI
 
             var objects = (UnityEngine.Object[])method.Invoke(null, new object[] { type });
             results.AddRange(objects.OfType<T>());
-            
-            return results;
+
+            foreach (var o in objects)
+            {
+                this.Log($"{typeof(T).Name} {o.name}");
+            }
+
+            var uniqueList = new List<T>();
+
+            foreach (var result in results)
+            {
+                if (uniqueList.Any(r => r.GetHashCode() == result.GetHashCode()))
+                {
+                    continue;
+                }
+                else
+                {
+                    uniqueList.Add(result);
+                }
+            }
+            return uniqueList;
         }
     }
 }

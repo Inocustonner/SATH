@@ -21,7 +21,7 @@ namespace Code.UI.Hud.ReplicaMenu
         private GameConditionService _conditionService;
         private ReplicaConverter _replicaConverter;
         [Header("Debug")] 
-        [SerializeField] private AcceleratedText[] _acceleratedTexts;
+        [SerializeField] private AcceleratedTextData[] _acceleratedTexts;
 
         public void GameInit()
         {

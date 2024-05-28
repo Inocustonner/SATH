@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Code.Infrastructure.Audio.AudioSystem;
 using Code.Infrastructure.DI;
 using Code.Infrastructure.GameLoop;
 using Code.Utils;
@@ -35,7 +36,6 @@ namespace Code.Infrastructure.Save
         public void GameExit()
         {
             SaveProgress();
-            this.Log($"Game save");
         }
 
         private void SaveProgress()
@@ -49,22 +49,26 @@ namespace Code.Infrastructure.Save
                  
             var data = PlayerPrefs.GetString(progressKey);
 
+            this.Log($"Game save {data}");
         }
 
         private void LoadProgress()
         {
             var data = PlayerPrefs.GetString(progressKey);
             _playerProgress =  PlayerPrefs.GetString(progressKey)?.ToDeserialized<SavedData>();
-
-            
-            _playerProgress ??= new SavedData();
+            _playerProgress ??= new SavedData()
+            {
+                AudioVolume = new AudioVolumeData()
+                {
+                    Effects = 1,
+                    Music = 1,
+                    IsEnabled = true
+                }
+            };
             foreach (var progressReader in _progressReader)
             {
                 progressReader.LoadProgress(_playerProgress);
             }
         }
-        
-
-
     }
 }
