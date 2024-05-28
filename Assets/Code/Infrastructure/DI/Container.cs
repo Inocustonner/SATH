@@ -2,25 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-
-using Code.Infrastructure.GameLoop;
-using Code.Infrastructure.Save;
-using Code.UI.Base;
-using Core.Infrastructure.Utils;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Code.Infrastructure.DI
 {
     public class Container : MonoBehaviour
     {
         public static Container Instance;
+        [Header("Initialized by reference")] 
         [SerializeField] private List<ScriptableObject> _configs;
 
-        [SerializeReference] private MonoBehaviour[] _allObjects;
-        [SerializeReference] private List<IService> _services = new();
-        [SerializeReference] private List<IMono> _mono = new();
-        [SerializeReference] private List<IMenuPresenter> _presenters = new();
-        
+        [Header("Initializes automatically")] 
+        [SerializeField] private MonoBehaviour[] _allObjects;
+        private List<IEntity> _entities;
+        private List<IService> _services;
+
         
         private void Awake()
         {
@@ -29,21 +26,21 @@ namespace Code.Infrastructure.DI
                 Destroy(gameObject);
             }
 
-            DontDestroyOnLoad(gameObject);
             Instance = this;
 
             _allObjects = FindAllObjectsOfType<MonoBehaviour>().ToArray();
-            InitList(ref _services);
-            InitList(ref _mono);
-            InitList(ref _presenters);
+            InitList(ref _entities);
+            _services = _entities.OfType<IService>().ToList();
         }
 
         private void InitList<T>(ref List<T> list)
         {
+            list = new List<T>();
             var types = Assembly.GetExecutingAssembly().GetTypes();
 
             var serviceTypes = types.Where(t =>
-                typeof(T).IsAssignableFrom(t) && t.IsClass && !t.IsAbstract && !typeof(MonoBehaviour).IsAssignableFrom(t));
+                typeof(T).IsAssignableFrom(t) && t.IsClass && !t.IsAbstract &&
+                !typeof(MonoBehaviour).IsAssignableFrom(t));
 
             foreach (var serviceType in serviceTypes)
             {
@@ -54,12 +51,9 @@ namespace Code.Infrastructure.DI
             }
 
             var mbServices = _allObjects.OfType<T>();
-            if (mbServices.Any())
-            {
-                list.AddRange(mbServices);
-            }
+            list.AddRange(mbServices);
         }
-        
+
         public T FindConfig<T>() where T : ScriptableObject
         {
             foreach (var scriptableObject in _configs)
@@ -82,75 +76,41 @@ namespace Code.Infrastructure.DI
                     return findService;
                 }
             }
+
             return default;
         }
-        
-        public T FindUIPresenter<T>() where T : IService
-        {
-            foreach (var presenter in _presenters)
-            {
-                if (presenter is T findUIPresenter)
-                {
-                    return findUIPresenter;
-                }
-            }
-            return default;
-        }
-        
+
         public List<T> GetContainerComponents<T>()
         {
-            var list = new List<T>();
-
-            list.AddRange(_services.OfType<T>().ToList());
-            list.AddRange(_mono.OfType<T>().ToList());
-
-            var mbListeners = _allObjects.OfType<T>();
-            foreach (var mbListener in mbListeners)
+            var components = _entities.OfType<T>().ToList();
+            var objectComponents = _allObjects.OfType<T>();
+            foreach (var mbListener in objectComponents)
             {
-                if (!list.Contains(mbListener))
+                if (!components.Contains(mbListener))
                 {
-                    list.Add(mbListener);
+                    components.Add(mbListener);
                 }
             }
-            return list;
+
+            return components;
         }
-        
+
         private List<T> FindAllObjectsOfType<T>() where T : UnityEngine.Object
         {
-            List<T> results = new List<T>();
-            Type type = typeof(T);
-            BindingFlags bindingFlags = BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.Public;
+            var sceneObjects = new List<T>();
+            Scene currentScene = SceneManager.GetActiveScene();
 
-            MethodInfo method = typeof(UnityEngine.Object).GetMethod("FindObjectsOfTypeAll", bindingFlags);
-
-            if (method == null)
+            foreach (var rootGameObject in currentScene.GetRootGameObjects())
             {
-                Debug.LogError("Method 'FindObjectsOfTypeAll' not found.");
-                return results;
+                T[] objectsInRoot = rootGameObject.GetComponentsInChildren<T>(true);
+                sceneObjects.AddRange(objectsInRoot);
             }
 
-            var objects = (UnityEngine.Object[])method.Invoke(null, new object[] { type });
-            results.AddRange(objects.OfType<T>());
 
-            foreach (var o in objects)
-            {
-                this.Log($"{typeof(T).Name} {o.name}");
-            }
+            var results = sceneObjects.Where(obj =>
+                obj is T && !obj.GetType().IsAbstract && obj.GetType().Namespace?.StartsWith("Code") == true).ToList();
+            return results.Distinct().ToList();
 
-            var uniqueList = new List<T>();
-
-            foreach (var result in results)
-            {
-                if (uniqueList.Any(r => r.GetHashCode() == result.GetHashCode()))
-                {
-                    continue;
-                }
-                else
-                {
-                    uniqueList.Add(result);
-                }
-            }
-            return uniqueList;
         }
     }
 }
