@@ -13,7 +13,7 @@ namespace Code.Entities
         [SerializeField] private Rigidbody2D _rb;
         [Header("Services")] 
         private InputService _inputService;
-        private InputLimiter _inputLimiter;
+        private MoveLimiter _moveLimiter;
         [Header("Debug")] 
         [SerializeField] private MovementData _data;
   
@@ -29,15 +29,13 @@ namespace Code.Entities
         {
             _data = Container.Instance.FindConfig<CharacterConfig>().Movement;
             _inputService = Container.Instance.FindService<InputService>();
-            _inputLimiter = Container.Instance.FindService<InputLimiter>();
+            _moveLimiter = Container.Instance.FindService<MoveLimiter>();
         }
 
         public void GameTick()
         {
-            if (!gameObject.activeSelf || !_inputLimiter.IsCanMove)
+            if (!gameObject.activeInHierarchy)
             {
-                _rb.velocity = Vector2.zero;
-                _desiredVelocity = Vector2.zero;
                 return;
             }
 
@@ -47,7 +45,7 @@ namespace Code.Entities
 
         public void GameFixedTick()
         {
-            if (!gameObject.activeSelf || !_inputLimiter.IsCanMove)
+            if (!gameObject.activeInHierarchy)
             {
                 return;
             }

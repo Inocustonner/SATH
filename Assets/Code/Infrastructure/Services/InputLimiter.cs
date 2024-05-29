@@ -3,11 +3,10 @@ using Code.Infrastructure.DI;
 
 namespace Code.Infrastructure.Services
 {
-    public class InputLimiter : IService
+    public abstract class Limiter: IService
     {
         private int _counter;
-        public bool IsCanMove => _counter == 0;
-
+        public bool IsUnlock => _counter == 0;
         public event Action<bool> OnSwitch; 
         
         public void Block()
@@ -32,5 +31,15 @@ namespace Code.Infrastructure.Services
                 }
             }
         }
+    }
+
+    public class MoveLimiter : Limiter
+    {
+        
+    }
+
+    public class InteractionLimiter : Limiter
+    {
+        
     }
 }

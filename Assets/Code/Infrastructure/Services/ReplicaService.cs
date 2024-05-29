@@ -13,7 +13,7 @@ namespace Code.Infrastructure.Services
     {
         [Header("Services")]
         private InputService _inputService;
-        private InputLimiter _inputLimiter;
+        private MoveLimiter _moveLimiter;
         private GameConditionService _gameConditionService;
         private ReplicaConverter _replicaConverter;
         [Header("Static data")]
@@ -26,7 +26,7 @@ namespace Code.Infrastructure.Services
         {
             _gameSettings = Container.Instance.FindService<GameSettings>();
             _inputService = Container.Instance.FindService<InputService>();
-            _inputLimiter = Container.Instance.FindService<InputLimiter>();
+            _moveLimiter = Container.Instance.FindService<MoveLimiter>();
             _actions = Container.Instance.GetContainerComponents<ReplicaAction>();
             _replicaConverter = new ReplicaConverter(Container.Instance.FindService<GameConditionService>());
         }
@@ -68,7 +68,7 @@ namespace Code.Infrastructure.Services
             {
                 if (replicaConfig.IsBlockMovement)
                 {
-                    _inputLimiter.Block();
+                    _moveLimiter.Block();
                 }
                 
                 var waitedMode = replicaConfig.IsBlockMovement
@@ -79,7 +79,7 @@ namespace Code.Infrastructure.Services
                 {
                     if (replicaConfig.IsBlockMovement)
                     {
-                        _inputLimiter.Unblock();
+                        _moveLimiter.Unblock();
                     }
                 });
             }

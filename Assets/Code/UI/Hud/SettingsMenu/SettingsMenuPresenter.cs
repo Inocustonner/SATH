@@ -13,14 +13,18 @@ namespace Code.UI.Hud.SettingsMenu
     {
         [Header("Components")] 
         [SerializeField] private AudioPresenter _audioPresenter;
+        
         [Header("Services")]
         private InputService _inputService;
+        private InteractionLimiter _interactionLimiter;
+        private MoveLimiter _moveLimiter;
         
         protected override void Init()
         {
-            _audioPresenter.Init(Container.Instance.FindService<SceneAudioController>());
+            _audioPresenter.Init(Container.Instance.FindService<SceneAudioController>()); 
             _inputService = Container.Instance.FindService<InputService>();
-            this.Log("Init");
+            _moveLimiter = Container.Instance.FindService<MoveLimiter>();
+            _interactionLimiter = Container.Instance.FindService<InteractionLimiter>();
         }
         
         protected override void SubscribeToEvents(bool flag)
@@ -33,12 +37,26 @@ namespace Code.UI.Hud.SettingsMenu
             {
                 _inputService.OnPressPauseKey -= OnPressPauseKey;
             }
+            
             _audioPresenter.SubscribeToEvents(flag);
         }
 
         private void OnPressPauseKey()
         {
-            ChangeMenuState(Model.IsValidating ? MenuState.Inactive : MenuState.Active);
+            if (Model.IsValidating)
+            {
+                ChangeMenuState(MenuState.Inactive, onComplete: () =>
+                {
+                    _interactionLimiter.Unblock();
+                    _moveLimiter.Unblock();    
+                });
+            }
+            else
+            {
+                ChangeMenuState(MenuState.Active );
+                _interactionLimiter.Block();
+                _moveLimiter.Block();    
+            }
         }
 
         public void LoadProgress(SavedData playerProgress)

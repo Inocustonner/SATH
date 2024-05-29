@@ -2,7 +2,6 @@
 using Code.Infrastructure.GameLoop;
 using UnityEngine;
 
-
 namespace Code.UI.Base
 {
     public abstract class BaseMenuPresenter<TModel, TView> : MonoBehaviour, 
@@ -69,7 +68,7 @@ namespace Code.UI.Base
             OnOtherMenuCall?.Invoke(menuType);
         }
 
-        protected virtual void Validate()
+        private void OnValidate()
         {
             if (View == null && !TryGetComponent(out View))
             {
@@ -80,11 +79,8 @@ namespace Code.UI.Base
             {
                 Model = gameObject.AddComponent<TModel>();
             }
-        }
 
-        private void OnValidate()
-        {
-            Validate();
+            Model.IsValidating = View.IsActivatedWindow;
         }
     }
 }

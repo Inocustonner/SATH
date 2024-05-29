@@ -8,13 +8,13 @@ namespace Code.UI.Hud.GamePartCurtain
     public class GamePartCurtainPresenter: BaseMenuPresenter<GamePartCurtainModel, GamePartCurtainView>
     {
         [Header("Services")]
-        private InputLimiter _inputLimiter;
+        private MoveLimiter _moveLimiter;
         private TransitionGamePartService _transitionGamePart;
         
 
         protected override void Init()
         {
-            _inputLimiter = Container.Instance.FindService<InputLimiter>();
+            _moveLimiter = Container.Instance.FindService<MoveLimiter>();
             _transitionGamePart = Container.Instance.FindService<TransitionGamePartService>();
             base.Init();
         }
@@ -33,11 +33,11 @@ namespace Code.UI.Hud.GamePartCurtain
 
         private void OnStartTransition()
         {
-            _inputLimiter.Block();
+            _moveLimiter.Block();
             ChangeMenuState(MenuState.Active, onComplete: () =>
             {
                 ChangeMenuState(MenuState.Inactive);
-                _inputLimiter.Unblock();
+                _moveLimiter.Unblock();
             });
         }
     }
