@@ -5,7 +5,6 @@ using Code.Infrastructure.GameLoop;
 using Code.Utils;
 using Core.Infrastructure.Utils;
 using UnityEngine;
-using UnityEngine.Rendering.VirtualTexturing;
 
 namespace Code.Infrastructure.Save
 {

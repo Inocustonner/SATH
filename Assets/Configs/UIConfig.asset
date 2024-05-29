@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4faf460d65584c9da5160a302e734b09, type: 3}
   m_Name: UIConfig
   m_EditorClassIdentifier: 
-  ReplicaDisableDelay: 0.7
+  ReplicaDelaySeconds: 0.7
+  DefaultTypingSpeed: 0.05
+  CurtainColor: {r: 0, g: 0, b: 0, a: 1}
+  CurtainDuration: 2

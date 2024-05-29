@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using Code.CustomActions.Actions;
 using Code.Data.DynamicData;
 using Code.Infrastructure.DI;
@@ -15,7 +13,7 @@ namespace Code.Infrastructure.Services
     {
         [Header("Services")]
         private InputService _inputService;
-        private MoveLimiter _moveLimiter;
+        private InputLimiter _inputLimiter;
         private GameConditionService _gameConditionService;
         private ReplicaConverter _replicaConverter;
         [Header("Static data")]
@@ -28,7 +26,7 @@ namespace Code.Infrastructure.Services
         {
             _gameSettings = Container.Instance.FindService<GameSettings>();
             _inputService = Container.Instance.FindService<InputService>();
-            _moveLimiter = Container.Instance.FindService<MoveLimiter>();
+            _inputLimiter = Container.Instance.FindService<InputLimiter>();
             _actions = Container.Instance.GetContainerComponents<ReplicaAction>();
             _replicaConverter = new ReplicaConverter(Container.Instance.FindService<GameConditionService>());
         }
@@ -70,7 +68,7 @@ namespace Code.Infrastructure.Services
             {
                 if (replicaConfig.IsBlockMovement)
                 {
-                    _moveLimiter.Block();
+                    _inputLimiter.Block();
                 }
                 
                 var waitedMode = replicaConfig.IsBlockMovement
@@ -81,7 +79,7 @@ namespace Code.Infrastructure.Services
                 {
                     if (replicaConfig.IsBlockMovement)
                     {
-                        _moveLimiter.Unblock();
+                        _inputLimiter.Unblock();
                     }
                 });
             }

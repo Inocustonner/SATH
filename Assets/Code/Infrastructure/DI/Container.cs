@@ -18,7 +18,6 @@ namespace Code.Infrastructure.DI
         private List<IEntity> _entities;
         private List<IService> _services;
 
-        
         private void Awake()
         {
             if (Instance != null)
@@ -110,7 +109,6 @@ namespace Code.Infrastructure.DI
             var results = sceneObjects.Where(obj =>
                 obj is T && !obj.GetType().IsAbstract && obj.GetType().Namespace?.StartsWith("Code") == true).ToList();
             return results.Distinct().ToList();
-
         }
     }
 }
