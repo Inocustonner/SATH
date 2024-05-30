@@ -67,15 +67,17 @@ fmod_editor.log
 /Assets/FMODAssets/*
 /Assets/FMODStudioCache.meta
 
-Assets/UnityDefaultRuntimeTheme.tss
 
 # UserSettings
+Assets/UnityDefaultRuntimeTheme.tss
 UserSettings/Layouts/default-2021.dwlt
 UserSettings/Layouts/CurrentMaximizeLayout.dwlt
 UserSettings/EditorUserSettings.asset
 UserSettings/Layouts/default-2022.dwlt
 UserSettings/Search.settings
 ProjectSettings/VersionControlSettings.asset
+Assets/UnityDefaultRuntimeTheme.tss.meta
+ProjectSettings/ProjectVersion.txt
 
 
 # Log-files
