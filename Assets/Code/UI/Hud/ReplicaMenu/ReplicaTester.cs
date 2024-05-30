@@ -31,7 +31,6 @@ namespace Code.UI.Hud.ReplicaMenu
         public void Start()
         {
             _replicaConverter = new ReplicaConverter(_conditionService);
-            _replicaConverter.SetConfig(_replicaConfig);
         }
 
         public void Skip()
@@ -41,6 +40,8 @@ namespace Code.UI.Hud.ReplicaMenu
 
         public void StartWrite()
         {
+            _replicaConverter.SetConfig(_replicaConfig);
+            
             if (!_model.IsValidating)
             {
                 _presenter.ChangeMenuState(MenuState.Active);
