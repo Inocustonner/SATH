@@ -20,7 +20,7 @@ namespace Code.Infrastructure.Services
     {
         [SerializeField] private ConditionActionData[] _conditionActions;
 
-        private Dictionary<GameCondition, bool> _conditions;
+        private readonly Dictionary<GameCondition, bool> _conditions = new();
 
         public void GameInit()
         {
