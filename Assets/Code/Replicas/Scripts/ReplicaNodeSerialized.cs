@@ -26,7 +26,7 @@ namespace Code.Replicas.Scripts
     [Serializable]
     public struct ReplicaPartSerialized
     {
-        public TextMarkup Markup;
+        public List<TextMarkup> Markups;
         public TextEffect Effect;
         public Color Color; 
         public string MessageText;

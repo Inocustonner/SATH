@@ -74,7 +74,7 @@ namespace Code.Replicas.Editor
                         {
                             Color = part.Color,
                             Effect = part.Effect,
-                            Markup = part.Markup,
+                            Markups = part.Markups,
                             MessageText = part.MessageText
                         });
                     }

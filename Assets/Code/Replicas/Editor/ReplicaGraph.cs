@@ -40,7 +40,7 @@ namespace Code.Replicas.Editor
         private void AddStyles()
         {
             StyleSheet graphStyle = (StyleSheet)EditorGUIUtility.Load(
-                "Assets/Code/Scenarios/Styles/ReplicaGraph.uss"
+                "Assets/Code/Replicas/Styles/ReplicaGraph.uss"
             );
             if (graphStyle != null)
             {
@@ -48,7 +48,7 @@ namespace Code.Replicas.Editor
             }
 
             StyleSheet nodeStyle = (StyleSheet)EditorGUIUtility.Load(
-                "Assets/Code/Scenarios/Styles/ReplicaNode.uss"
+                "Assets/Code/Replicas/Styles/ReplicaNode.uss"
             );
             if (nodeStyle != null)
             {
@@ -79,7 +79,7 @@ namespace Code.Replicas.Editor
                 for (int j = 0; j < localization.Parts.Count; j++)
                 {
                     var part = localization.Parts[j];
-                    parts.Add(new ReplicaPartElement(part.Markup, part.Effect, part.Color, part.MessageText));
+                    parts.Add(new ReplicaPartElement(part.Markups, part.Effect, part.Color, part.MessageText));
                 }
 
                 localizations.Add(new LocalizedReplicaElement(localization.Language, parts));

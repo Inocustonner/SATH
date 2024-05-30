@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Code.Data.Enums;
 using Code.Utils;
@@ -10,7 +11,7 @@ namespace Code.Replicas.Editor
 {
     public sealed class ReplicaPartElement : VisualElement
     {
-        public TextMarkup Markup { get; private set; }
+        public List<TextMarkup> Markups { get; private set; } = new List<TextMarkup>();
         public TextEffect Effect { get; private set; }
         public Color Color { get; private set; }
         public string MessageText { get; private set; }
@@ -29,35 +30,74 @@ namespace Code.Replicas.Editor
             AddDeletePartButton(4);
         }
 
-        public ReplicaPartElement(TextMarkup markup, TextEffect effect, Color color, string messageText)
+        public ReplicaPartElement(List<TextMarkup> markups, TextEffect effect, Color color, string messageText)
         {
             style.backgroundColor = new StyleColor(Color.white);
             style.minWidth = 100;
             style.minHeight = 20;
 
-            AddMarkupProperty(0, markup);
+            AddMarkupProperty(0, markups);
             AddEffectProperty(1, effect);
             AddColorProperty(2, color);
             AddMessageTextField(3, messageText);
             AddDeletePartButton(4);
         }
 
-        private void AddMarkupProperty(int index, TextMarkup markup = TextMarkup.Default)
+        private void AddMarkupProperty(int index, List<TextMarkup> markups = null)
         {
-            var property = new PopupField<TextMarkup>(Enum.GetValues(typeof(TextMarkup)).Cast<TextMarkup>().ToList(), 0)
-            {
-                label = "Markup"
-            };
-            property.labelElement.style.color = new StyleColor(Constance.PurpleColor);
-            
-            property.RegisterValueChangedCallback(evt => { Markup = evt.newValue; });
-            property.SetValueWithoutNotify(Markup);
-            property.value = markup;
-            Markup = markup;
-            
-            Insert(index, property);
-        }
+            markups = markups ?? new List<TextMarkup>();
+            Markups = markups;
 
+            var container = new VisualElement();
+            var label = new Label("Markups")
+            {
+                style =
+                {
+                    color = new StyleColor(Constance.PurpleColor)
+                }
+            };
+            container.Add(label);
+
+            var horizontalContainer = new VisualElement
+            {
+                style =
+                {
+                    flexDirection = FlexDirection.Row,
+                    flexWrap = Wrap.Wrap
+                }
+            };
+
+            var availableMarkups = Enum.GetValues(typeof(TextMarkup)).Cast<TextMarkup>().ToList();
+            for (var i = 1; i < availableMarkups.Count; i++)
+            {
+                var markup = availableMarkups[i];
+                var toggle = new Toggle(markup.ToString())
+                {
+                    value = Markups.Contains(markup)
+                };
+                toggle.RegisterValueChangedCallback(evt =>
+                {
+                    if (evt.newValue)
+                    {
+                        if (!Markups.Contains(markup))
+                        {
+                            Markups.Add(markup);
+                        }
+                    }
+                    else
+                    {
+                        if (Markups.Contains(markup))
+                        {
+                            Markups.Remove(markup);
+                        }
+                    }
+                });
+                horizontalContainer.Add(toggle);
+            }
+
+            container.Add(horizontalContainer);
+            Insert(index, container);
+        }
         private void AddEffectProperty(int index, TextEffect effect = TextEffect.Default)
         {
             var property = new PopupField<TextEffect>(Enum.GetValues(typeof(TextEffect)).Cast<TextEffect>().ToList(), 0)

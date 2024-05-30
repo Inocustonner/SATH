@@ -96,25 +96,27 @@ namespace Code.Replicas.Scripts
         {
             StringBuilder formattedText = new StringBuilder();
 
-            string text = part.MessageText;
+            var text = part.MessageText;
 
             if (part.Color != new Color() && part.Color != Color.white && part.Color.a != 0)
             {
-                string hexCode = ColorUtility.ToHtmlStringRGBA(part.Color);
-
+                var hexCode = ColorUtility.ToHtmlStringRGBA(part.Color);
                 text = $"<color=#{hexCode}>{text}</color>";
             }
 
-            if (part.Markup != TextMarkup.Default)
+            foreach (var markup in part.Markups)
             {
-                text = part.Markup switch
+                if (markup != TextMarkup.Default)
                 {
-                    TextMarkup.Bold => $"<b>{text}</b>",
-                    TextMarkup.Italic => $"<i>{text}</i>",
-                    TextMarkup.Underline => $"<u>{text}</u>",
-                    TextMarkup.Strikethrough => $"<s>{text}</s>",
-                    _ => text
-                };
+                    text = markup switch
+                    {
+                        TextMarkup.Bold => $"<b>{text}</b>",
+                        TextMarkup.Italic => $"<i>{text}</i>",
+                        TextMarkup.Underline => $"<u>{text}</u>",
+                        TextMarkup.Strikethrough => $"<s>{text}</s>",
+                        _ => text
+                    };
+                }
             }
 
             if (part.Effect != TextEffect.Default)
