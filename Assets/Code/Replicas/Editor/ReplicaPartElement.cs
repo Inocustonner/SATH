@@ -73,7 +73,8 @@ namespace Code.Replicas.Editor
                 var markup = availableMarkups[i];
                 var toggle = new Toggle(markup.ToString())
                 {
-                    value = Markups.Contains(markup)
+                    value = Markups.Contains(markup),
+                    style = { backgroundColor = Constance.DarkPurpleColor}
                 };
                 toggle.RegisterValueChangedCallback(evt =>
                 {
