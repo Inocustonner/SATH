@@ -10,23 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48e56e729e8a46f58050bf2e2c16e7d8, type: 3}
-  m_Name: Replica_dad
+  m_Name: Friend_school_success
   m_EditorClassIdentifier: 
   IsBlockMovement: 1
   Nodes:
   - ID: 0
-    TypingSpeed: 0.09
+    TypingSpeed: 0
     Conditions: 00000000
     Localization:
     - Language: 0
       Parts:
-      - Markup: 0
+      - Markups: 
         Effect: 0
-        Color: {r: 0, g: 0, b: 0, a: 1}
-        MessageText: "\u0422\u044B \u0443\u0432\u0435\u0440\u0435\u043D?"
-      - Markup: 1
-        Effect: 1
-        Color: {r: 0, g: 0, b: 0, a: 1}
-        MessageText: "\u041E\u043D\u043E \u0442\u043E\u0433\u043E \u043D\u0435 \u0441\u0442\u043E\u0438\u0442."
-    EditorPosition: {x: 3109.5, y: 2946}
+        Color: {r: 0.20784315, g: 0.45098042, b: 0.75294125, a: 1}
+        MessageText: "\u042F \u0432 \u0442\u0435\u0431\u0435 \u0438 \u043D\u0435
+          \u0441\u043E\u043C\u043D\u0435\u0432\u0430\u043B\u0441\u044F."
+    EditorPosition: {x: 1178, y: 967.5}
   Edges: []

@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Code.Entities;
 using Code.Utils;
 using UnityEngine;
 
@@ -6,17 +7,23 @@ namespace Code.CustomActions.Actions
 {
     public class MoveToPointAction: CustomAction
     {
-        [SerializeField] private Transform _object;
-        [SerializeField] private Collider2D[] _disableColliders;
-        [SerializeField] private float _speed = 2;
         [SerializeField] private Vector2 _target;
+        [SerializeField] private ObjectMover _mover;
+        [SerializeField] private Collider2D[] _disableColliders;
         
         private Coroutine _coroutine;
-        
+
         public override void StartAction()
         {
             TryStopCoroutine();
-            _coroutine = StartCoroutine(Move(_target));
+            InvokeStartEvent();
+            SetComponentsEnable(false);
+            _coroutine = StartCoroutine(_mover.Move(_target, onCompeted: () =>
+            {
+                SetComponentsEnable(true);
+                InvokeEndEvent();
+            }));
+            InvokeEndEvent();
         }
 
         private void TryStopCoroutine()
@@ -27,20 +34,6 @@ namespace Code.CustomActions.Actions
             }
         }
         
-        private IEnumerator Move(Vector2 to)
-        {
-            SetComponentsEnable(false);
-            InvokeStartEvent();
-            var period = new WaitForEndOfFrame();
-            while (Vector3.Distance(_object.position, to) > 0.1f)
-            {
-                _object.position = Vector3.Lerp(_object.position, to, _speed * Time.deltaTime);
-                yield return period;
-            }
-            InvokeEndEvent();
-            SetComponentsEnable(true);
-        }
-
         private void SetComponentsEnable(bool isEnabled)
         {
             foreach (var collider in _disableColliders)
@@ -51,7 +44,7 @@ namespace Code.CustomActions.Actions
         
         private void OnDrawGizmosSelected()
         {
-            var color = Constance.PurpleColor;
+            var color = Color.green;
             color.a = 0.5f;
             Gizmos.color = color;
             Gizmos.DrawSphere(_target, 0.2f);

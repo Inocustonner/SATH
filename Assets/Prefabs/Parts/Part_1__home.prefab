@@ -786,7 +786,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d91308c178e49f3871abf115f96ecf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _replicaConfig: {fileID: 11400000, guid: 20aee7aed59e697449b2478a1bcd96c7, type: 2}
+  _replicaConfig: {fileID: 11400000, guid: b8d44761252c2b94296aae5189fafe9d, type: 2}
   _isCanRepeat: 1
 --- !u!1 &3676103709603165833
 GameObject:
@@ -1273,7 +1273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d91308c178e49f3871abf115f96ecf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _replicaConfig: {fileID: 11400000, guid: a8e7b8ac57ef82843935d685efccf319, type: 2}
+  _replicaConfig: {fileID: 11400000, guid: 3f311e3c81e90024cb6a56aed0097a53, type: 2}
   _isCanRepeat: 1
 --- !u!1 &6316462928297629771
 GameObject:
@@ -1394,7 +1394,7 @@ GameObject:
   m_Component:
   - component: {fileID: 956906070626558755}
   m_Layer: 0
-  m_Name: Triggers
+  m_Name: Actions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1415,9 +1415,9 @@ Transform:
   m_Children:
   - {fileID: 7636520676409162879}
   - {fileID: 3864742094212347332}
-  - {fileID: 7441124649828053644}
   - {fileID: 7263456775634294357}
   - {fileID: 4737399273927892410}
+  - {fileID: 7441124649828053644}
   - {fileID: 8461709571783802391}
   m_Father: {fileID: 8437936679500266834}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
