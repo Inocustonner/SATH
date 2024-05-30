@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
-using Code.Scenarios.Scripts;
+using Code.Replicas.Scripts;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace Code.Scenarios.Editor
+namespace Code.Replicas.Editor
 {
     public class ReplicaGraph : GraphView
     {

@@ -4,7 +4,7 @@ using Code.Data.Configs;
 using Code.Data.Enums;
 using UnityEngine;
 
-namespace Code.Scenarios.Scripts
+namespace Code.Replicas.Scripts
 {
     [Serializable]
     public struct ReplicaNodeSerialized

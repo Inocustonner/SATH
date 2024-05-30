@@ -5,7 +5,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace Code.Scenarios.Editor
+namespace Code.Replicas.Editor
 {
     public class ReplicaNode : Node
     {

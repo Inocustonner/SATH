@@ -6,7 +6,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine.UIElements;
 using Edge = UnityEditor.Experimental.GraphView.Edge;
 
-namespace Code.Scenarios.Editor
+namespace Code.Replicas.Editor
 {
     public class ReplicaConditionElement : VisualElement
     {

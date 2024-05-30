@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine.UIElements;
 
-namespace Code.Scenarios.Editor
+namespace Code.Replicas.Editor
 {
     public class ReplicaWindow : EditorWindow
     {

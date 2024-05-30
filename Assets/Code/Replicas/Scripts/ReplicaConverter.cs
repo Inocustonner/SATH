@@ -8,7 +8,7 @@ using Code.Infrastructure.Services;
 using Core.Infrastructure.Utils;
 using UnityEngine;
 
-namespace Code.Scenarios.Scripts
+namespace Code.Replicas.Scripts
 {
     public sealed class ReplicaConverter
     {

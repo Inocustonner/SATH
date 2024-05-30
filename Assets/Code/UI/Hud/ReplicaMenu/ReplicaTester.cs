@@ -3,7 +3,7 @@ using Code.Data.DynamicData;
 using Code.Infrastructure.DI;
 using Code.Infrastructure.GameLoop;
 using Code.Infrastructure.Services;
-using Code.Scenarios.Scripts;
+using Code.Replicas.Scripts;
 using Code.UI.Base;
 using UnityEngine;
 

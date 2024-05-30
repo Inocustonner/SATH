@@ -2,7 +2,7 @@ using Code.Data.Configs;
 using Code.Infrastructure.Services;
 using UnityEngine;
 
-namespace Code.Scenarios.Scripts
+namespace Code.Replicas.Scripts
 {
     public sealed class ReplicaTest : MonoBehaviour
     {

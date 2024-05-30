@@ -1,9 +1,9 @@
 #if UNITY_EDITOR
-using Code.Scenarios.Scripts;
+using Code.Replicas.Scripts;
 using UnityEditor.UIElements;
 using UnityEngine.UIElements;
 
-namespace Code.Scenarios.Editor
+namespace Code.Replicas.Editor
 {
     public sealed class ReplicaToolbar : Toolbar
     {

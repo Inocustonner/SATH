@@ -1,7 +1,7 @@
 ﻿using Code.Data.Enums;
 using UnityEngine;
 
-namespace Code.Scenarios
+namespace Code.Replicas
 {
     public class GamePart : MonoBehaviour
     {

@@ -7,7 +7,7 @@ using Code.Data.Enums;
 using Code.Data.StaticData;
 using Code.Infrastructure.DI;
 using Code.Infrastructure.GameLoop;
-using Code.Scenarios;
+using Code.Replicas;
 using UnityEngine;
 
 namespace Code.Infrastructure.Services

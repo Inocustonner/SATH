@@ -1,8 +1,7 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
-namespace Code.Scenarios.Scripts
+namespace Code.Replicas.Scripts
 {
     [CreateAssetMenu(fileName = "ReplicaConfig", menuName = "Config/Graph/Replica")]
     public sealed class ReplicaConfig : ScriptableObject

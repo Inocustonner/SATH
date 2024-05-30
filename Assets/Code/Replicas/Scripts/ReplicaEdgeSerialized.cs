@@ -1,6 +1,6 @@
 using System;
 
-namespace Code.Scenarios.Scripts
+namespace Code.Replicas.Scripts
 {
     [Serializable]
     public struct ReplicaEdgeSerialized

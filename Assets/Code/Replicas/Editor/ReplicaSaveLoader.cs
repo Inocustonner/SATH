@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
-using Code.Scenarios.Scripts;
+using Code.Replicas.Scripts;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-namespace Code.Scenarios.Editor
+namespace Code.Replicas.Editor
 {
     public sealed class ReplicaSaveLoader
     {
