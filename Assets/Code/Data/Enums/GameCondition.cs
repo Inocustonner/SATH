@@ -3,7 +3,7 @@
     public enum GameCondition
     {
         None,
-        EnterWhiteRoom,
-        KillMePlease,
+        TryLeftDoor,
+        TryRightDoor,
     }
 }

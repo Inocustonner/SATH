@@ -6,8 +6,13 @@ namespace Code.CustomActions.Executors
 {
     public class TriggerActionExecutor : MonoBehaviour
     {
+        [Header("Components")] 
         [SerializeField] private CollisionObserver _collisionObserver;
         [SerializeField] private CustomAction[] _customActions;
+
+        [Header("Params")] 
+        [SerializeField] private bool _isStartInsideTrigger = true;
+        
         [Header("Debug")] 
         [SerializeField] private bool _isOnTrigger;
         private void Awake()
@@ -38,20 +43,30 @@ namespace Code.CustomActions.Executors
         {
             foreach (var action in _customActions)
             {
-                action.StartAction();
+                if (_isStartInsideTrigger)
+                {
+                    action.StartAction();
+                }
+                else
+                {
+                    action.StopAction();
+                }
             }
             _isOnTrigger = true;
         }
 
         private void OnExit(GameObject obj)
         {
-            if (!gameObject.activeSelf)
-            {
-             return;
-            }
             foreach (var action in _customActions)
             {
-                action.StopAction();
+                if (_isStartInsideTrigger)
+                {
+                    action.StopAction();
+                }
+                else
+                {
+                    action.StartAction();
+                }
             }
             _isOnTrigger = false;
         }

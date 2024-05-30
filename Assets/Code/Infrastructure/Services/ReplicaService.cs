@@ -4,7 +4,6 @@ using Code.Data.DynamicData;
 using Code.Infrastructure.DI;
 using Code.Infrastructure.GameLoop;
 using Code.Replicas.Scripts;
-using Code.UI;
 using UnityEngine;
 
 namespace Code.Infrastructure.Services
@@ -16,11 +15,14 @@ namespace Code.Infrastructure.Services
         private MoveLimiter _moveLimiter;
         private GameConditionService _gameConditionService;
         private ReplicaConverter _replicaConverter;
+      
         [Header("Static data")]
         private GameSettings _gameSettings;
         private ReplicaAction[] _actions;
+     
         public event Action<AcceleratedTextData[], AnimatedTextWaiter.Mode, Action> OnStartReplica;
         public event Action OnStopReplicaPart;
+        public event Action OnEndReplica;
 
         public void GameInit()
         {
@@ -81,6 +83,7 @@ namespace Code.Infrastructure.Services
                     {
                         _moveLimiter.Unblock();
                     }
+                    OnEndReplica?.Invoke();
                 });
             }
         }

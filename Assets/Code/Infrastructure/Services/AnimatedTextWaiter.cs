@@ -1,10 +1,9 @@
 ﻿using Code.Data.Configs;
 using Code.Infrastructure.DI;
 using Code.Infrastructure.GameLoop;
-using Code.Infrastructure.Services;
 using UnityEngine;
 
-namespace Code.UI
+namespace Code.Infrastructure.Services
 {
     public class AnimatedTextWaiter: IService, IGameInitListener
     {

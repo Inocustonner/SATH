@@ -1,22 +1,56 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Code.CustomActions.Actions;
 using Code.Data.Enums;
 using Code.Infrastructure.DI;
+using Code.Infrastructure.GameLoop;
 using UnityEngine;
 
 namespace Code.Infrastructure.Services
 {
-    public class GameConditionService : IService
+    [Serializable]
+    public struct ConditionActionData
     {
-        private Dictionary<GameCondition, bool> _conditions = new Dictionary<GameCondition, bool>()
+        public GameCondition Condition;
+        public CustomAction Action;
+    }
+
+    public class GameConditionService : MonoBehaviour, IService, IGameInitListener, IGameStartListener
+    {
+        [SerializeField] private ConditionActionData[] _conditionActions;
+
+        private Dictionary<GameCondition, bool> _conditions;
+
+        public void GameInit()
         {
-            { GameCondition.None, true },
-            { GameCondition.EnterWhiteRoom, false },
-            { GameCondition.KillMePlease, true },
-        };
+            var conditions = Enum.GetValues(typeof(GameCondition)).Cast<GameCondition>().ToArray();
+            for (int i = 0; i < conditions.Length; i++)
+            {
+                _conditions.Add(conditions[i], false);
+            }
+            _conditions[GameCondition.None] = true;
+        }
+
+        public void GameStart()
+        {
+            SubscribeToEvents();
+        }
 
         public bool GetValue(GameCondition condition)
         {
             return _conditions.ContainsKey(condition) && _conditions[condition];
+        }
+
+        private void SubscribeToEvents()
+        {
+            for (int i = 0; i < _conditionActions.Length; i++)
+            {
+                _conditionActions[i].Action.OnEnd += () =>
+                {
+                    _conditions[_conditionActions[i].Condition] = true;
+                };
+            }
         }
     }
 }

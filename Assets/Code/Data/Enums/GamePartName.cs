@@ -1,6 +1,4 @@
-﻿using System.Diagnostics.Tracing;
-
-namespace Code.Data.Enums
+﻿namespace Code.Data.Enums
 {
     public enum GamePartName
     {

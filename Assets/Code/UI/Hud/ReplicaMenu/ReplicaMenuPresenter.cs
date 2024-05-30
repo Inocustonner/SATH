@@ -57,6 +57,5 @@ namespace Code.UI.Hud.ReplicaMenu
         {
             View.Skip();
         }
-
     }
 }

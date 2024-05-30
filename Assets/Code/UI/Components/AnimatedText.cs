@@ -5,6 +5,7 @@ using Code.Data.Configs;
 using Code.Data.DynamicData;
 using Code.Infrastructure.DI;
 using Code.Infrastructure.GameLoop;
+using Code.Infrastructure.Services;
 using Febucci.UI;
 using TMPro;
 using UnityEngine;
