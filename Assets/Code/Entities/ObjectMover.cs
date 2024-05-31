@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 
 namespace Code.Entities
@@ -21,6 +20,20 @@ namespace Code.Entities
             {
                 _entity.position = Vector3.Lerp(_entity.position, to, _speed * Time.deltaTime);
                 yield return period;
+            }
+            onCompeted?.Invoke();
+        }
+        
+        public IEnumerator Move(Vector2[] to, Action onCompeted = null)
+        {
+            var period = new WaitForEndOfFrame();
+            for (int i = 0; i < to.Length; i++)
+            {
+                while (Vector3.Distance(_entity.position, to[i]) > _stoppedDistance)
+                {
+                    _entity.position = Vector3.Lerp(_entity.position, to[i], _speed * Time.deltaTime);
+                    yield return period;
+                }
             }
             onCompeted?.Invoke();
         }

@@ -3,8 +3,8 @@
     public enum GameCondition
     {
         None,
-        TryLeftDoor,
-        TryRightDoor,
-        TryAllDoor
+        TryAllDoor,
+        FirstBall,
+        GoodBall
     }
 }

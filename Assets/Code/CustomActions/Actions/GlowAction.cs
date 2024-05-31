@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections;
+using Code.Infrastructure.GameLoop;
 using Code.Infrastructure.Services.Materials;
 using UnityEngine;
 
 namespace Code.CustomActions.Actions
 {
-    public class GlowAction : CustomAction
+    public class GlowAction : CustomAction,IGameInitListener, IGameExitListener
     {
         [SerializeField] private float _flashingDuration = 4;
         [SerializeField, Range(0, 100)] private float _maxGlowValue = 50;
@@ -13,10 +14,15 @@ namespace Code.CustomActions.Actions
         
         private bool _isActive;
         private Coroutine _coroutine;
-
+        
         public void GameInit()
         {
             _material.SetFloatValue(0);   
+        }
+        
+        public void GameExit()
+        {
+            _material.SetFloatValue(0);
         }
 
         public override void StartAction()

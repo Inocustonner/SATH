@@ -49,15 +49,10 @@ namespace Code.Infrastructure.Services
                 _conditionActions[i].Action.OnEnd += () =>
                 {
                     _conditions[_conditionActions[i].Condition] = true;
-                    RefreshComboCondition();
                 };
             }
         }
 
-        private void RefreshComboCondition()
-        {
-            _conditions[GameCondition.TryAllDoor] =
-                _conditions[GameCondition.TryLeftDoor] && _conditions[GameCondition.TryRightDoor];
-        }
+  
     }
 }

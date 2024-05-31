@@ -47,11 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99fe8d31fdf8431db83d230e04a56c31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _conditionActions:
-  - Condition: 1
-    Action: {fileID: 2270551614648309919}
-  - Condition: 2
-    Action: {fileID: 6208006811225573663}
+  _conditionActions: []
 --- !u!1001 &1775249298368435324
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -126,6 +122,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Part_1__home
       objectReference: {fileID: 0}
+    - target: {fileID: 2772022554335271384, guid: a2b0dd50f2b8ff644ad62ca0d4319972, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8437936679500266834, guid: a2b0dd50f2b8ff644ad62ca0d4319972, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -171,33 +171,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2b0dd50f2b8ff644ad62ca0d4319972, type: 3}
---- !u!114 &2270551614648309919 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5366036063124435547, guid: a2b0dd50f2b8ff644ad62ca0d4319972, type: 3}
-  m_PrefabInstance: {fileID: 6193966777462614724}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d91308c178e49f3871abf115f96ecf2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &2372536376531933078 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8437936679500266834, guid: a2b0dd50f2b8ff644ad62ca0d4319972, type: 3}
   m_PrefabInstance: {fileID: 6193966777462614724}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6208006811225573663 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 275325108526293979, guid: a2b0dd50f2b8ff644ad62ca0d4319972, type: 3}
-  m_PrefabInstance: {fileID: 6193966777462614724}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d91308c178e49f3871abf115f96ecf2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &6855966621658175658
 PrefabInstance:
   m_ObjectHideFlags: 0

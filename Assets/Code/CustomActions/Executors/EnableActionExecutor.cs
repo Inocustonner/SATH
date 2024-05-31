@@ -3,28 +3,41 @@ using UnityEngine;
 
 namespace Code.CustomActions.Executors
 {
-    public class EnableActionExecutor: MonoBehaviour
+    public class EnableActionExecutor: ActionExecutor
     {
         [Header("Components")] 
         [SerializeField] private CustomAction[] _customActions;
 
         [Header("Components")] 
         [SerializeField] private bool _isStopActionWhenDisable = true;
+        
+        
         private void OnEnable()
         {
-            foreach (var action in _customActions)
+            if (IsCanInvoke())
             {
-                action.StartAction();
+                foreach (var action in _customActions)
+                {
+                    action.StartAction();
+                }
             }
         }
 
         private void OnDisable()
         {
-            if (_isStopActionWhenDisable)
+            if (IsCanInvoke())
             {
-                foreach (var action in _customActions)
+                if (!_isCanRepeat)
                 {
-                    action.StopAction();
+                    _isInvoked = true;
+                }
+                
+                if (_isStopActionWhenDisable)
+                {
+                    foreach (var action in _customActions)
+                    {
+                        action.StopAction();
+                    }
                 }
             }
         }

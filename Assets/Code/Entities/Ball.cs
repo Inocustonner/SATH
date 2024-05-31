@@ -4,10 +4,14 @@ namespace Code.Entities
 {
     public class Ball: MonoBehaviour
     {
-        [Header("Components")]
+        [Header("Ball Components")]
         [SerializeField] private Rigidbody2D _rigidbody;
         [SerializeField] private Collider2D _collider;
         [SerializeField] private ObjectMover _mover;
+
+        [Header("Scene Components")] 
+        [SerializeField] private Transform _teacher; 
+        
         /*[Header("Components")]
         private */
         

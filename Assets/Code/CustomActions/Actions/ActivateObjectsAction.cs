@@ -4,15 +4,20 @@ namespace Code.CustomActions.Actions
 {
     public class ActivateObjectsAction: CustomAction
     {
-        [SerializeField] private bool _isActivate = true;
-        [SerializeField] private GameObject[] _objects;
+        [SerializeField] private GameObject[] _activatedObjects;
+        [SerializeField] private GameObject[] _disabledObjects;
         
         public override void StartAction()
         {
-            foreach (var obj in _objects)
+            foreach (var obj in _activatedObjects)
             {
-                obj.SetActive(_isActivate);
+                obj.SetActive(true);
+            }
+            foreach (var obj in _disabledObjects)
+            {
+                obj.SetActive(false);
             }    
         }
     }
+    
 }

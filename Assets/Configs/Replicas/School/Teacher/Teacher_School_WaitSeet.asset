@@ -23,11 +23,8 @@ MonoBehaviour:
       - Markups: 
         Effect: 0
         Color: {r: 0.427451, g: 0.14117648, b: 0.427451, a: 1}
-        MessageText: "\u041D\u0443 \u0436\u0435."
-      - Markups: 0100000002000000
-        Effect: 1
-        Color: {r: 0.427451, g: 0.14117648, b: 0.427451, a: 1}
-        MessageText: "\u041C\u044B \u0436\u0434\u0451\u043C."
+        MessageText: "\u041F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430,
+          \u0441\u044F\u0434\u044C..."
     EditorPosition: {x: 4397, y: 1591}
   Edges: []
-  _textRus: "\u041D\u0443 \u0436\u0435.\u041C\u044B \u0436\u0434\u0451\u043C."
+  _textRus: "\u041F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430, \u0441\u044F\u0434\u044C..."

@@ -28,16 +28,19 @@ namespace Code.UI.Hud.ReplicaMenu
             windowTransform.gameObject.SetActive(false);
         }
         
-        
         public void StartWrite(AcceleratedTextData[] replicas, AnimatedTextWaiter.Mode waitedMode)
         {
-            _animatedText.ResetText();
             _animatedText.StartWrite(replicas, waitedMode);
         }
 
         public void Skip()
         {
             _animatedText.Skip();
+        }
+
+        public void Reset()
+        {
+            _animatedText.ResetText();
         }
 
         private void AnimatedTextOnOnEndWrite()

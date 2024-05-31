@@ -11,8 +11,7 @@ namespace Code.CustomActions.Actions
     public class ReplicaAction : CustomAction, IGameInitListener
     {
         [SerializeField] private ReplicaConfig _replicaConfig;
-        [SerializeField] private bool _isCanRepeat = true;
-        private bool _isInvoked;
+
         public event Action<ReplicaConfig> OnTryStartReplica;
 
         private ReplicaService _replicaService;
@@ -24,10 +23,9 @@ namespace Code.CustomActions.Actions
 
         public override void StartAction()
         {
-            if (_replicaConfig != null && IsCanInvoke())
+            if (_replicaConfig != null)
             {
                 OnTryStartReplica?.Invoke(_replicaConfig);
-                _isInvoked = true;
                 InvokeStartEvent();
                 _replicaService.OnEndReplica += OnEndWriteReplica;
             }
@@ -36,6 +34,7 @@ namespace Code.CustomActions.Actions
         private void OnEndWriteReplica()
         {
             _replicaService.OnEndReplica -= OnEndWriteReplica;
+         
             StopAction();
         }
 
@@ -45,9 +44,5 @@ namespace Code.CustomActions.Actions
             InvokeEndEvent();
         }
 
-        private bool IsCanInvoke()
-        {
-            return _isCanRepeat || (!_isCanRepeat && !_isInvoked);
-        }
     }
 }

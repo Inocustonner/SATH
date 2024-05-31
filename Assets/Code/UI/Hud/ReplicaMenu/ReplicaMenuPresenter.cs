@@ -38,6 +38,8 @@ namespace Code.UI.Hud.ReplicaMenu
 
         private void OnStartReplica(AcceleratedTextData[] replicas, AnimatedTextWaiter.Mode waitedMode, Action action)
         {
+            View.Skip();
+            View.Reset();
             if (!Model.IsValidating)
             {
                 ChangeMenuState(MenuState.Active);

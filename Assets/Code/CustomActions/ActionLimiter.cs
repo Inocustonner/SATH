@@ -1,4 +1,5 @@
-﻿using Code.CustomActions.Actions;
+﻿using System.Collections;
+using Code.CustomActions.Actions;
 using Code.Infrastructure.DI;
 using Code.Infrastructure.GameLoop;
 using Code.Infrastructure.Services;
@@ -11,12 +12,19 @@ namespace Code.CustomActions
     {
         [Header("Components")]
         [SerializeField] private CustomAction _customAction;
-        [Header("Params")]
+
+        [Header("Params")] 
+        [SerializeField] private float _unlockDelay;
         [SerializeField] private bool _isLockInteraction;
         [SerializeField] private bool _isLockMovement;
+        
         [Header("Services")] 
         private InteractionLimiter _interactionLimiter;
         private MoveLimiter _moveLimiter;
+
+        [Header("Services")] 
+        private Coroutine _coroutine;
+        
         
         public void GameInit()
         {
@@ -47,6 +55,28 @@ namespace Code.CustomActions
         private void OnStartCustomAction()
         {
             this.Log("Start");
+            Block();
+        }
+
+        private void OnEndCustomAction()
+        {
+            this.Log("End");
+            if (_unlockDelay == 0)
+            {
+                Unblock();
+            }
+            else
+            {
+                if (_coroutine != null)
+                {
+                    StopCoroutine(_coroutine);
+                }
+                _coroutine = StartCoroutine(UnblockWithDelay());
+            }
+        }
+
+        private void Block()
+        {
             if (_isLockInteraction)
             {
                 _interactionLimiter.Block();
@@ -58,9 +88,8 @@ namespace Code.CustomActions
             }
         }
 
-        private void OnEndCustomAction()
+        private void Unblock()
         {
-            this.Log("End");
             if (_isLockInteraction)
             {
                 _interactionLimiter.Unblock();
@@ -70,6 +99,12 @@ namespace Code.CustomActions
             {
                 _moveLimiter.Unblock();
             }
+        }
+
+        private IEnumerator UnblockWithDelay()
+        {
+            yield return new WaitForSeconds(_unlockDelay);
+            Unblock();
         }
     }
 }

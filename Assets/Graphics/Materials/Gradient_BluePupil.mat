@@ -163,7 +163,7 @@ Material:
     - _GlossyReflections: 1
     - _Glow: 0
     - _GlowGlobal: 1
-    - _GradBlend: 0.406
+    - _GradBlend: 0
     - _GradBoostX: 1.2
     - _GradBoostY: 1.2
     - _GradIsRadial: 0

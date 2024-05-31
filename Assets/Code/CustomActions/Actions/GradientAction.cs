@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Code.CustomActions.Actions
 {
-    public class GradientAction:  CustomAction, IGameInitListener
+    public class GradientAction:  CustomAction, IGameInitListener, IGameExitListener
     {
         [SerializeField] private float _flashingDuration = 2;
         [SerializeField, Range(0, 1)] private float _maxGlowValue = 0.3f;
@@ -18,6 +18,11 @@ namespace Code.CustomActions.Actions
         public void GameInit()
         {
             _material.SetFloatValue(0);   
+        }
+        
+        public void GameExit()
+        {
+            _material.SetFloatValue(0);
         }
 
         public override void StartAction()
@@ -95,5 +100,7 @@ namespace Code.CustomActions.Actions
             _material.SetFloatValue(0);
             onEnd?.Invoke();
         }
+
+       
     }
 }

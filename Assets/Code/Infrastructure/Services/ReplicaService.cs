@@ -62,7 +62,7 @@ namespace Code.Infrastructure.Services
                 }
             }
         }
-
+        
         private void OnTryStartReplica(ReplicaConfig replicaConfig)
         {
             _replicaConverter.SetConfig(replicaConfig);

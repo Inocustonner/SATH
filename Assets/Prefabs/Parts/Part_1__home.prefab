@@ -113,7 +113,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _replicaConfig: {fileID: 11400000, guid: a8e7b8ac57ef82843935d685efccf319, type: 2}
-  _isCanRepeat: 1
 --- !u!1 &560087274769977508
 GameObject:
   m_ObjectHideFlags: 0
@@ -787,7 +786,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _replicaConfig: {fileID: 11400000, guid: b8d44761252c2b94296aae5189fafe9d, type: 2}
-  _isCanRepeat: 1
 --- !u!1 &3676103709603165833
 GameObject:
   m_ObjectHideFlags: 0
@@ -1274,7 +1272,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _replicaConfig: {fileID: 11400000, guid: 3f311e3c81e90024cb6a56aed0097a53, type: 2}
-  _isCanRepeat: 1
 --- !u!1 &6316462928297629771
 GameObject:
   m_ObjectHideFlags: 0
@@ -1544,7 +1541,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _replicaConfig: {fileID: 11400000, guid: 9267ea1ea5acf5f468f8a86697875c09, type: 2}
-  _isCanRepeat: 1
 --- !u!1001 &4295375566708541499
 PrefabInstance:
   m_ObjectHideFlags: 0
