@@ -5,5 +5,6 @@
         None,
         TryLeftDoor,
         TryRightDoor,
+        TryAllDoor
     }
 }

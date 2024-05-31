@@ -1,14 +1,15 @@
 ﻿using System;
 using Code.Entities;
-using Code.Infrastructure.DI;
+using UnityEditor;
 using UnityEngine;
 
 namespace Code.Infrastructure.Services.Materials
 {
-    public abstract class BaseMaterialController: IService
+    [Serializable, CanEditMultipleObjects]
+    public abstract class BaseMaterialController
     {
-        
-        protected Material _material;
+        [SerializeField] protected Material _material;
+        public abstract MaterialFloatValueType FloatValueType { get; }
 
         #region Base methods
 
@@ -23,10 +24,22 @@ namespace Code.Infrastructure.Services.Materials
             }
             else
             {
-                Debug.LogError("Материал не содержит свойство с именем " + materialFloatValueType);
+                Debug.LogError($"Материал {_material?.name} не содержит свойство с именем {materialFloatValueType}");
             }
         }
 
+        
+        public void SetFloatValue( float value)
+        {
+            if (_material != null && _material.HasProperty(FloatValueType.ToString()))
+            {
+                _material.SetFloat(FloatValueType.ToString(), value);
+            }
+            else
+            {
+                Debug.LogError($"Материал {_material?.name} не содержит свойство с именем {FloatValueType}");
+            }
+        }
         public float GetFloatValue(MaterialFloatValueType materialFloatValueType)
         {
             if (_material != null && _material.HasProperty(materialFloatValueType.ToString()))
@@ -39,6 +52,20 @@ namespace Code.Infrastructure.Services.Materials
                 return 0;
             }
         }
+        
+        public float GetFloatValue()
+        {
+            if (_material != null && _material.HasProperty(FloatValueType.ToString()))
+            {
+                return _material.GetFloat(FloatValueType.ToString());
+            }
+            else
+            {
+                Debug.LogError("Материал не содержит свойство с именем " + FloatValueType);
+                return 0;
+            }
+        }
+
 
         public void SetState(MaterialStateType materialStateType, bool isActive)
         {

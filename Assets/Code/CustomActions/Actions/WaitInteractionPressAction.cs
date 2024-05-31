@@ -25,20 +25,41 @@ namespace Code.CustomActions.Actions
         public override void StartAction()
         {
             _inputService.OnPressInteractionKey += OnPressInteractionKey;
+
+            foreach (var waitingAction in _waitingActions)
+            {
+                waitingAction.StartAction();
+            }
         }
 
         public override void StopAction()
         {
             _inputService.OnPressInteractionKey -= OnPressInteractionKey;
-            InvokeEndEvent();
-            if (_isPressInteraction)
+            
+            foreach (var waitingAction in _waitingActions)
             {
-                
+                waitingAction.StopAction();
             }
+
+            if (!_isPressInteraction)
+            {
+                return;
+            }
+            
+            _isPressInteraction = false;
+            foreach (var resultAction in _resultActions)
+            {
+                resultAction.StartAction();
+            }
+            
+            InvokeStartEvent();
+            InvokeEndEvent();
         }
 
         private void OnPressInteractionKey()
         {
+            _isPressInteraction = true;
+            StopAction();
         }
     }
 }

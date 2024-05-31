@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections;
+using Code.Infrastructure.GameLoop;
 using Code.Infrastructure.Services.Materials;
 using UnityEngine;
 
 namespace Code.CustomActions.Actions
 {
-    public class GlowAction : CustomAction
+    public class GradientAction:  CustomAction, IGameInitListener
     {
-        [SerializeField] private float _flashingDuration = 4;
-        [SerializeField, Range(0, 100)] private float _maxGlowValue = 50;
-        [SerializeField] private GlowMaterialController _material;
+        [SerializeField] private float _flashingDuration = 2;
+        [SerializeField, Range(0, 1)] private float _maxGlowValue = 0.3f;
+        [SerializeField] private GradientMaterialController _material;
         
         private bool _isActive;
         private Coroutine _coroutine;

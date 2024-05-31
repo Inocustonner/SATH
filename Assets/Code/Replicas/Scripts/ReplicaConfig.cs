@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,10 +8,14 @@ namespace Code.Replicas.Scripts
     public sealed class ReplicaConfig : ScriptableObject
     {
         public bool IsBlockMovement = true;
+        
         [Header("Replica window data")]
         public List<ReplicaNodeSerialized> Nodes;
         public List<ReplicaEdgeSerialized> Edges;
 
+        [Header("Debug")] 
+        [TextArea,SerializeField] private string _textRus;
+        
         public bool TryFindStartNode(out ReplicaNodeSerialized node)
         {
             if (Nodes == null || Nodes.Count == 0)
@@ -55,6 +60,24 @@ namespace Code.Replicas.Scripts
 
             result = default;
             return false;
+        }
+
+        private void OnValidate()
+        {
+            if (Nodes != null && Nodes.Count > 0)
+            {
+                _textRus = "";
+                foreach (var node in Nodes)
+                {
+                    foreach (var localization in node.Localization)
+                    {
+                        foreach (var part in localization.Parts)
+                        {
+                            _textRus += part.MessageText;
+                        }
+                    }
+                }
+            }
         }
     }
 }

@@ -39,7 +39,10 @@ namespace Code.Replicas.Scripts
             {
                 if (TryGetAcceleratedText(language, out var text))
                 {
-                    list.Add(text);
+                    if (text.Text is not "" or " ")
+                    {
+                        list.Add(text);
+                    }
 
                     int conditionIndex;
                     for (conditionIndex = 0; conditionIndex < _currentNode.Conditions.Count; conditionIndex++)
@@ -70,7 +73,12 @@ namespace Code.Replicas.Scripts
             {
                 foreach (var part in localization.Parts)
                 {
-                    text += GetFormatReplica(part) + " ";
+                    var formatReplica = GetFormatReplica(part);
+                    if (formatReplica[^1] != ' ')
+                    {
+                        formatReplica += " ";
+                    }
+                    text += formatReplica;
                 }
 
                 replicas.Text = text;

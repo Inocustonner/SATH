@@ -39,7 +39,7 @@ namespace Code.Infrastructure.Services
 
         public bool GetValue(GameCondition condition)
         {
-            return _conditions.ContainsKey(condition) && _conditions[condition];
+            return _conditions[condition];
         }
 
         private void SubscribeToEvents()
@@ -49,8 +49,15 @@ namespace Code.Infrastructure.Services
                 _conditionActions[i].Action.OnEnd += () =>
                 {
                     _conditions[_conditionActions[i].Condition] = true;
+                    RefreshComboCondition();
                 };
             }
+        }
+
+        private void RefreshComboCondition()
+        {
+            _conditions[GameCondition.TryAllDoor] =
+                _conditions[GameCondition.TryLeftDoor] && _conditions[GameCondition.TryRightDoor];
         }
     }
 }
