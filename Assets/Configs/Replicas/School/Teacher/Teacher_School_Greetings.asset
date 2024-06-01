@@ -16,9 +16,9 @@ MonoBehaviour:
   Nodes:
   - ID: 0
     TypingSpeed: 0
-    Conditions: 0300000000000000
+    Conditions: 0100000000000000
     Localization: []
-    EditorPosition: {x: 492.5, y: 296}
+    EditorPosition: {x: 769.5, y: 380}
   - ID: 4221a5f6-3a01-4492-abea-b751681f5c23
     TypingSpeed: 0
     Conditions: 00000000
@@ -42,7 +42,7 @@ MonoBehaviour:
         MessageText: "\u0412\u0441\u0442\u0430\u0432\u0430\u0439\u0442\u0435 \u0437\u0430
           \u043F\u0430\u0440\u0442\u044B. \u041D\u0430\u043C \u043F\u043E\u0440\u0430
           \u043D\u0430\u0447\u0438\u043D\u0430\u0442\u044C."
-    EditorPosition: {x: 1197, y: -48.5}
+    EditorPosition: {x: 1485, y: 320.5}
   - ID: c941885d-1e5b-4025-9b3d-c7d19493e2a6
     TypingSpeed: 0
     Conditions: 00000000
@@ -61,12 +61,22 @@ MonoBehaviour:
           \u0442\u043E\u043B\u044C\u043A\u043E \u0442\u0435\u0431\u044F. \u0412\u0441\u0442\u0430\u0432\u0430\u0439
           \u0437\u0430 \u043F\u0430\u0440\u0442\u0443. \u041D\u0430\u043C \u043F\u043E\u0440\u0430
           \u043D\u0430\u0447\u0438\u043D\u0430\u0442\u044C \u0443\u0440\u043E\u043A."
-    EditorPosition: {x: 1197, y: 661}
+    EditorPosition: {x: 1485, y: 942}
   Edges:
   - SourceNode: 0
-    TargetNode: 4221a5f6-3a01-4492-abea-b751681f5c23
+    TargetNode: c941885d-1e5b-4025-9b3d-c7d19493e2a6
     Index: 0
   - SourceNode: 0
-    TargetNode: c941885d-1e5b-4025-9b3d-c7d19493e2a6
+    TargetNode: 4221a5f6-3a01-4492-abea-b751681f5c23
     Index: 1
-  _textRus: 
+  _textRus: "\u0417\u0434\u0440\u0430\u0432\u0441\u0442\u0432\u0443\u0439\u0442\u0435
+    \u0434\u0435\u0442\u0438.\u042F \u043E\u0447\u0435\u043D\u044C \u0440\u0430\u0434\u0430
+    \u0447\u0442\u043E \u0432 \u044D\u0442\u043E\u0442 \u0440\u0430\u0437 \u0432\u0441\u0435
+    \u043F\u0440\u0438\u0448\u043B\u0438 \u043D\u0430 \u0443\u0440\u043E\u043A \u0412\u0441\u0442\u0430\u0432\u0430\u0439\u0442\u0435
+    \u0437\u0430 \u043F\u0430\u0440\u0442\u044B. \u041D\u0430\u043C \u043F\u043E\u0440\u0430
+    \u043D\u0430\u0447\u0438\u043D\u0430\u0442\u044C.\u0422\u044B \u043D\u0430\u043A\u043E\u043D\u0435\u0446
+    \u0441\u043E\u0438\u0437\u0432\u043E\u043B\u0438\u043B \u044F\u0432\u0438\u0442\u0441\u044F.\u0412\u0441\u0435
+    \u0437\u0434\u0435\u0441\u044C \u0436\u0434\u0430\u043B\u0438 \u0442\u043E\u043B\u044C\u043A\u043E
+    \u0442\u0435\u0431\u044F. \u0412\u0441\u0442\u0430\u0432\u0430\u0439 \u0437\u0430
+    \u043F\u0430\u0440\u0442\u0443. \u041D\u0430\u043C \u043F\u043E\u0440\u0430 \u043D\u0430\u0447\u0438\u043D\u0430\u0442\u044C
+    \u0443\u0440\u043E\u043A."

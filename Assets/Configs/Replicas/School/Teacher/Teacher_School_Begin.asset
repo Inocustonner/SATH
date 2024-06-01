@@ -38,7 +38,7 @@ MonoBehaviour:
         Effect: 1
         Color: {r: 0.427451, g: 0.14117648, b: 0.427451, a: 1}
         MessageText: "\u0421\u0432\u043E\u044E \u0440\u0430\u0431\u043E\u0442\u0443."
-    EditorPosition: {x: 2051, y: 704.5}
+    EditorPosition: {x: 0, y: 0}
   Edges:
   - SourceNode: 0
     TargetNode: 5e891be8-8ee9-4369-867e-e3529e32080b

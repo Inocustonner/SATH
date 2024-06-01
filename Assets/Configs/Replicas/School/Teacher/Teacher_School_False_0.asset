@@ -16,7 +16,7 @@ MonoBehaviour:
   Nodes:
   - ID: 0
     TypingSpeed: 0
-    Conditions: 00000000
+    Conditions: 02000000
     Localization:
     - Language: 0
       Parts:
@@ -28,7 +28,7 @@ MonoBehaviour:
         Effect: 1
         Color: {r: 0.427451, g: 0.14117648, b: 0.427451, a: 1}
         MessageText: "\u0435\u0433\u043E \u043C\u0435\u0441\u0442\u043E."
-    EditorPosition: {x: 2600, y: 1338}
+    EditorPosition: {x: 2888, y: 1619}
   - ID: faaea2c8-1713-431d-ae4f-09e8a4b4a39c
     TypingSpeed: 0.09
     Conditions: 00000000
@@ -39,8 +39,10 @@ MonoBehaviour:
         Effect: 0
         Color: {r: 0.427451, g: 0.14117648, b: 0.427451, a: 1}
         MessageText: "\u0412\u0435\u0440\u043D\u0438\u0441\u044C \u0437\u0430 \u043F\u0430\u0440\u0442\u0443."
-    EditorPosition: {x: 3330, y: 1153.5}
+    EditorPosition: {x: 3618, y: 1347.5}
   Edges:
   - SourceNode: 0
     TargetNode: faaea2c8-1713-431d-ae4f-09e8a4b4a39c
     Index: 0
+  _textRus: "\u042D\u0442\u043E \u043D\u0435 \u0435\u0433\u043E \u043C\u0435\u0441\u0442\u043E.\u0412\u0435\u0440\u043D\u0438\u0441\u044C
+    \u0437\u0430 \u043F\u0430\u0440\u0442\u0443."
