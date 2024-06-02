@@ -4,6 +4,6 @@ namespace Code.UI.Hud.ReplicaMenu
 {
     public class ReplicaMenuModel : BaseMenuModel<ReplicaMenuModel>
     {
-        public bool IsTyping;
+        public int ReplicasCount;
     }
 }

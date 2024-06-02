@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using Code.Data.Configs;
 using Code.Data.DynamicData;
 using Code.Infrastructure.DI;
 using Code.Infrastructure.Services;
@@ -38,8 +36,10 @@ namespace Code.UI.Hud.ReplicaMenu
 
         private void OnStartReplica(AcceleratedTextData[] replicas, AnimatedTextWaiter.Mode waitedMode, Action action)
         {
+            Model.ReplicasCount++;
             View.Skip();
             View.Reset();
+            
             if (!Model.IsValidating)
             {
                 ChangeMenuState(MenuState.Active);
@@ -51,8 +51,12 @@ namespace Code.UI.Hud.ReplicaMenu
 
         private void OnEndWrite()
         {
+            Model.ReplicasCount--;
             OnEndWriteReplicas?.Invoke();
-            ChangeMenuState(MenuState.Inactive);
+            if (Model.ReplicasCount == 0)
+            {
+                ChangeMenuState(MenuState.Inactive);
+            }
         }
 
         private void OnStopReplicaPart()

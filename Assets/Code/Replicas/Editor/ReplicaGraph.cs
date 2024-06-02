@@ -56,11 +56,11 @@ namespace Code.Replicas.Editor
             }
         }
 
-        private void OnPressCreateNode(DropdownMenuAction menuAction)
-        {
-            var nodePosition = contentViewContainer.WorldToLocal(menuAction.eventInfo.localMousePosition);
-            CreateNode(nodePosition);
-        }
+            private void OnPressCreateNode(DropdownMenuAction menuAction)
+            {
+                var nodePosition = contentViewContainer.WorldToLocal(menuAction.eventInfo.localMousePosition);
+                CreateNode(nodePosition);
+            }
 
         public ReplicaNode CreateNode(ReplicaNodeSerialized replicaNodeSerialized)
         {

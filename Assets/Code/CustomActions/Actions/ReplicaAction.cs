@@ -25,6 +25,7 @@ namespace Code.CustomActions.Actions
         {
             if (_replicaConfig != null)
             {
+                this.Log($"Start action {_replicaConfig.name}", Color.cyan);
                 OnTryStartReplica?.Invoke(_replicaConfig);
                 InvokeStartEvent();
                 _replicaService.OnEndReplica += OnEndWriteReplica;
@@ -34,15 +35,14 @@ namespace Code.CustomActions.Actions
         private void OnEndWriteReplica()
         {
             _replicaService.OnEndReplica -= OnEndWriteReplica;
-         
+
             StopAction();
         }
 
         public override void StopAction()
         {
-            this.Log("Stop");
+            this.Log($"End action {_replicaConfig.name}", Color.cyan);
             InvokeEndEvent();
         }
-
     }
 }

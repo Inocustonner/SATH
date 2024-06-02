@@ -43,20 +43,20 @@ namespace Code.Replicas.Scripts
                     {
                         list.Add(text);
                     }
-
-                    int conditionIndex;
-                    for (conditionIndex = 0; conditionIndex < _currentNode.Conditions.Count; conditionIndex++)
-                    {
-                        if (_gameConditionService.GetValue(_currentNode.Conditions[conditionIndex]))
-                        {
-                            break;
-                        }
-                    }
-
-                    if (!MoveNext(conditionIndex))
+                }
+                
+                int conditionIndex;
+                for (conditionIndex = 0; conditionIndex < _currentNode.Conditions.Count; conditionIndex++)
+                {
+                    if (_gameConditionService.GetValue(_currentNode.Conditions[conditionIndex]))
                     {
                         break;
                     }
+                }
+
+                if (!MoveNext(conditionIndex))
+                {
+                    break;
                 }
             }
 
@@ -87,6 +87,30 @@ namespace Code.Replicas.Scripts
             }
 
             return false;
+        }
+        
+        private AcceleratedTextData GetAcceleratedText(Lan language)
+        {
+            var replicas = new AcceleratedTextData();
+            var text = "";
+            var localization = _currentNode.Localization.FirstOrDefault(l => l.Language == language);
+            if (localization.Parts != null && localization.Parts.Count > 0)
+            {
+                foreach (var part in localization.Parts)
+                {
+                    var formatReplica = GetFormatReplica(part);
+                    if (formatReplica[^1] != ' ')
+                    {
+                        formatReplica += " ";
+                    }
+                    text += formatReplica;
+                }
+
+                replicas.Text = text;
+                replicas.Speed = _currentNode.TypingSpeed;
+            }
+
+            return replicas;
         }
 
         private bool MoveNext(int conditionIndex)

@@ -17,6 +17,11 @@ namespace Core.Infrastructure.Utils
             LogInternal(thisObj.GetType().ToString(), obj, LogColor);
         }
         
+        public static void Log(this object thisObj, object obj, Color color)
+        {
+            LogInternal(thisObj.GetType().ToString(), obj, color);
+        }
+
         public static void LogWarning(object obj)
         {
             LogInternal(GetClassName(), obj, WarningColor);

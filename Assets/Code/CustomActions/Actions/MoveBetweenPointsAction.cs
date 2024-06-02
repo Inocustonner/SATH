@@ -1,5 +1,4 @@
-﻿using System;
-using Code.Entities;
+﻿using Code.Entities;
 using UnityEngine;
 
 namespace Code.CustomActions.Actions
@@ -11,15 +10,15 @@ namespace Code.CustomActions.Actions
         private int _currentIndex;
         public override void StartAction()
         {
-           
+            StartCoroutine(_objectMover.Move(_points,onCompeted: StopAction));
         }
 
         public override void StopAction()
         {
-            
+            InvokeEndEvent();
         }
 
-        private void OnValidate()
+        private void OnDrawGizmosSelected()
         {
             if (_points.Length == 0)
             {
