@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48e56e729e8a46f58050bf2e2c16e7d8, type: 3}
-  m_Name: Teacher_School_False_1
+  m_Name: School_Teacher_False_1
   m_EditorClassIdentifier: 
   IsBlockMovement: 1
   Nodes:
