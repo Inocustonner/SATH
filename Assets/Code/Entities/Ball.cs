@@ -18,15 +18,23 @@ namespace Code.Entities
 
         public void GameTick()
         {
+            if (!gameObject.activeInHierarchy)
+            {
+                return;
+            }
+            
             if (_isFollow)
             {
-                transform.position = Vector3.Lerp(transform.position, _teacher.position + new Vector3(0,1.5f,0), 15 * Time.deltaTime);
+                transform.position = Vector3.Lerp(
+                    transform.position, 
+                    _teacher.position + new Vector3(-0.5f,1.5f,0), 
+                    15 * Time.deltaTime);
             }
         }
 
         public void SwitchFollow(bool isFollow)
         {
-            _isFollow = !_isFollow;
+            _isFollow = isFollow;
             SetPhysicState(!_isFollow);
             SetColliderState(!_isFollow);
         }
@@ -36,7 +44,7 @@ namespace Code.Entities
             _rigidbody.isKinematic = !isEnabled;
         }
 
-        public void SetColliderState(bool isEnabled)
+        private void SetColliderState(bool isEnabled)
         {
             _collider.enabled = isEnabled;
         }

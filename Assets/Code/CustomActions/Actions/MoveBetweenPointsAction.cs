@@ -10,6 +10,10 @@ namespace Code.CustomActions.Actions
         private int _currentIndex;
         public override void StartAction()
         {
+            if (!gameObject.activeInHierarchy)
+            {
+                return;
+            }
             StartCoroutine(_objectMover.Move(_points,onCompeted: StopAction));
         }
 

@@ -61,6 +61,11 @@ namespace Code.Infrastructure.Services
                 {
                     transitionAction.OnTryStart += OnTryStartTransition;
                 }
+
+                foreach (var gamePart in _gameParts)
+                {
+                    gamePart.OnTryRestart += OnTryRestartGamePart;
+                }
             }
             else
             {
@@ -69,6 +74,12 @@ namespace Code.Infrastructure.Services
                     transitionAction.OnTryStart -= OnTryStartTransition;
                 }
             }
+        }
+
+        private void OnTryRestartGamePart(GamePart part)
+        {
+            OnStartTransition?.Invoke();
+            _coroutineRunner.StartActionWithDelay(part.Reset, _delay);
         }
 
         private void OnTryStartTransition(NextGamePartData[] nextPartsData)

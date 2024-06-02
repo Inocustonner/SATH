@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Code.Replicas;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,6 +18,7 @@ namespace Code.Infrastructure.DI
         [SerializeField] private MonoBehaviour[] _allObjects;
         private List<IEntity> _entities;
         private List<IService> _services;
+        private List<GamePart> _gameParts;
 
         private void Awake()
         {
@@ -30,6 +32,7 @@ namespace Code.Infrastructure.DI
             _allObjects = FindAllObjectsOfType<MonoBehaviour>().ToArray();
             InitList(ref _entities);
             _services = _entities.OfType<IService>().ToList();
+            _gameParts = _entities.OfType<GamePart>().ToList();
         }
 
         private void InitList<T>(ref List<T> list)
@@ -79,6 +82,21 @@ namespace Code.Infrastructure.DI
             return default;
         }
 
+        
+        public T FindGamePart<T>() where T : GamePart
+        {
+            foreach (var gamePart in _gameParts)
+            {
+                if (gamePart is T findGamePart)
+                {
+                    return findGamePart;
+                }
+            }
+
+            return default;
+        }
+
+        
         public T[] GetContainerComponents<T>()
         {
             var components = _entities.OfType<T>().ToList();

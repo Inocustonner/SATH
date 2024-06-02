@@ -10,8 +10,7 @@ namespace Code.CustomActions.Actions
 {
     public class ReplicaAction : CustomAction, IGameInitListener
     {
-        [SerializeField] private ReplicaConfig _replicaConfig;
-
+        [SerializeField] protected ReplicaConfig _replicaConfig;
         public event Action<ReplicaConfig> OnTryStartReplica;
 
         private ReplicaService _replicaService;
