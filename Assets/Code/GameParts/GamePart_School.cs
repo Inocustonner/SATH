@@ -30,9 +30,9 @@ namespace Code.Replicas
             foreach (var childObject in _childObjects)
             {
                 _childStartStates.Add(childObject,childObject.activeSelf);
-            }   
+            }
 
-            _restartable = _childObjects.OfType<IRestartable>().ToArray();
+            _restartable = GetComponentsInChildren<IRestartable>(true);
         }
 
         public void GameStart()
