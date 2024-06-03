@@ -19,13 +19,13 @@ namespace Code.Replicas.Editor
         
         public ReplicaPartElement()
         {
-            style.backgroundColor = new StyleColor(Color.white);
+            style.backgroundColor = new StyleColor(new Color(1,1,1,0.75f));
             style.minWidth = 100;
             style.minHeight = 20;
 
             AddMarkupProperty(0);
             AddEffectProperty(1);
-            AddColorProperty(2);
+            AddColorProperty(2, Color.white);
             AddMessageTextField(3);
             AddDeletePartButton(4);
         }
