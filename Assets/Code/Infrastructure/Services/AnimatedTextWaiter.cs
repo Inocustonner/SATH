@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Code.Infrastructure.Services
 {
-    public class AnimatedTextWaiter: IService, IGameInitListener
+    public class AnimatedTextWaiter: IService, IGameInitListener, IGameTickListener
     {
         public enum Mode
         {
@@ -21,8 +21,10 @@ namespace Code.Infrastructure.Services
         [Header("Dinamyc data")]
         private Mode _currentMode;
         private bool _isReady;
+        private float _skipCooldown;
 
         public bool IsReady => _isReady;
+        
         
         public void GameInit()
         {
@@ -44,6 +46,11 @@ namespace Code.Infrastructure.Services
             }
         }
 
+        public void ResetSkipDelay()
+        {
+            _skipCooldown = 0;
+        }
+        
         public void SetMode(Mode mode)
         {
             _currentMode = mode;
@@ -73,7 +80,18 @@ namespace Code.Infrastructure.Services
 
         private void OnPressInteractionKey()
         {
-            _isReady = true;
+            if (_skipCooldown >= 0.75f)
+            {
+                _isReady = true;
+            }
+        }
+
+        public void GameTick()
+        {
+            if (_skipCooldown <= 0.75f)
+            {
+                _skipCooldown += Time.deltaTime;
+            }
         }
     }
 }

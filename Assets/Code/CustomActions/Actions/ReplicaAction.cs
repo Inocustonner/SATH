@@ -31,15 +31,23 @@ namespace Code.CustomActions.Actions
             }
         }
 
-        private void OnEndWriteReplica()
+        private void OnEndWriteReplica(ReplicaConfig replicaConfig)
         {
-            _replicaService.OnEndReplica -= OnEndWriteReplica;
+            if (replicaConfig == _replicaConfig)
+            {
+                _replicaService.OnEndReplica -= OnEndWriteReplica;
 
-            StopAction();
+                StopAction();
+            }
         }
 
         public override void StopAction()
         {
+            if (!InProgress)
+            {
+                return;
+            }
+
             this.Log($"End action {_replicaConfig.name}", Color.cyan);
             InvokeEndEvent();
         }

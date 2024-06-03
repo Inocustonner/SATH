@@ -16,9 +16,9 @@ namespace Code.CustomActions.Actions.Single
             _ball.SwitchFollow(_isFollow);
         }
 
-        public override void StopAction()
+        /*public override void StopAction()
         {
             _ball.SwitchFollow(!_isFollow);
-        }
+        }*/
     }
 }

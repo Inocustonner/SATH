@@ -14,6 +14,7 @@ namespace Code.CustomActions.Actions
             {
                 return;
             }
+            InvokeStartEvent();
             StartCoroutine(_objectMover.Move(_points,onCompeted: StopAction));
         }
 

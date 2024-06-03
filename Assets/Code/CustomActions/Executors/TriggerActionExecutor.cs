@@ -1,10 +1,12 @@
 ﻿using Code.CustomActions.Actions;
+using Code.Data.Interfaces;
 using Code.Entities;
+using Code.Infrastructure.GameLoop;
 using UnityEngine;
 
 namespace Code.CustomActions.Executors
 {
-    public class TriggerActionExecutor : MonoBehaviour
+    public class TriggerActionExecutor : MonoBehaviour,IGameInitListener, IGameExitListener, IRestartable
     {
         [Header("Components")] 
         [SerializeField] private CollisionObserver _collisionObserver;
@@ -12,17 +14,35 @@ namespace Code.CustomActions.Executors
 
         [Header("Params")] 
         [SerializeField] private bool _isStartInsideTrigger = true;
-        
-        [Header("Debug")] 
+        [SerializeField] private bool _isCanRepeat = true;
+
+        [Header("Dinamyc value")] 
+        [SerializeField] private bool _isInvoke; 
         [SerializeField] private bool _isOnTrigger;
-        private void Awake()
+
+        public void GameInit()
         {
+            
             SubscribeToEvents(true);
         }
 
-        private void OnDestroy()
+        public void GameExit()
         {
             SubscribeToEvents(false);
+        }
+
+        private void OnEnable()
+        {
+            if (!_isStartInsideTrigger && !_isOnTrigger)
+            {
+                OnEnter(null);
+            }
+        }
+
+        public void Restart()
+        {
+            _isInvoke = false;
+            _isOnTrigger = false;
         }
 
         private void SubscribeToEvents(bool flag)
@@ -41,6 +61,12 @@ namespace Code.CustomActions.Executors
 
         private void OnEnter(GameObject obj)
         {
+            if (_isCanRepeat && _isInvoke)
+            {
+                return;
+            }
+            
+            _isInvoke = true;
             foreach (var action in _customActions)
             {
                 if (_isStartInsideTrigger)
@@ -57,6 +83,10 @@ namespace Code.CustomActions.Executors
 
         private void OnExit(GameObject obj)
         {
+            if (!_isOnTrigger)
+            {
+                return;
+            }
             foreach (var action in _customActions)
             {
                 if (_isStartInsideTrigger)
@@ -70,5 +100,7 @@ namespace Code.CustomActions.Executors
             }
             _isOnTrigger = false;
         }
+
+    
     }
 }

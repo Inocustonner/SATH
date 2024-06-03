@@ -59,7 +59,7 @@ namespace Code.Infrastructure.Services
             {
                 foreach (var transitionAction in _actions)
                 {
-                    transitionAction.OnTryStart += OnTryStartTransition;
+                    transitionAction.OnTryStart += OnTryStartGamePartTransition;
                 }
 
                 foreach (var gamePart in _gameParts)
@@ -71,7 +71,7 @@ namespace Code.Infrastructure.Services
             {
                 foreach (var transitionAction in _actions)
                 {
-                    transitionAction.OnTryStart -= OnTryStartTransition;
+                    transitionAction.OnTryStart -= OnTryStartGamePartTransition;
                 }
             }
         }
@@ -82,7 +82,7 @@ namespace Code.Infrastructure.Services
             _coroutineRunner.StartActionWithDelay(part.Reset, _delay);
         }
 
-        private void OnTryStartTransition(NextGamePartData[] nextPartsData)
+        private void OnTryStartGamePartTransition(NextGamePartData[] nextPartsData)
         {
             foreach (var nextPart in nextPartsData)
             {

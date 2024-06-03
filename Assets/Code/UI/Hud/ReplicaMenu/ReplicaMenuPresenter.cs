@@ -3,6 +3,7 @@ using Code.Data.DynamicData;
 using Code.Infrastructure.DI;
 using Code.Infrastructure.Services;
 using Code.UI.Base;
+using Core.Infrastructure.Utils;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -37,25 +38,26 @@ namespace Code.UI.Hud.ReplicaMenu
 
         private void OnStartReplica(AcceleratedTextData[] replicas, AnimatedTextWaiter.Mode waitedMode, Action action)
         {
+
             if (Model.IsTyping)
             {
                 View.Skip();
                 View.Reset();
-                Model.ReplicasCount--;
-                OnEndWriteReplicas?.Invoke();
+                /*Model.ReplicasCount--;
+                OnEndWriteReplicas?.Invoke();*/
             }
             else
             {
                 Model.IsTyping = true;
             }
-         
-            Model.ReplicasCount++;
-            
+
             if (!Model.IsValidating)
             {
                 ChangeMenuState(MenuState.Active);
+                this.Log("active",Color.red);
             }
 
+            Model.ReplicasCount++;
             OnEndWriteReplicas = action;
             View.StartWrite(replicas,waitedMode);
         }
@@ -68,6 +70,8 @@ namespace Code.UI.Hud.ReplicaMenu
             {
                 Model.IsTyping = false;
                 ChangeMenuState(MenuState.Inactive);
+                this.Log("inactive",Color.red);
+                //View.Reset();
             }
         }
 

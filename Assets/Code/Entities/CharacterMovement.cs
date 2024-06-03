@@ -1,4 +1,5 @@
 using Code.Data.Configs;
+using Code.Data.Interfaces;
 using Code.Data.StaticData;
 using Code.Infrastructure.DI;
 using Code.Infrastructure.GameLoop;
@@ -7,29 +8,35 @@ using UnityEngine;
 
 namespace Code.Entities
 {
-    public class CharacterMovement : MonoBehaviour, IGameInitListener, IGameTickListener, IGameFixedTickListener
+    public class CharacterMovement : MonoBehaviour, IGameInitListener, IGameTickListener, IGameFixedTickListener, IRestartable
     {
         [Header("Components")] 
         [SerializeField] private Rigidbody2D _rb;
+        
         [Header("Services")] 
         private InputService _inputService;
-        private MoveLimiter _moveLimiter;
-        [Header("Debug")] 
-        [SerializeField] private MovementData _data;
-  
+       
+        [Header("Static data")] 
+        private Vector3 _startPosition;
+        
+        [Header("Dinamyc data")] 
         private Vector2 _desiredVelocity;
         private Vector2 _velocity;
         private float _maxSpeedChange;
         private float _acceleration;
         private float _deceleration;
         private float _turnSpeed;
-        private bool _pressingKey;
+        private bool _isPressingKey;
+        
+        [Header("Debug")] 
+        [SerializeField] private MovementData _data;
 
         public void GameInit()
         {
             _data = Container.Instance.FindConfig<CharacterConfig>().Movement;
             _inputService = Container.Instance.FindService<InputService>();
-            _moveLimiter = Container.Instance.FindService<MoveLimiter>();
+
+            _startPosition = transform.position;
         }
 
         public void GameTick()
@@ -39,7 +46,7 @@ namespace Code.Entities
                 return;
             }
 
-            _pressingKey = _inputService.GetDirection() != Vector2.zero;
+            _isPressingKey = _inputService.GetDirection() != Vector2.zero;
             _desiredVelocity = _inputService.GetDirection() * Mathf.Max(_data.MaxSpeed - _data.Friction, 0f);
         }
 
@@ -54,9 +61,18 @@ namespace Code.Entities
             RunWithAcceleration();
         }
 
+        public void Restart()
+        {
+            _desiredVelocity = Vector2.zero;
+            _velocity = Vector2.zero;
+            _rb.velocity = Vector2.zero;
+            _isPressingKey = false;
+            transform.position = _startPosition;
+        }
+
         private void RunWithAcceleration()
         {
-            if (_pressingKey)
+            if (_isPressingKey)
             {
                 if (Mathf.Sign(_inputService.GetDirection().x) != Mathf.Sign(_velocity.x))
                 {

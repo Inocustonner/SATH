@@ -6,6 +6,7 @@ namespace Code.CustomActions.Actions
     {
         [SerializeField] private GameObject[] _activatedObjects;
         [SerializeField] private GameObject[] _disabledObjects;
+        [SerializeField] private bool _isStopped;
         
         public override void StartAction()
         {
@@ -17,6 +18,21 @@ namespace Code.CustomActions.Actions
             {
                 obj.SetActive(false);
             }    
+        }
+
+        public override void StopAction()
+        {
+            if (_isStopped)
+            {
+                foreach (var obj in _activatedObjects)
+                {
+                    obj.SetActive(false);
+                }
+                foreach (var obj in _disabledObjects)
+                {
+                    obj.SetActive(true);
+                }    
+            }
         }
     }
     

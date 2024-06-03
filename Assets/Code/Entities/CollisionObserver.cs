@@ -3,10 +3,9 @@ using UnityEngine;
 
 namespace Code.Entities
 {
-    [RequireComponent(typeof(BoxCollider2D))]
     public class CollisionObserver : MonoBehaviour
     {
-        [SerializeField] private BoxCollider2D _collider;
+        [SerializeField] private Collider2D _collider;
         
         public event Action<GameObject> OnEnter;
         public event Action<GameObject> OnExit;
@@ -43,11 +42,20 @@ namespace Code.Entities
         {
             if (_collider == null)
             {
-                _collider = GetComponent<BoxCollider2D>();
+                _collider = GetComponent<Collider2D>();
+                return;
             }
 
-            Gizmos.color = new Color32(0, 255, 0, 30);
-            Gizmos.DrawCube(transform.position + (Vector3)_collider.offset, _collider.size);
+            if (_collider is BoxCollider2D boxCollider2D)
+            {
+                Gizmos.color = new Color32(0, 255, 0, 30);
+                Gizmos.DrawCube(transform.position + (Vector3)boxCollider2D.offset, boxCollider2D.size);
+            }
+            else if(_collider is CircleCollider2D circleCollider2D)
+            {
+                Gizmos.color = new Color32(0, 255, 0, 30);
+                Gizmos.DrawSphere(transform.position + (Vector3)circleCollider2D.offset, circleCollider2D.radius);
+            }
         }
     }
 }

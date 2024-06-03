@@ -12,9 +12,10 @@ namespace Code.Replicas.Scripts
 {
     public sealed class ReplicaConverter
     {
+        private readonly GameConditionService _gameConditionService;
+        
         private ReplicaConfig _config;
         private ReplicaNodeSerialized _currentNode;
-        private readonly GameConditionService _gameConditionService;
 
         public ReplicaConverter(GameConditionService gameConditionService)
         {
@@ -89,30 +90,6 @@ namespace Code.Replicas.Scripts
             return false;
         }
         
-        private AcceleratedTextData GetAcceleratedText(Lan language)
-        {
-            var replicas = new AcceleratedTextData();
-            var text = "";
-            var localization = _currentNode.Localization.FirstOrDefault(l => l.Language == language);
-            if (localization.Parts != null && localization.Parts.Count > 0)
-            {
-                foreach (var part in localization.Parts)
-                {
-                    var formatReplica = GetFormatReplica(part);
-                    if (formatReplica[^1] != ' ')
-                    {
-                        formatReplica += " ";
-                    }
-                    text += formatReplica;
-                }
-
-                replicas.Text = text;
-                replicas.Speed = _currentNode.TypingSpeed;
-            }
-
-            return replicas;
-        }
-
         private bool MoveNext(int conditionIndex)
         {
             if (_config.TryFindNextNode(_currentNode.ID, conditionIndex, out var nextNode))

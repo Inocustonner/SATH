@@ -15,8 +15,8 @@ namespace Code.CustomActions
 
         [Header("Params")] 
         [SerializeField] private float _unlockDelay;
-        [SerializeField] private bool _isLockInteraction;
-        [SerializeField] private bool _isLockMovement;
+        [SerializeField] private bool _isLockInteraction = true;
+        [SerializeField] private bool _isLockMovement = true;
         
         [Header("Services")] 
         private InteractionLimiter _interactionLimiter;
@@ -54,13 +54,12 @@ namespace Code.CustomActions
 
         private void OnStartCustomAction()
         {
-            this.Log("Start");
+            this.Log($"Start {_customAction.gameObject.name}",Color.black);
             Block();
         }
 
         private void OnEndCustomAction()
         {
-            this.Log("End");
             if (_unlockDelay == 0)
             {
                 Unblock();
@@ -70,6 +69,7 @@ namespace Code.CustomActions
                 if (_coroutine != null)
                 {
                     StopCoroutine(_coroutine);
+                    Unblock();
                 }
                 _coroutine = StartCoroutine(UnblockWithDelay());
             }
@@ -99,6 +99,7 @@ namespace Code.CustomActions
             {
                 _moveLimiter.Unblock();
             }
+            this.Log($"End {_customAction.gameObject.name}",Color.black);
         }
 
         private IEnumerator UnblockWithDelay()

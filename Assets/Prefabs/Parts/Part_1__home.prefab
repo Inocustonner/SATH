@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d91308c178e49f3871abf115f96ecf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _replicaConfig: {fileID: 11400000, guid: a8e7b8ac57ef82843935d685efccf319, type: 2}
+  _replicaConfig: {fileID: 0}
 --- !u!1 &560087274769977508
 GameObject:
   m_ObjectHideFlags: 0
@@ -514,6 +514,8 @@ MonoBehaviour:
   _customActions:
   - {fileID: 6895793700629516029}
   _isStartInsideTrigger: 1
+  _isCanRepeat: 1
+  _isInvoke: 0
   _isOnTrigger: 0
 --- !u!114 &6895793700629516029
 MonoBehaviour:
@@ -774,6 +776,8 @@ MonoBehaviour:
   _customActions:
   - {fileID: 5366036063124435547}
   _isStartInsideTrigger: 1
+  _isCanRepeat: 1
+  _isInvoke: 0
   _isOnTrigger: 0
 --- !u!114 &5366036063124435547
 MonoBehaviour:
@@ -897,6 +901,8 @@ MonoBehaviour:
   _customActions:
   - {fileID: 3212679734153653872}
   _isStartInsideTrigger: 1
+  _isCanRepeat: 1
+  _isInvoke: 0
   _isOnTrigger: 0
 --- !u!114 &3212679734153653872
 MonoBehaviour:
@@ -1101,6 +1107,8 @@ MonoBehaviour:
   _customActions:
   - {fileID: 3918868631945339613}
   _isStartInsideTrigger: 1
+  _isCanRepeat: 1
+  _isInvoke: 0
   _isOnTrigger: 0
 --- !u!114 &3918868631945339613
 MonoBehaviour:
@@ -1260,6 +1268,8 @@ MonoBehaviour:
   _customActions:
   - {fileID: 275325108526293979}
   _isStartInsideTrigger: 1
+  _isCanRepeat: 1
+  _isInvoke: 0
   _isOnTrigger: 0
 --- !u!114 &275325108526293979
 MonoBehaviour:
@@ -1529,6 +1539,8 @@ MonoBehaviour:
   _customActions:
   - {fileID: 4914987106537026373}
   _isStartInsideTrigger: 1
+  _isCanRepeat: 1
+  _isInvoke: 0
   _isOnTrigger: 0
 --- !u!114 &4914987106537026373
 MonoBehaviour:

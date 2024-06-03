@@ -19,10 +19,11 @@ namespace Code.Infrastructure.Services
         [Header("Static data")]
         private GameSettings _gameSettings;
         private ReplicaAction[] _actions;
-     
+
+        
         public event Action<AcceleratedTextData[], AnimatedTextWaiter.Mode, Action> OnStartReplica;
         public event Action OnStopReplicaPart;
-        public event Action OnEndReplica;
+        public event Action<ReplicaConfig> OnEndReplica;
 
         public void GameInit()
         {
@@ -83,7 +84,7 @@ namespace Code.Infrastructure.Services
                     {
                         _moveLimiter.Unblock();
                     }
-                    OnEndReplica?.Invoke();
+                    OnEndReplica?.Invoke(replicaConfig);
                 });
             }
         }

@@ -1,5 +1,7 @@
 ﻿using System;
 using Code.Infrastructure.DI;
+using Core.Infrastructure.Utils;
+using UnityEngine;
 
 namespace Code.Infrastructure.Services
 {
@@ -17,6 +19,8 @@ namespace Code.Infrastructure.Services
             {
                 OnSwitch?.Invoke(false);
             }
+            
+            this.Log($"block {_counter}",Color.gray);
         }
 
         public void Unblock()
@@ -29,6 +33,11 @@ namespace Code.Infrastructure.Services
                 {
                     OnSwitch?.Invoke(true);
                 }
+                this.Log($"unblock {_counter}",Color.gray);
+            }
+            else
+            {
+                this.Log($"can`t unblock {_counter}",Color.black);
             }
         }
     }

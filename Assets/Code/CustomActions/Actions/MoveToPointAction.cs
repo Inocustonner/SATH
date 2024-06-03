@@ -23,7 +23,6 @@ namespace Code.CustomActions.Actions
                 SetComponentsEnable(true);
                 InvokeEndEvent();
             }));
-            InvokeEndEvent();
         }
 
         private void TryStopCoroutine()

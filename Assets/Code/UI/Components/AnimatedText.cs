@@ -108,6 +108,7 @@ namespace Code.UI
 
         private void StartWrite(string text, float speed)
         {
+            _animatedTextWaiter.ResetSkipDelay();
             _animatedTextWaiter.Reset();
             _textAnimatorPlayer.waitForNormalChars = speed > 0 ? speed : _defaultSpeed;
             _textAnimatorPlayer.ShowText(text);

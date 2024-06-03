@@ -156,6 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsValidating: 0
+  ReplicasCount: 0
   IsTyping: 0
 --- !u!114 &2261376096610518572
 MonoBehaviour:
@@ -767,6 +768,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Model: {fileID: 1071357694721072068}
   View: {fileID: 5598086314712707244}
+  _replicaModel: {fileID: 6877550686897725529}
 --- !u!114 &5598086314712707244
 MonoBehaviour:
   m_ObjectHideFlags: 0

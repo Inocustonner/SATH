@@ -1,12 +1,14 @@
-﻿using Code.CustomActions.Actions;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Code.Data.Enums;
+using Code.Data.Interfaces;
 using Code.Entities;
 using Code.Infrastructure.GameLoop;
 using UnityEngine;
 
 namespace Code.Replicas
 {
-    public class GamePart_School : GamePart, IGameStartListener, IGameExitListener
+    public class GamePart_School : GamePart, IGameInitListener, IGameStartListener, IGameExitListener
     {
         public override GamePartName GamePartName => GamePartName.Part_1__school;
         public int AttemptNumber { get; private set; }
@@ -14,19 +16,27 @@ namespace Code.Replicas
         
         [Header("Components")] 
         [SerializeField] private CollisionObserver _deathZone;
-        [SerializeField] private ReplicaNumerableAction _teacherFalseReplica;
 
         [Header("Restrart params")] 
-        [SerializeField] private Transform _player;
-        [SerializeField] private Ball _ball;
-        [SerializeField] private GameObject[] _enabledObjects;
-        [SerializeField] private GameObject[] _disabledObjects;
+        [SerializeField] private GameObject[] _childObjects;
+        private readonly Dictionary<GameObject, bool> _childStartStates = new();
+        private IRestartable[] _restartable;
+        
         private Vector3 _startPlayerPosition;
         private Vector3 _startBallPosition;
+
+        public void GameInit()
+        {
+            foreach (var childObject in _childObjects)
+            {
+                _childStartStates.Add(childObject,childObject.activeSelf);
+            }   
+
+            _restartable = _childObjects.OfType<IRestartable>().ToArray();
+        }
+
         public void GameStart()
         {
-            _startPlayerPosition = _player.position;
-            _startBallPosition = _ball.transform.position;
             SubscribeToEvents(true);
         }
 
@@ -35,51 +45,56 @@ namespace Code.Replicas
             SubscribeToEvents(false);
         }
 
+        public override void Reset()
+        {
+            AttemptNumber = 0;
+
+            foreach (var childObject in _childStartStates)  
+            {
+                childObject.Key.SetActive(childObject.Value);
+            }
+
+            foreach (var restartable in _restartable)
+            {
+                restartable.Restart();
+            }
+            
+            InvokeUpdateDataEvent();
+        }
+
         private void SubscribeToEvents(bool flag)
         {
             if (flag)
             {
-                _deathZone.OnEnter += OnEnter;
+                _deathZone.OnEnter += OnEnterDeathZone;
             }
             else
             {
-                _deathZone.OnEnter -= OnEnter;
+                _deathZone.OnEnter -= OnEnterDeathZone;
             }
         }
 
-        private void OnEnter(GameObject obj)
+        private void OnEnterDeathZone(GameObject obj)
         {
             AttemptNumber++;
             if (AttemptNumber <= 3)
             {
-                _teacherFalseReplica.SetID(AttemptNumber);
                 if (AttemptNumber == 3)
                 {
                     InvokeTryRestartEvent();
-                    
                 }
             }
+            InvokeUpdateDataEvent();
         }
 
-        public override void Reset()
+        #region Editor
+
+        [ContextMenu("InitChildObjects")]
+        private void InitChildObjects()
         {
-            AttemptNumber = 0;
-            _teacherFalseReplica.SetID(0);
-
-            foreach (var enabledObject in _enabledObjects)
-            {
-                enabledObject.SetActive(true);
-            }
-
-            foreach (var disabledObject in _disabledObjects)
-            {
-                disabledObject.SetActive(false);
-            }
-            
-            _player.position = _startPlayerPosition;
-            _ball.transform.position = _startBallPosition;
-            _ball.SwitchFollow(isFollow: false);
+            _childObjects = GetComponentsInChildren<Transform>(true).Select(child => child.gameObject).ToArray();
         }
-        
+
+        #endregion
     }
 }

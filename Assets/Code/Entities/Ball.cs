@@ -1,9 +1,10 @@
-﻿using Code.Infrastructure.GameLoop;
+﻿using Code.Data.Interfaces;
+using Code.Infrastructure.GameLoop;
 using UnityEngine;
 
 namespace Code.Entities
 {
-    public class Ball: MonoBehaviour, IGameTickListener
+    public class Ball: MonoBehaviour,IGameInitListener ,IGameTickListener, IRestartable
     {
         [Header("Ball Components")]
         [SerializeField] private Rigidbody2D _rigidbody;
@@ -14,7 +15,19 @@ namespace Code.Entities
 
         [Header("Params")] 
         [SerializeField] private bool _isFollow;
+        private Vector3 _startPosition;
 
+
+        public void GameInit()
+        {
+            _startPosition = transform.position;
+        }
+
+        public void Restart()
+        {
+            SwitchFollow(false);
+            transform.position = _startPosition;
+        }
 
         public void GameTick()
         {
@@ -31,7 +44,7 @@ namespace Code.Entities
                     15 * Time.deltaTime);
             }
         }
-
+        
         public void SwitchFollow(bool isFollow)
         {
             _isFollow = isFollow;
