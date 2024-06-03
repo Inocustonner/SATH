@@ -1,9 +1,11 @@
+using System;
 using Code.Data.Configs;
 using Code.Data.Interfaces;
 using Code.Data.StaticData;
 using Code.Infrastructure.DI;
 using Code.Infrastructure.GameLoop;
 using Code.Infrastructure.Services;
+using Core.Infrastructure.Utils;
 using UnityEngine;
 
 namespace Code.Entities
@@ -17,7 +19,7 @@ namespace Code.Entities
         private InputService _inputService;
        
         [Header("Static data")] 
-        private Vector3 _startPosition;
+        [SerializeField] private Vector2 _startPosition;
         
         [Header("Dinamyc data")] 
         private Vector2 _desiredVelocity;
@@ -35,8 +37,6 @@ namespace Code.Entities
         {
             _data = Container.Instance.FindConfig<CharacterConfig>().Movement;
             _inputService = Container.Instance.FindService<InputService>();
-
-            _startPosition = transform.position;
         }
 
         public void GameTick()
@@ -68,6 +68,7 @@ namespace Code.Entities
             _rb.velocity = Vector2.zero;
             _isPressingKey = false;
             transform.position = _startPosition;
+            this.Log("Restart");
         }
 
         private void RunWithAcceleration()

@@ -55,6 +55,8 @@ namespace Code.Entities
         private void SetPhysicState(bool isEnabled)
         {
             _rigidbody.isKinematic = !isEnabled;
+            _rigidbody.velocity = Vector2.zero;
+            _rigidbody.angularVelocity = 0;
         }
 
         private void SetColliderState(bool isEnabled)

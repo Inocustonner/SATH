@@ -74,6 +74,9 @@ namespace Code.Entities
         }
 
 
- 
+        public void SetEntityPosition(Vector2 pos)
+        {
+            _entity.position = pos;
+        }
     }
 }
