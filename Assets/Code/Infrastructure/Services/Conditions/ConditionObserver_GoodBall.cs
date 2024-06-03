@@ -11,11 +11,11 @@ namespace Code.Infrastructure.Services
         public override GameCondition Condition => GameCondition.GoodBall;
         public override bool IsTrue { get; protected set; }
         
-        private GamePart_School _schoolPart;
+        private GamePart_1_School _schoolPart;
 
         public override void GameInit()
         {
-            _schoolPart = Container.Instance.FindGamePart<GamePart_School>();
+            _schoolPart = Container.Instance.FindGamePart<GamePart_1_School>();
         }
 
         public override void SubscribeToEvents(bool flag)

@@ -11,11 +11,11 @@ namespace Code.Infrastructure.Services
         public override GameCondition Condition => GameCondition.TryAllDoor;
         public override bool IsTrue { get; protected set; }
 
-        private GamePart_Home _homePart;
+        private GamePart_1_Home _homePart;
 
         public override void GameInit()
         {
-            _homePart = Container.Instance.FindGamePart<GamePart_Home>();
+            _homePart = Container.Instance.FindGamePart<GamePart_1_Home>();
         }
 
         public override void SubscribeToEvents(bool flag)

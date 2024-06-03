@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using Code.Data.Enums;
 using Code.Data.Interfaces;
@@ -8,7 +9,7 @@ using UnityEngine;
 
 namespace Code.Replicas
 {
-    public class GamePart_School : GamePart, IGameInitListener, IGameStartListener, IGameExitListener
+    public class GamePart_1_School : GamePart, IGameInitListener, IGameStartListener, IGameExitListener
     {
         public override GamePartName GamePartName => GamePartName.Part_1__school;
         public int AttemptNumber { get; private set; }
@@ -16,15 +17,17 @@ namespace Code.Replicas
         
         [Header("Components")] 
         [SerializeField] private CollisionObserver _deathZone;
+        [SerializeField] private CollisionObserver _winZone;
 
         [Header("Restrart params")] 
+        [SerializeField] private float _restartDelay;
         [SerializeField] private GameObject[] _childObjects;
         private readonly Dictionary<GameObject, bool> _childStartStates = new();
         private IRestartable[] _restartable;
-        
-        private Vector3 _startPlayerPosition;
-        private Vector3 _startBallPosition;
 
+        [Header("Dinamyc data")] 
+        private Coroutine _restartCoroutine;
+        
         public void GameInit()
         {
             foreach (var childObject in _childObjects)
@@ -48,6 +51,7 @@ namespace Code.Replicas
         public override void Reset()
         {
             AttemptNumber = 0;
+            IsWin = false;
 
             foreach (var childObject in _childStartStates)  
             {
@@ -67,11 +71,19 @@ namespace Code.Replicas
             if (flag)
             {
                 _deathZone.OnEnter += OnEnterDeathZone;
+                _winZone.OnEnter += OnEnterWinZone;
             }
             else
             {
                 _deathZone.OnEnter -= OnEnterDeathZone;
+                _winZone.OnEnter -= OnEnterWinZone;
             }
+        }
+
+        private void OnEnterWinZone(GameObject obj)
+        {
+            IsWin = true;
+            InvokeUpdateDataEvent();
         }
 
         private void OnEnterDeathZone(GameObject obj)
@@ -81,10 +93,20 @@ namespace Code.Replicas
             {
                 if (AttemptNumber == 3)
                 {
-                    InvokeTryRestartEvent();
+                    if (_restartCoroutine != null)
+                    {
+                        StopCoroutine(_restartCoroutine);
+                    }
+                    _restartCoroutine =  StartCoroutine(TryRestartWithDelay());
                 }
             }
             InvokeUpdateDataEvent();
+        }
+
+        private IEnumerator TryRestartWithDelay()
+        {
+            yield return new WaitForSeconds(_restartDelay);
+            InvokeTryRestartEvent();
         }
 
         #region Editor

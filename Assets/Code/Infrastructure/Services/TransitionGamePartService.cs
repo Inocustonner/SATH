@@ -27,6 +27,7 @@ namespace Code.Infrastructure.Services
         
         [Header("Dinamyc data")] 
         private GamePart _currentPart;
+        private Coroutine _transitionCoroutine;
         
         public event Action OnStartTransition;
 
@@ -40,7 +41,7 @@ namespace Code.Infrastructure.Services
 
             _delay = Container.Instance.FindConfig<UIConfig>().CurtainDuration / 2;
 
-            _currentPart = _gameParts.FirstOrDefault(p => p.GamePartName == GamePartName.Part_1__home);
+            _currentPart = _gameParts.FirstOrDefault(p => p.gameObject.activeSelf);
         }
         
         public void GameStart()
@@ -79,7 +80,8 @@ namespace Code.Infrastructure.Services
         private void OnTryRestartGamePart(GamePart part)
         {
             OnStartTransition?.Invoke();
-            _coroutineRunner.StartActionWithDelay(part.Reset, _delay);
+            _coroutineRunner.StopRoutine(_transitionCoroutine);
+            _transitionCoroutine = _coroutineRunner.StartActionWithDelay(part.Reset, _delay);
         }
 
         private void OnTryStartGamePartTransition(NextGamePartData[] nextPartsData)

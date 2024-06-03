@@ -18,18 +18,26 @@ namespace Code.Infrastructure.Services
             return coroutine == null ? null : StartCoroutine(coroutine);
         }
 
-        public void StartActionWithDelay(Action action, float delay)
+        public Coroutine StartActionWithDelay(Action action, float delay)
         {
-            StartCoroutine(StartActionWithDelayRoutine(action,delay));
+            return StartCoroutine(StartActionWithDelayRoutine(action,delay));
         }
 
         public void StopRoutine(IEnumerator coroutine)
         {
+            if (coroutine == null)
+            {
+                return;
+            }
             StopCoroutine(coroutine);
         }
 
         public void StopRoutine(Coroutine coroutine)
         {
+            if (coroutine == null)
+            {
+                return;
+            }
             StopCoroutine(coroutine);
         }
 

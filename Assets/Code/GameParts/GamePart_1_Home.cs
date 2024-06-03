@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Code.Replicas
 {
-    public class GamePart_Home: GamePart, IGameInitListener, IGameStartListener
+    public class GamePart_1_Home: GamePart, IGameInitListener, IGameStartListener
     {
         public override GamePartName GamePartName => GamePartName.Part_1__home;
         

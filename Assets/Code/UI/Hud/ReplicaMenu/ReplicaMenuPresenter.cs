@@ -38,13 +38,14 @@ namespace Code.UI.Hud.ReplicaMenu
 
         private void OnStartReplica(AcceleratedTextData[] replicas, AnimatedTextWaiter.Mode waitedMode, Action action)
         {
+            Model.ReplicasCount++;
 
             if (Model.IsTyping)
             {
                 View.Skip();
                 View.Reset();
-                /*Model.ReplicasCount--;
-                OnEndWriteReplicas?.Invoke();*/
+                //Model.ReplicasCount--;
+                //OnEndWriteReplicas?.Invoke();
             }
             else
             {
@@ -57,7 +58,6 @@ namespace Code.UI.Hud.ReplicaMenu
                 this.Log("active",Color.red);
             }
 
-            Model.ReplicasCount++;
             OnEndWriteReplicas = action;
             View.StartWrite(replicas,waitedMode);
         }
