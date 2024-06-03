@@ -61,7 +61,7 @@ namespace Code.CustomActions.Executors
 
         private void OnEnter(GameObject obj)
         {
-            if (_isCanRepeat && _isInvoke)
+            if (!_isCanRepeat && _isInvoke)
             {
                 return;
             }
