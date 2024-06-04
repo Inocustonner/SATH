@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Code.CustomActions.Actions
 {
-    public class MoveToPointAction: CustomAction, IRestartable
+    public class MoveToPointAction: CustomAction, IResetable
     {
         [Header("Components")]
         [SerializeField] private ObjectMover _mover;

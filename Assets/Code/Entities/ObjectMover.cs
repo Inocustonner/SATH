@@ -22,7 +22,8 @@ namespace Code.Entities
                 yield return period;
             }
             onCompeted?.Invoke();
-        }       
+        }  
+        
         public IEnumerator Move(Vector2 to, Action onCompeted = null)
         {
             var period = new WaitForEndOfFrame();
@@ -42,7 +43,6 @@ namespace Code.Entities
             _entity.position = endPosition;
             onCompeted?.Invoke();
         }
-        
         
         public IEnumerator Move(Vector2[] to, Action onCompeted = null)
         {
@@ -68,15 +68,14 @@ namespace Code.Entities
             onCompeted?.Invoke();
         }
 
-        public void Follow(Transform to, Vector2 offset = new())
-        {
-            
-        }
-
-
         public void SetEntityPosition(Vector2 pos)
         {
             _entity.position = pos;
+        }
+
+        public void SetSpeed(float speed)
+        {
+            _speed = speed;
         }
     }
 }

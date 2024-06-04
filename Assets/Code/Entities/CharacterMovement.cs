@@ -5,22 +5,22 @@ using Code.Data.StaticData;
 using Code.Infrastructure.DI;
 using Code.Infrastructure.GameLoop;
 using Code.Infrastructure.Services;
-using Core.Infrastructure.Utils;
 using UnityEngine;
 
 namespace Code.Entities
 {
-    public class CharacterMovement : MonoBehaviour, IGameInitListener, IGameTickListener, IGameFixedTickListener, IRestartable
+    public class CharacterMovement : MonoBehaviour, IGameInitListener, IGameTickListener, IGameFixedTickListener
     {
         [Header("Components")] 
         [SerializeField] private Rigidbody2D _rb;
         
         [Header("Services")] 
         private InputService _inputService;
-       
+
         [Header("Static data")] 
-        [SerializeField] private Vector2 _startPosition;
-        
+        [SerializeField] private CharacterMovementConfig _data;
+        [SerializeField] private bool _isCanVerticalMove = true;
+
         [Header("Dinamyc data")] 
         private Vector2 _desiredVelocity;
         private Vector2 _velocity;
@@ -30,12 +30,9 @@ namespace Code.Entities
         private float _turnSpeed;
         private bool _isPressingKey;
         
-        [Header("Debug")] 
-        [SerializeField] private MovementData _data;
 
         public void GameInit()
         {
-            _data = Container.Instance.FindConfig<CharacterConfig>().Movement;
             _inputService = Container.Instance.FindService<InputService>();
         }
 
@@ -67,8 +64,6 @@ namespace Code.Entities
             _velocity = Vector2.zero;
             _rb.velocity = Vector2.zero;
             _isPressingKey = false;
-            transform.position = _startPosition;
-            this.Log("Restart");
         }
 
         private void RunWithAcceleration()
@@ -90,9 +85,10 @@ namespace Code.Entities
             }
 
             _velocity.x = Mathf.MoveTowards(_velocity.x, _desiredVelocity.x, _maxSpeedChange);
-            _velocity.y = Mathf.MoveTowards(_velocity.y, _desiredVelocity.y, _maxSpeedChange);
+            _velocity.y = _isCanVerticalMove ? Mathf.MoveTowards(_velocity.y, _desiredVelocity.y, _maxSpeedChange) : 0;
         
             _rb.velocity = _velocity;
         }
+        
     }
 }

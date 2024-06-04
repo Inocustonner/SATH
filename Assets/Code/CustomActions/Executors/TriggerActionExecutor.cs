@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Code.CustomActions.Executors
 {
-    public class TriggerActionExecutor : MonoBehaviour,IGameInitListener, IGameExitListener, IRestartable
+    public class TriggerActionExecutor : MonoBehaviour,IGameInitListener, IGameExitListener, IResetable
     {
         [Header("Components")] 
         [SerializeField] private CollisionObserver _collisionObserver;

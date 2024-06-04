@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 5053833886993571936}
   - component: {fileID: 9133688722345626923}
   - component: {fileID: 8650360386079762929}
+  - component: {fileID: 5559874861328418904}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -203,12 +204,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: deb8dbb6aa8502a44a66196382e66a93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputService: {fileID: 0}
   _rb: {fileID: 9133688722345626923}
-  _characterConfig: {fileID: 11400000, guid: 9b81180525586d14ca17e26dfd02a887, type: 2}
-  _data:
-    MaxSpeed: 10
-    MaxAcceleration: 52
-    MaxDeceleration: 52
-    MaxTurnSpeed: 80
-    Friction: 0
+  _data: {fileID: 11400000, guid: 9b81180525586d14ca17e26dfd02a887, type: 2}
+  _isCanVerticalMove: 1
+--- !u!114 &5559874861328418904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8171689567503908366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12374054794e4dcf8a47b619cbb00159, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

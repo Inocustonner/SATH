@@ -26,7 +26,7 @@ namespace Code.Replicas
         [SerializeField] private float _restartDelay;
         [SerializeField] private GameObject[] _childObjects;
         private readonly Dictionary<GameObject, bool> _childStartStates = new();
-        private IRestartable[] _restartable;
+        private IResetable[] _restartable;
 
         [Header("Dinamyc data")] 
         private Coroutine _restartCoroutine;
@@ -38,7 +38,7 @@ namespace Code.Replicas
                 _childStartStates.Add(childObject,childObject.activeSelf);
             }
 
-            _restartable = GetComponentsInChildren<IRestartable>(true);
+            _restartable = GetComponentsInChildren<IResetable>(true);
         }
 
         public void GameStart()
