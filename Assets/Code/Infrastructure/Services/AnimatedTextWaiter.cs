@@ -16,12 +16,15 @@ namespace Code.Infrastructure.Services
         [Header("Services")]
         private InputService _inputService;
         private CoroutineRunner _coroutineRunner;
+       
         [Header("Static data")]
         private float _waitTime;
+        private float _skipDelay;
+
         [Header("Dinamyc data")]
         private Mode _currentMode;
         private bool _isReady;
-        private float _skipCooldown;
+        private float _currentSkipDelay;
 
         public bool IsReady => _isReady;
         
@@ -30,9 +33,20 @@ namespace Code.Infrastructure.Services
         {
             _inputService = Container.Instance.FindService<InputService>();
             _coroutineRunner = Container.Instance.FindService<CoroutineRunner>();
-            _waitTime = Container.Instance.FindConfig<UIConfig>().ReplicaDelaySeconds;
+
+            var uiConfig = Container.Instance.FindConfig<UIConfig>();
+            _waitTime = uiConfig.ReplicaDelaySeconds;
+            _skipDelay = uiConfig.ReplicaSkipDelaySeconds;
         }
-        
+
+        public void GameTick()
+        {
+            if (_currentSkipDelay <= _skipDelay)
+            {
+                _currentSkipDelay += Time.deltaTime;
+            }
+        }
+
         private void SubscribeToEvents(bool flag)
         {
             if (flag)
@@ -48,9 +62,9 @@ namespace Code.Infrastructure.Services
 
         public void ResetSkipDelay()
         {
-            _skipCooldown = 0;
+            _currentSkipDelay = 0;
         }
-        
+
         public void SetMode(Mode mode)
         {
             _currentMode = mode;
@@ -80,17 +94,9 @@ namespace Code.Infrastructure.Services
 
         private void OnPressInteractionKey()
         {
-            if (_skipCooldown >= 0.75f)
+            if (_currentSkipDelay >= _skipDelay)
             {
                 _isReady = true;
-            }
-        }
-
-        public void GameTick()
-        {
-            if (_skipCooldown <= 0.75f)
-            {
-                _skipCooldown += Time.deltaTime;
             }
         }
     }

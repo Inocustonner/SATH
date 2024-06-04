@@ -8,6 +8,8 @@ namespace Code.Data.Configs
         [Header("Text params")]
         public float ReplicaDelaySeconds = 0.7f;
         public float DefaultTypingSpeed = 0.05f;
+        public float ReplicaSkipDelaySeconds = 1;
+        
         [Header("Game part transition curtain")] 
         public Color CurtainColor = Color.black;
         public float CurtainDuration = 1;
