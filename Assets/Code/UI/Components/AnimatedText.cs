@@ -6,7 +6,6 @@ using Code.Data.DynamicData;
 using Code.Infrastructure.DI;
 using Code.Infrastructure.GameLoop;
 using Code.Infrastructure.Services;
-using Core.Infrastructure.Utils;
 using Febucci.UI;
 using TMPro;
 using UnityEngine;
@@ -15,19 +14,24 @@ namespace Code.UI
 {
     public class AnimatedText : MonoBehaviour, IGameInitListener
     {
+        public bool IsTyping { get; private set; }
+        
         [Header("Components")]
         [SerializeField] private TextMeshProUGUI _text;
         [SerializeField] private TextAnimatorPlayer _textAnimatorPlayer;
         [SerializeField] private AudioEvent _audioEvent;
+
         [Header("Services")]
         private AnimatedTextWaiter _animatedTextWaiter;
+        
         [Header("Static data")]
         private float _defaultSpeed;
+        
         [Header("Dinamyc data")]
         private int _index;
         private AcceleratedTextData[] _acceleratedTexts;
         private Coroutine _coroutine;
-        public bool IsTyping { get; private set; }
+        
         public event Action OnEndWrite;
         
         public void GameInit()
@@ -80,7 +84,10 @@ namespace Code.UI
 
         public void Skip()
         {
-            _textAnimatorPlayer.SkipTypewriter();
+            if (_animatedTextWaiter.IsReadySkip)
+            {
+                _textAnimatorPlayer.SkipTypewriter();
+            }
         }
 
         public void StartWrite(AcceleratedTextData[] replicas, AnimatedTextWaiter.Mode waitedMode)
@@ -115,9 +122,8 @@ namespace Code.UI
         private IEnumerator WaitWhenCanStartWriteNext()
         {
             _animatedTextWaiter.StartWait();
-            yield return new WaitUntil(() => _animatedTextWaiter.IsReady);
+            yield return new WaitUntil(() => _animatedTextWaiter.IsReadyDelay);
             StartWriteNext();
-            this.Log("NEXT",Color.magenta);
             _coroutine = null;
         }
 
@@ -126,10 +132,9 @@ namespace Code.UI
             _animatedTextWaiter.Reset();
             _animatedTextWaiter.SetMode(AnimatedTextWaiter.Mode.Time);
             _animatedTextWaiter.StartWait();
-            yield return new WaitUntil(() => _animatedTextWaiter.IsReady);
+            yield return new WaitUntil(() => _animatedTextWaiter.IsReadyDelay);
             IsTyping = false;
             OnEndWrite?.Invoke();
-            this.Log("END",Color.magenta);
             _coroutine = null;
         }
 
@@ -137,7 +142,6 @@ namespace Code.UI
         {
             if (_coroutine != null)
             {
-                this.Log("STOP)))))",Color.magenta);
                 StopCoroutine(_coroutine);
             }
         }

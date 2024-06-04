@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ReplicaDelaySeconds: 0.7
   DefaultTypingSpeed: 0.05
+  ReplicaSkipDelaySeconds: 0.5
   CurtainColor: {r: 0, g: 0, b: 0, a: 1}
   CurtainDuration: 2
