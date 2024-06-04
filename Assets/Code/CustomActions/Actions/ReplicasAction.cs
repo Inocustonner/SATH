@@ -19,6 +19,10 @@ namespace Code.CustomActions.Actions
 
         public override void StopAction()
         {
+            if (!InProgress)
+            {
+                return;
+            }
             _replicaService.OnEndReplica -= OnEndReplica;
             InvokeEndActionEvent();
         }
@@ -30,12 +34,7 @@ namespace Code.CustomActions.Actions
 
         private void TryMoveNextReplica()
         {
-            if (!InProgress)
-            {
-                return;
-            }
-            
-            if (_currentIndex < _allReplicas.Length)
+            if (_currentIndex < _allReplicas.Length - 1)
             {
                 _currentIndex++;
                 _replicaConfig = _allReplicas[_currentIndex];

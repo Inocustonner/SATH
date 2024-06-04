@@ -7,11 +7,12 @@ namespace Code.CustomActions.Actions
     public class MoveToPointAction: CustomAction, IRestartable
     {
         [Header("Components")]
-        [SerializeField] private Vector2 _target;
         [SerializeField] private ObjectMover _mover;
         [SerializeField] private Collider2D[] _disableColliders;
 
         [Header("Params")] 
+        [SerializeField] private Vector2 _target;
+        [Space]
         [SerializeField] private bool _isResetPositionAfterStart;
         [SerializeField] private Vector2 _startPosition;
                 

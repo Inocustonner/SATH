@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Code.CustomActions.Actions;
 using Code.Data.Enums;
 using Code.Data.Interfaces;
 using Code.Entities;
@@ -16,8 +17,10 @@ namespace Code.Replicas
         public bool IsWin{ get; private set; }
         
         [Header("Components")] 
-        [SerializeField] private CollisionObserver _deathZone;
         [SerializeField] private CollisionObserver _winZone;
+        [SerializeField] private CollisionObserver _deathZone_restart;
+        [SerializeField] private CollisionObserver _deathZone_lose;
+        [SerializeField] private ReplicasAction _loseReplicas;
 
         [Header("Restrart params")] 
         [SerializeField] private float _restartDelay;
@@ -70,12 +73,14 @@ namespace Code.Replicas
         {
             if (flag)
             {
-                _deathZone.OnEnter += OnEnterDeathZone;
+                _deathZone_restart.OnEnter += OnEnterDeathZone_Restart;
+                _deathZone_lose.OnEnter += OnEnterDeathZone_Lose;
                 _winZone.OnEnter += OnEnterWinZone;
             }
             else
             {
-                _deathZone.OnEnter -= OnEnterDeathZone;
+                _deathZone_restart.OnEnter -= OnEnterDeathZone_Restart;
+                _deathZone_lose.OnEnter -= OnEnterDeathZone_Lose;
                 _winZone.OnEnter -= OnEnterWinZone;
             }
         }
@@ -86,25 +91,32 @@ namespace Code.Replicas
             InvokeUpdateDataEvent();
         }
 
-        private void OnEnterDeathZone(GameObject obj)
+        private void OnEnterDeathZone_Restart(GameObject obj)
         {
             AttemptNumber++;
-            if (AttemptNumber <= 3)
-            {
-                if (AttemptNumber == 3)
-                {
-                    if (_restartCoroutine != null)
-                    {
-                        StopCoroutine(_restartCoroutine);
-                    }
-                    _restartCoroutine =  StartCoroutine(TryRestartWithDelay());
-                }
-            }
             InvokeUpdateDataEvent();
+            if (AttemptNumber == 3)
+            {
+                _deathZone_restart.gameObject.SetActive(false);
+                _deathZone_lose.gameObject.SetActive(true);
+            }
+        }
+
+        private void OnEnterDeathZone_Lose(GameObject obj)
+        {
+           
+                if (_restartCoroutine != null)
+                {
+                    StopCoroutine(_restartCoroutine);
+                }
+                _restartCoroutine =  StartCoroutine(TryRestartWithDelay());
+           
         }
 
         private IEnumerator TryRestartWithDelay()
         {
+            _loseReplicas.StartAction();
+            yield return new WaitUntil(() => !_loseReplicas.InProgress);
             yield return new WaitForSeconds(_restartDelay);
             InvokeTryRestartEvent();
         }
