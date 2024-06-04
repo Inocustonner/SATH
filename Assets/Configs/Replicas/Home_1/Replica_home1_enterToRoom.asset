@@ -20,32 +20,54 @@ MonoBehaviour:
     Localization:
     - Language: 0
       Parts:
-      - Markup: 0
+      - Markups: 
         Effect: 0
-        Color: {r: 0, g: 0, b: 0, a: 1}
+        Color: {r: 1, g: 1, b: 1, a: 1}
         MessageText: "\u041E\u0442\u043B\u0438\u0447\u043D\u044B\u0439 \u0432\u044B\u0431\u043E\u0440!"
-    EditorPosition: {x: 4167.5, y: 3646.5}
+    - Language: 1
+      Parts:
+      - Markups: 
+        Effect: 0
+        Color: {r: 1, g: 1, b: 1, a: 1}
+        MessageText: Excellent choice!
+    EditorPosition: {x: 4456, y: 3962}
   - ID: 4683c76c-3755-4d07-b730-53dd829166a4
     TypingSpeed: 0
     Conditions: 00000000
     Localization:
     - Language: 0
       Parts:
-      - Markup: 1
+      - Markups: 0100000002000000
         Effect: 1
-        Color: {r: 0, g: 0, b: 0, a: 0}
+        Color: {r: 1, g: 1, b: 1, a: 1}
         MessageText: "\u041C\u044B"
-      - Markup: 0
+      - Markups: 
         Effect: 0
-        Color: {r: 0, g: 0, b: 0, a: 0}
+        Color: {r: 1, g: 1, b: 1, a: 1}
         MessageText: "\u043F\u043E\u043B\u043D\u043E\u0441\u0442\u044C\u044E \u0442\u0435\u0431\u044F
           \u0432 \u043D\u0451\u043C"
-      - Markup: 1
+      - Markups: 0100000002000000
         Effect: 1
-        Color: {r: 0, g: 0, b: 0, a: 0}
+        Color: {r: 1, g: 1, b: 1, a: 1}
         MessageText: "\u043F\u043E\u0434\u0434\u0435\u0440\u0436\u0438\u0432\u0430\u0435\u043C."
-    EditorPosition: {x: 4826.5, y: 4140.5}
+    - Language: 1
+      Parts:
+      - Markups: 
+        Effect: 0
+        Color: {r: 1, g: 1, b: 1, a: 1}
+        MessageText: 'You have '
+      - Markups: 0100000002000000
+        Effect: 1
+        Color: {r: 1, g: 1, b: 1, a: 1}
+        MessageText: our full support
+      - Markups: 
+        Effect: 0
+        Color: {r: 1, g: 1, b: 1, a: 1}
+        MessageText: in it.
+    EditorPosition: {x: 5094, y: 4318}
   Edges:
   - SourceNode: 0
     TargetNode: 4683c76c-3755-4d07-b730-53dd829166a4
     Index: 0
+  _textRus: "\u041E\u0442\u043B\u0438\u0447\u043D\u044B\u0439 \u0432\u044B\u0431\u043E\u0440!\u041C\u044B\u043F\u043E\u043B\u043D\u043E\u0441\u0442\u044C\u044E
+    \u0442\u0435\u0431\u044F \u0432 \u043D\u0451\u043C\u043F\u043E\u0434\u0434\u0435\u0440\u0436\u0438\u0432\u0430\u0435\u043C."

@@ -20,13 +20,37 @@ MonoBehaviour:
     Localization:
     - Language: 0
       Parts:
-      - Markup: 0
+      - Markups: 
         Effect: 0
         Color: {r: 0, g: 0, b: 0, a: 1}
         MessageText: "\u0422\u044B \u0443\u0432\u0435\u0440\u0435\u043D?"
-      - Markup: 1
+    - Language: 1
+      Parts:
+      - Markups: 
+        Effect: 0
+        Color: {r: 0, g: 0, b: 0, a: 1}
+        MessageText: Are you sure about this?
+    EditorPosition: {x: 3398, y: 3261}
+  - ID: d34c6eae-2dad-4f69-948f-00ee0f64f34c
+    TypingSpeed: 0
+    Conditions: 00000000
+    Localization:
+    - Language: 0
+      Parts:
+      - Markups: 0100000002000000
         Effect: 1
         Color: {r: 0, g: 0, b: 0, a: 1}
         MessageText: "\u041E\u043D\u043E \u0442\u043E\u0433\u043E \u043D\u0435 \u0441\u0442\u043E\u0438\u0442."
-    EditorPosition: {x: 3109.5, y: 2946}
-  Edges: []
+    - Language: 1
+      Parts:
+      - Markups: 0100000002000000
+        Effect: 1
+        Color: {r: 0, g: 0, b: 0, a: 1}
+        MessageText: It's not worth it.
+    EditorPosition: {x: 4008, y: 3264}
+  Edges:
+  - SourceNode: 0
+    TargetNode: d34c6eae-2dad-4f69-948f-00ee0f64f34c
+    Index: 0
+  _textRus: "\u0422\u044B \u0443\u0432\u0435\u0440\u0435\u043D?\u041E\u043D\u043E
+    \u0442\u043E\u0433\u043E \u043D\u0435 \u0441\u0442\u043E\u0438\u0442."

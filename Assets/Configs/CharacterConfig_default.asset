@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48b796f43b054497a36364f3611a5c5e, type: 3}
   m_Name: CharacterConfig_default
   m_EditorClassIdentifier: 
-  MaxSpeed: 10
-  MaxAcceleration: 52
-  MaxDeceleration: 52
-  MaxTurnSpeed: 80
+  MaxSpeed: 6.09
+  MaxAcceleration: 31.8
+  MaxDeceleration: 30.5
+  MaxTurnSpeed: 31.8
   Friction: 0
