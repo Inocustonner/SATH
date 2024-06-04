@@ -14,13 +14,13 @@ namespace Code.CustomActions.Actions
             {
                 return;
             }
-            InvokeStartEvent();
+            InvokeStartActionEvent();
             StartCoroutine(_objectMover.Move(_points,onCompeted: StopAction));
         }
 
         public override void StopAction()
         {
-            InvokeEndEvent();
+            InvokeEndActionEvent();
         }
 
         private void OnDrawGizmosSelected()

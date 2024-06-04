@@ -30,7 +30,7 @@ namespace Code.CustomActions.Actions
             _isActive = true;
             TryStopCoroutine();
             _coroutine = StartCoroutine(StartFlashing());
-            InvokeStartEvent();
+            InvokeStartActionEvent();
         }
 
         public override void StopAction()
@@ -39,7 +39,7 @@ namespace Code.CustomActions.Actions
             TryStopCoroutine();
             if (gameObject.activeInHierarchy)
             {
-                _coroutine = StartCoroutine(StopFlashing(onEnd: InvokeEndEvent));
+                _coroutine = StartCoroutine(StopFlashing(onEnd: InvokeEndActionEvent));
             }
             else
             {

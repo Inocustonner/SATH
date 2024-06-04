@@ -36,13 +36,13 @@ namespace Code.CustomActions.Actions
             }
             
             TryStopCoroutine();
-            InvokeStartEvent();
+            InvokeStartActionEvent();
             SetComponentsEnable(false);
        
             _coroutine = StartCoroutine(_mover.Move(_target, onCompeted: () =>
             {
                 SetComponentsEnable(true);
-                InvokeEndEvent();
+                InvokeEndActionEvent();
             }));
         }
 

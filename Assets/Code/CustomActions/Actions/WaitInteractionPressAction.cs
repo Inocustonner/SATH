@@ -52,8 +52,8 @@ namespace Code.CustomActions.Actions
                 resultAction.StartAction();
             }
             
-            InvokeStartEvent();
-            InvokeEndEvent();
+            InvokeStartActionEvent();
+            InvokeEndActionEvent();
         }
 
         private void OnPressInteractionKey()

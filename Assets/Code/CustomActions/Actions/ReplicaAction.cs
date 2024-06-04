@@ -11,9 +11,9 @@ namespace Code.CustomActions.Actions
     public class ReplicaAction : CustomAction, IGameInitListener
     {
         [SerializeField] protected ReplicaConfig _replicaConfig;
-        public event Action<ReplicaConfig> OnTryStartReplica;
 
-        private ReplicaService _replicaService;
+        protected ReplicaService _replicaService;
+        public event Action<ReplicaConfig> OnTryStartReplica;
 
         public void GameInit()
         {
@@ -24,20 +24,9 @@ namespace Code.CustomActions.Actions
         {
             if (_replicaConfig != null)
             {
-                this.Log($"Start action {_replicaConfig.name}", Color.cyan);
-                OnTryStartReplica?.Invoke(_replicaConfig);
-                InvokeStartEvent();
+                InvokeStartReplicaEvent();
+                InvokeStartActionEvent();
                 _replicaService.OnEndReplica += OnEndWriteReplica;
-            }
-        }
-
-        private void OnEndWriteReplica(ReplicaConfig replicaConfig)
-        {
-            if (replicaConfig == _replicaConfig)
-            {
-                _replicaService.OnEndReplica -= OnEndWriteReplica;
-
-                StopAction();
             }
         }
 
@@ -48,8 +37,21 @@ namespace Code.CustomActions.Actions
                 return;
             }
 
-            this.Log($"End action {_replicaConfig.name}", Color.cyan);
-            InvokeEndEvent();
+            InvokeEndActionEvent();
+        }
+
+        protected virtual void OnEndWriteReplica(ReplicaConfig replicaConfig)
+        {
+            if (replicaConfig == _replicaConfig)
+            {
+                _replicaService.OnEndReplica -= OnEndWriteReplica;
+                StopAction();
+            }
+        }
+
+        protected void InvokeStartReplicaEvent()
+        {
+            OnTryStartReplica?.Invoke(_replicaConfig);
         }
     }
 }

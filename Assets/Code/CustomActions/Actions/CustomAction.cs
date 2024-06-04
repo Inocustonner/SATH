@@ -14,13 +14,13 @@ namespace Code.CustomActions.Actions
         {
         }
 
-        protected void InvokeStartEvent()
+        protected void InvokeStartActionEvent()
         {
             InProgress = true;
             OnStart?.Invoke();
         }
 
-        protected void InvokeEndEvent()
+        protected void InvokeEndActionEvent()
         {
             InProgress = false;
             OnEnd?.Invoke();
