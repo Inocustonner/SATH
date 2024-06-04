@@ -15,13 +15,13 @@ namespace Code.UI.Hud.SettingsMenu.Audio
         [Header("Dinamyc data")]
         [SerializeField] private AudioVolumeData _audioVolumeData;
         [Header("Services")]
-        private SceneAudioController _audioController;
+        private AudioVolumeService _audioVolumeService;
         
         public AudioVolumeData AudioVolumeData => _audioVolumeData;
 
-        public void Init(SceneAudioController findService)
+        public void Init(AudioVolumeService findService)
         {
-            _audioController = findService; 
+            _audioVolumeService = findService; 
         }
         
         public void SetValues(AudioVolumeData audioVolumeData)
@@ -53,26 +53,26 @@ namespace Code.UI.Hud.SettingsMenu.Audio
             _audioVolumeData.IsEnabled = isEnabled;
             if (_audioVolumeData.IsEnabled)
             {
-                _audioController.ChangeEffectVolume(_audioVolumeData.Effects);
-                _audioController.ChangeMusicVolume(_audioVolumeData.Music);
+                _audioVolumeService.ChangeEffectVolume(_audioVolumeData.Effects);
+                _audioVolumeService.ChangeMusicVolume(_audioVolumeData.Music);
             }
             else
             {
-                _audioController.ChangeEffectVolume(0);
-                _audioController.ChangeMusicVolume(0);
+                _audioVolumeService.ChangeEffectVolume(0);
+                _audioVolumeService.ChangeMusicVolume(0);
             }
         }
 
         private void ChangeMusicVolume(float musicVolume)
         {
             _audioVolumeData.Music = musicVolume;
-            _audioController.ChangeMusicVolume(_audioVolumeData.Music);
+            _audioVolumeService.ChangeMusicVolume(_audioVolumeData.Music);
         }
 
         private void ChangeEffectVolume(float effectVolume)
         {
             _audioVolumeData.Effects = effectVolume;
-            _audioController.ChangeEffectVolume(_audioVolumeData.Effects);
+            _audioVolumeService.ChangeEffectVolume(_audioVolumeData.Effects);
         }
     }
 }

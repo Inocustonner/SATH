@@ -17,9 +17,8 @@ namespace Code.Audio.AudioEvents
 
         private void OnDisable()
         {
-            _instance.stop(STOP_MODE.ALLOWFADEOUT);
+            StopEvent();
         }
-
         
         private void PlayEvent()
         {
@@ -30,5 +29,9 @@ namespace Code.Audio.AudioEvents
             _instance.start();
         }
 
+        private void StopEvent()
+        {
+            _instance.stop(STOP_MODE.ALLOWFADEOUT);
+        }
     }
 }

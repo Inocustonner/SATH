@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6378000709541742720}
   - component: {fileID: 8526329689088909610}
+  - component: {fileID: 5755335110090734993}
+  - component: {fileID: 1617131733108840636}
   m_Layer: 0
   m_Name: Part_1__factory
   m_TagString: Untagged
@@ -51,6 +53,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _subCamera: {fileID: 881297482232103444}
+--- !u!114 &5755335110090734993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625979512277554579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c5a785f5c8bf84479c7c73bc4004757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _event:
+    Guid:
+      Data1: -188146982
+      Data2: 1232339356
+      Data3: 1314322310
+      Data4: 1547368642
+    Path: event:/Effects/StonePush
+--- !u!114 &1617131733108840636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625979512277554579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38d79311e12446df8d1fedc681592238, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioParameter:
+    _paramName: 1
+  _rigidbody: {fileID: 3894480757766218814}
 --- !u!1 &1687124920286050815
 GameObject:
   m_ObjectHideFlags: 0
@@ -245,7 +281,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4005774975983403734
 Transform:
   m_ObjectHideFlags: 0
