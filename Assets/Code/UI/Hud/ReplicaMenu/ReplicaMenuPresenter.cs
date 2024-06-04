@@ -67,7 +67,8 @@ namespace Code.UI.Hud.ReplicaMenu
             if (Model.ReplicasCount == 0 )
             {
                 Model.IsTyping = false;
-                ChangeMenuState(MenuState.Inactive);
+                ChangeMenuState(MenuState.Inactive);       
+                View.Reset();
             }
         }
 
