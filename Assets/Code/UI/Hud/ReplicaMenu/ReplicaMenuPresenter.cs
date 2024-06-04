@@ -3,16 +3,15 @@ using Code.Data.DynamicData;
 using Code.Infrastructure.DI;
 using Code.Infrastructure.Services;
 using Code.UI.Base;
-using Core.Infrastructure.Utils;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Code.UI.Hud.ReplicaMenu
 {
     public class ReplicaMenuPresenter : BaseMenuPresenter<ReplicaMenuModel, ReplicaMenuView>
     {
-        [Header("Services")] private ReplicaService _replicaService;
+        [Header("Services")] 
+        private ReplicaService _replicaService;
+        
         private event Action OnEndWriteReplicas;
 
         protected override void Init()
@@ -55,12 +54,10 @@ namespace Code.UI.Hud.ReplicaMenu
             if (!Model.IsValidating)
             {
                 ChangeMenuState(MenuState.Active);
-                this.Log("active", Color.red);
             }
 
             OnEndWriteReplicas = action;
             View.StartWrite(replicas, waitedMode);
-            this.Log("start write", Color.red);
         }
 
         private void OnEndWrite()
@@ -71,8 +68,6 @@ namespace Code.UI.Hud.ReplicaMenu
             {
                 Model.IsTyping = false;
                 ChangeMenuState(MenuState.Inactive);
-                this.Log("inactive", Color.red);
-                //View.Reset();
             }
         }
 

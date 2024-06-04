@@ -3,7 +3,6 @@ using Code.CustomActions.Actions;
 using Code.Infrastructure.DI;
 using Code.Infrastructure.GameLoop;
 using Code.Infrastructure.Services;
-using Core.Infrastructure.Utils;
 using UnityEngine;
 
 namespace Code.CustomActions
@@ -54,7 +53,6 @@ namespace Code.CustomActions
 
         private void OnStartCustomAction()
         {
-            this.Log($"Start {_customAction.gameObject.name}",Color.black);
             Block();
         }
 
@@ -99,7 +97,6 @@ namespace Code.CustomActions
             {
                 _moveLimiter.Unblock();
             }
-            this.Log($"End {_customAction.gameObject.name}",Color.black);
         }
 
         private IEnumerator UnblockWithDelay()

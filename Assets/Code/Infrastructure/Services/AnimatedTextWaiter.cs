@@ -1,11 +1,12 @@
 ﻿using Code.Data.Configs;
 using Code.Infrastructure.DI;
 using Code.Infrastructure.GameLoop;
+using Core.Infrastructure.Utils;
 using UnityEngine;
 
 namespace Code.Infrastructure.Services
 {
-    public class AnimatedTextWaiter: IService, IGameInitListener, IGameTickListener
+    public class AnimatedTextWaiter : IService, IGameInitListener, IGameTickListener
     {
         public enum Mode
         {
@@ -13,22 +14,23 @@ namespace Code.Infrastructure.Services
             PressKey
         }
 
-        [Header("Services")]
+        public bool IsReadyDelay => _isReadyDelay;
+        public bool IsReadySkip => _currentSkipDelay >= _skipDelay;
+
+        [Header("Services")] 
         private InputService _inputService;
         private CoroutineRunner _coroutineRunner;
-       
-        [Header("Static data")]
+
+        [Header("Static data")] 
         private float _waitTime;
         private float _skipDelay;
 
-        [Header("Dinamyc data")]
+        [Header("Dinamyc data")] 
         private Mode _currentMode;
-        private bool _isReady;
+        private bool _isReadyDelay;
         private float _currentSkipDelay;
 
-        public bool IsReady => _isReady;
-        
-        
+
         public void GameInit()
         {
             _inputService = Container.Instance.FindService<InputService>();
@@ -41,10 +43,11 @@ namespace Code.Infrastructure.Services
 
         public void GameTick()
         {
-            if (_currentSkipDelay <= _skipDelay)
+            if (_currentSkipDelay < _skipDelay)
             {
                 _currentSkipDelay += Time.deltaTime;
             }
+
         }
 
         private void SubscribeToEvents(bool flag)
@@ -55,7 +58,6 @@ namespace Code.Infrastructure.Services
             }
             else
             {
-                
                 _inputService.OnPressInteractionKey -= OnPressInteractionKey;
             }
         }
@@ -75,7 +77,7 @@ namespace Code.Infrastructure.Services
             switch (_currentMode)
             {
                 case Mode.Time:
-                    _coroutineRunner.StartActionWithDelay(() => _isReady = true, _waitTime);
+                    _coroutineRunner.StartActionWithDelay(() => _isReadyDelay = true, _waitTime);
                     break;
                 case Mode.PressKey:
                     SubscribeToEvents(true);
@@ -85,7 +87,7 @@ namespace Code.Infrastructure.Services
 
         public void Reset()
         {
-            _isReady = false;
+            _isReadyDelay = false;
             if (_currentMode == Mode.PressKey)
             {
                 SubscribeToEvents(false);
@@ -96,7 +98,7 @@ namespace Code.Infrastructure.Services
         {
             if (_currentSkipDelay >= _skipDelay)
             {
-                _isReady = true;
+                _isReadyDelay = true;
             }
         }
     }

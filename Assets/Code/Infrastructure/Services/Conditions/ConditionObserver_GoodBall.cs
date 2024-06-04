@@ -1,8 +1,6 @@
 ﻿using Code.Data.Enums;
 using Code.Infrastructure.DI;
 using Code.Replicas;
-using Core.Infrastructure.Utils;
-using UnityEngine;
 
 namespace Code.Infrastructure.Services
 {
@@ -34,7 +32,6 @@ namespace Code.Infrastructure.Services
         public override void RefreshState()
         {
             IsTrue = _schoolPart.IsWin && _schoolPart.AttemptNumber == 0;
-            this.Log($"{IsTrue}",Color.magenta);
         }
     }
 }

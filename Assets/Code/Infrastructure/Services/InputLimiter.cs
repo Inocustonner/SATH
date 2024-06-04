@@ -35,10 +35,6 @@ namespace Code.Infrastructure.Services
                 }
                 this.Log($"unblock {_counter}",Color.gray);
             }
-            else
-            {
-                this.Log($"can`t unblock {_counter}",Color.black);
-            }
         }
     }
 
