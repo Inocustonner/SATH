@@ -25,10 +25,16 @@ namespace Code.CustomActions.Actions
 
         public override void StartAction()
         {
+            if (!gameObject.activeInHierarchy)
+            {
+                return;
+            }
+            
             if (_isResetPositionAfterStart)
             {
                 _mover.SetEntityPosition(_startPosition);
             }
+            
             TryStopCoroutine();
             InvokeStartEvent();
             SetComponentsEnable(false);

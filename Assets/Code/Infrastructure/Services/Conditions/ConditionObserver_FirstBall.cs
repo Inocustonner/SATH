@@ -33,7 +33,6 @@ namespace Code.Infrastructure.Services
         public override void RefreshState()
         {
             IsTrue = _schoolPart.AttemptNumber == 0;
-            this.Log($"{IsTrue}",Color.magenta);
         }
     }
 }

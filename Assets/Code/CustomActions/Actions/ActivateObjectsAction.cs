@@ -11,7 +11,6 @@ namespace Code.CustomActions.Actions
         
         public override void StartAction()
         {
-            this.Log("Start");
             foreach (var obj in _activatedObjects)
             {
                 obj.SetActive(true);

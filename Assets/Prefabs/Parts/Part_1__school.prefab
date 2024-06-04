@@ -642,7 +642,7 @@ GameObject:
   - component: {fileID: 550402888768343658}
   - component: {fileID: 552213077475829221}
   m_Layer: 6
-  m_Name: SequenceAction_MoveBack_Teacher
+  m_Name: '[restart]SequenceAction_MoveBack_Teacher'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -974,6 +974,7 @@ MonoBehaviour:
   - {fileID: 798991428889121087}
   _disabledObjects:
   - {fileID: 1274399801075985883}
+  - {fileID: 2988015121453678838}
   _isStopped: 0
 --- !u!1 &2548108662495628609
 GameObject:
@@ -1138,16 +1139,17 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6341263038596551770}
-  - component: {fileID: 5746962825754001539}
+  - component: {fileID: 1299976739416878325}
+  - component: {fileID: 7473948737734552581}
   - component: {fileID: 1956093643855317428}
   - component: {fileID: 7639238191831351123}
   m_Layer: 6
-  m_Name: SequenceAction_Move_Teacher
+  m_Name: '[restart]EnableAction_Move_Teacher'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6341263038596551770
 Transform:
   m_ObjectHideFlags: 0
@@ -1157,14 +1159,14 @@ Transform:
   m_GameObject: {fileID: 2988015121453678838}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -15.32, y: -4.74, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8558215288231772832}
-  m_Father: {fileID: 5910198316806614426}
+  m_Father: {fileID: 2001403023610520966}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5746962825754001539
+--- !u!114 &1299976739416878325
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1173,13 +1175,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 2988015121453678838}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3ae73c4c44e4da5bdb00dc6a9edb2dc, type: 3}
+  m_Script: {fileID: 11500000, guid: ba2a9f3a320c4a62aa0caaca0213a9ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventAction: {fileID: 1323987106971585652}
-  _nextActions:
+  _isCanRepeat: 1
+  _customActions:
   - {fileID: 1956093643855317428}
-  _isPlayOnEndEventAction: 1
+  - {fileID: 7473948737734552581}
+  _isStopActionWhenDisable: 1
+--- !u!114 &7473948737734552581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2988015121453678838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08bb5247262d4aaea2dd03b43df90207, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _activatedObjects: []
+  _disabledObjects:
+  - {fileID: 3628658055402157231}
+  _isStopped: 0
 --- !u!114 &1956093643855317428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7054,7 +7073,7 @@ GameObject:
   - component: {fileID: 2983434972219629843}
   - component: {fileID: 3965799470030108210}
   m_Layer: 6
-  m_Name: SequenceAction_Replica_Teacher(False_2)
+  m_Name: '[restart]SequenceAction_Replica_Teacher(False_2)'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7401,7 +7420,7 @@ GameObject:
   - component: {fileID: 4955614552777655396}
   - component: {fileID: 5000766489344656927}
   m_Layer: 0
-  m_Name: EnableAction_GlowSchoolDesk
+  m_Name: '[restart]EnableAction_GlowSchoolDesk'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7569,7 +7588,7 @@ GameObject:
   - component: {fileID: 6587993207824363118}
   - component: {fileID: 342387680946082051}
   m_Layer: 0
-  m_Name: SequenceAction_ActivateObject_(Trigger_SchoolDesk)
+  m_Name: '[restart]SequenceAction_ActivateObject_(Trigger_SchoolDesk)'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7590,6 +7609,7 @@ Transform:
   m_Children:
   - {fileID: 6621165546910465502}
   - {fileID: 5910198316806614426}
+  - {fileID: 6341263038596551770}
   m_Father: {fileID: 2461253995972662499}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6587993207824363118
@@ -9901,7 +9921,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6476458757542679229, guid: ddd3b4fce121c0a4cb206b87e28c831f, type: 3}
       propertyPath: m_Name
-      value: Trigger_Replica_ChildBlue
+      value: '[restart]Trigger_Replica_ChildBlue'
       objectReference: {fileID: 0}
     - target: {fileID: 6476458757542679229, guid: ddd3b4fce121c0a4cb206b87e28c831f, type: 3}
       propertyPath: m_IsActive
@@ -10748,7 +10768,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6476458757542679229, guid: ddd3b4fce121c0a4cb206b87e28c831f, type: 3}
       propertyPath: m_Name
-      value: Trigger_Replica_ChildPink
+      value: '[restart]Trigger_Replica_ChildPink'
       objectReference: {fileID: 0}
     - target: {fileID: 6476458757542679229, guid: ddd3b4fce121c0a4cb206b87e28c831f, type: 3}
       propertyPath: m_IsActive
@@ -11082,7 +11102,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6476458757542679229, guid: ddd3b4fce121c0a4cb206b87e28c831f, type: 3}
       propertyPath: m_Name
-      value: '[start_loop_quest]Trigger_SchoolDesk'
+      value: '[restart]Trigger_SchoolDesk'
       objectReference: {fileID: 0}
     - target: {fileID: 6476458757542679229, guid: ddd3b4fce121c0a4cb206b87e28c831f, type: 3}
       propertyPath: m_IsActive
@@ -11090,10 +11110,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 4161233308137081736, guid: ddd3b4fce121c0a4cb206b87e28c831f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6341263038596551770}
+    m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6476458757542679229, guid: ddd3b4fce121c0a4cb206b87e28c831f, type: 3}
       insertIndex: -1
@@ -11188,7 +11205,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08bb5247262d4aaea2dd03b43df90207, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _activatedObjects: []
+  _activatedObjects:
+  - {fileID: 2988015121453678838}
   _disabledObjects:
   - {fileID: 6287795118574117817}
   _isStopped: 0

@@ -44,13 +44,11 @@ namespace Code.UI
                 if (_acceleratedTexts != null && _index < _acceleratedTexts.Length - 1)
                 {
                     _text.SetText(_acceleratedTexts[_index].Text);
-                    TryStopCoroutine();
-                    _coroutine = StartCoroutine(WaitWhenCanStartWriteNext());
+                    _coroutine ??= StartCoroutine(WaitWhenCanStartWriteNext());
                 }
                 else
                 {
-                    TryStopCoroutine();
-                    _coroutine = StartCoroutine(WaitDelayAfterEnd());
+                    _coroutine ??= StartCoroutine(WaitDelayAfterEnd());
                 }
             });
         }
@@ -119,6 +117,8 @@ namespace Code.UI
             _animatedTextWaiter.StartWait();
             yield return new WaitUntil(() => _animatedTextWaiter.IsReady);
             StartWriteNext();
+            this.Log("NEXT",Color.magenta);
+            _coroutine = null;
         }
 
         private IEnumerator WaitDelayAfterEnd()
@@ -129,12 +129,15 @@ namespace Code.UI
             yield return new WaitUntil(() => _animatedTextWaiter.IsReady);
             IsTyping = false;
             OnEndWrite?.Invoke();
+            this.Log("END",Color.magenta);
+            _coroutine = null;
         }
 
         private void TryStopCoroutine()
         {
             if (_coroutine != null)
             {
+                this.Log("STOP)))))",Color.magenta);
                 StopCoroutine(_coroutine);
             }
         }

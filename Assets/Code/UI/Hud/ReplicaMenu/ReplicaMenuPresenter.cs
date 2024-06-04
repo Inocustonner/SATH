@@ -6,20 +6,20 @@ using Code.UI.Base;
 using Core.Infrastructure.Utils;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Code.UI.Hud.ReplicaMenu
 {
     public class ReplicaMenuPresenter : BaseMenuPresenter<ReplicaMenuModel, ReplicaMenuView>
     {
-        [Header("Services")]
-        private ReplicaService _replicaService;
+        [Header("Services")] private ReplicaService _replicaService;
         private event Action OnEndWriteReplicas;
 
         protected override void Init()
         {
             _replicaService = Container.Instance.FindService<ReplicaService>();
         }
-        
+
         protected override void SubscribeToEvents(bool flag)
         {
             if (flag)
@@ -40,12 +40,12 @@ namespace Code.UI.Hud.ReplicaMenu
         {
             Model.ReplicasCount++;
 
-            if (Model.IsTyping)
+            if (Model.ReplicasCount > 1)
             {
                 View.Skip();
                 View.Reset();
-                //Model.ReplicasCount--;
-                //OnEndWriteReplicas?.Invoke();
+                Model.ReplicasCount--;
+                OnEndWriteReplicas?.Invoke();
             }
             else
             {
@@ -55,22 +55,23 @@ namespace Code.UI.Hud.ReplicaMenu
             if (!Model.IsValidating)
             {
                 ChangeMenuState(MenuState.Active);
-                this.Log("active",Color.red);
+                this.Log("active", Color.red);
             }
 
             OnEndWriteReplicas = action;
-            View.StartWrite(replicas,waitedMode);
+            View.StartWrite(replicas, waitedMode);
+            this.Log("start write", Color.red);
         }
 
         private void OnEndWrite()
         {
             Model.ReplicasCount--;
             OnEndWriteReplicas?.Invoke();
-            if (Model.ReplicasCount == 0)
+            if (Model.ReplicasCount == 0 )
             {
                 Model.IsTyping = false;
                 ChangeMenuState(MenuState.Inactive);
-                this.Log("inactive",Color.red);
+                this.Log("inactive", Color.red);
                 //View.Reset();
             }
         }

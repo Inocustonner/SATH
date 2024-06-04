@@ -4,8 +4,6 @@ using System.Linq;
 using Code.Data.Enums;
 using Code.Infrastructure.DI;
 using Code.Infrastructure.GameLoop;
-using Core.Infrastructure.Utils;
-using UnityEngine;
 
 namespace Code.Infrastructure.Services
 {
@@ -22,20 +20,12 @@ namespace Code.Infrastructure.Services
             {
                 var observer = _conditionObservers.FirstOrDefault(c => c.Condition == conditions[i]);
                 _conditions.Add(conditions[i],observer);
-                this.Log($"{conditions[i]} {observer != null}", Color.yellow);
             }
         }
 
         public bool GetValue(GameCondition condition)
         {
-            this.Log($"{condition} -> " +
-                     $"(null = {_conditions[condition] == null }) " +
-                     $"|| (is true = {_conditions[condition]?.IsTrue}) " +
-                     $"== {_conditions[condition] == null || _conditions[condition].IsTrue}", Color.yellow);
-            
             return _conditions[condition] == null || _conditions[condition].IsTrue;
         }
-        
-  
     }
 }

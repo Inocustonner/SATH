@@ -4,6 +4,7 @@ using Code.Data.DynamicData;
 using Code.Infrastructure.GameLoop;
 using Code.Infrastructure.Services;
 using Code.UI.Base;
+using Core.Infrastructure.Utils;
 using UnityEngine;
 
 namespace Code.UI.Hud.ReplicaMenu
@@ -15,7 +16,7 @@ namespace Code.UI.Hud.ReplicaMenu
 
         public void GameInit()
         {
-            _animatedText.OnEndWrite += AnimatedTextOnOnEndWrite;
+            _animatedText.OnEndWrite += AnimatedTextOnEndWrite;
         }
 
         public override void OpenMenu(Action onComplete = null)
@@ -36,6 +37,7 @@ namespace Code.UI.Hud.ReplicaMenu
         public void Skip()
         {
             _animatedText.Skip();
+            this.Log("Skip",Color.red);
         }
 
         public void Reset()
@@ -43,8 +45,9 @@ namespace Code.UI.Hud.ReplicaMenu
             _animatedText.ResetText();
         }
 
-        private void AnimatedTextOnOnEndWrite()
+        private void AnimatedTextOnEndWrite()
         {
+            this.Log("On End",Color.red);
             OnEndWrite?.Invoke();
         }
     }
