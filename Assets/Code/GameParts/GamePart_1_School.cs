@@ -33,6 +33,7 @@ namespace Code.Replicas
         
         public void GameInit()
         {
+            InitChildObjects();
             foreach (var childObject in _childObjects)
             {
                 _childStartStates.Add(childObject,childObject.activeSelf);
