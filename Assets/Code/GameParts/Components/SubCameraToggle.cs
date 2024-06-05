@@ -1,5 +1,4 @@
 ﻿using Code.Data.Interfaces;
-using Code.Utils;
 using UnityEngine;
 
 namespace Code.GameParts.Components
@@ -19,9 +18,18 @@ namespace Code.GameParts.Components
 
         public void PartExit()
         {
-            _mainCamera ??= Camera.main;
-            _mainCamera?.gameObject.SetActive(true);
+        
+            if(_mainCamera != null)
+            {
+                _mainCamera.gameObject.SetActive(true);
+            }
             _subCamera.gameObject.SetActive(false);
+        }
+        
+        private void OnDestroy()
+        {
+            _mainCamera = null;
+            _subCamera = null;
         }
     }
 }

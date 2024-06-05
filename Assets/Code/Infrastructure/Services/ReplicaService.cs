@@ -6,6 +6,7 @@ using Code.Infrastructure.DI;
 using Code.Infrastructure.GameLoop;
 using Code.Infrastructure.Services.Conditions;
 using Code.Replicas.Scripts;
+using Code.Utils;
 using UnityEngine;
 
 namespace Code.Infrastructure.Services
@@ -73,6 +74,7 @@ namespace Code.Infrastructure.Services
             {
                 if (replicaConfig.IsBlockMovement)
                 {
+                    this.Log($"replica {replicaConfig.name} is block movement");
                     _moveLimiter.Block();
                 }
                 

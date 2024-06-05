@@ -35,7 +35,7 @@ namespace Code.Infrastructure.Services
 
         public void StopRoutine(Coroutine coroutine)
         {
-            if (coroutine == null)
+            if (coroutine == null && !gameObject.activeInHierarchy)
             {
                 return;
             }
