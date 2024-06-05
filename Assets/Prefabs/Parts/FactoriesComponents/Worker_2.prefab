@@ -198,5 +198,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d438b0c73d8b45ba901a5dc58a5d3118, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startPosition: {x: -25, y: -2.1}
+  _startPosition: {x: -25, y: -1.75}
   _view: {fileID: 2106518145183811888}

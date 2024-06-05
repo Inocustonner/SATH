@@ -55,6 +55,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _replicasAction: {fileID: 8497841260626744550}
   _pushListener: {fileID: 6906215063403763428}
+  _nextGamePart: {fileID: 6326038636071255070}
+  _transitionToNextLevelDelay: 1
 --- !u!114 &6906215063403763428
 MonoBehaviour:
   m_ObjectHideFlags: 0
