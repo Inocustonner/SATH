@@ -5,6 +5,7 @@
         None,
         TryAllDoor,
         FirstBall,
-        GoodBall
+        GoodBall,
+        SpeakWithPurple
     }
 }
