@@ -8,7 +8,7 @@ namespace Code.GameParts.Entities
 {
     public class FactoryWorker : MonoBehaviour, IPoolEntity
     {
-        private const float STOPPED_POSITION_X = -25; 
+        private const float STOPPED_POSITION_X = 300; 
         
         [SerializeField] private Vector2 _startPosition;
         [SerializeField] private SpriteRenderer _view;
@@ -50,8 +50,8 @@ namespace Code.GameParts.Entities
                 return;
             }
 
-            transform.position -= new Vector3(_currentSpeed * Time.deltaTime, 0, 0);
-            if (transform.position.x < STOPPED_POSITION_X)
+            transform.position += new Vector3(_currentSpeed * Time.deltaTime, 0, 0);
+            if (transform.position.x > STOPPED_POSITION_X)
             {
                 OnReached?.Invoke();
             }
