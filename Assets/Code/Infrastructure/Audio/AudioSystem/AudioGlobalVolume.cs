@@ -3,11 +3,10 @@ using Code.Infrastructure.GameLoop;
 using FMOD.Studio;
 using FMODUnity;
 using UnityEngine;
-using STOP_MODE = FMOD.Studio.STOP_MODE;
 
 namespace Code.Infrastructure.Audio.AudioSystem
 {
-    public class AudioVolumeService : MonoBehaviour, IService, IGameInitListener
+    public class AudioGlobalVolume : MonoBehaviour, IService, IGameInitListener
     {
         private Bus _musicBus;
         private Bus _effectBus;
@@ -39,6 +38,5 @@ namespace Code.Infrastructure.Audio.AudioSystem
         }
 
         #endregion
-        
     }
 }

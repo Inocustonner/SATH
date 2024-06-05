@@ -10,7 +10,7 @@ namespace Code.Entities
         [SerializeField] private Transform _mover;
         [SerializeField] private Transform _follow;
 
-        private Vector3 _target;
+        [SerializeField] private Vector3 _target;
 
 
         public void GameStart()

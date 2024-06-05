@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6378000709541742720
 Transform:
   m_ObjectHideFlags: 0
@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 2273181089711715363}
   - component: {fileID: 3519355081738103863}
   - component: {fileID: 3246458747802846057}
-  - component: {fileID: 5977538463945651053}
+  - component: {fileID: 4529657271952748315}
   m_Layer: 6
   m_Name: AudioTrigger
   m_TagString: Untagged
@@ -209,7 +209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 385a60c872484684b6325e3c4d370e8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _collisionObserver: {fileID: 0}
+  _collisionObserver: {fileID: 4529657271952748315}
   _audioEvent:
     _eventReference:
       Guid:
@@ -219,7 +219,10 @@ MonoBehaviour:
         Data4: 1547368642
       Path: event:/Effects/StonePush
     _playOnAwake: 0
---- !u!114 &5977538463945651053
+  _audioParameter:
+    _paramName: 1
+  _paramChangeSpeed: 1
+--- !u!114 &4529657271952748315
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -228,12 +231,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2210578977952806388}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38d79311e12446df8d1fedc681592238, type: 3}
+  m_Script: {fileID: 11500000, guid: f69b81ab65c6479e9ecb86b8d97b32e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioParameter:
-    _paramName: 1
-  _rigidbody: {fileID: 3894480757766218814}
+  _collider: {fileID: 3519355081738103863}
 --- !u!1 &2377543071973455821
 GameObject:
   m_ObjectHideFlags: 0
@@ -1455,6 +1456,7 @@ MonoBehaviour:
   _speed: 3
   _mover: {fileID: 815216740850324756}
   _follow: {fileID: 9085473593831281906}
+  _target: {x: 0, y: 0, z: -10}
 --- !u!1001 &4606389786062791790
 PrefabInstance:
   m_ObjectHideFlags: 0

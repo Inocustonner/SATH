@@ -30,6 +30,7 @@ namespace Code.CustomActions.Executors
             {
                 if (_isPlayOnEndEventAction)
                 {
+                    this.Log($"{_eventAction == null} {gameObject.name} {_eventAction?.name}",Color.black);
                     _eventAction.OnEnd += OnEndEventAction;
                 }
                 else

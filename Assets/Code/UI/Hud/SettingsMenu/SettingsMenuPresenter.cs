@@ -21,7 +21,7 @@ namespace Code.UI.Hud.SettingsMenu
         
         protected override void Init()
         {
-            _audioPresenter.Init(Container.Instance.FindService<AudioVolumeService>()); 
+            _audioPresenter.Init(Container.Instance.FindService<AudioGlobalVolume>()); 
             _inputService = Container.Instance.FindService<InputService>();
             _moveLimiter = Container.Instance.FindService<MoveLimiter>();
             _interactionLimiter = Container.Instance.FindService<InteractionLimiter>();
