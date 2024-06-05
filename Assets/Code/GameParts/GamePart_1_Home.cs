@@ -3,6 +3,7 @@ using System.Linq;
 using Code.Data.Enums;
 using Code.Data.Interfaces;
 using Code.GameParts.Components;
+using Code.Utils;
 using UnityEngine;
 
 namespace Code.GameParts
@@ -66,13 +67,20 @@ namespace Code.GameParts
              {
                  _openedDoors[openedDoor.Key] = false;
              }
-             
+   
              InvokeUpdateDataEvent();
          }
 
          public bool IsTryOpenAllDoor()
          {
-             return _openedDoors.Any(d => false);
+             foreach (var openedDoor in _openedDoors)
+             {
+                 if (!openedDoor.Value)
+                 {
+                     return false;
+                 }
+             }
+             return true;
          }
     }
 }

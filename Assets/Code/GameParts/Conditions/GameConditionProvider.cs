@@ -7,7 +7,7 @@ using Code.Infrastructure.DI;
 
 namespace Code.Infrastructure.Services.Conditions
 {
-    public class GameConditionService : IService, IGameInitListener
+    public class GameConditionProvider : IService, IGameInitListener
     {
         private ConditionObserver[] _conditionObservers;
         private readonly Dictionary<GameCondition, ConditionObserver> _conditions = new();

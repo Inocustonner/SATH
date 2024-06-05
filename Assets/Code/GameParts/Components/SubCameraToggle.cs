@@ -20,7 +20,7 @@ namespace Code.GameParts.Components
         public void PartExit()
         {
             _mainCamera ??= Camera.main;
-            _mainCamera.gameObject.SetActive(true);
+            _mainCamera?.gameObject.SetActive(true);
             _subCamera.gameObject.SetActive(false);
         }
     }

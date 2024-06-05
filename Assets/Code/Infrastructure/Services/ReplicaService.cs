@@ -15,7 +15,7 @@ namespace Code.Infrastructure.Services
         [Header("Services")]
         private InputService _inputService;
         private MoveLimiter _moveLimiter;
-        private GameConditionService _gameConditionService;
+        private GameConditionProvider _gameConditionProvider;
         private ReplicaConverter _replicaConverter;
       
         [Header("Static data")]
@@ -33,7 +33,7 @@ namespace Code.Infrastructure.Services
             _inputService = Container.Instance.FindService<InputService>();
             _moveLimiter = Container.Instance.FindService<MoveLimiter>();
             _actions = Container.Instance.GetContainerComponents<ReplicaAction>();
-            _replicaConverter = new ReplicaConverter(Container.Instance.FindService<GameConditionService>());
+            _replicaConverter = new ReplicaConverter(Container.Instance.FindService<GameConditionProvider>());
         }
 
         public void GameStart()

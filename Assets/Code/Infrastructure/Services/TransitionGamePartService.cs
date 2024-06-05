@@ -14,7 +14,7 @@ namespace Code.Infrastructure.Services
     public class TransitionGamePartService : IService, IGameInitListener, IGameStartListener, IGameExitListener
     {
         [Header("Services")] 
-        private GameConditionService _gameConditionService;
+        private GameConditionProvider _gameConditionProvider;
         private CoroutineRunner _coroutineRunner;
         
         [Header("Components")] 
@@ -32,7 +32,7 @@ namespace Code.Infrastructure.Services
 
         public void GameInit()
         {
-            _gameConditionService = Container.Instance.FindService<GameConditionService>();
+            _gameConditionProvider = Container.Instance.FindService<GameConditionProvider>();
             _coroutineRunner = Container.Instance.FindService<CoroutineRunner>();
 
             _gameParts = Container.Instance.GetContainerComponents<GamePart>();
@@ -87,7 +87,7 @@ namespace Code.Infrastructure.Services
         {
             foreach (var nextPart in nextPartsData)
             {
-                if (_gameConditionService.GetValue(nextPart.Condition))
+                if (_gameConditionProvider.GetValue(nextPart.Condition))
                 {
                     var gamePart = _gameParts.FirstOrDefault(p => p.GamePartName == nextPart.GamePartName);
                     OnStartTransition?.Invoke();

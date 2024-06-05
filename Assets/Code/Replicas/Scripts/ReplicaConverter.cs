@@ -13,14 +13,14 @@ namespace Code.Replicas.Scripts
 {
     public sealed class ReplicaConverter
     {
-        private readonly GameConditionService _gameConditionService;
+        private readonly GameConditionProvider _gameConditionProvider;
         
         private ReplicaConfig _config;
         private ReplicaNodeSerialized _currentNode;
 
-        public ReplicaConverter(GameConditionService gameConditionService)
+        public ReplicaConverter(GameConditionProvider gameConditionProvider)
         {
-            _gameConditionService = gameConditionService;
+            _gameConditionProvider = gameConditionProvider;
         }
 
         public void SetConfig(ReplicaConfig config)
@@ -50,7 +50,7 @@ namespace Code.Replicas.Scripts
                 int conditionIndex;
                 for (conditionIndex = 0; conditionIndex < _currentNode.Conditions.Count; conditionIndex++)
                 {
-                    if (_gameConditionService.GetValue(_currentNode.Conditions[conditionIndex]))
+                    if (_gameConditionProvider.GetValue(_currentNode.Conditions[conditionIndex]))
                     {
                         break;
                     }

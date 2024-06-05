@@ -52,7 +52,6 @@ namespace Code.Infrastructure.Audio.AudioEvents
                     {
                         _isPlay = false;
                     }
-                    this.Log(paramValue);
                 }
                 else if(paramValue > 0)
                 {

@@ -11,7 +11,7 @@ using UnityEngine;
 
 namespace Code.Infrastructure.Polls
 {
-    public class FactoryWorkersPool : MonoBehaviour, IGameInitListener ,IGameStartListener, IGameTickListener , IGameExitListener
+    public class FactoryWorkersPool : MonoBehaviour, IGameInitListener ,IPartStartListener, IPartTickListener , IPartExitListener
     {
         [SerializeField] private List<RangedCooldown> _spawnCooldowns;
         [SerializeField] private MonoPool<FactoryWorker>[] _workersPools;
@@ -32,7 +32,7 @@ namespace Code.Infrastructure.Polls
             }
         }
 
-        public void GameStart()
+        public void PartStart()
         {
             for (int lineIndex = 0; lineIndex < WORKERS_LINES; lineIndex++)
             {
@@ -62,7 +62,7 @@ namespace Code.Infrastructure.Polls
             }
         }
 
-        public void GameTick()
+        public void PartTick()
         {
             for (int poolIndex = 0; poolIndex < _workersPools.Length; poolIndex++)
             {
@@ -76,7 +76,6 @@ namespace Code.Infrastructure.Polls
 
         private object[] GetWorkerInitParams(int i)
         {
-            this.Log(i);
             return new object[]
             {
                 _factoryConfig.WorkerColors[Random.Range(0,_factoryConfig.WorkerColors.Length)],
@@ -85,7 +84,7 @@ namespace Code.Infrastructure.Polls
             };
         }
 
-        public void GameExit()
+        public void PartExit()
         {
             for (int i = 0; i < WORKERS_LINES; i++)
             {

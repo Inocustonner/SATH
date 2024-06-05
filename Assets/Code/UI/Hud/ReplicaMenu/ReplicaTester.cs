@@ -22,19 +22,19 @@ namespace Code.UI.Hud.ReplicaMenu
         [SerializeField] private ReplicaMenuModel _model;
         [SerializeField] private ReplicaMenuView _view;
         [Header("Service")]
-        private GameConditionService _conditionService;
+        private GameConditionProvider _conditionProvider;
         private ReplicaConverter _replicaConverter;
         [Header("Debug")] 
         [SerializeField] private AcceleratedTextData[] _acceleratedTexts;
 
         public void GameInit()
         {
-            _conditionService = Container.Instance.FindService<GameConditionService>();
+            _conditionProvider = Container.Instance.FindService<GameConditionProvider>();
         }
 
         public void Start()
         {
-            _replicaConverter = new ReplicaConverter(_conditionService);
+            _replicaConverter = new ReplicaConverter(_conditionProvider);
         }
 
         public void Skip()
