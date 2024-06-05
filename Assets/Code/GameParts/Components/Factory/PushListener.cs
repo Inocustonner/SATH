@@ -1,5 +1,4 @@
 ﻿using Code.Data.Interfaces;
-using Code.Utils;
 using UnityEngine;
 
 namespace Code.GameParts.Components
@@ -17,9 +16,9 @@ namespace Code.GameParts.Components
             }
         }
         
-        public string GetPushTime()
+        public float GetPushTime()
         {
-            return _pushTime.FormatTime();
+            return _pushTime;
         }
     }
 }

@@ -2,7 +2,6 @@ using Code.Data.Configs;
 using Code.Data.Interfaces;
 using Code.Infrastructure.DI;
 using Code.Infrastructure.Services;
-using Code.Utils;
 using UnityEngine;
 
 namespace Code.GameParts.Entities

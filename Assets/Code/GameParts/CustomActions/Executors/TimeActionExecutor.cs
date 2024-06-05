@@ -8,7 +8,7 @@ namespace Code.GameParts.CustomActions.Executors
     {
         [Header("Components")]
         [SerializeField] private CustomAction _action;
-        
+
         [Header("Param")]
         [SerializeField] private float _cooldownSec = 1;
 

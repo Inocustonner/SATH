@@ -37,11 +37,11 @@ namespace Code.Infrastructure.GameLoop
                 _childStartStates.Add(childObject, childObject.activeSelf);
             }
 
-            _restartable = GetComponentsInChildren<IRestarable>().ToArray();
-            _partStartListeners = GetComponentsInChildren<IPartStartListener>().ToArray();
-            _partTickListeners = GetComponentsInChildren<IPartTickListener>().ToArray();
-            _partFixedTickListeners = GetComponentsInChildren<IPartFixedTickListener>().ToArray();
-            _partExitListeners = GetComponentsInChildren<IPartExitListener>().ToArray();
+            _restartable = GetComponentsInChildren<IRestarable>(true).ToArray();
+            _partStartListeners = GetComponentsInChildren<IPartStartListener>(true).ToArray();
+            _partTickListeners = GetComponentsInChildren<IPartTickListener>(true).ToArray();
+            _partFixedTickListeners = GetComponentsInChildren<IPartFixedTickListener>(true).ToArray();
+            _partExitListeners = GetComponentsInChildren<IPartExitListener>(true).ToArray();
         }
 
         public void GameStart()

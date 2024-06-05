@@ -1,6 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using Code.Data.Enums;
 using Code.Data.Interfaces;
 using Code.GameParts.Components;
@@ -9,7 +7,7 @@ using UnityEngine;
 
 namespace Code.GameParts
 {
-    public class GamePart_1_School : GamePart, IGameInitListener, IGameStartListener, IGameExitListener
+    public class GamePart_1_School : GamePart, IGameStartListener, IGameExitListener
     {
         public override GamePartName GamePartName => GamePartName.Part_1__school;
         public int AttemptNumber { get; private set; }
@@ -23,16 +21,10 @@ namespace Code.GameParts
 
         [Header("Restrart params")] 
         [SerializeField] private float _restartDelay;
-        
 
         [Header("Dinamyc data")] 
         private Coroutine _restartCoroutine;
         
-        public void GameInit()
-        {
-    
-        }
-
         public void GameStart()
         {
             SubscribeToEvents(true);
@@ -102,7 +94,5 @@ namespace Code.GameParts
             yield return new WaitForSeconds(_restartDelay);
             InvokeTryRestartEvent();
         }
-
-   
     }
 }
