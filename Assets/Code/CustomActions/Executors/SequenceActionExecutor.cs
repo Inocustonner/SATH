@@ -1,6 +1,5 @@
 ﻿using Code.CustomActions.Actions;
 using Code.Infrastructure.GameLoop;
-using Core.Infrastructure.Utils;
 using UnityEngine;
 
 namespace Code.CustomActions.Executors
@@ -30,7 +29,6 @@ namespace Code.CustomActions.Executors
             {
                 if (_isPlayOnEndEventAction)
                 {
-                    this.Log($"{_eventAction == null} {gameObject.name} {_eventAction?.name}",Color.black);
                     _eventAction.OnEnd += OnEndEventAction;
                 }
                 else
