@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Core.Infrastructure.Utils
+namespace Code.Utils
 {
     public static class Logger
     {

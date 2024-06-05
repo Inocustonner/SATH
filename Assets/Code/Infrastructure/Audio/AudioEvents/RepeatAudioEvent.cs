@@ -1,7 +1,6 @@
-using System;
 using UnityEngine;
 
-namespace Code.Audio.AudioEvents
+namespace Code.Infrastructure.Audio.AudioEvents
 {
     public class RepeatAudioEvent : MonoBehaviour
     {

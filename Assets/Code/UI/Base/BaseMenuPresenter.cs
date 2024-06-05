@@ -1,5 +1,7 @@
 ﻿using System;
+using Code.Data.Interfaces;
 using Code.Infrastructure.GameLoop;
+using Code.UI.Enums;
 using UnityEngine;
 
 namespace Code.UI.Base

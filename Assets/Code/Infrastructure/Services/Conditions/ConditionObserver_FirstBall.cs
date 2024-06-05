@@ -1,10 +1,8 @@
 ﻿using Code.Data.Enums;
+using Code.GameParts;
 using Code.Infrastructure.DI;
-using Code.Replicas;
-using Core.Infrastructure.Utils;
-using UnityEngine;
 
-namespace Code.Infrastructure.Services
+namespace Code.Infrastructure.Services.Conditions
 {
     public class ConditionObserver_FirstBall : ConditionObserver
     {

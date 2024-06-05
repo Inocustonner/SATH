@@ -127,9 +127,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2518796470157301780}
     m_Modifications:
+    - target: {fileID: 3124999269047106816, guid: ee39babaa7f160947b056e9deb2ec2d0, type: 3}
+      propertyPath: _replicaConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: 97b0c4c5ff3824f4d8bbbe3aed7c7bc8, type: 2}
     - target: {fileID: 3247211309216558460, guid: ee39babaa7f160947b056e9deb2ec2d0, type: 3}
       propertyPath: m_Name
       value: Part_1__school
+      objectReference: {fileID: 0}
+    - target: {fileID: 3247211309216558460, guid: ee39babaa7f160947b056e9deb2ec2d0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6595467092248725445, guid: ee39babaa7f160947b056e9deb2ec2d0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -258,6 +266,10 @@ PrefabInstance:
     - target: {fileID: 625979512277554579, guid: 4f48fa22dc0cbe74d8fa4766cdcba7f8, type: 3}
       propertyPath: m_Name
       value: Part_1__factory
+      objectReference: {fileID: 0}
+    - target: {fileID: 625979512277554579, guid: 4f48fa22dc0cbe74d8fa4766cdcba7f8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6378000709541742720, guid: 4f48fa22dc0cbe74d8fa4766cdcba7f8, type: 3}
       propertyPath: m_LocalPosition.x

@@ -3,6 +3,7 @@ using Code.Data.DynamicData;
 using Code.Infrastructure.DI;
 using Code.Infrastructure.Services;
 using Code.UI.Base;
+using Code.UI.Enums;
 using UnityEngine;
 
 namespace Code.UI.Hud.ReplicaMenu

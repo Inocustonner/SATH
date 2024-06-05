@@ -5,7 +5,8 @@ using Code.Data.Configs;
 using Code.Data.DynamicData;
 using Code.Data.Enums;
 using Code.Infrastructure.Services;
-using Core.Infrastructure.Utils;
+using Code.Infrastructure.Services.Conditions;
+using Code.Utils;
 using UnityEngine;
 
 namespace Code.Replicas.Scripts

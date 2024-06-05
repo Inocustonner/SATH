@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections;
-using Code.Data.Value.RangeFloat;
+using Code.Data.Values.RangeFloat;
 using UnityEngine;
 
 namespace Code.Infrastructure.Services

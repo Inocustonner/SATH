@@ -1,19 +1,24 @@
 ﻿using System;
 using Code.Data.Enums;
-using Code.Infrastructure.DI;
+using Code.Data.Interfaces;
+using Code.Infrastructure.GameLoop;
 using UnityEngine;
 
-namespace Code.Replicas
+namespace Code.GameParts
 {
+    [RequireComponent(typeof(PartEventDispatcher))]
     public abstract class GamePart : MonoBehaviour, IEntity
     {
         public abstract GamePartName GamePartName { get; }
         public event Action OnUpdatePartData;
         public event Action<GamePart> OnTryRestart;
-        
-        
-        public abstract void Reset();
+        public event Action OnRestart;
 
+        public virtual void Restart()
+        {
+            InvokeRestartEvent();
+        }
+        
         protected void InvokeUpdateDataEvent()
         {
            OnUpdatePartData?.Invoke();
@@ -23,6 +28,11 @@ namespace Code.Replicas
         {
             OnTryRestart?.Invoke(this);
         }
+
+        protected void InvokeRestartEvent()
+        {
+            OnRestart?.Invoke();
+        } 
         
         #region Editor
 

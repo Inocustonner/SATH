@@ -542,13 +542,14 @@ GameObject:
   m_Component:
   - component: {fileID: 8437936679500266834}
   - component: {fileID: 2604185071444030418}
+  - component: {fileID: 5436654929493956782}
   m_Layer: 0
   m_Name: Part_1__home
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8437936679500266834
 Transform:
   m_ObjectHideFlags: 0
@@ -583,6 +584,20 @@ MonoBehaviour:
   _leftDoor: {fileID: 1468029008633942848}
   _rightDoor: {fileID: 7737989393314880256}
   _centralDoor: {fileID: 3718338842945381272}
+--- !u!114 &5436654929493956782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2772022554335271384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3293b380ded04b509aefabe4ab67e9bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gamePart: {fileID: 2604185071444030418}
+  _childObjects: []
 --- !u!1 &3103851997040456045
 GameObject:
   m_ObjectHideFlags: 0
@@ -919,8 +934,6 @@ MonoBehaviour:
   _object: {fileID: 6534413250911216020}
   _speed: 2
   _distance: -4.22
-  _currentDistance: 0
-  _isMoveToOriginal: 0
 --- !u!1 &4347468948043128228
 GameObject:
   m_ObjectHideFlags: 0
@@ -1125,8 +1138,6 @@ MonoBehaviour:
   _object: {fileID: 2306509244334501980}
   _speed: 2
   _distance: 4.22
-  _currentDistance: 0
-  _isMoveToOriginal: 0
 --- !u!1 &5915493951225956820
 GameObject:
   m_ObjectHideFlags: 0

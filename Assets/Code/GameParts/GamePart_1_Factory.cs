@@ -1,28 +1,32 @@
 ﻿using Code.Data.Enums;
+using Code.Data.Interfaces;
+using Code.GameParts.Components;
+using Code.GameParts.CustomActions.Actions;
 using UnityEngine;
 
-namespace Code.Replicas
+namespace Code.GameParts
 {
-    public class GamePart_1_Factory: GamePart
+    public class GamePart_1_Factory: GamePart, IPartStartListener, IPartTickListener
     {
         public override GamePartName GamePartName => GamePartName.Part_1__factory;
-        [SerializeField] private Camera _subCamera;
+        [SerializeField] private ReplicaNumerableAction _replicasAction;
+        [SerializeField] private PushListener _pushListener;
 
-        private void OnEnable()
+        private int id;
+        public void PartStart()
         {
-            _subCamera.gameObject.SetActive(true);
-            Camera.main.gameObject.SetActive(false);
+          //  _replicasAction.StartAction();    
         }
 
-        private void OnDisable()
+        public void PartTick()
         {
-            Camera.main?.gameObject.SetActive(true);
-            _subCamera.gameObject.SetActive(false);
-        }
-
-        public override void Reset()
-        {
-            
+            var pushTime = _pushListener.GetPushTime(); 
+            if (pushTime / 10 > id)
+            {
+                _replicasAction.SetID(id);
+                _replicasAction.StartAction();
+                id++;
+            }
         }
     }
 }

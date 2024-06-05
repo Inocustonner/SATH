@@ -1,9 +1,8 @@
-﻿using System;
-using Code.Infrastructure.GameLoop;
-using Core.Infrastructure.Utils;
+﻿using Code.Data.Interfaces;
+using Code.Utils;
 using UnityEngine;
 
-namespace Code.Audio.AudioEvents
+namespace Code.Infrastructure.Audio.Params
 {
     public class AudioVelocityParam: MonoBehaviour, IGameStartListener, IGameTickListener
     {
@@ -12,22 +11,26 @@ namespace Code.Audio.AudioEvents
         
         public void GameStart()
         {
+            this.Log("MY START",Color.magenta);
             _audioParameter.InitParam();
         }
-
+        
         public void GameTick()
         {
             if (!gameObject.activeInHierarchy)
             {
                 return;
             }
-            this.Log(_rigidbody.velocity.magnitude);
-            _audioParameter.ChangeParam(_rigidbody.velocity.magnitude);
+            
+            //var value = Mathf.Clamp(Input.GetAxisRaw("Horizontal"), 0, 1);
+            var value = _rigidbody.velocity.magnitude;
+            _audioParameter.SetValue(value);
+            this.Log(value);
         }
 
         private void OnDisable()
         {
-            _audioParameter.ChangeParam(0);
+            _audioParameter.SetValue(0);
         }
     }
 }

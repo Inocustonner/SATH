@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
+using Code.Data.Interfaces;
 using Code.Infrastructure.DI;
-using Core.Infrastructure.Utils;
 using UnityEngine;
 
 namespace Code.Infrastructure.GameLoop
 {
-    public class GameEventDispatcher : MonoBehaviour
+    public class GameEventDispatcher : MonoBehaviour, IService
     {
         private readonly List<IGameInitListener> _initListeners = new();
         private readonly List<IGameLoadListener> _loadListeners = new();
@@ -14,12 +14,11 @@ namespace Code.Infrastructure.GameLoop
         private readonly List<IGameFixedTickListener> _fixedTickListeners = new();
         private readonly List<IGameExitListener> _exitListeners = new();
 
-        public void Awake()
+        private void Awake()
         {
             InitializeListeners();
             NotifyGameInit();
             NotifyGameLoad();
-            this.Log("Awake");
         }
 
         private void Start()
@@ -42,25 +41,45 @@ namespace Code.Infrastructure.GameLoop
             NotifyGameExit();
         }
 
+        public void AddUpdateListener(IGameListener listener)
+        {
+            if (listener is IGameTickListener tickListener && !_tickListeners.Contains(tickListener))
+                _tickListeners.Add(tickListener);
+            if (listener is IGameFixedTickListener fixedTickListener && !_fixedTickListeners.Contains(fixedTickListener))
+                _fixedTickListeners.Add(fixedTickListener);
+        }
+
+        public void RemoveUpdateListener(IGameListener listener)
+        {
+            if (listener is IGameTickListener tickListener && _tickListeners.Contains(tickListener))
+                _tickListeners.Remove(tickListener);
+            if (listener is IGameFixedTickListener fixedTickListener && _fixedTickListeners.Contains(fixedTickListener))
+                _fixedTickListeners.Remove(fixedTickListener);
+        }
+        
         private void InitializeListeners()
         {
-            var gameListeners = Container.Instance.GetContainerComponents<IGameListeners>();
+            var gameListeners = Container.Instance.GetContainerComponents<IGameListener>();
 
             foreach (var listener in gameListeners)
             {
-                if (listener is IGameInitListener initListener)
-                    _initListeners.Add(initListener);
-                if (listener is IGameLoadListener loadListener)
-                    _loadListeners.Add(loadListener);
-                if (listener is IGameStartListener startListener)
-                    _startListeners.Add(startListener);
-                if (listener is IGameTickListener tickListener)
-                    _tickListeners.Add(tickListener);
-                if (listener is IGameFixedTickListener fixedTickListener)
-                    _fixedTickListeners.Add(fixedTickListener);
-                if (listener is IGameExitListener exitListener)
-                    _exitListeners.Add(exitListener);
+                AddListener(listener);
             }
+        }
+        private void AddListener(IGameListener listener)
+        {
+            if (listener is IGameInitListener initListener)
+                _initListeners.Add(initListener);
+            if (listener is IGameLoadListener loadListener)
+                _loadListeners.Add(loadListener);
+            if (listener is IGameStartListener startListener)
+                _startListeners.Add(startListener);
+            if (listener is IGameTickListener tickListener)
+                _tickListeners.Add(tickListener);
+            if (listener is IGameFixedTickListener fixedTickListener)
+                _fixedTickListeners.Add(fixedTickListener);
+            if (listener is IGameExitListener exitListener)
+                _exitListeners.Add(exitListener);
         }
 
         private void NotifyGameInit()

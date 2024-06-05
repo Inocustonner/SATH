@@ -1,7 +1,7 @@
 using FMODUnity;
 using UnityEngine;
 
-namespace Code.Audio.AudioEvents
+namespace Code.Infrastructure.Audio.AudioEvents
 {
     public class AudioEventComponent : MonoBehaviour
     {

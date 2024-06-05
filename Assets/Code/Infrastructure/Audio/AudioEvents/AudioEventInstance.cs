@@ -3,7 +3,7 @@ using FMODUnity;
 using UnityEngine;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
 
-namespace Code.Audio.AudioEvents
+namespace Code.Infrastructure.Audio.AudioEvents
 {
     public class AudioEventInstance : MonoBehaviour
     {

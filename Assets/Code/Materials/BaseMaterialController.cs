@@ -1,9 +1,9 @@
 ﻿using System;
-using Code.Entities;
+using Code.Data.Enums;
 using UnityEditor;
 using UnityEngine;
 
-namespace Code.Infrastructure.Services.Materials
+namespace Code.Materials
 {
     [Serializable, CanEditMultipleObjects]
     public abstract class BaseMaterialController

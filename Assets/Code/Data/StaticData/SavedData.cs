@@ -1,7 +1,7 @@
 using System;
-using Code.Infrastructure.Audio.AudioSystem;
+using Code.Data.DynamicData;
 
-namespace Code.Infrastructure.Save
+namespace Code.Data.StaticData
 {
     [Serializable]
     public class SavedData

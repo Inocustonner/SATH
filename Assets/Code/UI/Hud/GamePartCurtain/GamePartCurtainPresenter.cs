@@ -2,6 +2,7 @@
 using Code.Infrastructure.DI;
 using Code.Infrastructure.Services;
 using Code.UI.Base;
+using Code.UI.Enums;
 using Code.UI.Hud.ReplicaMenu;
 using UnityEngine;
 

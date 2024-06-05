@@ -1,5 +1,6 @@
-﻿using Code.Infrastructure.GameLoop;
-using Core.Infrastructure.Utils;
+﻿using Code.Data.Interfaces;
+using Code.Infrastructure.GameLoop;
+using Code.Utils;
 using UnityEngine;
 
 namespace Code

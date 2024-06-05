@@ -1,8 +1,8 @@
 ﻿using System;
+using Code.Data.DynamicData;
 using Code.Infrastructure.Audio.AudioSystem;
 using Code.Infrastructure.DI;
 using Code.Utils;
-using Core.Infrastructure.Utils;
 using UnityEngine;
 
 namespace Code.UI.Hud.SettingsMenu.Audio
@@ -15,13 +15,13 @@ namespace Code.UI.Hud.SettingsMenu.Audio
         [Header("Dinamyc data")]
         [SerializeField] private AudioVolumeData _audioVolumeData;
         [Header("Services")]
-        private AudioVolumeService _audioVolumeService;
+        private AudioGlobalVolume _audioGlobalVolume;
         
         public AudioVolumeData AudioVolumeData => _audioVolumeData;
 
-        public void Init(AudioVolumeService findService)
+        public void Init(AudioGlobalVolume find)
         {
-            _audioVolumeService = findService; 
+            _audioGlobalVolume = find; 
         }
         
         public void SetValues(AudioVolumeData audioVolumeData)
@@ -53,26 +53,26 @@ namespace Code.UI.Hud.SettingsMenu.Audio
             _audioVolumeData.IsEnabled = isEnabled;
             if (_audioVolumeData.IsEnabled)
             {
-                _audioVolumeService.ChangeEffectVolume(_audioVolumeData.Effects);
-                _audioVolumeService.ChangeMusicVolume(_audioVolumeData.Music);
+                _audioGlobalVolume.ChangeEffectVolume(_audioVolumeData.Effects);
+                _audioGlobalVolume.ChangeMusicVolume(_audioVolumeData.Music);
             }
             else
             {
-                _audioVolumeService.ChangeEffectVolume(0);
-                _audioVolumeService.ChangeMusicVolume(0);
+                _audioGlobalVolume.ChangeEffectVolume(0);
+                _audioGlobalVolume.ChangeMusicVolume(0);
             }
         }
 
         private void ChangeMusicVolume(float musicVolume)
         {
             _audioVolumeData.Music = musicVolume;
-            _audioVolumeService.ChangeMusicVolume(_audioVolumeData.Music);
+            _audioGlobalVolume.ChangeMusicVolume(_audioVolumeData.Music);
         }
 
         private void ChangeEffectVolume(float effectVolume)
         {
             _audioVolumeData.Effects = effectVolume;
-            _audioVolumeService.ChangeEffectVolume(_audioVolumeData.Effects);
+            _audioGlobalVolume.ChangeEffectVolume(_audioVolumeData.Effects);
         }
     }
 }

@@ -1,16 +1,13 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using Code.CustomActions.Actions;
 using Code.Data.Enums;
 using Code.Data.Interfaces;
-using Code.Entities;
-using Code.Infrastructure.GameLoop;
+using Code.GameParts.Components;
+using Code.GameParts.CustomActions.Actions;
 using UnityEngine;
 
-namespace Code.Replicas
+namespace Code.GameParts
 {
-    public class GamePart_1_School : GamePart, IGameInitListener, IGameStartListener, IGameExitListener
+    public class GamePart_1_School : GamePart, IGameStartListener, IGameExitListener
     {
         public override GamePartName GamePartName => GamePartName.Part_1__school;
         public int AttemptNumber { get; private set; }
@@ -24,24 +21,10 @@ namespace Code.Replicas
 
         [Header("Restrart params")] 
         [SerializeField] private float _restartDelay;
-        [SerializeField] private GameObject[] _childObjects;
-        private readonly Dictionary<GameObject, bool> _childStartStates = new();
-        private IResetable[] _restartable;
 
         [Header("Dinamyc data")] 
         private Coroutine _restartCoroutine;
         
-        public void GameInit()
-        {
-            InitChildObjects();
-            foreach (var childObject in _childObjects)
-            {
-                _childStartStates.Add(childObject,childObject.activeSelf);
-            }
-
-            _restartable = GetComponentsInChildren<IResetable>(true);
-        }
-
         public void GameStart()
         {
             SubscribeToEvents(true);
@@ -52,20 +35,12 @@ namespace Code.Replicas
             SubscribeToEvents(false);
         }
 
-        public override void Reset()
+        public override void Restart()
         {
+            base.Restart();
+            
             AttemptNumber = 0;
             IsWin = false;
-
-            foreach (var childObject in _childStartStates)  
-            {
-                childObject.Key.SetActive(childObject.Value);
-            }
-
-            foreach (var restartable in _restartable)
-            {
-                restartable.Restart();
-            }
             
             InvokeUpdateDataEvent();
         }
@@ -105,13 +80,11 @@ namespace Code.Replicas
 
         private void OnEnterDeathZone_Lose(GameObject obj)
         {
-           
-                if (_restartCoroutine != null)
-                {
-                    StopCoroutine(_restartCoroutine);
-                }
-                _restartCoroutine =  StartCoroutine(TryRestartWithDelay());
-           
+            if (_restartCoroutine != null)
+            {
+                StopCoroutine(_restartCoroutine);
+            }
+            _restartCoroutine =  StartCoroutine(TryRestartWithDelay());
         }
 
         private IEnumerator TryRestartWithDelay()
@@ -121,15 +94,5 @@ namespace Code.Replicas
             yield return new WaitForSeconds(_restartDelay);
             InvokeTryRestartEvent();
         }
-
-        #region Editor
-
-        [ContextMenu("InitChildObjects")]
-        private void InitChildObjects()
-        {
-            _childObjects = GetComponentsInChildren<Transform>(true).Select(child => child.gameObject).ToArray();
-        }
-
-        #endregion
     }
 }

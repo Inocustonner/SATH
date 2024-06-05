@@ -1,10 +1,11 @@
+using Code.Data.StaticData;
 using Code.Infrastructure.Audio.AudioSystem;
 using Code.Infrastructure.DI;
 using Code.Infrastructure.Save;
 using Code.Infrastructure.Services;
 using Code.UI.Base;
+using Code.UI.Enums;
 using Code.UI.Hud.SettingsMenu.Audio;
-using Core.Infrastructure.Utils;
 using UnityEngine;
 
 namespace Code.UI.Hud.SettingsMenu
@@ -21,7 +22,7 @@ namespace Code.UI.Hud.SettingsMenu
         
         protected override void Init()
         {
-            _audioPresenter.Init(Container.Instance.FindService<AudioVolumeService>()); 
+            _audioPresenter.Init(Container.Instance.FindService<AudioGlobalVolume>()); 
             _inputService = Container.Instance.FindService<InputService>();
             _moveLimiter = Container.Instance.FindService<MoveLimiter>();
             _interactionLimiter = Container.Instance.FindService<InteractionLimiter>();
