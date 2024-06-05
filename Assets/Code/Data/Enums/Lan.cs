@@ -1,4 +1,4 @@
-﻿namespace Code.Data.Configs
+﻿namespace Code.Data.Enums
 {
     public enum Lan
     {

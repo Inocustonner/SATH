@@ -1,6 +1,6 @@
 using System;
 
-namespace Code.Infrastructure.Audio.AudioSystem
+namespace Code.Data.DynamicData
 {
     [Serializable]
     public class AudioVolumeData

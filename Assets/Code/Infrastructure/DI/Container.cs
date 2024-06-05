@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Code.Data.Interfaces;
+using Code.GameParts;
 using Code.Replicas;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -16,6 +18,7 @@ namespace Code.Infrastructure.DI
 
         [Header("Initializes automatically")] 
         [SerializeField] private MonoBehaviour[] _allObjects;
+        
         private List<IEntity> _entities;
         private List<IService> _services;
         private List<GamePart> _gameParts;

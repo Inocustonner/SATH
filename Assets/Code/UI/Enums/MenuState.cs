@@ -1,4 +1,4 @@
-﻿namespace Code.UI.Base
+﻿namespace Code.UI.Enums
 {
     public enum MenuState
     {

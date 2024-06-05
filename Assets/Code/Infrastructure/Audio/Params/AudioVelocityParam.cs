@@ -1,8 +1,8 @@
-﻿using Code.Infrastructure.GameLoop;
-using Core.Infrastructure.Utils;
+﻿using Code.Data.Interfaces;
+using Code.Utils;
 using UnityEngine;
 
-namespace Code.Audio.AudioEvents
+namespace Code.Infrastructure.Audio.Params
 {
     public class AudioVelocityParam: MonoBehaviour, IGameStartListener, IGameTickListener
     {

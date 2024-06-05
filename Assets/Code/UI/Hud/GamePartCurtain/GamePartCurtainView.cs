@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using Code.Data.Configs;
+using Code.Data.Interfaces;
 using Code.Infrastructure.DI;
 using Code.Infrastructure.GameLoop;
 using Code.UI.Base;

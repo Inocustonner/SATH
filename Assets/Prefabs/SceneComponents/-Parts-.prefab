@@ -201,6 +201,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Part_1__home
       objectReference: {fileID: 0}
+    - target: {fileID: 2772022554335271384, guid: a2b0dd50f2b8ff644ad62ca0d4319972, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8437936679500266834, guid: a2b0dd50f2b8ff644ad62ca0d4319972, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -263,9 +267,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Part_1__factory
       objectReference: {fileID: 0}
-    - target: {fileID: 3246458747802846057, guid: 4f48fa22dc0cbe74d8fa4766cdcba7f8, type: 3}
-      propertyPath: _paramChangeSpeed
-      value: 7
+    - target: {fileID: 625979512277554579, guid: 4f48fa22dc0cbe74d8fa4766cdcba7f8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6378000709541742720, guid: 4f48fa22dc0cbe74d8fa4766cdcba7f8, type: 3}
       propertyPath: m_LocalPosition.x

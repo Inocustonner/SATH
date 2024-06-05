@@ -1,4 +1,4 @@
-﻿namespace Code.Entities
+﻿namespace Code.Data.Enums
 {
     public enum MaterialFloatValueType
     {

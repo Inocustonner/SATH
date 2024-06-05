@@ -1,10 +1,11 @@
+using Code.Data.StaticData;
 using Code.Infrastructure.Audio.AudioSystem;
 using Code.Infrastructure.DI;
 using Code.Infrastructure.Save;
 using Code.Infrastructure.Services;
 using Code.UI.Base;
+using Code.UI.Enums;
 using Code.UI.Hud.SettingsMenu.Audio;
-using Core.Infrastructure.Utils;
 using UnityEngine;
 
 namespace Code.UI.Hud.SettingsMenu

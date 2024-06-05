@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Collections;
 using System.Linq;
-using Code.CustomActions.Actions;
 using Code.Data.Configs;
-using Code.Data.Enums;
+using Code.Data.Interfaces;
 using Code.Data.StaticData;
+using Code.GameParts;
+using Code.GameParts.CustomActions.Actions;
 using Code.Infrastructure.DI;
-using Code.Infrastructure.GameLoop;
-using Code.Replicas;
+using Code.Infrastructure.Services.Conditions;
 using UnityEngine;
 
 namespace Code.Infrastructure.Services
@@ -21,7 +20,7 @@ namespace Code.Infrastructure.Services
         [Header("Components")] 
         private GamePart[] _gameParts;
         private TransitionNextGamePartAction[] _actions;
-        
+
         [Header("Static data")] 
         private float _delay;
         
@@ -41,7 +40,7 @@ namespace Code.Infrastructure.Services
 
             _delay = Container.Instance.FindConfig<UIConfig>().CurtainDuration / 2;
 
-            _currentPart = _gameParts.FirstOrDefault(p => p.gameObject.activeSelf);
+            _currentPart = _gameParts.FirstOrDefault(p => p.gameObject.activeInHierarchy);
         }
         
         public void GameStart()
@@ -81,7 +80,7 @@ namespace Code.Infrastructure.Services
         {
             OnStartTransition?.Invoke();
             _coroutineRunner.StopRoutine(_transitionCoroutine);
-            _transitionCoroutine = _coroutineRunner.StartActionWithDelay(part.Reset, _delay);
+            _transitionCoroutine = _coroutineRunner.StartActionWithDelay(part.Restart, _delay);
         }
 
         private void OnTryStartGamePartTransition(NextGamePartData[] nextPartsData)

@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Code.Data.Enums;
-using Code.Entities;
-using Code.Infrastructure.GameLoop;
+using Code.Data.Interfaces;
+using Code.GameParts.Components;
 using UnityEngine;
 
-namespace Code.Replicas
+namespace Code.GameParts
 {
     public class GamePart_1_Home: GamePart, IGameInitListener, IGameStartListener
     {
@@ -58,12 +58,15 @@ namespace Code.Replicas
              }
          }
 
-         public override void Reset()
+         public override void Restart()
          {
+             base.Restart();
+             
              foreach (var openedDoor in _openedDoors)
              {
                  _openedDoors[openedDoor.Key] = false;
              }
+             
              InvokeUpdateDataEvent();
          }
 

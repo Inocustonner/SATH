@@ -1,8 +1,8 @@
 ﻿using Code.Data.Enums;
+using Code.GameParts;
 using Code.Infrastructure.DI;
-using Code.Replicas;
 
-namespace Code.Infrastructure.Services
+namespace Code.Infrastructure.Services.Conditions
 {
     public class ConditionObserver_GoodBall : ConditionObserver
     {

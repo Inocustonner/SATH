@@ -1,4 +1,5 @@
 using System;
+using Code.UI.Enums;
 
 namespace Code.UI.Base
 {

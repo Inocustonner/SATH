@@ -1,8 +1,7 @@
 ﻿using Code.Data.Enums;
-using Code.Infrastructure.DI;
-using Code.Infrastructure.GameLoop;
+using Code.Data.Interfaces;
 
-namespace Code.Infrastructure.Services
+namespace Code.Infrastructure.Services.Conditions
 {
     public abstract class ConditionObserver: IEntity,IGameInitListener, IGameStartListener, IGameExitListener
     {

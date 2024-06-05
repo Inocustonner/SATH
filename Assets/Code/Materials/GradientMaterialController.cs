@@ -1,7 +1,7 @@
 ﻿using System;
-using Code.Entities;
+using Code.Data.Enums;
 
-namespace Code.Infrastructure.Services.Materials
+namespace Code.Materials
 {
     [Serializable]
     public class GradientMaterialController: BaseMaterialController

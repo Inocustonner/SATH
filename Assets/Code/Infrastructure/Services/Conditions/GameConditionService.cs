@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using Code.Data.Enums;
+using Code.Data.Interfaces;
 using Code.Infrastructure.DI;
-using Code.Infrastructure.GameLoop;
 
-namespace Code.Infrastructure.Services
+namespace Code.Infrastructure.Services.Conditions
 {
     public class GameConditionService : IService, IGameInitListener
     {

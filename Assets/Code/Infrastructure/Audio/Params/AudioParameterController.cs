@@ -4,7 +4,7 @@ using FMOD.Studio;
 using FMODUnity;
 using UnityEngine;
 
-namespace Code.Audio.AudioEvents
+namespace Code.Infrastructure.Audio.Params
 {
     [Serializable]
     public class AudioParameterController

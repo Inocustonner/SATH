@@ -1,4 +1,4 @@
-namespace Code.Infrastructure.Polls
+namespace Code.Data.Interfaces
 {
     public interface  IPoolEntity
     {

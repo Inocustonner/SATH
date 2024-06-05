@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections;
-using Code.Audio.AudioEvents;
 using Code.Data.Configs;
 using Code.Data.DynamicData;
+using Code.Data.Interfaces;
+using Code.Infrastructure.Audio.AudioEvents;
 using Code.Infrastructure.DI;
-using Code.Infrastructure.GameLoop;
 using Code.Infrastructure.Services;
 using Febucci.UI;
 using TMPro;
 using UnityEngine;
 
-namespace Code.UI
+namespace Code.UI.Components
 {
     public class AnimatedText : MonoBehaviour, IGameInitListener
     {

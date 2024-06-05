@@ -1,4 +1,5 @@
-﻿using Code.Infrastructure.DI;
+﻿using Code.Data.Interfaces;
+using Code.Infrastructure.DI;
 using Code.Infrastructure.GameLoop;
 using FMOD.Studio;
 using FMODUnity;

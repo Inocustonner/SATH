@@ -1,5 +1,5 @@
 ﻿using System;
-using Code.Data.Value.RangeFloat;
+using Code.Data.Values.RangeFloat;
 using UnityEngine;
 
 namespace Code.Data.Configs
