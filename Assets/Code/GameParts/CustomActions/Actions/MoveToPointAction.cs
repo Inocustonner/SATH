@@ -12,17 +12,13 @@ namespace Code.GameParts.CustomActions.Actions
 
         [Header("Params")] 
         [SerializeField] private Vector2 _target;
-        [Space]
-        [SerializeField] private bool _isResetPositionAfterStart;
-        [SerializeField] private Vector2 _startPosition;
-                
+
         [Header("Dynamic data")] 
         private Coroutine _coroutine;
         
         public void Restart()
         {
             TryStopCoroutine();
-            _mover.SetEntityPosition(_startPosition);
         }
 
         public override void StartAction()
@@ -31,12 +27,7 @@ namespace Code.GameParts.CustomActions.Actions
             {
                 return;
             }
-            
-            if (_isResetPositionAfterStart)
-            {
-                _mover.SetEntityPosition(_startPosition);
-            }
-            
+
             TryStopCoroutine();
             InvokeStartActionEvent();
             SetComponentsEnable(false);
