@@ -13,27 +13,29 @@ MonoBehaviour:
   m_Name: FactoryConfig
   m_EditorClassIdentifier: 
   WorkerColors:
+  - {r: 0.8018868, g: 0.14751692, b: 0.20483395, a: 1}
+  - {r: 0.8584906, g: 0.5076464, b: 0.17412782, a: 1}
   - {r: 1, g: 0.9937824, b: 0.2688679, a: 1}
-  - {r: 0.42731524, g: 1, b: 0.3160377, a: 1}
+  - {r: 0.343752, g: 0.764151, b: 0.26312745, a: 1}
   - {r: 0.16509432, g: 0.6674458, b: 1, a: 1}
-  - {r: 0.3374062, g: 0.2971698, b: 1, a: 1}
-  - {r: 1, g: 0.042452812, b: 0.750638, a: 1}
+  - {r: 0.13333333, g: 0.20837194, b: 0.7529412, a: 1}
+  - {r: 0.6152668, g: 0.17254902, b: 0.7176471, a: 1}
   WorkersData:
   - SpawnCooldownSec:
-      MinValue: 6.508994
-      MaxValue: 8.779427
+      MinValue: 3.87689
+      MaxValue: 6.269701
     SwitchSpeedCooldownSec:
       MinValue: 0.9430002
       MaxValue: 2.2242846
     WorkerSpeed:
-      MinValue: 1.5940595
-      MaxValue: 2.9801981
+      MinValue: 2.3758724
+      MaxValue: 3.0599594
   - SpawnCooldownSec:
-      MinValue: 4.3016562
-      MaxValue: 8.246019
+      MinValue: 3.8230915
+      MaxValue: 6.810324
     SwitchSpeedCooldownSec:
       MinValue: 0.61028767
       MaxValue: 1.6129031
     WorkerSpeed:
-      MinValue: 2.1682649
-      MaxValue: 2.9180472
+      MinValue: 2.3958125
+      MaxValue: 2.9978082

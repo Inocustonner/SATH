@@ -1,0 +1,331 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48e56e729e8a46f58050bf2e2c16e7d8, type: 3}
+  m_Name: Bar_Purple
+  m_EditorClassIdentifier: 
+  IsBlockMovement: 1
+  Nodes:
+  - ID: 0
+    TypingSpeed: 0
+    Conditions: 0400000000000000
+    Localization: []
+    EditorPosition: {x: 684.5, y: 711}
+  - ID: 82d8aa5e-5dc9-496a-ae0a-413e48cd8dbd
+    TypingSpeed: 0.07
+    Conditions: 00000000
+    Localization:
+    - Language: 0
+      Parts:
+      - Markups: 
+        Effect: 0
+        Color: {r: 0.25882354, g: 0.29803923, b: 0.69803923, a: 1}
+        MessageText: "\u041F\u043E\u0440\u0430 \u0432\u0437\u044F\u0442\u044C \u0441\u0435\u0431\u044F
+          \u0432 \u0440\u0443\u043A\u0438 \u0438 \u043D\u0430\u0439\u0442\u0438 \u043D\u043E\u0440\u043C\u0430\u043B\u044C\u043D\u0443\u044E
+          \u0440\u0430\u0431\u043E\u0442\u0443."
+    EditorPosition: {x: 1997, y: 1199.5}
+  - ID: 3a6615a6-a557-4fc7-92b6-087df231c340
+    TypingSpeed: 0.07
+    Conditions: 00000000
+    Localization:
+    - Language: 0
+      Parts:
+      - Markups: 
+        Effect: 0
+        Color: {r: 0.25882354, g: 0.29803923, b: 0.69803923, a: 1}
+        MessageText: "\u041F\u043E\u0445\u043E\u0436\u0435 \u043E\u043D\u0430 \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043B\u044C\u043D\u043E
+          \u043F\u0440\u0430\u0432\u0430..."
+    EditorPosition: {x: 1324, y: 1196.5}
+  - ID: 2379b0a7-d861-42a5-984a-381a496463c2
+    TypingSpeed: 0
+    Conditions: 00000000
+    Localization:
+    - Language: 0
+      Parts:
+      - Markups: 
+        Effect: 0
+        Color: {r: 0.25882354, g: 0.29803923, b: 0.69803923, a: 1}
+        MessageText: "\u041C\u043E\u0436\u0435\u0442 \u0431\u044B\u0442\u044C \u0432\u0441\u0451-\u0442\u0430\u043A\u0438..."
+    EditorPosition: {x: 1325, y: 681.5}
+  - ID: 35b0b604-f996-4d9e-9766-7b046a233deb
+    TypingSpeed: 0
+    Conditions: 00000000
+    Localization:
+    - Language: 0
+      Parts:
+      - Markups: 
+        Effect: 0
+        Color: {r: 0.25882354, g: 0.29803923, b: 0.69803923, a: 1}
+        MessageText: "\u041E\u0439... \u041F\u0440\u0438\u0432\u0435\u0442!"
+    EditorPosition: {x: 2002, y: 682.5}
+  - ID: c177ace7-a3b0-49af-a94c-d87581ad01d5
+    TypingSpeed: 0
+    Conditions: 00000000
+    Localization:
+    - Language: 0
+      Parts:
+      - Markups: 
+        Effect: 0
+        Color: {r: 0.25882354, g: 0.29803923, b: 0.69803923, a: 1}
+        MessageText: "\u0418\u0437\u0432\u0438\u043D\u0438, \u044F \u0437\u0430\u0441\u043C\u043E\u0442\u0440\u0435\u043B\u0441\u044F
+          \u043D\u0430 \u044D\u0442\u0438 \u0447\u0430\u0441\u044B \u0438 \u043D\u0435
+          \u0437\u0430\u043C\u0435\u0442\u0438\u043B \u0442\u0435\u0431\u044F."
+    EditorPosition: {x: 2672, y: 680.5}
+  - ID: bda08846-5ec0-474f-9e67-13dbd24ec864
+    TypingSpeed: 0
+    Conditions: 00000000
+    Localization:
+    - Language: 0
+      Parts:
+      - Markups: 
+        Effect: 0
+        Color: {r: 0.25882354, g: 0.29803923, b: 0.69803923, a: 1}
+        MessageText: "\u041A\u0442\u043E-\u0442\u043E \u043E\u0434\u043D\u0430\u0436\u0434\u044B
+          \u0441\u043A\u0430\u0437\u0430\u043B \u043C\u043D\u0435, \u0447\u0442\u043E
+          \u0438\u043D\u043E\u0433\u0434\u0430 \u043E\u043D\u0438 \u043D\u0430\u0447\u0438\u043D\u0430\u044E\u0442
+          \u0438\u0434\u0442\u0438."
+    EditorPosition: {x: 3387, y: 677.5}
+  - ID: 0b92e4ec-28c2-4dcd-ae81-b7d9c7c8fd9b
+    TypingSpeed: 0
+    Conditions: 00000000
+    Localization:
+    - Language: 0
+      Parts:
+      - Markups: 
+        Effect: 0
+        Color: {r: 0.25882354, g: 0.29803923, b: 0.69803923, a: 1}
+        MessageText: "\u042D\u0442\u0430 \u0438\u0441\u0442\u043E\u0440\u0438\u044F
+          \u0438 \u043D\u0435\u0434\u0430\u0432\u043D\u0438\u0439 \u0434\u0438\u0430\u043B\u043E\u0433
+          \u0441 \u043C\u043E\u0435\u0439 \u043F\u043E\u0434\u0440\u0443\u0433\u043E\u0439
+          \u0437\u0430\u0441\u0442\u0430\u0432\u0438\u043B\u0438 \u043C\u0435\u043D\u044F
+          \u0437\u0430\u0434\u0443\u043C\u0430\u0442\u044C\u0441\u044F \u043A\u043E\u0435
+          \u043E \u0447\u0451\u043C..."
+    EditorPosition: {x: 4070, y: 674.5}
+  - ID: 79610b1e-fb52-4e8e-9630-f7856ca6e3b2
+    TypingSpeed: 0.09
+    Conditions: 00000000
+    Localization:
+    - Language: 0
+      Parts:
+      - Markups: 0100000002000000
+        Effect: 0
+        Color: {r: 0.25882354, g: 0.29803923, b: 0.69803923, a: 1}
+        MessageText: "\u041D\u0435 \u043F\u0440\u0438\u044F\u0442\u043D\u043E\u043C."
+    EditorPosition: {x: 4772, y: 677.5}
+  - ID: 670a6622-9951-41fe-aa36-2a6b5567436f
+    TypingSpeed: 0
+    Conditions: 00000000
+    Localization:
+    - Language: 0
+      Parts:
+      - Markups: 
+        Effect: 0
+        Color: {r: 0.25882354, g: 0.29803923, b: 0.69803923, a: 1}
+        MessageText: "\u041A\u043E\u0433\u0434\u0430 \u044F \u0442\u043E\u043B\u044C\u043A\u043E
+          \u043D\u0430\u0447\u0438\u043D\u0430\u043B \u0441\u0432\u043E\u0439 \u043F\u0443\u0442\u044C,
+          \u043C\u043D\u0435 \u043A\u0430\u0437\u0430\u043B\u043E\u0441\u044C, \u0447\u0442\u043E
+          \u044F \u0442\u043E\u0436\u0435 \u0438\u0434\u0443."
+    EditorPosition: {x: 5475, y: 673.5}
+  - ID: 8ec030a6-9c6d-40b2-9f3b-9570a2552b9b
+    TypingSpeed: 0.09
+    Conditions: 00000000
+    Localization:
+    - Language: 0
+      Parts:
+      - Markups: 
+        Effect: 0
+        Color: {r: 0.25882354, g: 0.29803923, b: 0.69803923, a: 1}
+        MessageText: "\u0418\u043D\u043E\u0433\u0434\u0430"
+      - Markups: 0100000002000000
+        Effect: 1
+        Color: {r: 0.25882354, g: 0.29803923, b: 0.69803923, a: 1}
+        MessageText: " \u0432\u043F\u0435\u0440\u0451\u0434."
+    EditorPosition: {x: 6131, y: 848}
+  - ID: 3949d1a1-c0c0-44c9-9997-b709052c9bd2
+    TypingSpeed: 0.09
+    Conditions: 00000000
+    Localization:
+    - Language: 0
+      Parts:
+      - Markups: 
+        Effect: 0
+        Color: {r: 0.25882354, g: 0.29803923, b: 0.69803923, a: 1}
+        MessageText: "\u0418\u043D\u043E\u0433\u0434\u0430 "
+      - Markups: 0100000002000000
+        Effect: 1
+        Color: {r: 0.25882354, g: 0.29803923, b: 0.69803923, a: 1}
+        MessageText: "\u043D\u0430\u0437\u0430\u0434."
+    EditorPosition: {x: 6848, y: 850}
+  - ID: 392f2743-ce92-41cf-95e7-17dbc097b0ac
+    TypingSpeed: 0
+    Conditions: 00000000
+    Localization:
+    - Language: 0
+      Parts:
+      - Markups: 
+        Effect: 0
+        Color: {r: 0.25882354, g: 0.29803923, b: 0.69803923, a: 1}
+        MessageText: "\u041D\u043E \u0437\u043D\u0430\u0435\u0448\u044C, \u0447\u0442\u043E
+          \u044F \u043F\u043E\u043D\u044F\u043B \u043F\u043E\u043A\u0430 \u0441\u0442\u043E\u043B\u044C\u043A\u043E
+          \u043B\u0435\u0442 \u0433\u043E\u043D\u044F\u043B\u0441\u044F \u0437\u0430
+          \u043C\u0435\u0447\u0442\u0430\u043C\u0438?"
+    EditorPosition: {x: 7534, y: 677.5}
+  - ID: c6364a8e-3581-45c3-87f7-07dc93a11cae
+    TypingSpeed: 0
+    Conditions: 00000000
+    Localization:
+    - Language: 0
+      Parts:
+      - Markups: 
+        Effect: 0
+        Color: {r: 0.25882354, g: 0.29803923, b: 0.69803923, a: 1}
+        MessageText: "\u0412 \u043A\u043E\u043D\u0435\u0447\u043D\u043E\u043C \u0438\u0442\u043E\u0433\u0435
+          \u043D\u0435 \u0432\u0430\u0436\u043D\u043E \u0441\u043F\u0435\u0448\u0430\u0442
+          \u0447\u0430\u0441\u044B \u0438\u043B\u0438 \u043E\u0442\u0441\u0442\u0430\u044E\u0442."
+    EditorPosition: {x: 8208, y: 677.5}
+  - ID: b52c6dcc-32c7-4c0a-b206-0c7b3cf32e8d
+    TypingSpeed: 0.09
+    Conditions: 00000000
+    Localization:
+    - Language: 0
+      Parts:
+      - Markups: 
+        Effect: 0
+        Color: {r: 0.25882354, g: 0.29803923, b: 0.69803923, a: 1}
+        MessageText: "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0438\u043C\u0435\u0435\u0442
+          \u0442\u043E\u043B\u044C\u043A\u043E \u0442\u043E, \u0447\u0442\u043E \u043E\u043D\u0438
+          \u0438\u0434\u0443\u0442 "
+      - Markups: 0100000002000000
+        Effect: 1
+        Color: {r: 0.25882354, g: 0.29803923, b: 0.69803923, a: 1}
+        MessageText: "\u043D\u0435\u043F\u0440\u0430\u0432\u0438\u043B\u044C\u043D\u043E."
+    EditorPosition: {x: 8940, y: 854}
+  - ID: a13b49d3-6f46-48ab-9264-5923755a819e
+    TypingSpeed: 0
+    Conditions: 00000000
+    Localization:
+    - Language: 0
+      Parts:
+      - Markups: 
+        Effect: 0
+        Color: {r: 0.25882354, g: 0.29803923, b: 0.69803923, a: 1}
+        MessageText: "\u041D\u043E \u0435\u0441\u043B\u0438 \u043A\u0442\u043E-\u0442\u043E
+          \u0433\u043E\u0442\u043E\u0432 \u043C\u0435\u043D\u044F \u0432\u044B\u0441\u043B\u0443\u0448\u0430\u0442\u044C..."
+    EditorPosition: {x: 9654, y: 678.5}
+  - ID: da6f9071-b8b9-4e4c-ab93-229cf4a85837
+    TypingSpeed: 0
+    Conditions: 00000000
+    Localization:
+    - Language: 0
+      Parts:
+      - Markups: 
+        Effect: 0
+        Color: {r: 0.25882354, g: 0.29803923, b: 0.69803923, a: 1}
+        MessageText: "\u0417\u043D\u0430\u0447\u0438\u0442 \u044F \u0433\u043E\u0442\u043E\u0432
+          \u043F\u043E\u043F\u0440\u043E\u0431\u043E\u0432\u0430\u0442\u044C \u0441\u043D\u043E\u0432\u0430."
+    EditorPosition: {x: 10348, y: 677.5}
+  - ID: 161ac481-2c21-4d9d-a566-127c86dd89b8
+    TypingSpeed: 0
+    Conditions: 00000000
+    Localization:
+    - Language: 0
+      Parts:
+      - Markups: 
+        Effect: 0
+        Color: {r: 0.25882354, g: 0.29803923, b: 0.69803923, a: 1}
+        MessageText: "\u0421\u043F\u0430\u0441\u0438\u0431\u043E \u0442\u0435\u0431\u0435
+          \u0437\u0430 \u044D\u0442\u0443 \u0431\u0435\u0441\u0435\u0434\u0443."
+    EditorPosition: {x: 11021, y: 677.5}
+  Edges:
+  - SourceNode: 3a6615a6-a557-4fc7-92b6-087df231c340
+    TargetNode: 82d8aa5e-5dc9-496a-ae0a-413e48cd8dbd
+    Index: 0
+  - SourceNode: 0
+    TargetNode: 3a6615a6-a557-4fc7-92b6-087df231c340
+    Index: 1
+  - SourceNode: 0
+    TargetNode: 2379b0a7-d861-42a5-984a-381a496463c2
+    Index: 0
+  - SourceNode: 2379b0a7-d861-42a5-984a-381a496463c2
+    TargetNode: 35b0b604-f996-4d9e-9766-7b046a233deb
+    Index: 0
+  - SourceNode: 35b0b604-f996-4d9e-9766-7b046a233deb
+    TargetNode: c177ace7-a3b0-49af-a94c-d87581ad01d5
+    Index: 0
+  - SourceNode: c177ace7-a3b0-49af-a94c-d87581ad01d5
+    TargetNode: bda08846-5ec0-474f-9e67-13dbd24ec864
+    Index: 0
+  - SourceNode: bda08846-5ec0-474f-9e67-13dbd24ec864
+    TargetNode: 0b92e4ec-28c2-4dcd-ae81-b7d9c7c8fd9b
+    Index: 0
+  - SourceNode: 0b92e4ec-28c2-4dcd-ae81-b7d9c7c8fd9b
+    TargetNode: 79610b1e-fb52-4e8e-9630-f7856ca6e3b2
+    Index: 0
+  - SourceNode: 79610b1e-fb52-4e8e-9630-f7856ca6e3b2
+    TargetNode: 670a6622-9951-41fe-aa36-2a6b5567436f
+    Index: 0
+  - SourceNode: 670a6622-9951-41fe-aa36-2a6b5567436f
+    TargetNode: 8ec030a6-9c6d-40b2-9f3b-9570a2552b9b
+    Index: 0
+  - SourceNode: 8ec030a6-9c6d-40b2-9f3b-9570a2552b9b
+    TargetNode: 3949d1a1-c0c0-44c9-9997-b709052c9bd2
+    Index: 0
+  - SourceNode: 3949d1a1-c0c0-44c9-9997-b709052c9bd2
+    TargetNode: 392f2743-ce92-41cf-95e7-17dbc097b0ac
+    Index: 0
+  - SourceNode: 392f2743-ce92-41cf-95e7-17dbc097b0ac
+    TargetNode: c6364a8e-3581-45c3-87f7-07dc93a11cae
+    Index: 0
+  - SourceNode: c6364a8e-3581-45c3-87f7-07dc93a11cae
+    TargetNode: b52c6dcc-32c7-4c0a-b206-0c7b3cf32e8d
+    Index: 0
+  - SourceNode: b52c6dcc-32c7-4c0a-b206-0c7b3cf32e8d
+    TargetNode: a13b49d3-6f46-48ab-9264-5923755a819e
+    Index: 0
+  - SourceNode: a13b49d3-6f46-48ab-9264-5923755a819e
+    TargetNode: da6f9071-b8b9-4e4c-ab93-229cf4a85837
+    Index: 0
+  - SourceNode: da6f9071-b8b9-4e4c-ab93-229cf4a85837
+    TargetNode: 161ac481-2c21-4d9d-a566-127c86dd89b8
+    Index: 0
+  _textRus: "\u041F\u043E\u0440\u0430 \u0432\u0437\u044F\u0442\u044C \u0441\u0435\u0431\u044F
+    \u0432 \u0440\u0443\u043A\u0438 \u0438 \u043D\u0430\u0439\u0442\u0438 \u043D\u043E\u0440\u043C\u0430\u043B\u044C\u043D\u0443\u044E
+    \u0440\u0430\u0431\u043E\u0442\u0443.\u041F\u043E\u0445\u043E\u0436\u0435 \u043E\u043D\u0430
+    \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043B\u044C\u043D\u043E
+    \u043F\u0440\u0430\u0432\u0430...\u041C\u043E\u0436\u0435\u0442 \u0431\u044B\u0442\u044C
+    \u0432\u0441\u0451-\u0442\u0430\u043A\u0438...\u041E\u0439... \u041F\u0440\u0438\u0432\u0435\u0442!\u0418\u0437\u0432\u0438\u043D\u0438,
+    \u044F \u0437\u0430\u0441\u043C\u043E\u0442\u0440\u0435\u043B\u0441\u044F \u043D\u0430
+    \u044D\u0442\u0438 \u0447\u0430\u0441\u044B \u0438 \u043D\u0435 \u0437\u0430\u043C\u0435\u0442\u0438\u043B
+    \u0442\u0435\u0431\u044F.\u041A\u0442\u043E-\u0442\u043E \u043E\u0434\u043D\u0430\u0436\u0434\u044B
+    \u0441\u043A\u0430\u0437\u0430\u043B \u043C\u043D\u0435, \u0447\u0442\u043E \u0438\u043D\u043E\u0433\u0434\u0430
+    \u043E\u043D\u0438 \u043D\u0430\u0447\u0438\u043D\u0430\u044E\u0442 \u0438\u0434\u0442\u0438.\u042D\u0442\u0430
+    \u0438\u0441\u0442\u043E\u0440\u0438\u044F \u0438 \u043D\u0435\u0434\u0430\u0432\u043D\u0438\u0439
+    \u0434\u0438\u0430\u043B\u043E\u0433 \u0441 \u043C\u043E\u0435\u0439 \u043F\u043E\u0434\u0440\u0443\u0433\u043E\u0439
+    \u0437\u0430\u0441\u0442\u0430\u0432\u0438\u043B\u0438 \u043C\u0435\u043D\u044F
+    \u0437\u0430\u0434\u0443\u043C\u0430\u0442\u044C\u0441\u044F \u043A\u043E\u0435
+    \u043E \u0447\u0451\u043C...\u041D\u0435 \u043F\u0440\u0438\u044F\u0442\u043D\u043E\u043C.\u041A\u043E\u0433\u0434\u0430
+    \u044F \u0442\u043E\u043B\u044C\u043A\u043E \u043D\u0430\u0447\u0438\u043D\u0430\u043B
+    \u0441\u0432\u043E\u0439 \u043F\u0443\u0442\u044C, \u043C\u043D\u0435 \u043A\u0430\u0437\u0430\u043B\u043E\u0441\u044C,
+    \u0447\u0442\u043E \u044F \u0442\u043E\u0436\u0435 \u0438\u0434\u0443.\u0418\u043D\u043E\u0433\u0434\u0430
+    \u0432\u043F\u0435\u0440\u0451\u0434.\u0418\u043D\u043E\u0433\u0434\u0430 \u043D\u0430\u0437\u0430\u0434.\u041D\u043E
+    \u0437\u043D\u0430\u0435\u0448\u044C, \u0447\u0442\u043E \u044F \u043F\u043E\u043D\u044F\u043B
+    \u043F\u043E\u043A\u0430 \u0441\u0442\u043E\u043B\u044C\u043A\u043E \u043B\u0435\u0442
+    \u0433\u043E\u043D\u044F\u043B\u0441\u044F \u0437\u0430 \u043C\u0435\u0447\u0442\u0430\u043C\u0438?\u0412
+    \u043A\u043E\u043D\u0435\u0447\u043D\u043E\u043C \u0438\u0442\u043E\u0433\u0435
+    \u043D\u0435 \u0432\u0430\u0436\u043D\u043E \u0441\u043F\u0435\u0448\u0430\u0442
+    \u0447\u0430\u0441\u044B \u0438\u043B\u0438 \u043E\u0442\u0441\u0442\u0430\u044E\u0442.\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435
+    \u0438\u043C\u0435\u0435\u0442 \u0442\u043E\u043B\u044C\u043A\u043E \u0442\u043E,
+    \u0447\u0442\u043E \u043E\u043D\u0438 \u0438\u0434\u0443\u0442 \u043D\u0435\u043F\u0440\u0430\u0432\u0438\u043B\u044C\u043D\u043E.\u041D\u043E
+    \u0435\u0441\u043B\u0438 \u043A\u0442\u043E-\u0442\u043E \u0433\u043E\u0442\u043E\u0432
+    \u043C\u0435\u043D\u044F \u0432\u044B\u0441\u043B\u0443\u0448\u0430\u0442\u044C...\u0417\u043D\u0430\u0447\u0438\u0442
+    \u044F \u0433\u043E\u0442\u043E\u0432 \u043F\u043E\u043F\u0440\u043E\u0431\u043E\u0432\u0430\u0442\u044C
+    \u0441\u043D\u043E\u0432\u0430.\u0421\u043F\u0430\u0441\u0438\u0431\u043E \u0442\u0435\u0431\u0435
+    \u0437\u0430 \u044D\u0442\u0443 \u0431\u0435\u0441\u0435\u0434\u0443."
