@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using Code.Data.Interfaces;
+using UnityEngine;
 
 namespace Code.GameParts.CustomActions.Executors
 {
-    public class ActionExecutor : MonoBehaviour
+    public class ActionExecutor : MonoBehaviour, IRestarable
     {
         [SerializeField] protected bool _isCanRepeat = true;
         protected bool _isInvoked;
@@ -10,6 +11,11 @@ namespace Code.GameParts.CustomActions.Executors
         protected bool IsCanInvoke()
         {
             return _isCanRepeat || (!_isCanRepeat && !_isInvoked);
+        }
+
+        public void Restart()
+        {
+            _isInvoked = false;
         }
     }
 }

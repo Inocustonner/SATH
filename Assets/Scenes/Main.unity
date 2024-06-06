@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!61 &1517806880 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 7782770843014993774, guid: 5c8eaf887f728564996cea2648a0fcc6, type: 3}
+  m_PrefabInstance: {fileID: 2690751772150515841}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2012776699762959622
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -272,6 +277,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6576534882224015616, guid: 5c8eaf887f728564996cea2648a0fcc6, type: 3}
+      propertyPath: m_Name
+      value: Player_bar
+      objectReference: {fileID: 0}
+    - target: {fileID: 7892105531117582678, guid: 5c8eaf887f728564996cea2648a0fcc6, type: 3}
+      propertyPath: _disableColliders.Array.data[0]
+      value: 
+      objectReference: {fileID: 1517806880}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

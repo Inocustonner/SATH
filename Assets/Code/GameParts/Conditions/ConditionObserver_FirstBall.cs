@@ -1,6 +1,8 @@
 ﻿using Code.Data.Enums;
 using Code.GameParts;
+using Code.GameParts.Components;
 using Code.Infrastructure.DI;
+using TMPro;
 
 namespace Code.Infrastructure.Services.Conditions
 {

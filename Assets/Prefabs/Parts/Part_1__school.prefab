@@ -1371,8 +1371,6 @@ MonoBehaviour:
   - {fileID: 4846241546776885105}
   - {fileID: 7749280346021035367}
   _target: {x: -15.32, y: -5.59}
-  _isResetPositionAfterStart: 0
-  _startPosition: {x: 0, y: 0}
 --- !u!1 &3247211309216558460
 GameObject:
   m_ObjectHideFlags: 0
@@ -8301,8 +8299,6 @@ MonoBehaviour:
   _disableColliders:
   - {fileID: 4846241546776885105}
   _target: {x: -11.66, y: -9}
-  _isResetPositionAfterStart: 1
-  _startPosition: {x: -21.3, y: -9}
 --- !u!114 &7368146128473194595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10597,8 +10593,6 @@ MonoBehaviour:
   - {fileID: 4846241546776885105}
   - {fileID: 7749280346021035367}
   _target: {x: -15.32, y: -5.59}
-  _isResetPositionAfterStart: 0
-  _startPosition: {x: 0, y: 0}
 --- !u!114 &199670611644837454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10783,8 +10777,6 @@ MonoBehaviour:
   - {fileID: 4846241546776885105}
   - {fileID: 7749280346021035367}
   _target: {x: -15.32, y: -5.59}
-  _isResetPositionAfterStart: 0
-  _startPosition: {x: 0, y: 0}
 --- !u!1001 &4061242406107983080
 PrefabInstance:
   m_ObjectHideFlags: 0

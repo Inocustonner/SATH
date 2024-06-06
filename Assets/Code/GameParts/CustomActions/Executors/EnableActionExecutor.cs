@@ -11,7 +11,6 @@ namespace Code.GameParts.CustomActions.Executors
         [Header("Components")] 
         [SerializeField] private bool _isStopActionWhenDisable = true;
         
-        
         private void OnEnable()
         {
             if (IsCanInvoke())

@@ -1,32 +1,24 @@
-﻿using Code.Data.Interfaces;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Code.GameParts.Components.FriendShip
 {
-    public class BarClocks: MonoBehaviour, IRestarable
+    public class BarClocks: MonoBehaviour
     {
         [SerializeField] private ClocksArrow[] _clocksArrow;
-        [SerializeField] private Vector2Int _defaultTime;
-        
-        [ContextMenu("SetDefaultTime")]
-        public void Restart()
-        {
-            SetDefaultTime();
-        }
 
-        public void SetTime(int hour,int minutes)
+        public void SetTime(int hour,int minutes, int duration)
         {
             for (int i = 0; i < _clocksArrow.Length; i++)
             {
-                _clocksArrow[i].SetTime(hour, minutes);   
+                StartCoroutine(_clocksArrow[i].SetTimeCoroutine(hour, minutes, duration));   
             }
         }
-        
-        private void SetDefaultTime()
+
+        public void SetTime(int hour, int minutes)
         {
             for (int i = 0; i < _clocksArrow.Length; i++)
             {
-                _clocksArrow[i].SetTime(_defaultTime.x, _defaultTime.y);
+                _clocksArrow[i].SetTime(hour,minutes);
             }
         }
     }
