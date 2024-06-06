@@ -39,13 +39,9 @@ namespace Code.Infrastructure.Services
         }
     }
 
-    public class MoveLimiter : Limiter
-    {
-        
-    }
+    public class MoveLimiter : Limiter {}
 
-    public class InteractionLimiter : Limiter
-    {
-        
-    }
+    public class InteractionLimiter : Limiter {}
+    
+    public class TextLimiter: Limiter{}
 }

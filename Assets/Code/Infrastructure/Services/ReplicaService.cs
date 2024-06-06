@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using Code.Data.DynamicData;
 using Code.Data.Interfaces;
 using Code.GameParts.CustomActions.Actions;
@@ -16,15 +17,20 @@ namespace Code.Infrastructure.Services
         [Header("Services")]
         private InputService _inputService;
         private MoveLimiter _moveLimiter;
+        private TextLimiter _textLimiter;
         private GameConditionProvider _gameConditionProvider;
         private ReplicaConverter _replicaConverter;
+        private CoroutineRunner _coroutineRunner;
       
         [Header("Static data")]
         private GameSettings _gameSettings;
         private ReplicaAction[] _actions;
 
+        [Header("Dynamic data")] 
+        private Coroutine _coroutine;
         
         public event Action<AcceleratedTextData[], AnimatedTextWaiter.Mode, Action> OnStartReplica;
+        public event Action<AcceleratedTextData[], AnimatedTextWaiter.Mode> OnSwitchReplicaLanguage;
         public event Action OnStopReplicaPart;
         public event Action<ReplicaConfig> OnEndReplica;
 
@@ -32,8 +38,13 @@ namespace Code.Infrastructure.Services
         {
             _gameSettings = Container.Instance.FindService<GameSettings>();
             _inputService = Container.Instance.FindService<InputService>();
+            _coroutineRunner = Container.Instance.FindService<CoroutineRunner>();
+            
             _moveLimiter = Container.Instance.FindService<MoveLimiter>();
+            _textLimiter = Container.Instance.FindService<TextLimiter>();
+            
             _actions = Container.Instance.GetContainerComponents<ReplicaAction>();
+            
             _replicaConverter = new ReplicaConverter(Container.Instance.FindService<GameConditionProvider>());
         }
 
@@ -46,11 +57,12 @@ namespace Code.Infrastructure.Services
         {
             SubscribeToEvents(false);
         }
-
+        
         private void SubscribeToEvents(bool flag)
         {
             if (flag)
             {
+                _gameSettings.OnSwitchLanguage += OnSwitchLanguage;
                 _inputService.OnPressInteractionKey += OnPressInteractionKey;
                 foreach (var action in _actions)
                 {
@@ -59,6 +71,7 @@ namespace Code.Infrastructure.Services
             }
             else
             {
+                _gameSettings.OnSwitchLanguage -= OnSwitchLanguage;
                 _inputService.OnPressInteractionKey -= OnPressInteractionKey;
                 foreach (var action in _actions)
                 {
@@ -66,7 +79,27 @@ namespace Code.Infrastructure.Services
                 }
             }
         }
-        
+
+        private void OnSwitchLanguage()
+        {
+            _coroutineRunner.StopRoutine(_coroutine);
+            _coroutine = _coroutineRunner.StartRoutine(WaitTextLimiterAfterSwitch());
+        }
+
+        private IEnumerator WaitTextLimiterAfterSwitch()
+        {
+            yield return new WaitUntil(() => _textLimiter.IsUnlock);
+            if (_replicaConverter.TryGetCurrentConfig(out var config) &&
+                _replicaConverter.TryGetAcceleratedTexts(_gameSettings.Language, out var replica))
+            {
+                var waitedMode = config.IsBlockMovement
+                ? AnimatedTextWaiter.Mode.PressKey
+                : AnimatedTextWaiter.Mode.Time;
+
+                OnSwitchReplicaLanguage?.Invoke(replica, waitedMode);
+            }
+        }
+
         private void OnTryStartReplica(ReplicaConfig replicaConfig)
         {
             _replicaConverter.SetConfig(replicaConfig);
@@ -88,6 +121,7 @@ namespace Code.Infrastructure.Services
                     {
                         _moveLimiter.Unblock();
                     }
+                    
                     OnEndReplica?.Invoke(replicaConfig);
                 });
             }

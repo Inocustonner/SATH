@@ -3,12 +3,6 @@ using UnityEngine;
 
 namespace Febucci.UI
 {
-    /// <summary>
-    /// Default TextAnimatorPlayer, which can show letters dynamically (like a typewriter).<br/>
-    /// To enable it, add this component near a <see cref="TextAnimator"/> one<br/>
-    /// - Base class: <see cref="Core.TAnimPlayerBase"/><br/>
-    /// - Manual: <see href="https://www.febucci.com/text-animator-unity/docs/1.X/text-animator-players/">TextAnimatorPlayers</see>
-    /// </summary>
     [HelpURL("https://www.febucci.com/text-animator-unity/docs/1.X/text-animator-players/")]
     [AddComponentMenu("Febucci/TextAnimator/TextAnimatorPlayer")]
     public class TextAnimatorPlayer : Core.TAnimPlayerBase
@@ -25,6 +19,10 @@ namespace Febucci.UI
         [SerializeField, Tooltip("True if you want to use the same typewriter's wait times for the disappearance progression, false if you want to use a different wait time")] bool useTypewriterWaitForDisappearances = true;
         [SerializeField, Attributes.CharsDisplayTime, Tooltip("Wait time for characters in the disappearance progression")] float disappearanceWaitTime = .015f;
         [SerializeField, Attributes.MinValue(0.1f), Tooltip("How much faster/slower is the disappearance progression compared to the typewriter's typing speed")] float disappearanceSpeedMultiplier = 1;
+
+        private bool _isPaused;
+        private float _originalWaitForNormalChars;
+        
 
         protected override float GetWaitAppearanceTimeOf(char character)
         {
@@ -91,5 +89,25 @@ namespace Febucci.UI
                 yield return null;
         }
 
+        public void PauseTypewriter()
+        {
+            if (!_isPaused)
+            {
+                _isPaused = true;
+                _originalWaitForNormalChars = waitForNormalChars;
+                Debug.Log($"Pause {waitForNormalChars}");
+                waitForNormalChars = float.MaxValue; 
+            }
+        }
+
+        public void ResumeTypewriter()
+        {
+            if (_isPaused)
+            {
+                _isPaused = false;
+                waitForNormalChars = _originalWaitForNormalChars;
+                Debug.Log($"Resume {waitForNormalChars}");
+            }
+        }
     }
 }

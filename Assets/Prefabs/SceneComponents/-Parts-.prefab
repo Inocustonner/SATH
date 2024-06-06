@@ -381,7 +381,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2772022554335271384, guid: a2b0dd50f2b8ff644ad62ca0d4319972, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8437936679500266834, guid: a2b0dd50f2b8ff644ad62ca0d4319972, type: 3}
       propertyPath: m_LocalPosition.x
@@ -492,6 +492,10 @@ PrefabInstance:
     - target: {fileID: 5004871669308368237, guid: 26ef8bdd5069a2f4b8b9f39258432edd, type: 3}
       propertyPath: m_Name
       value: Part_2__friendship
+      objectReference: {fileID: 0}
+    - target: {fileID: 5004871669308368237, guid: 26ef8bdd5069a2f4b8b9f39258432edd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

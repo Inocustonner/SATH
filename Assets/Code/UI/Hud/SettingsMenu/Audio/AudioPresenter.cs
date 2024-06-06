@@ -19,9 +19,9 @@ namespace Code.UI.Hud.SettingsMenu.Audio
         
         public AudioVolumeData AudioVolumeData => _audioVolumeData;
 
-        public void Init(AudioGlobalVolume find)
+        public void Init(AudioGlobalVolume globalVolume)
         {
-            _audioGlobalVolume = find; 
+            _audioGlobalVolume = globalVolume; 
         }
         
         public void SetValues(AudioVolumeData audioVolumeData)

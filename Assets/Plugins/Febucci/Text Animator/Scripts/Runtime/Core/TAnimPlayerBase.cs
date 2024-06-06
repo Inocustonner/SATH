@@ -277,11 +277,12 @@ namespace Febucci.UI.Core
                     }
 
                     //gets the time to wait based on the newly character showed
-                    timeToWait = GetWaitAppearanceTimeOf(characterShown);
 
+                    timeToWait = GetWaitAppearanceTimeOf(characterShown);
                     //waiting less time than a frame, we don't wait yet
-                    if (timeToWait < deltaTime)
+                    if (GetWaitAppearanceTimeOf(characterShown) < deltaTime)
                     {
+                        timeToWait = GetWaitAppearanceTimeOf(characterShown);
                         timePassed += timeToWait;
 
                         if (timePassed >= deltaTime) //waits only if we "surpassed" a frame duration
@@ -292,7 +293,7 @@ namespace Febucci.UI.Core
                     }
                     else
                     {
-                        while (timePassed < timeToWait && !HasSkipped())
+                        while (timePassed <  GetWaitAppearanceTimeOf(characterShown) && !HasSkipped())
                         {
                             OnTypewriterCharDelay();
                             timePassed += deltaTime;

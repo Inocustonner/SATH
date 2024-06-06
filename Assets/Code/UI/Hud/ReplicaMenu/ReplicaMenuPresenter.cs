@@ -26,12 +26,14 @@ namespace Code.UI.Hud.ReplicaMenu
             {
                 _replicaService.OnStartReplica += OnStartReplica;
                 _replicaService.OnStopReplicaPart += OnStopReplicaPart;
+                _replicaService.OnSwitchReplicaLanguage += OnSwitchLanguage;
                 View.OnEndWrite += OnEndWrite;
             }
             else
             {
                 _replicaService.OnStartReplica -= OnStartReplica;
                 _replicaService.OnStopReplicaPart -= OnStopReplicaPart;
+                _replicaService.OnSwitchReplicaLanguage -= OnSwitchLanguage;
                 View.OnEndWrite -= OnEndWrite;
             }
         }
@@ -58,6 +60,13 @@ namespace Code.UI.Hud.ReplicaMenu
             }
 
             OnEndWriteReplicas = action;
+            View.StartWrite(replicas, waitedMode);
+        }
+
+        private void OnSwitchLanguage(AcceleratedTextData[] replicas, AnimatedTextWaiter.Mode waitedMode)
+        {
+            //View.Skip();
+            //View.Reset();    
             View.StartWrite(replicas, waitedMode);
         }
 

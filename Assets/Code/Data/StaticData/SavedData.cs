@@ -1,5 +1,6 @@
 using System;
 using Code.Data.DynamicData;
+using Code.Data.Enums;
 
 namespace Code.Data.StaticData
 {
@@ -7,5 +8,6 @@ namespace Code.Data.StaticData
     public class SavedData
     {
         public AudioVolumeData AudioVolume;
+        public Lan Language;
     }
 }

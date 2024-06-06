@@ -13,11 +13,14 @@ namespace Code.Replicas.Scripts
 {
     public sealed class ReplicaConverter
     {
+        [Header("Services")]
         private readonly GameConditionProvider _gameConditionProvider;
         
+        [Header("Dinamyc data")]
         private ReplicaConfig _config;
         private ReplicaNodeSerialized _currentNode;
-
+        
+        
         public ReplicaConverter(GameConditionProvider gameConditionProvider)
         {
             _gameConditionProvider = gameConditionProvider;
@@ -25,15 +28,21 @@ namespace Code.Replicas.Scripts
 
         public void SetConfig(ReplicaConfig config)
         {
-            if (!config.TryFindStartNode(out var node))
+            _config = config;
+            if (_config == null || !_config.TryFindStartNode(out var node))
             {
                 this.LogError($"Could not find replica with ID [0] in the config {config.name}");
+                return;
             }
 
-            _config = config;
             _currentNode = node;
         }
 
+        public bool TryGetCurrentConfig(out ReplicaConfig config)
+        {
+            config = _config;
+            return _config != null;
+        }
         public bool TryGetAcceleratedTexts(Lan language, out AcceleratedTextData[] texts)
         {
             var list = new List<AcceleratedTextData>();

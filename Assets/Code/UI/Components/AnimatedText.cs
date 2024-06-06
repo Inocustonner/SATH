@@ -12,7 +12,7 @@ using UnityEngine;
 
 namespace Code.UI.Components
 {
-    public class AnimatedText : MonoBehaviour, IGameInitListener
+    public class AnimatedText : MonoBehaviour, IGameInitListener, IGameStartListener, IGameExitListener
     {
         public bool IsTyping { get; private set; }
         
@@ -23,6 +23,7 @@ namespace Code.UI.Components
 
         [Header("Services")]
         private AnimatedTextWaiter _animatedTextWaiter;
+        private TextLimiter _textLimiter;
         
         [Header("Static data")]
         private float _defaultSpeed;
@@ -31,11 +32,12 @@ namespace Code.UI.Components
         private int _index;
         private AcceleratedTextData[] _acceleratedTexts;
         private Coroutine _coroutine;
-        
+
         public event Action OnEndWrite;
         
         public void GameInit()
         {
+            _textLimiter = Container.Instance.FindService<TextLimiter>();
             _animatedTextWaiter = Container.Instance.FindService<AnimatedTextWaiter>();
             
             var uiConfig = Container.Instance.FindConfig<UIConfig>();
@@ -55,6 +57,16 @@ namespace Code.UI.Components
                     _coroutine ??= StartCoroutine(WaitDelayAfterEnd());
                 }
             });
+        }
+        
+        public void GameStart()
+        {
+            _textLimiter.OnSwitch += OnSwitch;  
+        }
+
+        public void GameExit()
+        {
+            _textLimiter.OnSwitch -= OnSwitch;  
         }
 
         private  void PlayTypeAudio(char c)
@@ -143,6 +155,22 @@ namespace Code.UI.Components
             if (_coroutine != null)
             {
                 StopCoroutine(_coroutine);
+            }
+        }
+        
+        private void OnSwitch(bool isUnlock)
+        {
+            if (IsTyping)
+            {
+                if (isUnlock)
+                {
+                    _textAnimatorPlayer.ResumeTypewriter();
+                    
+                }
+                else
+                {
+                    _textAnimatorPlayer.PauseTypewriter();
+                }
             }
         }
     }
