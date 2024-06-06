@@ -58,7 +58,6 @@ namespace Code.GameParts.CustomActions.Actions.Material
 
         private IEnumerator StartFlashing()
         {
-
             while (_isActive)
             {
                 float halfDuration = _flashingDuration.GetRandomValue() / 2;

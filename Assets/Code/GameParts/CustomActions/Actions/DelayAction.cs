@@ -15,6 +15,12 @@ namespace Code.GameParts.CustomActions.Actions
                 StopCoroutine(_coroutine);
             }
 
+            InvokeStartActionEvent();
+
+            if (!gameObject.activeInHierarchy)
+            {
+                return;
+            }
             _coroutine = StartCoroutine(Delay());
         }
 
