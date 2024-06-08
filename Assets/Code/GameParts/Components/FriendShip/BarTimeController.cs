@@ -8,15 +8,16 @@ namespace Code.GameParts.Components.FriendShip
     {
         [Header("Time")]
         [SerializeField] private Vector2Int _defaultTime;
-        [SerializeField] private Vector2Int _endPurpleTime;
-        [SerializeField] private Vector2Int _endTime;
+        [SerializeField] private Vector2Int _purpleTime;
+        [SerializeField] private Vector2Int _blueTime;
 
         [Header("Components")]
         [SerializeField] private BarClocks _barClocks;
-        [SerializeField] private ReplicaAction _purpleReplica;
-        [SerializeField] private CollisionObserver _timeTrigger;
+        [SerializeField] private CustomAction _purpleAction;
+        [SerializeField] private CustomAction _blueAction;
 
         private bool _isSpeakWithPurple;
+        
         public void PartStart()
         {
             SubscribeToEvents(true);
@@ -38,31 +39,30 @@ namespace Code.GameParts.Components.FriendShip
         {
             if (flag)
             {
-                _timeTrigger.OnExit += OnEnterTimeTrigger;
-                _purpleReplica.OnEnd += OnEndPurpleReplica;
+                _blueAction.OnStart += OnStartBlueAction;
+                _purpleAction.OnEnd += OnEndPurpleAction;
             }
             else
             {
-                _timeTrigger.OnExit -= OnEnterTimeTrigger;
-                _purpleReplica.OnEnd -= OnEndPurpleReplica;
+                _blueAction.OnStart -= OnStartBlueAction;
+                _purpleAction.OnEnd -= OnEndPurpleAction;
             }
         }
 
-        private void OnEndPurpleReplica()
-        {
-            _isSpeakWithPurple = true;
-        }
-
-        private void OnEnterTimeTrigger(GameObject _)
+        private void OnStartBlueAction()
         {
             if (_isSpeakWithPurple)
             {
-                _barClocks.SetTime(_endPurpleTime.x, _endPurpleTime.y,duration: 2);
+                return;
             }
-            else
-            {
-                _barClocks.SetTime(_endTime.x, _endTime.y,duration: 2);
-            }
+
+            _barClocks.SetTime(_blueTime.x, _blueTime.y,duration: 2);
+        }
+
+        private void OnEndPurpleAction()
+        {
+            _isSpeakWithPurple = true;
+            _barClocks.SetTime(_purpleTime.x, _purpleTime.y,duration: 2);
         }
     }
 }
