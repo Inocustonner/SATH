@@ -41,18 +41,32 @@ namespace Code.UI.Hud.SettingsMenu
         {
             if (flag)
             {
-                _inputService.OnPressPauseKey += OnPressPauseKey;
+                _inputService.OnPressPauseKey += SwitchViewState;
+                View.OnClickContinue += OnClickContinue;
+                View.OnClickExit += OnClickExit;
             }
             else
             {
-                _inputService.OnPressPauseKey -= OnPressPauseKey;
+                _inputService.OnPressPauseKey -= SwitchViewState;
+                View.OnClickContinue -= OnClickContinue;
+                View.OnClickExit -= OnClickExit;
             }
             
             _audioPresenter.SubscribeToEvents(flag);
             _languagePresenter.SubscribeToEvents(flag);
         }
 
-        private void OnPressPauseKey()
+        private void OnClickExit()
+        {
+            Application.Quit();
+        }
+
+        private void OnClickContinue()
+        {
+            SwitchViewState();
+        }
+
+        private void SwitchViewState()
         {
             if (Model.IsValidating)
             {

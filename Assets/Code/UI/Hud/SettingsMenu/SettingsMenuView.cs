@@ -8,10 +8,14 @@ namespace Code.UI.Hud.SettingsMenu
     public class SettingsMenuView : BaseMenuView
     {
         [Header("Components")] 
+        [SerializeField] private EventButton _continueButton;
+        [SerializeField] private EventButton _exitButton;
         [SerializeField] private EventButton _settingsButton;
         [SerializeField] private GameObject _settingsView;
 
         private bool _isShowSettings;
+        public event Action OnClickContinue;
+        public event Action OnClickExit;
         
         public override void OpenMenu(Action onComplete = null)
         {
@@ -31,15 +35,29 @@ namespace Code.UI.Hud.SettingsMenu
         {
             if (flag)
             {
-                _settingsButton.OnClickButton += OnClickSettingsButton;
+                _settingsButton.OnClickButton += ClickSettingsButton;
+                _continueButton.OnClickButton += ClickContinueButton;
+                _exitButton.OnClickButton += ClickExitButton;
             }
             else
             {
-                _settingsButton.OnClickButton -= OnClickSettingsButton;
+                _settingsButton.OnClickButton -= ClickSettingsButton;
+                _continueButton.OnClickButton -= ClickContinueButton;
+                _exitButton.OnClickButton -= ClickExitButton;
             }
         }
 
-        private void OnClickSettingsButton()
+        private void ClickExitButton()
+        {
+            OnClickExit?.Invoke();
+        }
+
+        private void ClickContinueButton()
+        {
+            OnClickContinue?.Invoke();
+        }
+
+        private void ClickSettingsButton()
         {
             _isShowSettings = !_isShowSettings;
             _settingsView.SetActive(_isShowSettings);
