@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using FMODUnity;
+using UnityEngine;
 
 namespace Code.Data.Configs
 {
@@ -13,5 +14,8 @@ namespace Code.Data.Configs
         [Header("Game part transition curtain")] 
         public Color CurtainColor = Color.black;
         public float CurtainDuration = 1;
+
+        [Header("Buttons")] 
+        public EventReference ClickButtonAudio;
     }
 }

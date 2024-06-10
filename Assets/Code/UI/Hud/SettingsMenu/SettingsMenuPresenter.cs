@@ -7,14 +7,13 @@ using Code.UI.Base;
 using Code.UI.Enums;
 using Code.UI.Hud.SettingsMenu.Audio;
 using Code.UI.Hud.SettingsMenu.Language;
-using Code.Utils;
 using UnityEngine;
 
 namespace Code.UI.Hud.SettingsMenu
 {
     public class SettingsMenuPresenter : BaseMenuPresenter<SettingsMenuModel,SettingsMenuView>, IProgressWriter
     {
-        [Header("Components")] 
+        [Header("Sub presenters")] 
         [SerializeField] private AudioPresenter _audioPresenter;
         [SerializeField] private LanguagePresenter _languagePresenter;
         

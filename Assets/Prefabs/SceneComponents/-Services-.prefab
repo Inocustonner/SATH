@@ -120,6 +120,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 60e24c9dd048e654e8ed8618b5d48eb6, type: 2}
   - {fileID: 11400000, guid: b4c536643550bae48a79b7aa4008ddc3, type: 2}
   - {fileID: 11400000, guid: 92979987a6ae031479a5750efd7ea290, type: 2}
+  - {fileID: 11400000, guid: 4067807854f535941aa2bb75af145f3c, type: 2}
   _allObjects: []
 --- !u!1 &4670411337442172293
 GameObject:

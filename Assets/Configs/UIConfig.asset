@@ -17,3 +17,10 @@ MonoBehaviour:
   ReplicaSkipDelaySeconds: 0.5
   CurtainColor: {r: 0, g: 0, b: 0, a: 1}
   CurtainDuration: 2
+  ClickButtonAudio:
+    Guid:
+      Data1: -73538089
+      Data2: 1341285803
+      Data3: 1533271452
+      Data4: -959812549
+    Path: event:/UI/PressButton
