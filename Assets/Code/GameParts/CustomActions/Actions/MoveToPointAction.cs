@@ -1,5 +1,6 @@
 ﻿using Code.Data.Interfaces;
 using Code.GameParts.Components;
+using Code.Utils;
 using UnityEngine;
 
 namespace Code.GameParts.CustomActions.Actions
@@ -32,6 +33,7 @@ namespace Code.GameParts.CustomActions.Actions
             InvokeStartActionEvent();
             SetComponentsEnable(false);
        
+            this.Log($"start");
             _coroutine = StartCoroutine(_mover.Move(_target, onCompeted: () =>
             {
                 SetComponentsEnable(true);

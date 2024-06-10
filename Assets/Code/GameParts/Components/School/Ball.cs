@@ -1,4 +1,5 @@
 ﻿using Code.Data.Interfaces;
+using Code.Utils;
 using UnityEngine;
 
 namespace Code.GameParts.Entities
@@ -34,6 +35,7 @@ namespace Code.GameParts.Entities
         public void Restart()
         {
             SwitchFollow(false);
+            this.Log("Restart");
         }
 
         public void SwitchFollow(bool isFollow)

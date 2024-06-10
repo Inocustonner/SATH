@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Code.Utils;
 using UnityEngine;
 
 namespace Code.GameParts.Components
@@ -11,7 +12,6 @@ namespace Code.GameParts.Components
         [SerializeField] private float _speed = 1;
         [SerializeField] private float _stoppedDistance = 0.1f;
         
-        public Transform Entity => _entity;
         
         public IEnumerator MoveWithAcceleration(Vector2 to, Action onCompeted = null)
         {
@@ -26,6 +26,7 @@ namespace Code.GameParts.Components
         
         public IEnumerator Move(Vector2 to, Action onCompeted = null)
         {
+            this.Log($"Move coroutine start");
             var period = new WaitForEndOfFrame();
             Vector3 startPosition = _entity.position;
             Vector3 endPosition = to;
@@ -42,6 +43,7 @@ namespace Code.GameParts.Components
 
             _entity.position = endPosition;
             onCompeted?.Invoke();
+            this.Log($"Move coroutine end");
         }
         
         public IEnumerator Move(Vector2[] to, Action onCompeted = null)

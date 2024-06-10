@@ -21,6 +21,7 @@ namespace Code.GameParts
 
         [Header("Restrart params")] 
         [SerializeField] private float _restartDelay;
+        [SerializeField] private int _maxAttempt = 3;
 
         [Header("Dinamyc data")] 
         private Coroutine _restartCoroutine;
@@ -71,7 +72,7 @@ namespace Code.GameParts
         {
             AttemptNumber++;
             InvokeUpdateDataEvent();
-            if (AttemptNumber == 3)
+            if (AttemptNumber == _maxAttempt)
             {
                 _deathZone_restart.gameObject.SetActive(false);
                 _deathZone_lose.gameObject.SetActive(true);

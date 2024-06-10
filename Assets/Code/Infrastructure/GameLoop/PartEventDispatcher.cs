@@ -81,6 +81,10 @@ namespace Code.Infrastructure.GameLoop
             {
                 restartable.Restart();
             }
+            foreach (var childStartState in _childStartStates)
+            {
+                childStartState.Key.SetActive(childStartState.Value);
+            }
         }
 
         private void OnDisable()

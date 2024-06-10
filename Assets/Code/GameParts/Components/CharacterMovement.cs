@@ -19,6 +19,7 @@ namespace Code.GameParts.Entities
         [SerializeField] private bool _isCanVerticalMove = true;
 
         [Header("Dinamyc data")] 
+        private bool _isCanMove = true;
         private Vector2 _desiredVelocity;
         private Vector2 _velocity;
         private float _maxSpeedChange;
@@ -27,7 +28,6 @@ namespace Code.GameParts.Entities
         private float _turnSpeed;
         private bool _isPressingKey;
         
-
         public void GameInit()
         {
             _inputService = Container.Instance.FindService<InputService>();
@@ -53,6 +53,18 @@ namespace Code.GameParts.Entities
             _isPressingKey = false;
         }
 
+        public void Block()
+        {
+            _isCanMove = false;
+            Restart();
+        }
+
+        public void Unblock()
+        {
+            _isCanMove = true;
+            Restart();
+        }
+        
         private void RunWithAcceleration()
         {
             if (_isPressingKey)

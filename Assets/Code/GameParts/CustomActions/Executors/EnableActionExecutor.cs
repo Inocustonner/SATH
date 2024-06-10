@@ -1,4 +1,5 @@
 ﻿using Code.GameParts.CustomActions.Actions;
+using Code.Utils;
 using UnityEngine;
 
 namespace Code.GameParts.CustomActions.Executors
@@ -15,6 +16,7 @@ namespace Code.GameParts.CustomActions.Executors
         {
             if (IsCanInvoke())
             {
+                this.Log($"{gameObject.name} start actions");
                 foreach (var action in _customActions)
                 {
                     action.StartAction();

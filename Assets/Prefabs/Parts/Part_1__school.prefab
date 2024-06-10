@@ -512,7 +512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20d400a8d7294af6b268e64dd5b951af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _replicaConfig: {fileID: 0}
+  _replicaConfig: {fileID: 11400000, guid: 97b0c4c5ff3824f4d8bbbe3aed7c7bc8, type: 2}
   _allReplicas:
   - {fileID: 11400000, guid: 97b0c4c5ff3824f4d8bbbe3aed7c7bc8, type: 2}
   - {fileID: 11400000, guid: a419e3b86f6cf3841980d640770bce36, type: 2}
@@ -1426,6 +1426,7 @@ MonoBehaviour:
   _deathZone_lose: {fileID: 4094982862962905697}
   _loseReplicas: {fileID: 3124999269047106816}
   _restartDelay: 1.5
+  _maxAttempt: 3
 --- !u!114 &519964633737036760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8298,6 +8299,7 @@ MonoBehaviour:
     _stoppedDistance: 0.1
   _disableColliders:
   - {fileID: 4846241546776885105}
+  - {fileID: 2206070356258044772}
   _target: {x: -11.66, y: -9}
 --- !u!114 &7368146128473194595
 MonoBehaviour:
