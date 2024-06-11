@@ -6,6 +6,7 @@ using Code.Infrastructure.Services;
 using Code.UI.Base;
 using Code.UI.Enums;
 using Code.UI.Hud.SettingsMenu.Audio;
+using Code.UI.Hud.SettingsMenu.Graphic;
 using Code.UI.Hud.SettingsMenu.Language;
 using UnityEngine;
 
@@ -16,6 +17,7 @@ namespace Code.UI.Hud.SettingsMenu
         [Header("Sub presenters")] 
         [SerializeField] private AudioPresenter _audioPresenter;
         [SerializeField] private LanguagePresenter _languagePresenter;
+        [SerializeField] private GraphicPresenter _graphicPresenter;
         
         [Header("Services")]
         private InputService _inputService;
@@ -30,7 +32,8 @@ namespace Code.UI.Hud.SettingsMenu
             _inputService = Container.Instance.FindService<InputService>();
             
             _audioPresenter.Init(Container.Instance.FindService<AudioGlobalVolume>());
-            _languagePresenter.Init(Container.Instance.FindService<GameSettings>());
+            _languagePresenter.Init(Container.Instance.FindService<LanguageSetter>());
+            _graphicPresenter.Init(Container.Instance.FindService<ResolutionService>());
             
             _moveLimiter = Container.Instance.FindService<MoveLimiter>();
             _interactionLimiter = Container.Instance.FindService<InteractionLimiter>();
@@ -54,6 +57,7 @@ namespace Code.UI.Hud.SettingsMenu
             
             _audioPresenter.SubscribeToEvents(flag);
             _languagePresenter.SubscribeToEvents(flag);
+            _graphicPresenter.SubscribeToEvents(flag);
         }
 
         private void OnClickExit()
@@ -79,6 +83,7 @@ namespace Code.UI.Hud.SettingsMenu
             }
             else
             {
+                _graphicPresenter.SetValues();
                 ChangeMenuState(MenuState.Active );
                 _interactionLimiter.Block();
                 _moveLimiter.Block();    
@@ -90,6 +95,7 @@ namespace Code.UI.Hud.SettingsMenu
         {
             _audioPresenter.SetValues(playerProgress.AudioVolume);
             _languagePresenter.SetLanguage(playerProgress.Language);
+          
         }
 
         public void UpdateProgress(SavedData playerProgress)

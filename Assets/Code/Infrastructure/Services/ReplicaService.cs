@@ -22,7 +22,7 @@ namespace Code.Infrastructure.Services
         private CoroutineRunner _coroutineRunner;
       
         [Header("Static data")]
-        private GameSettings _gameSettings;
+        private LanguageSetter _languageSetter;
         private ReplicaAction[] _actions;
 
         [Header("Dynamic data")] 
@@ -35,7 +35,7 @@ namespace Code.Infrastructure.Services
 
         public void GameInit()
         {
-            _gameSettings = Container.Instance.FindService<GameSettings>();
+            _languageSetter = Container.Instance.FindService<LanguageSetter>();
             _inputService = Container.Instance.FindService<InputService>();
             _coroutineRunner = Container.Instance.FindService<CoroutineRunner>();
             
@@ -61,7 +61,7 @@ namespace Code.Infrastructure.Services
         {
             if (flag)
             {
-                _gameSettings.OnSwitchLanguage += OnSwitchLanguage;
+                _languageSetter.OnSwitchLanguage += OnSwitchLanguage;
                 _inputService.OnPressInteractionKey += OnPressInteractionKey;
                 foreach (var action in _actions)
                 {
@@ -70,7 +70,7 @@ namespace Code.Infrastructure.Services
             }
             else
             {
-                _gameSettings.OnSwitchLanguage -= OnSwitchLanguage;
+                _languageSetter.OnSwitchLanguage -= OnSwitchLanguage;
                 _inputService.OnPressInteractionKey -= OnPressInteractionKey;
                 foreach (var action in _actions)
                 {
@@ -89,7 +89,7 @@ namespace Code.Infrastructure.Services
         {
             yield return new WaitUntil(() => _textLimiter.IsUnlock);
             if (_replicaConverter.TryGetCurrentConfig(out var config) &&
-                _replicaConverter.TryGetAcceleratedTexts(_gameSettings.Language, out var replica))
+                _replicaConverter.TryGetAcceleratedTexts(_languageSetter.Language, out var replica))
             {
                 var waitedMode = config.IsBlockMovement
                 ? AnimatedTextWaiter.Mode.PressKey
@@ -102,7 +102,7 @@ namespace Code.Infrastructure.Services
         private void OnTryStartReplica(ReplicaConfig replicaConfig)
         {
             _replicaConverter.SetConfig(replicaConfig);
-            if (_replicaConverter.TryGetAcceleratedTexts(_gameSettings.Language, out var replicas))
+            if (_replicaConverter.TryGetAcceleratedTexts(_languageSetter.Language, out var replicas))
             {
                 if (replicaConfig.IsBlockMovement)
                 {

@@ -9,5 +9,6 @@ namespace Code.Data.StaticData
     {
         public AudioVolumeData AudioVolume;
         public Lan Language;
+        public GraphicData GraphicData;
     }
 }

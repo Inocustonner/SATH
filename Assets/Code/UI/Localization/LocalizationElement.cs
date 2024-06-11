@@ -15,12 +15,12 @@ namespace Code.UI.Localization
     {
         [SerializeField] private TextMeshProUGUI _textMeshProUGUI;
         [SerializeField] private LocalizationElementType _elementType;
-        private GameSettings _gameSettings;
+        private LanguageSetter _languageSetter;
         private LocalizationElementData _localizationData;
 
         public void GameInit()
         {
-            _gameSettings = Container.Instance.FindService<GameSettings>();
+            _languageSetter = Container.Instance.FindService<LanguageSetter>();
             _localizationData = Container.Instance.FindConfig<LocalizationElementsConfig>().LocalizationElements
                 .FirstOrDefault(l => l.ElementType == _elementType);
         }
@@ -44,17 +44,17 @@ namespace Code.UI.Localization
         {
             if (flag)
             {
-                _gameSettings.OnSwitchLanguage += SetLanguage;
+                _languageSetter.OnSwitchLanguage += SetLanguage;
             }
             else
             {
-                _gameSettings.OnSwitchLanguage -= SetLanguage;
+                _languageSetter.OnSwitchLanguage -= SetLanguage;
             }
         }
 
         private void SetLanguage()
         {
-            var text = _localizationData.Localization.FirstOrDefault(l => l.Language == _gameSettings.Language).Text;
+            var text = _localizationData.Localization.FirstOrDefault(l => l.Language == _languageSetter.Language).Text;
             _textMeshProUGUI.SetText(text);
         }
     }

@@ -5,7 +5,6 @@ using UnityEngine;
 
 namespace Code.Materials
 {
-    [Serializable, CanEditMultipleObjects]
     public abstract class BaseMaterialController
     {
         [SerializeField] protected Material _material;

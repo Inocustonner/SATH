@@ -29,13 +29,13 @@ public class AspectUtility : MonoBehaviour
 
     private void UpdateCamera()
     {
-        if (!ResolutionManager.FixedAspectRatio || !cam) return;
+        if (!ResolutionService.FixedAspectRatio || !cam) return;
 
         float currentAspectRatio = (float)Screen.width / Screen.height;
 
         // If the current aspect ratio is already approximately equal to the desired aspect ratio,
         // use a full-screen Rect (in case it was set to something else previously)
-        if ((int)(currentAspectRatio * 100) / 100.0f == (int)(ResolutionManager.TargetAspectRatio * 100) / 100.0f)
+        if ((int)(currentAspectRatio * 100) / 100.0f == (int)(ResolutionService.TargetAspectRatio * 100) / 100.0f)
         {
             cam.rect = new Rect(0.0f, 0.0f, 1.0f, 1.0f);
             if (backgroundCam)
@@ -46,15 +46,15 @@ public class AspectUtility : MonoBehaviour
         }
 
         // Pillarbox
-        if (currentAspectRatio > ResolutionManager.TargetAspectRatio)
+        if (currentAspectRatio > ResolutionService.TargetAspectRatio)
         {
-            float inset = 1.0f - ResolutionManager.TargetAspectRatio / currentAspectRatio;
+            float inset = 1.0f - ResolutionService.TargetAspectRatio / currentAspectRatio;
             cam.rect = new Rect(inset / 2, 0.0f, 1.0f - inset, 1.0f);
         }
         // Letterbox
         else
         {
-            float inset = 1.0f - currentAspectRatio / ResolutionManager.TargetAspectRatio;
+            float inset = 1.0f - currentAspectRatio / ResolutionService.TargetAspectRatio;
             cam.rect = new Rect(0.0f, inset / 2, 1.0f, 1.0f - inset);
         }
 

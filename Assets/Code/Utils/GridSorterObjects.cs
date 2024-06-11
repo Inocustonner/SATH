@@ -17,6 +17,8 @@ namespace Code.Utils
         {
             this.Log($"{_spriteRenderer.size.x}    {_spriteRenderer.size.x/_grid.cellSize.x}"); 
         }
+
+#if UNITY_EDITOR
         
         [ContextMenu("Sort")]
         private void Sort()
@@ -32,5 +34,6 @@ namespace Code.Utils
                 _gameObjects[i].position = new Vector3(_grid.cellSize.x * i,0,0);
             }
         }
+#endif
     }
 }

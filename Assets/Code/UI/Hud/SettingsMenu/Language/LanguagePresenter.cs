@@ -10,12 +10,12 @@ namespace Code.UI.Hud.SettingsMenu.Language
     public class LanguagePresenter
     {
         [SerializeField] private LanguageView _view;
-        private GameSettings _gameSetting;
+        private LanguageSetter _languageSetter;
         public Lan Language { get; private set; }
 
-        public void Init(GameSettings gameSettings)
+        public void Init(LanguageSetter languageSetter)
         {
-            _gameSetting = gameSettings;
+            _languageSetter = languageSetter;
         }
 
         public void SetLanguage(Lan lan)
@@ -40,7 +40,7 @@ namespace Code.UI.Hud.SettingsMenu.Language
         private void OnPressButton(Lan lan)
         {
             Language = lan;
-            _gameSetting.SetLanguage(lan);
+            _languageSetter.SetLanguage(lan);
         }
     }
 }
