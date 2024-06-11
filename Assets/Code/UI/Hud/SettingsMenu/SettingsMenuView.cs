@@ -29,19 +29,24 @@ namespace Code.UI.Hud.SettingsMenu
             SubscribeToEvents(false);
             windowTransform.gameObject.SetActive(false);
             onComplete?.Invoke();
+         
+            if (_isShowSettings)
+            {
+                SwitchSettingsViewState();
+            }
         }
 
         private void SubscribeToEvents(bool flag)
         {
             if (flag)
             {
-                _settingsButton.OnClickButton += ClickSettingsButton;
+                _settingsButton.OnClickButton += SwitchSettingsViewState;
                 _continueButton.OnClickButton += ClickContinueButton;
                 _exitButton.OnClickButton += ClickExitButton;
             }
             else
             {
-                _settingsButton.OnClickButton -= ClickSettingsButton;
+                _settingsButton.OnClickButton -= SwitchSettingsViewState;
                 _continueButton.OnClickButton -= ClickContinueButton;
                 _exitButton.OnClickButton -= ClickExitButton;
             }
@@ -57,7 +62,7 @@ namespace Code.UI.Hud.SettingsMenu
             OnClickContinue?.Invoke();
         }
 
-        private void ClickSettingsButton()
+        private void SwitchSettingsViewState()
         {
             _isShowSettings = !_isShowSettings;
             _settingsView.SetActive(_isShowSettings);
