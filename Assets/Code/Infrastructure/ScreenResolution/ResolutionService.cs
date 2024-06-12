@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
@@ -8,6 +9,7 @@ using Code.Data.StaticData;
 using Code.Infrastructure.DI;
 using Code.Infrastructure.Save;
 using Code.Infrastructure.Services;
+using Code.Utils;
 
 public class ResolutionService : IService, IGameInitListener, IProgressWriter
 {
@@ -18,12 +20,16 @@ public class ResolutionService : IService, IGameInitListener, IProgressWriter
     // List of horizontal resolutions to include
     private readonly int[] _resolutions = { 854, 1280, 1400, 1600, 1920, 2560,3840, 7680 };
 
-    public List<Vector2> WindowedResolutions, FullscreenResolutions;
+    public List<Vector2> WindowedResolutions;
+    private List<Vector2> FullscreenResolutions;
 
     private int _currWindowedRes, _currFullscreenRes;
 
     private CoroutineRunner _coroutineRunner;
     private Coroutine _coroutine;
+
+
+    public event Action OnInitResolutions;
 
     public GraphicData GraphicData { get; private set; } = new GraphicData();
 
@@ -33,9 +39,9 @@ public class ResolutionService : IService, IGameInitListener, IProgressWriter
         _coroutine = _coroutineRunner.StartRoutine(StartRoutine());
     }
 
-
     private IEnumerator StartRoutine()
     {
+        this.Log("Start routine",Color.yellow);
         if (Application.platform == RuntimePlatform.OSXPlayer)
         {
             GraphicData.DisplayResolution = Screen.currentResolution;
@@ -67,24 +73,26 @@ public class ResolutionService : IService, IGameInitListener, IProgressWriter
 
     private void InitResolutions()
     {
-        //DisplayResolution = Screen.currentResolution;
-        float screenAspect = (float)GraphicData.DisplayResolution.width / GraphicData.DisplayResolution.height;
+        this.Log("Init resolutions",Color.yellow);
+
+        GraphicData.DisplayResolution = Screen.currentResolution;
+        var screenAspect = (float)GraphicData.DisplayResolution.width / GraphicData.DisplayResolution.height;
 
         WindowedResolutions = new List<Vector2>();
         FullscreenResolutions = new List<Vector2>();
 
-        foreach (int w in _resolutions)
+        foreach (var width in _resolutions)
         {
-            if (w < GraphicData.DisplayResolution.width)
+            if (width < GraphicData.DisplayResolution.width)
             {
                 // Adding resolution only if it's 20% smaller than the screen
-                if (w < GraphicData.DisplayResolution.width * 0.8f)
+                if (width < GraphicData.DisplayResolution.width * 0.8f)
                 {
-                    Vector2 windowedResolution = new Vector2(w, Mathf.Round(w / (FixedAspectRatio ? TargetAspectRatio : WindowedAspectRatio)));
+                    Vector2 windowedResolution = new Vector2(width, Mathf.Round(width / (FixedAspectRatio ? TargetAspectRatio : WindowedAspectRatio)));
                     if (windowedResolution.y < GraphicData.DisplayResolution.height * 0.8f)
                         WindowedResolutions.Add(windowedResolution);
 
-                    FullscreenResolutions.Add(new Vector2(w, Mathf.Round(w / screenAspect)));
+                    FullscreenResolutions.Add(new Vector2(width, Mathf.Round(width / screenAspect)));
                 }
             }
         }
@@ -117,7 +125,9 @@ public class ResolutionService : IService, IGameInitListener, IProgressWriter
             }
 
             if (!found)
+            {
                 SetResolution(FullscreenResolutions.Count - 1, true);
+            }
         }
         else
         {
@@ -134,45 +144,66 @@ public class ResolutionService : IService, IGameInitListener, IProgressWriter
             }
 
             if (!found)
+            {
                 SetResolution(WindowedResolutions.Count - 1, false);
+            }
         }
+        OnInitResolutions?.Invoke();
+        this.Log("Init resoluttions");
     }
 
     public void SetResolution(int index, bool fullscreen)
     {
-        GraphicData.Index = index;
+        this.Log($"Set rosolution {index} {fullscreen}",Color.yellow);
+
+        if (GraphicData.DisplayResolution.width != Screen.currentResolution.width)
+        {
+            this.Log($"New init resolutions",Color.yellow);
+            InitResolutions();
+            return;
+        }
+        
         GraphicData.IsFullScreen = fullscreen;
         
-        Vector2 r = new Vector2();
+        Vector2 resolution = new Vector2();
         if (fullscreen)
         {
             _currFullscreenRes = index;
-            r = FullscreenResolutions[_currFullscreenRes];
+            resolution = FullscreenResolutions[^1];
         }
         else
         {
+            GraphicData.Index = index;
             _currWindowedRes = index;
-            r = WindowedResolutions[_currWindowedRes];
+            resolution = WindowedResolutions[_currWindowedRes];
         }
 
         bool fullscreen2windowed = Screen.fullScreen & !fullscreen;
 
-        Debug.Log("Setting resolution to " + (int)r.x + "x" + (int)r.y);
-       // var mode = fullscreen ? FullScreenMode.FullScreenWindow : FullScreenMode.Windowed;
-        Screen.SetResolution((int)r.x, (int)r.y, fullscreen);
-        // On OSX the application will pass from fullscreen to windowed with an animated transition of a couple of seconds.
-        // After this transition, the first time you exit fullscreen you have to call SetResolution again to ensure that the window is resized correctly.
+        Debug.Log("Setting resolution to " + (int)resolution.x + "x" + (int)resolution.y);
+   
+        Screen.SetResolution((int)resolution.x, (int)resolution.y, fullscreen);
+        
         if (Application.platform == RuntimePlatform.OSXPlayer)
         {
-            // Ensure that there is no SetResolutionAfterResize coroutine running and waiting for screen size changes
             _coroutineRunner.StopRoutine(_coroutine);
 
-            // Resize the window again after the end of the resize transition
             if (fullscreen2windowed)
             {
-                _coroutine = _coroutineRunner.StartRoutine(SetResolutionAfterResize(r));
+                _coroutine = _coroutineRunner.StartRoutine(SetResolutionAfterResize(resolution));
             }
         }
+    }
+
+    public void SetFullscreen(bool isFullScreen)
+    {
+        if (GraphicData.IsFullScreen == isFullScreen)
+        {
+            return;
+        }
+
+        GraphicData.IsFullScreen = isFullScreen;
+        SetResolution(Screen.fullScreen ? _currWindowedRes : _currFullscreenRes, isFullScreen);
     }
 
     private IEnumerator SetResolutionAfterResize(Vector2 r)
@@ -202,13 +233,6 @@ public class ResolutionService : IService, IGameInitListener, IProgressWriter
         }
 
         Debug.Log("End waiting");
-    }
-
-    public void ToggleFullscreen()
-    {
-        SetResolution(
-            Screen.fullScreen ? _currWindowedRes : _currFullscreenRes,
-            !Screen.fullScreen);
     }
 
     public void LoadProgress(SavedData playerProgress)

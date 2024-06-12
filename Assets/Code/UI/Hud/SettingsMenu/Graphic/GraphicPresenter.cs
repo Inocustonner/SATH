@@ -24,36 +24,38 @@ namespace Code.UI.Hud.SettingsMenu.Graphic
         {
             if (flag)
             {
-                _view.OnSetResolution += OnSetResolution;
+                _resolutionService.OnInitResolutions += OnInitResolutions;
+                _view.OnSetResolution += OnPressSetResolution;
                 _view.OnChangeFullScreen += ViewOnOnChangeFullScreen;
             }
             else
             {
-                _view.OnSetResolution -= OnSetResolution;
+                _resolutionService.OnInitResolutions -= OnInitResolutions;
+                _view.OnSetResolution -= OnPressSetResolution;
                 _view.OnChangeFullScreen -= ViewOnOnChangeFullScreen;
             }
+        }
+
+        private void OnInitResolutions()
+        {
+            SetResolutionValues();
         }
 
         private void ViewOnOnChangeFullScreen(bool isFull)
         {
             this.Log($"view event ChangeFullScreen");
-            _resolutionService.SetResolution(_resolutionService.GraphicData.Index, isFull);
+            _resolutionService.SetFullscreen( isFull);
         }
 
-        private void OnSetResolution(int index)
+        private void OnPressSetResolution(int index)
         {
-            _resolutionService.SetResolution(index, true);
+            _resolutionService.SetResolution(index, _resolutionService.GraphicData.IsFullScreen);
         }
-
-        public void SetValues()
-        {
-            SetResolutionValues();
-        }
-
-        private void SetResolutionValues()
+        
+        public void SetResolutionValues()
         {
             List<string> labels = new List<string>();
-            foreach (Vector2 resolution in _resolutionService.FullscreenResolutions)
+            foreach (Vector2 resolution in _resolutionService.WindowedResolutions)
             {
                 string label = resolution.x + "x" + resolution.y;
                 if (resolution.x == Screen.width && resolution.y == Screen.height)

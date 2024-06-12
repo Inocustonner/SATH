@@ -83,7 +83,7 @@ namespace Code.UI.Hud.SettingsMenu
             }
             else
             {
-                _graphicPresenter.SetValues();
+                _graphicPresenter.SetResolutionValues();
                 ChangeMenuState(MenuState.Active );
                 _interactionLimiter.Block();
                 _moveLimiter.Block();    
