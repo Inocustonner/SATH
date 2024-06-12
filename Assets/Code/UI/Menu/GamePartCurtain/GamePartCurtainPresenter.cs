@@ -3,10 +3,10 @@ using Code.Infrastructure.DI;
 using Code.Infrastructure.Services;
 using Code.UI.Base;
 using Code.UI.Enums;
-using Code.UI.Hud.ReplicaMenu;
+using Code.UI.Menu.ReplicaMenu;
 using UnityEngine;
 
-namespace Code.UI.Hud.GamePartCurtain
+namespace Code.UI.Menu.GamePartCurtain
 {
     public class GamePartCurtainPresenter: BaseMenuPresenter<GamePartCurtainModel, GamePartCurtainView>
     {

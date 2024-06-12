@@ -3,12 +3,11 @@ using System.Collections;
 using Code.Data.Configs;
 using Code.Data.Interfaces;
 using Code.Infrastructure.DI;
-using Code.Infrastructure.GameLoop;
 using Code.UI.Base;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Code.UI.Hud.GamePartCurtain
+namespace Code.UI.Menu.GamePartCurtain
 {
     public class GamePartCurtainView: BaseMenuView, IGameInitListener
     {

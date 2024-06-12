@@ -1,6 +1,6 @@
 ﻿using Code.UI.Base;
 
-namespace Code.UI.Hud.ReplicaMenu
+namespace Code.UI.Menu.ReplicaMenu
 {
     public class ReplicaMenuModel : BaseMenuModel<ReplicaMenuModel>
     {

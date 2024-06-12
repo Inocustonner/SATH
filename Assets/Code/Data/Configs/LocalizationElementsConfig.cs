@@ -1,5 +1,6 @@
 ﻿using System;
 using Code.Data.Enums;
+using Code.UI.Enums;
 using UnityEngine;
 
 namespace Code.Data.Configs

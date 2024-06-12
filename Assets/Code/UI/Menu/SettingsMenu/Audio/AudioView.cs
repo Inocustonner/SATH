@@ -1,9 +1,8 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace Code.UI.Hud.SettingsMenu.Audio
+namespace Code.UI.Menu.SettingsMenu.Audio
 {
     [Serializable]
     public class AudioView

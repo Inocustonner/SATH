@@ -1,4 +1,4 @@
-﻿using Code.UI.Hud.ReplicaMenu;
+﻿using Code.UI.Menu.ReplicaMenu;
 using UnityEditor;
 using UnityEngine;
 

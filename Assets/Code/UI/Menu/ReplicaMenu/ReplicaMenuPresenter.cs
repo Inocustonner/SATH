@@ -6,7 +6,7 @@ using Code.UI.Base;
 using Code.UI.Enums;
 using UnityEngine;
 
-namespace Code.UI.Hud.ReplicaMenu
+namespace Code.UI.Menu.ReplicaMenu
 {
     public class ReplicaMenuPresenter : BaseMenuPresenter<ReplicaMenuModel, ReplicaMenuView>
     {

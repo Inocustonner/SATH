@@ -1,17 +1,14 @@
-﻿using Code.Data.Configs;
-using Code.Data.DynamicData;
+﻿using Code.Data.DynamicData;
 using Code.Data.Enums;
 using Code.Data.Interfaces;
 using Code.Infrastructure.DI;
-using Code.Infrastructure.GameLoop;
 using Code.Infrastructure.Services;
 using Code.Infrastructure.Services.Conditions;
 using Code.Replicas.Scripts;
-using Code.UI.Base;
 using Code.UI.Enums;
 using UnityEngine;
 
-namespace Code.UI.Hud.ReplicaMenu
+namespace Code.UI.Menu.ReplicaMenu
 {
     public class ReplicaTester : MonoBehaviour, IGameInitListener
     {

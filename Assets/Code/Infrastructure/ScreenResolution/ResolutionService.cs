@@ -21,7 +21,7 @@ public class ResolutionService : IService, IGameInitListener, IProgressWriter
     private readonly int[] _resolutions = { 854, 1280, 1400, 1600, 1920, 2560,3840, 7680 };
 
     public List<Vector2> WindowedResolutions;
-    private List<Vector2> FullscreenResolutions;
+    public List<Vector2> FullscreenResolutions;
 
     private int _currWindowedRes, _currFullscreenRes;
 
@@ -83,17 +83,22 @@ public class ResolutionService : IService, IGameInitListener, IProgressWriter
 
         foreach (var width in _resolutions)
         {
-            if (width < GraphicData.DisplayResolution.width)
+            if (width <= GraphicData.DisplayResolution.width)
             {
                 // Adding resolution only if it's 20% smaller than the screen
-                if (width < GraphicData.DisplayResolution.width * 0.8f)
+                /*if (width < GraphicData.DisplayResolution.width * 0.8f)
                 {
                     Vector2 windowedResolution = new Vector2(width, Mathf.Round(width / (FixedAspectRatio ? TargetAspectRatio : WindowedAspectRatio)));
+                    WindowedResolutions.Add(windowedResolution);
                     if (windowedResolution.y < GraphicData.DisplayResolution.height * 0.8f)
+                    {
                         WindowedResolutions.Add(windowedResolution);
+                    }
 
-                    FullscreenResolutions.Add(new Vector2(width, Mathf.Round(width / screenAspect)));
-                }
+                }*/
+                Vector2 windowedResolution = new Vector2(width, Mathf.Round(width / (FixedAspectRatio ? TargetAspectRatio : WindowedAspectRatio)));
+                WindowedResolutions.Add(windowedResolution);
+                FullscreenResolutions.Add(new Vector2(width, Mathf.Round(width / screenAspect)));
             }
         }
 

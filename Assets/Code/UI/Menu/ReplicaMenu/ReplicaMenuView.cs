@@ -1,13 +1,12 @@
 using System;
 using Code.Data.DynamicData;
 using Code.Data.Interfaces;
-using Code.Infrastructure.GameLoop;
 using Code.Infrastructure.Services;
 using Code.UI.Base;
 using Code.UI.Components;
 using UnityEngine;
 
-namespace Code.UI.Hud.ReplicaMenu
+namespace Code.UI.Menu.ReplicaMenu
 {
     public class ReplicaMenuView : BaseMenuView, IGameInitListener
     {

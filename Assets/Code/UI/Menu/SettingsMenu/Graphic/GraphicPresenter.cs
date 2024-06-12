@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Code.Utils;
 using UnityEngine;
 
-namespace Code.UI.Hud.SettingsMenu.Graphic
+namespace Code.UI.Menu.SettingsMenu.Graphic
 {
     [Serializable]
     public class GraphicPresenter
@@ -57,16 +57,16 @@ namespace Code.UI.Hud.SettingsMenu.Graphic
             {
                 var label = resolution.x + "x" + resolution.y;
                
-                if (resolution.x == Screen.width && resolution.y == Screen.height)
+                /*if (resolution.x == Screen.width && resolution.y == Screen.height)
                 {
                     label += "*";
-                }
+                }*/
 
-                if (resolution.x == _resolutionService.GraphicData.DisplayResolution.width &&
+                /*if (resolution.x == _resolutionService.GraphicData.DisplayResolution.width &&
                     resolution.y == _resolutionService.GraphicData.DisplayResolution.height)
                 {
                     label += " (native)";
-                }
+                }*/
                 
                 labels.Add(label);
             }

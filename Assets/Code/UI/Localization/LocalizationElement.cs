@@ -6,6 +6,7 @@ using Code.Data.StaticData;
 using Code.Infrastructure.DI;
 using Code.Infrastructure.Save;
 using Code.Infrastructure.Services;
+using Code.UI.Enums;
 using TMPro;
 using UnityEngine;
 

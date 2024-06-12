@@ -1,4 +1,4 @@
-﻿namespace Code.Data.Enums
+﻿namespace Code.UI.Enums
 {
     public enum LocalizationElementType
     {
