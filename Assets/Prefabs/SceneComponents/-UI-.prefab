@@ -4801,25 +4801,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5808902505523235796}
     m_Modifications:
-    - target: {fileID: 1550381706991479053, guid: 52d31395f08ef82468a0cd4b53b83c41, type: 3}
-      propertyPath: behaviorValues.defaults.bounceAmplitude
-      value: 0.01
-      objectReference: {fileID: 0}
     - target: {fileID: 4045357300778727399, guid: 52d31395f08ef82468a0cd4b53b83c41, type: 3}
       propertyPath: m_Name
       value: Text_Replica
-      objectReference: {fileID: 0}
-    - target: {fileID: 5905350710518336221, guid: 52d31395f08ef82468a0cd4b53b83c41, type: 3}
-      propertyPath: m_text
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5905350710518336221, guid: 52d31395f08ef82468a0cd4b53b83c41, type: 3}
-      propertyPath: m_fontSize
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5905350710518336221, guid: 52d31395f08ef82468a0cd4b53b83c41, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8573597921229559128, guid: 52d31395f08ef82468a0cd4b53b83c41, type: 3}
       propertyPath: m_Pivot.x

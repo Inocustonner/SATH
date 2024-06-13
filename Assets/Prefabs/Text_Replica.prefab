@@ -95,8 +95,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 57.2
-  m_fontSizeBase: 57.2
+  m_fontSize: 1
+  m_fontSizeBase: 1
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 25
@@ -197,15 +197,15 @@ MonoBehaviour:
       slideAmplitude: 0.12
       slideFrequency: 5
       slideWaveSize: 0
-      bounceAmplitude: 0.08
+      bounceAmplitude: 0.01
       bounceFrequency: 1
       bounceWaveSize: 0.08
       hueShiftSpeed: 0.8
       hueShiftWaveSize: 0.08
       fadeDelay: 1.2
-      dangleAmplitude: 0.13
-      dangleFrequency: 2.41
-      dangleWaveSize: 0.18
+      dangleAmplitude: 0.01
+      dangleFrequency: 1.9
+      dangleWaveSize: 0.01
       dangleAnchorBottom: 0
       pendAmplitude: 25
       pendFrequency: 3
