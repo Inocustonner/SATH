@@ -212,7 +212,7 @@ MonoBehaviour:
       pendWaveSize: 0.2
       pendInverted: 0
     presets: []
-  scriptable_globalBehaviorsValues: {fileID: 0}
+  scriptable_globalBehaviorsValues: {fileID: 11400000, guid: fae95581b95e18c4681e4b96c6997a61, type: 2}
   scriptable_globalAppearancesValues: {fileID: 0}
   useDynamicScaling: 0
   referenceFontSize: -1
