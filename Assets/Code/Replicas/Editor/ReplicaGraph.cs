@@ -91,6 +91,10 @@ namespace Code.Replicas.Editor
             return node;
         }
 
+        public void FocusOnNode(Vector3 position)
+        {
+            UpdateViewTransform(-position, Vector3.one);
+        }
         public ReplicaNode CreateNode(Vector2 position)
         {
             ReplicaNode node = new ReplicaNode();

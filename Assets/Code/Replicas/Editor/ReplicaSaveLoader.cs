@@ -36,6 +36,12 @@ namespace Code.Replicas.Editor
 
                 graphView.CreateEdge(inputPort, outputPort);
             }
+            
+            if (nodes.Count > 0)
+            {
+                var firstNode = config.Nodes[0].EditorPosition;
+                graphView.FocusOnNode(firstNode);
+            }
         }
 
         public static void CreateReplica(ReplicaGraph graph, out ReplicaConfig config)
@@ -97,7 +103,7 @@ namespace Code.Replicas.Editor
 
                 result.Add(serializedNode);
             }
-
+            
             return result;
         }
 
