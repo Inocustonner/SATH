@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Code.Utils;
 using UnityEngine;
 
 namespace Code.GameParts.CustomActions.Actions
@@ -14,11 +15,13 @@ namespace Code.GameParts.CustomActions.Actions
             TryStopCoroutine();
             _coroutine = StartCoroutine(StartSuperNanoActions());
             InvokeStartActionEvent();
+            this.Log("start",Color.magenta);
         }
 
         public override void StopAction()
         {
             InvokeEndActionEvent();
+            this.Log("stop",Color.magenta);
         }
 
         private void OnDisable()
