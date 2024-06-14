@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Code.Utils;
 using UnityEngine;
 
 namespace Code.Game.CustomActions.Actions
@@ -10,10 +11,7 @@ namespace Code.Game.CustomActions.Actions
         
         public override void StartAction()
         {
-            if (_coroutine != null)
-            {
-                StopCoroutine(_coroutine);
-            }
+            TryStopCoroutine();
 
             InvokeStartActionEvent();
 
@@ -26,13 +24,21 @@ namespace Code.Game.CustomActions.Actions
 
         public override void StopAction()
         {
-           InvokeEndActionEvent();
+            TryStopCoroutine();
+        }
+
+        private void TryStopCoroutine()
+        {
+            if (_coroutine != null)
+            {
+                StopCoroutine(_coroutine);
+            }
         }
 
         private IEnumerator Delay()
         {
             yield return new WaitForSeconds(_delay);
-            StopAction();
+            InvokeEndActionEvent();
         }
     }
 }
