@@ -1,4 +1,5 @@
-﻿using Code.Replicas.Scripts;
+﻿using System;
+using Code.Replicas.Scripts;
 using UnityEngine;
 
 namespace Code.Game.CustomActions.Actions
@@ -7,6 +8,7 @@ namespace Code.Game.CustomActions.Actions
     {
         [SerializeField] private int _currentID;
         [SerializeField] private ReplicaConfig[] _replicas;
+        public event Action OnSetLastReplica;
 
         public void SetID(int id)
         {
@@ -14,6 +16,10 @@ namespace Code.Game.CustomActions.Actions
             if (_currentID < _replicas.Length)
             {
                 _replicaConfig = _replicas[_currentID];
+                if (id == _replicas.Length - 1)
+                {
+                    OnSetLastReplica?.Invoke();
+                }
             }
         }
 

@@ -1,33 +1,50 @@
-﻿using Code.Data.Interfaces;
+﻿using System;
+using Code.Data.Interfaces;
+using Code.Game.Components;
 using Code.Game.Components.Factory;
+using Code.Infrastructure.DI;
 using UnityEngine;
 
 namespace Code.Game.CustomActions.Actions.Single
 {
-    public class LocalCurtain: MonoBehaviour,IPartStartListener, IPartTickListener, IPartExitListener
+    public class LocalCurtain: MonoBehaviour, IGameInitListener, IPartStartListener, IPartTickListener, IRestarable
     {
         [Header("Services")] 
+        private CameraService _cameraService;
         [Header("Components")]
         [SerializeField] private PushListener _pushListener;
         [SerializeField] private Rigidbody2D _player;
         [SerializeField] private SpriteRenderer _curtain;
         [Header("Static data")]
-        [SerializeField] private Color _darkColor = new Color(0,0,0,0);
-        [SerializeField] private Color _lightColor = new Color(1,1,1,0);
+        [SerializeField] private Color _darkColor = new(0,0,0,0);
+        [SerializeField] private Color _lightColor = new(1,1,1,0);
         [SerializeField] private float _showDuration, _hideDuration;
         [Header("Dynamic data")]
         [SerializeField] private bool _isDark;
+        [SerializeField] private bool _isMax;
 
-        
+        public event Action OnSetMaxDark;
+        public event Action OnSetMaxLight;
+
+        public void GameInit()
+        {
+            _cameraService = Container.Instance.FindService<CameraService>();
+        }
 
         public void PartStart()
         {
-            SubscribeToEvents(true);
             _curtain.color = new Color(0, 0, 0, 0);
         }
 
         public void PartTick()
         {
+            MoveCurtain();
+           
+            if (_isMax)
+            {
+                return;
+            }
+           
             if (_pushListener.IsPushed)
             {
                 if (!_isDark)
@@ -72,35 +89,12 @@ namespace Code.Game.CustomActions.Actions.Single
             }
         }
 
-        public void PartExit()
+        private void MoveCurtain()
         {
-            SubscribeToEvents(false);
+            Vector2 camPos = _cameraService.CurrentCamera.transform.position;
+            _curtain.transform.position = camPos;
         }
-
-        private void SubscribeToEvents(bool flag)
-        {
-            if (flag)
-            {
-                _pushListener.OnStartPush += OnStartPushStone;
-                _pushListener.OnStopPush += OnEndPushStone;
-            }
-            else
-            {
-                _pushListener.OnStartPush -= OnStartPushStone;
-                _pushListener.OnStopPush -= OnEndPushStone;
-            }
-        }
-
-        private void OnEndPushStone()
-        {
-            
-        }
-
-        private void OnStartPushStone()
-        {
-            
-        }
-
+        
         private void Hide()
         {
             var color = _curtain.color;
@@ -113,6 +107,25 @@ namespace Code.Game.CustomActions.Actions.Single
             var color = _curtain.color;
             color.a += _showDuration * Time.deltaTime;
             _curtain.color = color;
+
+            if (color.a >= 1)
+            {
+                if (_isDark)
+                {
+                    OnSetMaxDark?.Invoke();
+                }
+                else
+                {
+                    OnSetMaxLight?.Invoke();
+                }
+
+                _isMax = true;
+            }
+        }
+
+        public void Restart()
+        {
+            _isMax = false;
         }
     }
 }

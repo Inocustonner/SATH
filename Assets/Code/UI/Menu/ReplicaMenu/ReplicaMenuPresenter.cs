@@ -47,7 +47,6 @@ namespace Code.UI.Menu.ReplicaMenu
 
         public void GameTick()
         {
-            this.Log($"{Model.IsValidating} && {_cameraService.IsMovement}");
             if (Model.IsValidating && _cameraService.IsMovement)
             {
                 SetPosition();

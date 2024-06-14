@@ -42,6 +42,7 @@ namespace Code.Game.Components.Factory
                 for (int workerIndex = 0; workerIndex < currentWorkers.Length; workerIndex++)
                 {
                     currentWorkers[workerIndex].InitEntity(GetWorkerInitParams(lineIndex));
+                    currentWorkers[workerIndex].GetTired();
                 }
                 
                 _spawnCooldowns[lineIndex].Start(isLoop:true, onCompleted: () =>
@@ -51,14 +52,14 @@ namespace Code.Game.Components.Factory
                 });
             }
 
-            for (int i = 0; i < _workersPools.Length; i++)
+            /*for (int i = 0; i < _workersPools.Length; i++)
             {
                 var workers = _workersPools[i].GetAll().ToArray();
                 for (int j = 0; j < workers.Count(); j++)
                 {
                     workers[i].GetTired();
                 }
-            }
+            }*/
         }
 
         public void PartTick()
@@ -90,5 +91,7 @@ namespace Code.Game.Components.Factory
                 _spawnCooldowns[i].Stop();
             }
         }
+
+      
     }
 }

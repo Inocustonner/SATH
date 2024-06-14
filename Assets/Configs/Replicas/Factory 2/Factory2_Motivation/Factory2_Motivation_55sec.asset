@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48e56e729e8a46f58050bf2e2c16e7d8, type: 3}
   m_Name: Factory2_Motivation_55sec
   m_EditorClassIdentifier: 
-  IsBlockMovement: 1
+  IsBlockMovement: 0
   Nodes:
   - ID: 0
     TypingSpeed: 0
@@ -28,8 +28,6 @@ MonoBehaviour:
           \u0431\u043B\u0438\u0437\u043A\u0438\u0435."
     EditorPosition: {x: 8412, y: 3820.5}
   Edges: []
-  _textRus: "\u0422\u0432\u043E\u0439 \u0443\u0445\u043E\u0434 \u0441\u043E \u0441\u043C\u0435\u043D\u044B
-    \u043D\u0435 \u043E\u0441\u0442\u0430\u043D\u0435\u0442\u0441\u044F \u043D\u0435\u0437\u0430\u043C\u0435\u0447\u0435\u043D\u043D\u044B\u043C.\u0412
-    \u043A\u043E\u043D\u0446\u0435 \u043A\u043E\u043D\u0446\u043E\u0432 \u0442\u044B
-    \u043F\u043E\u0441\u0442\u0440\u0430\u0434\u0430\u0435\u0448\u044C \u043E\u0442
-    \u044D\u0442\u043E\u0433\u043E."
+  _textRus: "\u0410 \u0432\u043C\u0435\u0441\u0442\u0435 \u0441 \u044D\u0442\u0438\u043C
+    \u043F\u043E\u0441\u0442\u0440\u0430\u0434\u0430\u044E\u0442 \u0438 \u0442\u0432\u043E\u0438
+    \u0431\u043B\u0438\u0437\u043A\u0438\u0435."

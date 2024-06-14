@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Code.Game.Components.Factory
 {
-    public class PlayerMoveObserver: MonoBehaviour, IGameTickListener
+    public class PlayerSwitchForwardObserver: MonoBehaviour, IGameTickListener
     {
         [SerializeField] private Rigidbody2D _player;
         [SerializeField] private Transform _stone;

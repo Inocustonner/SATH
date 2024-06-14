@@ -71,7 +71,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stone: {fileID: 3894480757766218814}
   _pushTime: 0
-  _lastPushAttemptTime: 0
 --- !u!114 &7343943599672092104
 MonoBehaviour:
   m_ObjectHideFlags: 0
