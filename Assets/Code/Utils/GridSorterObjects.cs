@@ -10,20 +10,13 @@ namespace Code.Utils
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private Transform _prefab;
         [SerializeField] private List<Transform> _gameObjects;
-
-
-        [ContextMenu("Test")]
-        private void Test()
-        {
-            this.Log($"{_spriteRenderer.size.x}    {_spriteRenderer.size.x/_grid.cellSize.x}"); 
-        }
+        
 
 #if UNITY_EDITOR
         
         [ContextMenu("Sort")]
         private void Sort()
         {
-            
             for (int i = 0; i < Mathf.CeilToInt(_spriteRenderer.size.x/_grid.cellSize.x); i++)
             {
                 if (i >= _gameObjects.Count)
