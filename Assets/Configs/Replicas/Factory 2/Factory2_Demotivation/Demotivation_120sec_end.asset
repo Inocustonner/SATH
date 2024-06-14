@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48e56e729e8a46f58050bf2e2c16e7d8, type: 3}
+  m_Name: Demotivation_120sec_end
+  m_EditorClassIdentifier: 
+  IsBlockMovement: 1
+  Nodes:
+  - ID: 0
+    TypingSpeed: 0
+    Conditions: 00000000
+    Localization:
+    - Language: 0
+      Parts:
+      - Markups: 
+        Effect: 0
+        Color: {r: 0.5660378, g: 0.018689938, b: 0.018689938, a: 1}
+        MessageText: "\u0418\u0437\u0432\u0438\u043D\u0438, \u043D\u0430\u0432\u0435\u0440\u043D\u043E\u0435
+          \u044F \u0431\u044B\u043B \u0441\u043B\u0438\u0448\u043A\u043E\u043C \u0440\u0435\u0437\u043E\u043A."
+    EditorPosition: {x: 5413, y: 3273.5}
+  - ID: 0ec6e0a4-0881-4f63-a09b-2ee82e2eb8f9
+    TypingSpeed: 0
+    Conditions: 00000000
+    Localization:
+    - Language: 0
+      Parts:
+      - Markups: 
+        Effect: 0
+        Color: {r: 0.5647059, g: 0.019607844, b: 0.019607844, a: 1}
+        MessageText: "\u0418\u0434\u0438 \u0434\u043E\u043C\u043E\u0439."
+    EditorPosition: {x: 6171, y: 3271.5}
+  - ID: 2318749f-d086-4b83-be2b-3a4905eec05b
+    TypingSpeed: 0.09
+    Conditions: 00000000
+    Localization:
+    - Language: 0
+      Parts:
+      - Markups: 
+        Effect: 0
+        Color: {r: 0.5647059, g: 0.019607844, b: 0.019607844, a: 1}
+        MessageText: "\u0415\u0441\u043B\u0438 \u0437\u0430\u0432\u0442\u0440\u0430
+          \u0442\u044B \u043D\u0435 \u0441\u043C\u043E\u0436\u0435\u0448\u044C \u043F\u043E\u043A\u0430\u0437\u0430\u0442\u044C
+          \u043B\u0443\u0447\u0448\u0438\u0439 \u0440\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442..."
+    EditorPosition: {x: 6873, y: 3273.5}
+  - ID: c9ca755e-7119-42cf-a358-8e889cee7145
+    TypingSpeed: 0.09
+    Conditions: 00000000
+    Localization:
+    - Language: 0
+      Parts:
+      - Markups: 0100000002000000
+        Effect: 0
+        Color: {r: 0.5647059, g: 0.019607844, b: 0.019607844, a: 1}
+        MessageText: "\u0422\u044B \u0443\u0432\u043E\u043B\u0435\u043D."
+    EditorPosition: {x: 7583, y: 3272.5}
+  Edges:
+  - SourceNode: 0
+    TargetNode: 0ec6e0a4-0881-4f63-a09b-2ee82e2eb8f9
+    Index: 0
+  - SourceNode: 0ec6e0a4-0881-4f63-a09b-2ee82e2eb8f9
+    TargetNode: 2318749f-d086-4b83-be2b-3a4905eec05b
+    Index: 0
+  - SourceNode: 2318749f-d086-4b83-be2b-3a4905eec05b
+    TargetNode: c9ca755e-7119-42cf-a358-8e889cee7145
+    Index: 0
+  _textRus: "\u041D\u0430 \u0441\u0435\u0433\u043E\u0434\u043D\u044F \u0442\u044B
+    \u043C\u043E\u0436\u0435\u0448\u044C \u0431\u044B\u0442\u044C \u0441\u0432\u043E\u0431\u043E\u0434\u0435\u043D.\u041F\u043E\u0439\u0434\u0438
+    \u0434\u043E\u043C\u043E\u0439 \u0438 \u0445\u043E\u0440\u043E\u0448\u0435\u043D\u044C\u043A\u043E
+    \u043E\u0442\u0434\u043E\u0445\u043D\u0438!\u041F\u0440\u043E\u0434\u043E\u043B\u0436\u0438\u043C
+    \u0437\u0430\u0432\u0442\u0440\u0430."

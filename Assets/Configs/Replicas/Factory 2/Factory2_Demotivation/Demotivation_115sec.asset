@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48e56e729e8a46f58050bf2e2c16e7d8, type: 3}
+  m_Name: Demotivation_115sec
+  m_EditorClassIdentifier: 
+  IsBlockMovement: 0
+  Nodes:
+  - ID: 0
+    TypingSpeed: 0
+    Conditions: 00000000
+    Localization:
+    - Language: 0
+      Parts:
+      - Markups: 01000000
+        Effect: 2
+        Color: {r: 0.5660378, g: 0.018689938, b: 0.018689938, a: 1}
+        MessageText: "\u041D\u0410\u0427\u041D\u0418"
+    EditorPosition: {x: 5413, y: 3273.5}
+  - ID: b6326fb0-4458-440e-99c9-6e13386dd9b2
+    TypingSpeed: 0
+    Conditions: 00000000
+    Localization:
+    - Language: 0
+      Parts:
+      - Markups: 01000000
+        Effect: 2
+        Color: {r: 0.5647059, g: 0.019607844, b: 0.019607844, a: 1}
+        MessageText: "\u0420\u0410\u0411\u041E\u0422\u0410\u0422\u042C"
+    EditorPosition: {x: 6126, y: 3269.5}
+  - ID: e311b482-9cb1-4085-b1bc-ff540651ccec
+    TypingSpeed: 0
+    Conditions: 00000000
+    Localization:
+    - Language: 0
+      Parts:
+      - Markups: 01000000
+        Effect: 2
+        Color: {r: 0.5647059, g: 0.019607844, b: 0.019607844, a: 1}
+        MessageText: "\u041D\u041E\u0420\u041C\u0410\u041B\u042C\u041D\u041E"
+    EditorPosition: {x: 6861, y: 3265.5}
+  Edges:
+  - SourceNode: 0
+    TargetNode: b6326fb0-4458-440e-99c9-6e13386dd9b2
+    Index: 0
+  - SourceNode: b6326fb0-4458-440e-99c9-6e13386dd9b2
+    TargetNode: e311b482-9cb1-4085-b1bc-ff540651ccec
+    Index: 0
+  _textRus: "\u041F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430, \u043F\u0435\u0440\u0435\u0441\u0442\u0430\u043D\u044C
+    \u043F\u0440\u0438\u0434\u0443\u0440\u0438\u0432\u0430\u0442\u044C\u0441\u044F.\u042F
+    \u0437\u043D\u0430\u044E \u0447\u0442\u043E \u0442\u044B \u0443\u043C\u0435\u0435\u0448\u044C
+    \u044D\u0442\u043E \u0434\u0435\u043B\u0430\u0442\u044C."
