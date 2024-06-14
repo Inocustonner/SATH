@@ -4,8 +4,8 @@ using System.Text;
 using Code.Data.Configs;
 using Code.Data.DynamicData;
 using Code.Data.Enums;
+using Code.Game.Conditions;
 using Code.Infrastructure.Services;
-using Code.Infrastructure.Services.Conditions;
 using Code.Utils;
 using UnityEngine;
 

@@ -3,10 +3,10 @@ using System.Linq;
 using Code.Data.Configs;
 using Code.Data.Interfaces;
 using Code.Data.StaticData;
-using Code.GameParts;
-using Code.GameParts.CustomActions.Actions;
+using Code.Game.Conditions;
+using Code.Game.CustomActions.Actions;
+using Code.Game.Parts;
 using Code.Infrastructure.DI;
-using Code.Infrastructure.Services.Conditions;
 using UnityEngine;
 
 namespace Code.Infrastructure.Services

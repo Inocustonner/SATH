@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Code.Data.Interfaces;
-using Code.GameParts;
-using Code.Replicas;
+using Code.Game.Parts;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

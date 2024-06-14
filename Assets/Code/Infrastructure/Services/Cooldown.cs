@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using Code.Infrastructure.DI;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Code.Infrastructure.Services
@@ -28,6 +29,10 @@ namespace Code.Infrastructure.Services
         public void Stop()
         {
             _isLoop = false;
+            if (_coroutineRunner.IsDestroyed())
+            {
+                return;
+            }
             _coroutineRunner.StopRoutine(_coroutine);
         }
 

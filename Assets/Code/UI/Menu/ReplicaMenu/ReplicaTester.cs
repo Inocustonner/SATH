@@ -1,9 +1,9 @@
 ﻿using Code.Data.DynamicData;
 using Code.Data.Enums;
 using Code.Data.Interfaces;
+using Code.Game.Conditions;
 using Code.Infrastructure.DI;
 using Code.Infrastructure.Services;
-using Code.Infrastructure.Services.Conditions;
 using Code.Replicas.Scripts;
 using Code.UI.Enums;
 using UnityEngine;

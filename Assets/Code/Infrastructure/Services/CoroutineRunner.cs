@@ -3,6 +3,7 @@ using System.Collections;
 using Code.Data.Interfaces;
 using Code.Infrastructure.DI;
 using Code.Infrastructure.GameLoop;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Code.Infrastructure.Services
@@ -26,7 +27,7 @@ namespace Code.Infrastructure.Services
 
         public void StopRoutine(IEnumerator coroutine)
         {
-            if (coroutine == null)
+            if (!gameObject.activeInHierarchy || coroutine == null)
             {
                 return;
             }
@@ -35,7 +36,7 @@ namespace Code.Infrastructure.Services
 
         public void StopRoutine(Coroutine coroutine)
         {
-            if (coroutine == null || !gameObject.activeInHierarchy)
+            if (gameObject.IsDestroyed() || coroutine == null)
             {
                 return;
             }

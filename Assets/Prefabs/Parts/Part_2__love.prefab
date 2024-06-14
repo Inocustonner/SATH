@@ -1775,13 +1775,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 8210121586629256178}
-  _upLayer: 0
-  _downLayer: -1
+  _zoneLayer: -1
   _bounds:
     m_Center: {x: 0, y: 1.94, z: 0}
     m_Extent: {x: 6.52, y: 3.66, z: 0}
-  _leftBoarderX: 0
-  _rightBoarderX: 0
 --- !u!1 &4258988610055454244
 GameObject:
   m_ObjectHideFlags: 0
