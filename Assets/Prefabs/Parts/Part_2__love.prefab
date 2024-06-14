@@ -2117,6 +2117,68 @@ Transform:
   - {fileID: 4649087796452977503}
   m_Father: {fileID: 3475454263054610568}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4737836034952410011
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3039545213757638200}
+  - component: {fileID: 6221161313509703463}
+  - component: {fileID: 7968933630340482566}
+  m_Layer: 0
+  m_Name: Sequence_Replcia_Girlfriend(ignoreCall)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3039545213757638200
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4737836034952410011}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4084082844148061721}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6221161313509703463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4737836034952410011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d91308c178e49f3871abf115f96ecf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _replicaConfig: {fileID: 11400000, guid: 23036ecfb834eb34394bded9eba07cc1, type: 2}
+--- !u!114 &7968933630340482566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4737836034952410011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3ae73c4c44e4da5bdb00dc6a9edb2dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _eventAction: {fileID: 5098689685922313952}
+  _nextActions:
+  - {fileID: 6221161313509703463}
+  _isPlayOnEndEventAction: 1
 --- !u!1 &5098906885373509312
 GameObject:
   m_ObjectHideFlags: 0
@@ -2892,6 +2954,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5320722099331211928}
+  - {fileID: 3039545213757638200}
   m_Father: {fileID: 9101580275643238513}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &195983680098358466
