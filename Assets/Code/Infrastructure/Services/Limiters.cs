@@ -44,4 +44,6 @@ namespace Code.Infrastructure.Services
     public class InteractionLimiter : Limiter {}
     
     public class TextLimiter: Limiter{}
+
+    public class EnvironmentLimiter : Limiter { }
 }

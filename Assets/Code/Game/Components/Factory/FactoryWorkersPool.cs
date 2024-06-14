@@ -16,13 +16,14 @@ namespace Code.Game.Components.Factory
         [SerializeField] private MonoPool<FactoryWorker>[] _workersPools;
 
         private FactoryConfig _factoryConfig;
+        private EnvironmentLimiter _environmentLimiter;
 
         private const int WORKERS_LINES = 2;
         
         public void GameInit()
         {
             _factoryConfig = Container.Instance.FindConfig<FactoryConfig>();
-            this.Log(_factoryConfig.WorkersData.Length,Color.yellow);
+            _environmentLimiter = Container.Instance.FindService<EnvironmentLimiter>();
             
             for (int i = 0; i < WORKERS_LINES; i++)
             {
@@ -51,19 +52,14 @@ namespace Code.Game.Components.Factory
                     worker.OnReached += () => { pool.Disable(worker); };
                 });
             }
-
-            /*for (int i = 0; i < _workersPools.Length; i++)
-            {
-                var workers = _workersPools[i].GetAll().ToArray();
-                for (int j = 0; j < workers.Count(); j++)
-                {
-                    workers[i].GetTired();
-                }
-            }*/
         }
 
         public void PartTick()
         {
+            if (!_environmentLimiter.IsUnlock)
+            {
+                return;
+            }
             for (int poolIndex = 0; poolIndex < _workersPools.Length; poolIndex++)
             {
                 var all = _workersPools[poolIndex].GetAllEnabled().ToArray();

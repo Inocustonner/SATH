@@ -24,9 +24,10 @@ namespace Code.UI.Menu.SettingsMenu
         
         [Header("Limiters")]
         private InteractionLimiter _interactionLimiter;
+        private EnvironmentLimiter _environmentLimiter;
         private MoveLimiter _moveLimiter;
         private TextLimiter _textLimiter;
-        
+
         protected override void Init()
         {
             _inputService = Container.Instance.FindService<InputService>();
@@ -38,6 +39,7 @@ namespace Code.UI.Menu.SettingsMenu
             _moveLimiter = Container.Instance.FindService<MoveLimiter>();
             _interactionLimiter = Container.Instance.FindService<InteractionLimiter>();
             _textLimiter = Container.Instance.FindService<TextLimiter>();
+            _environmentLimiter = Container.Instance.FindService<EnvironmentLimiter>();
         }
         
         protected override void SubscribeToEvents(bool flag)
@@ -77,6 +79,7 @@ namespace Code.UI.Menu.SettingsMenu
                 ChangeMenuState(MenuState.Inactive, onComplete: () =>
                 {
                     _interactionLimiter.Unblock();
+                    _environmentLimiter.Unblock();
                     _moveLimiter.Unblock();    
                     _textLimiter.Unblock();
                 });
@@ -86,6 +89,7 @@ namespace Code.UI.Menu.SettingsMenu
                 _graphicPresenter.SetResolutionValues();
                 ChangeMenuState(MenuState.Active );
                 _interactionLimiter.Block();
+                _environmentLimiter.Block();
                 _moveLimiter.Block();    
                 _textLimiter.Block();
             }
