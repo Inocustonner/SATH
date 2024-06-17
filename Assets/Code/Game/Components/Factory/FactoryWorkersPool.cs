@@ -5,7 +5,6 @@ using Code.Data.Interfaces;
 using Code.Infrastructure.DI;
 using Code.Infrastructure.Pools;
 using Code.Infrastructure.Services;
-using Code.Utils;
 using UnityEngine;
 
 namespace Code.Game.Components.Factory
@@ -14,6 +13,7 @@ namespace Code.Game.Components.Factory
     {
         [SerializeField] private List<RangedCooldown> _spawnCooldowns;
         [SerializeField] private MonoPool<FactoryWorker>[] _workersPools;
+        [SerializeField] private float _spawnPositionX = -25;
 
         private FactoryConfig _factoryConfig;
         private EnvironmentLimiter _environmentLimiter;
@@ -70,16 +70,6 @@ namespace Code.Game.Components.Factory
             }    
         }
 
-        private object[] GetWorkerInitParams(int i)
-        {
-            return new object[]
-            {
-                _factoryConfig.WorkerColors[Random.Range(0,_factoryConfig.WorkerColors.Length)],
-                _factoryConfig.WorkersData[i].WorkerSpeed,
-                _factoryConfig.WorkersData[i].SwitchSpeedCooldownSec
-            };
-        }
-
         public void PartExit()
         {
             for (int i = 0; i < WORKERS_LINES; i++)
@@ -93,6 +83,24 @@ namespace Code.Game.Components.Factory
             }
         }
 
-      
+        public void SetSpawnPositionX(float positionX)
+        {
+            if (positionX < _spawnPositionX)
+            {
+                _spawnPositionX = positionX;
+            }
+        }
+
+        
+        private object[] GetWorkerInitParams(int i)
+        {
+            return new object[]
+            {
+                _factoryConfig.WorkerColors[Random.Range(0,_factoryConfig.WorkerColors.Length)],
+                _factoryConfig.WorkersData[i].WorkerSpeed,
+                _factoryConfig.WorkersData[i].SwitchSpeedCooldownSec,
+                _spawnPositionX
+            };
+        }
     }
 }

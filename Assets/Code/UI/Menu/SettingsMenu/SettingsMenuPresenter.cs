@@ -2,6 +2,7 @@ using Code.Data.StaticData;
 using Code.Infrastructure.Audio.AudioSystem;
 using Code.Infrastructure.DI;
 using Code.Infrastructure.Save;
+using Code.Infrastructure.ScreenResolution;
 using Code.Infrastructure.Services;
 using Code.UI.Base;
 using Code.UI.Enums;

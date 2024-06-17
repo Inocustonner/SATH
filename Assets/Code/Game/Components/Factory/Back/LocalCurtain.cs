@@ -2,6 +2,7 @@
 using Code.Data.Interfaces;
 using Code.Game.Components;
 using Code.Game.Components.Factory;
+using Code.Infrastructure.Cameras;
 using Code.Infrastructure.DI;
 using UnityEngine;
 
@@ -18,7 +19,7 @@ namespace Code.Game.CustomActions.Actions.Single
         [Header("Static data")]
         [SerializeField] private Color _darkColor = new(0,0,0,0);
         [SerializeField] private Color _lightColor = new(1,1,1,0);
-        [SerializeField] private float _showDuration, _hideDuration;
+        [SerializeField] private float _showDarkDuration = 0.01f, _showLightDuration = 0.05f, _hideDuration;
         [Header("Dynamic data")]
         [SerializeField] private bool _isDark;
         [SerializeField] private bool _isMax;
@@ -105,7 +106,7 @@ namespace Code.Game.CustomActions.Actions.Single
         private void Show()
         {
             var color = _curtain.color;
-            color.a += _showDuration * Time.deltaTime;
+            color.a += (_isDark ? _showDarkDuration : _showLightDuration) * Time.deltaTime;
             _curtain.color = color;
 
             if (color.a >= 1)

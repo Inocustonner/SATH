@@ -14,8 +14,7 @@ namespace Code.Game.Parts
         [SerializeField] private PushListener _pushListener;
         
         [Header("Static value")] 
-        [SerializeField] private float _transitionToNextLevelDelay = 1;
-        private const int MAX_ID = 13;
+        private const int MAX_ID = 14;
         
         [Header("Dynamic value")]
         private int _id;

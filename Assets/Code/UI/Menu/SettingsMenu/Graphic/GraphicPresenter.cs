@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Code.Infrastructure.ScreenResolution;
 using Code.Utils;
 using UnityEngine;
 

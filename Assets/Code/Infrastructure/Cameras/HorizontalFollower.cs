@@ -1,7 +1,7 @@
 ﻿using Code.Data.Interfaces;
 using UnityEngine;
 
-namespace Code.Game.Components
+namespace Code.Infrastructure.Cameras
 {
     public class HorizontalFollower : MonoBehaviour, IGameStartListener, IPartTickListener, IRestarable 
     {

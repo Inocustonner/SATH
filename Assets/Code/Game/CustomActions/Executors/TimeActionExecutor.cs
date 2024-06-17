@@ -1,10 +1,11 @@
-﻿using Code.Data.Interfaces;
+﻿using System;
+using Code.Data.Interfaces;
 using Code.Game.CustomActions.Actions;
 using UnityEngine;
 
 namespace Code.Game.CustomActions.Executors
 {
-    public class TimeActionExecutor: MonoBehaviour,IPartStartListener, IPartTickListener
+    public class TimeActionExecutor: MonoBehaviour,IPartTickListener
     {
         [Header("Components")]
         [SerializeField] private CustomAction _action;
@@ -15,7 +16,7 @@ namespace Code.Game.CustomActions.Executors
         [Header("Dinamyc data")]
         private float _currentCooldown;
         
-        public void PartStart()
+        private void OnEnable()
         {
             _currentCooldown = 0;
         }

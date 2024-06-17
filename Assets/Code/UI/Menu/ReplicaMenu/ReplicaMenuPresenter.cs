@@ -2,6 +2,7 @@ using System;
 using Code.Data.DynamicData;
 using Code.Data.Interfaces;
 using Code.Game.Components;
+using Code.Infrastructure.Cameras;
 using Code.Infrastructure.DI;
 using Code.Infrastructure.Services;
 using Code.UI.Base;

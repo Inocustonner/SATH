@@ -8,8 +8,7 @@ namespace Code.Game.Components.Factory
 {
     public class FactoryWorker : MonoBehaviour, IPoolEntity
     {
-        private const float STOPPED_POSITION_X = 300; 
-        
+        [SerializeField] private float _stoppedPositionX = 300;
         [SerializeField] private Vector2 _startPosition;
         [SerializeField] private SpriteRenderer _view;
         
@@ -24,6 +23,7 @@ namespace Code.Game.Components.Factory
             _view.color = (Color)parameters[0];
             _speed = (RangedFloat)parameters[1];
             _speedChangeCooldown = new RangedCooldown((RangedFloat)parameters[2]);
+            SetStartPositionX((float)parameters[3]);
         }
 
         public void EnableEntity()
@@ -51,10 +51,15 @@ namespace Code.Game.Components.Factory
             }
 
             transform.position += new Vector3(_currentSpeed * Time.deltaTime, 0, 0);
-            if (transform.position.x > STOPPED_POSITION_X)
+            if (transform.position.x > _stoppedPositionX)
             {
                 OnReached?.Invoke();
             }
+        }
+
+        public void SetStartPositionX(float positionX)
+        {
+            _startPosition = new Vector2(positionX, _startPosition.y);
         }
     }
 }
