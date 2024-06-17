@@ -3,7 +3,7 @@ using System.Linq;
 using Code.Data.Configs;
 using Code.Data.Interfaces;
 using Code.Infrastructure.DI;
-using Code.Infrastructure.Polls;
+using Code.Infrastructure.Pools;
 using Code.Infrastructure.Services;
 using Code.Utils;
 using UnityEngine;
@@ -85,6 +85,11 @@ namespace Code.Game.Components.Factory
             for (int i = 0; i < WORKERS_LINES; i++)
             {
                 _spawnCooldowns[i].Stop();
+            }
+            
+            foreach (var pool in _workersPools)
+            {
+                pool.DisableAll();
             }
         }
 
