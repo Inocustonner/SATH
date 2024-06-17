@@ -17,6 +17,11 @@ namespace Code.Utils
         [ContextMenu("Sort")]
         private void Sort()
         {
+            foreach (var gameObject in _gameObjects)
+            {
+                DestroyImmediate(gameObject);
+            }
+            _gameObjects.Clear();
             for (int i = 0; i < Mathf.CeilToInt(_backgroundRenderer.size.x/ _grid.cellSize.x); i++)
             {
                 if (i >= _gameObjects.Count)

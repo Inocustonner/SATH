@@ -607,6 +607,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _action: {fileID: 1056421892391915100}
   _cooldownSec: 15
+  _repeat: 0
+  _startOnEnable: 0
 --- !u!114 &1056421892391915100
 MonoBehaviour:
   m_ObjectHideFlags: 0

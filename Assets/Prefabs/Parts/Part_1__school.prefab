@@ -1010,6 +1010,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _action: {fileID: 6497911688898083452}
   _cooldownSec: 25
+  _repeat: 0
+  _startOnEnable: 0
 --- !u!114 &6497911688898083452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8397,6 +8399,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _action: {fileID: 8696469124173244801}
   _cooldownSec: 15
+  _repeat: 0
+  _startOnEnable: 0
 --- !u!114 &8696469124173244801
 MonoBehaviour:
   m_ObjectHideFlags: 0

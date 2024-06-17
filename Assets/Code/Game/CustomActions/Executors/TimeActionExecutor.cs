@@ -12,18 +12,22 @@ namespace Code.Game.CustomActions.Executors
 
         [Header("Param")]
         [SerializeField] private float _cooldownSec = 1;
-
+        [SerializeField] private int _repeat;
+        [SerializeField] private bool _startOnEnable;
+        
         [Header("Dinamyc data")]
         private float _currentCooldown;
-        
+        private int _currentRepeat;
+
         private void OnEnable()
         {
-            _currentCooldown = 0;
+            _currentCooldown = _startOnEnable ? _cooldownSec: 0;
+            _currentRepeat = 0;
         }
 
         public void PartTick()
         {
-            if (!gameObject.activeInHierarchy)
+            if (!gameObject.activeInHierarchy || (_repeat > 0 && _currentRepeat >= _repeat))
             {
                 return;
             }
@@ -33,6 +37,7 @@ namespace Code.Game.CustomActions.Executors
             {
                 _action.StartAction();
                 _currentCooldown = 0;
+                _currentRepeat++;
             }
         }
     }

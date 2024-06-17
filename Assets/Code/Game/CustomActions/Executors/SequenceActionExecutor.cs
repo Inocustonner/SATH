@@ -1,5 +1,6 @@
 ﻿using Code.Data.Interfaces;
 using Code.Game.CustomActions.Actions;
+using Code.Utils;
 using UnityEngine;
 
 namespace Code.Game.CustomActions.Executors
@@ -25,6 +26,10 @@ namespace Code.Game.CustomActions.Executors
 
         private void SubscribeToEvents(bool flag)
         {
+            if (_eventAction == null)
+            {
+                this.LogError($"{gameObject.name} check event action");
+            }
             if (flag)
             {
                 if (_isPlayOnEndEventAction)
