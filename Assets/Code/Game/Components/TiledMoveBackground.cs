@@ -14,14 +14,14 @@ namespace Code.Game.Components
         public void GameStart()
         {
             _startPositionX = transform.position.x;
-            _spriteWidth = _spriteRenderer.bounds.size.x;
+            _spriteWidth = _spriteRenderer.bounds.size.x / 2;
         }
 
         public void PartTick()
         {
             var newPositionX = transform.position.x - _speed * Time.deltaTime;
 
-            if (newPositionX <= _startPositionX - _spriteWidth)
+            if (newPositionX <= _startPositionX - _spriteWidth || newPositionX >= _startPositionX + _spriteWidth)
             {
                 newPositionX = _startPositionX;
             }
