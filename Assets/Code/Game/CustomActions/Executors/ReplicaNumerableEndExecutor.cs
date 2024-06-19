@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using Code.Data.Interfaces;
 using Code.Game.CustomActions.Actions;
+using Code.Utils;
 using UnityEngine;
 
 namespace Code.Game.CustomActions.Executors
@@ -52,6 +53,7 @@ namespace Code.Game.CustomActions.Executors
         
         private IEnumerator StartActionsWithDelay()
         {
+            this.Log($"start action with delay {_delay}",Color.magenta);
             yield return new WaitForSeconds(_delay);
             for (int i = 0; i < _nextActions.Length; i++)
             {

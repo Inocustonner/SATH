@@ -20,6 +20,11 @@ namespace Code.Game.Components.Factory
         
         public void GameTick()
         {
+            if(!gameObject.activeInHierarchy)
+            {
+                return;
+            }
+        
             if (_player.velocity.x > 0)
             {
                 if (!_isMoveRight)

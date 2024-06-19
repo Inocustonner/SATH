@@ -17,6 +17,9 @@ namespace Code.Game.Components
         [Header("Static data")] 
         [SerializeField] private CharacterMovementConfig _data;
         [SerializeField] private bool _isCanVerticalMove = true;
+        [SerializeField] private bool _isCanMoveLeft = true;
+        [SerializeField] private bool _isReverseMoveRight;
+        
 
         [Header("Dinamyc data")] 
         private bool _isCanMove = true;
@@ -37,6 +40,14 @@ namespace Code.Game.Components
         {
             _isPressingKey = _inputService.GetDirection() != Vector2.zero;
             _desiredVelocity = _inputService.GetDirection() * Mathf.Max(_data.MaxSpeed - _data.Friction, 0f);
+            if (!_isCanMoveLeft && _desiredVelocity.x < 0)
+            {
+                _desiredVelocity.x = 0;
+            }
+            if(_isReverseMoveRight)
+            {
+                _desiredVelocity.x = Mathf.Abs(_desiredVelocity.x);
+            }
         }
 
         public void PartFixedTick()

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using Code.Data.Interfaces;
 using Code.Game.Components;
 using Code.Game.Components.Factory;
@@ -8,11 +9,13 @@ using UnityEngine;
 
 namespace Code.Game.CustomActions.Actions.Single
 {
-    public class LocalCurtain: MonoBehaviour, IGameInitListener, IPartStartListener, IPartTickListener, IRestarable
+    public class LocalCurtain: MonoBehaviour, IGameInitListener, IPartStartListener, IPartTickListener, IPartExitListener,IRestarable
     {
         [Header("Services")] 
         private CameraService _cameraService;
-        [Header("Components")]
+
+        [Header("Components")] 
+        [SerializeField] private CollisionObserver _whiteZone;
         [SerializeField] private PushListener _pushListener;
         [SerializeField] private Rigidbody2D _player;
         [SerializeField] private SpriteRenderer _curtain;
@@ -23,7 +26,9 @@ namespace Code.Game.CustomActions.Actions.Single
         [Header("Dynamic data")]
         [SerializeField] private bool _isDark;
         [SerializeField] private bool _isMax;
-
+        private Coroutine _whiteCoroutine;
+        
+        
         public event Action OnSetMaxDark;
         public event Action OnSetMaxLight;
 
@@ -35,6 +40,7 @@ namespace Code.Game.CustomActions.Actions.Single
         public void PartStart()
         {
             _curtain.color = new Color(0, 0, 0, 0);
+            SubscribeToEvents(true);
         }
 
         public void PartTick()
@@ -46,6 +52,58 @@ namespace Code.Game.CustomActions.Actions.Single
                 return;
             }
            
+            RefreshCurtainState();
+        }
+
+        public void PartExit()
+        {
+            SubscribeToEvents(false);
+        }
+
+        private void SubscribeToEvents(bool flag)
+        {
+            if (flag)
+            {
+                _whiteZone.OnEnter += OnEnterWhiteZone;
+            }
+            else
+            {
+                
+                _whiteZone.OnEnter -= OnEnterWhiteZone;
+            }
+        }
+
+        private void OnEnterWhiteZone(GameObject obj)
+        {
+            if (_whiteCoroutine != null)
+            {
+                StopCoroutine(_whiteCoroutine);
+            }
+
+            _whiteCoroutine = StartCoroutine(RoutineShowWhiteCurtain());
+        }
+
+        private IEnumerator RoutineShowWhiteCurtain()
+        {
+            var color = _curtain.color;
+            var period = new WaitForEndOfFrame();
+            while (color.a < 1)
+            {
+                color.a += (_isDark ? _showDarkDuration : _showLightDuration) * Time.deltaTime;
+                _curtain.color = color;
+
+                if (color.a >= 1)
+                {
+                    _isMax = true;
+                    OnSetMaxLight?.Invoke();
+                }
+                color = _curtain.color;
+                yield return period;
+            }
+        }
+
+        private void RefreshCurtainState()
+        {
             if (_pushListener.IsPushed)
             {
                 if (!_isDark)
@@ -65,7 +123,7 @@ namespace Code.Game.CustomActions.Actions.Single
                     Show();
                 }
             }
-            else if(_player.velocity.x < 0)
+            else if (_player.velocity.x < 0)
             {
                 if (_isDark)
                 {
@@ -95,7 +153,7 @@ namespace Code.Game.CustomActions.Actions.Single
             Vector2 camPos = _cameraService.CurrentCamera.transform.position;
             _curtain.transform.position = camPos;
         }
-        
+
         private void Hide()
         {
             var color = _curtain.color;

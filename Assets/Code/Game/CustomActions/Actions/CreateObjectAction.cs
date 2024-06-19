@@ -8,6 +8,7 @@ namespace Code.Game.CustomActions.Actions.Single
         [SerializeField] private Transform _player;
         [SerializeField] private Vector3 _spawnOffset;
         
+        [ContextMenu("Check")]
         public override void StartAction()
         {
             InvokeStartActionEvent();
