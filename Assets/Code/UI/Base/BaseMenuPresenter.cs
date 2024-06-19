@@ -35,7 +35,7 @@ namespace Code.UI.Base
             Destruct();
         }
 
-        public virtual void ChangeMenuState(MenuState state, Action onComplete = null)
+        public  void ChangeMenuState(MenuState state, Action onComplete = null)
         {
             switch (state)
             {
