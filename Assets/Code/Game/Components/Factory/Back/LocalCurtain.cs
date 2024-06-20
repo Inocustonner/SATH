@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Code.Data.Configs;
 using Code.Data.Interfaces;
 using Code.Game.Components;
 using Code.Game.Components.Factory;
@@ -22,7 +23,8 @@ namespace Code.Game.CustomActions.Actions.Single
         [Header("Static data")]
         [SerializeField] private Color _darkColor = new(0,0,0,0);
         [SerializeField] private Color _lightColor = new(1,1,1,0);
-        [SerializeField] private float _showDarkDuration = 0.01f, _showLightDuration = 0.05f, _hideDuration;
+        [SerializeField] private float  _showLightDuration = 0.05f, _hideDuration;
+        private float _showDarkDuration;
         [Header("Dynamic data")]
         [SerializeField] private bool _isDark;
         [SerializeField] private bool _isMax;
@@ -35,6 +37,7 @@ namespace Code.Game.CustomActions.Actions.Single
         public void GameInit()
         {
             _cameraService = Container.Instance.FindService<CameraService>();
+            _showDarkDuration = Container.Instance.FindConfig<FactoryConfig>().DarkCurtainSpeed;
         }
 
         public void PartStart()

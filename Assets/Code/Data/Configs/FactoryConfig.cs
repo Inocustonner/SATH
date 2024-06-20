@@ -10,6 +10,9 @@ namespace Code.Data.Configs
         public Color[] WorkerColors;
         public FactoryWorkerData[] WorkersData = new FactoryWorkerData[2];
 
+        [Header("Back to factory")] 
+        public float DarkCurtainSpeed = 0.01f;
+
         private void OnValidate()
         {
             for (int i = 0; i < WorkerColors.Length; i++)

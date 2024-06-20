@@ -1583,7 +1583,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _nextGameParts:
   - Condition: 0
-    GamePartName: 6
+    GamePartName: 10
 --- !u!4 &5301127428335622718 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4161233308137081736, guid: ddd3b4fce121c0a4cb206b87e28c831f, type: 3}
