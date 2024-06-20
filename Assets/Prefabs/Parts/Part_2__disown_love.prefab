@@ -1089,6 +1089,7 @@ Transform:
   - {fileID: 889021018403788480}
   - {fileID: 9074469728552061958}
   - {fileID: 159813051518527419}
+  - {fileID: 6153207109860219191}
   - {fileID: 271634952158748845}
   m_Father: {fileID: 3998761136201014133}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1170,8 +1171,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 6153207109860219191}
+  m_Children: []
   m_Father: {fileID: 1926468261691175958}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3086860007912707212
@@ -1963,11 +1963,11 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 779910080233155238}
+    m_TransformParent: {fileID: 6473862323288767475}
     m_Modifications:
     - target: {fileID: 4161233308137081736, guid: ddd3b4fce121c0a4cb206b87e28c831f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20.3
+      value: 18.83
       objectReference: {fileID: 0}
     - target: {fileID: 4161233308137081736, guid: ddd3b4fce121c0a4cb206b87e28c831f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2072,7 +2072,7 @@ MonoBehaviour:
   _customActions:
   - {fileID: 3167984741211001985}
   _isStartInsideTrigger: 1
-  _isCanRepeat: 0
+  _isCanRepeat: 1
   _isInvoke: 0
   _isOnTrigger: 0
 --- !u!114 &3167984741211001985
