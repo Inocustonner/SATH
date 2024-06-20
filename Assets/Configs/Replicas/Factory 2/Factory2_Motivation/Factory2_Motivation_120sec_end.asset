@@ -15,17 +15,15 @@ MonoBehaviour:
   IsBlockMovement: 0
   Nodes:
   - ID: 0
-    TypingSpeed: 0
+    TypingSpeed: 0.09
     Conditions: 00000000
     Localization:
     - Language: 0
       Parts:
-      - Markups: 
+      - Markups: 0100000002000000
         Effect: 0
         Color: {r: 0.5660378, g: 0.018689938, b: 0.018689938, a: 1}
-        MessageText: "\u042F \u0440\u0430\u0434, \u0447\u0442\u043E \u0442\u044B
-          \u0445\u043E\u0442\u044F \u0431\u044B \u0441\u0442\u0430\u0440\u0430\u0435\u0448\u044C\u0441\u044F..."
-    EditorPosition: {x: 8559, y: 3848.5}
+        MessageText: "\u0422\u044B \u0443\u0432\u043E\u043B\u0435\u043D."
+    EditorPosition: {x: 8847, y: 4042.5}
   Edges: []
-  _textRus: "\u042F \u0440\u0430\u0434, \u0447\u0442\u043E \u0442\u044B \u0445\u043E\u0442\u044F
-    \u0431\u044B \u0441\u0442\u0430\u0440\u0430\u0435\u0448\u044C\u0441\u044F..."
+  _textRus: "\u0422\u044B \u0443\u0432\u043E\u043B\u0435\u043D."

@@ -24,7 +24,7 @@ MonoBehaviour:
         Effect: 0
         Color: {r: 0.25882354, g: 0.29803923, b: 0.69803923, a: 1}
         MessageText: "\u0417\u0434\u0440\u0430\u0432\u0441\u0442\u0432\u0443\u0439\u0442\u0435."
-    EditorPosition: {x: 1429, y: 776.5}
+    EditorPosition: {x: 1717, y: 970.5}
   - ID: b3cd96e6-03bb-4a50-b0bb-bb611effa071
     TypingSpeed: 0
     Conditions: 00000000
@@ -37,7 +37,7 @@ MonoBehaviour:
         MessageText: "\u041C\u044B \u043D\u0430\u0448\u043B\u0438 \u044D\u0442\u043E\u0442
           \u0442\u0435\u043B\u0435\u0444\u043E\u043D \u0432 \u043A\u0432\u0430\u0440\u0442\u0438\u0440\u0435
           \u043D\u0430\u0448\u0435\u0439 \u0441\u043E\u0441\u0435\u0434\u043A\u0438."
-    EditorPosition: {x: 2107, y: 774.5}
+    EditorPosition: {x: 2395, y: 968.5}
   - ID: aecac265-99bf-42da-aca9-b06cc554c62d
     TypingSpeed: 0
     Conditions: 00000000
@@ -51,7 +51,7 @@ MonoBehaviour:
           \u0432\u0430\u043C, \u043F\u043E\u0442\u043E\u043C\u0443 \u0447\u0442\u043E
           \u043D\u0435 \u0437\u043D\u0430\u043B\u0438 \u043A\u043E\u043C\u0443 \u0435\u0449\u0451
           \u0437\u0432\u043E\u043D\u0438\u0442\u044C..."
-    EditorPosition: {x: 2823, y: 773.5}
+    EditorPosition: {x: 3111, y: 967.5}
   - ID: eb3a6ead-18a3-4bef-9724-852a40d17438
     TypingSpeed: 0
     Conditions: 00000000
@@ -65,7 +65,7 @@ MonoBehaviour:
           \u0437\u0430\u043C\u043A\u043D\u0443\u0442\u043E\u0439 \u0436\u0435\u043D\u0449\u0438\u043D\u043E\u0439
           \u0438 \u043F\u043E\u0447\u0442\u0438 \u043D\u0438 \u0441 \u043A\u0435\u043C
           \u043D\u0435 \u0440\u0430\u0437\u0433\u043E\u0432\u0430\u0440\u0438\u0432\u0430\u043B\u0430."
-    EditorPosition: {x: 3552, y: 772.5}
+    EditorPosition: {x: 3840, y: 966.5}
   - ID: 15ac064e-34af-45a0-a51c-e2b798cd3d40
     TypingSpeed: 0
     Conditions: 00000000
@@ -79,7 +79,7 @@ MonoBehaviour:
           \u0435\u0434\u0438\u043D\u0441\u0442\u0432\u0435\u043D\u043D\u044B\u043C,
           \u043D\u0430 \u043A\u043E\u0442\u043E\u0440\u044B\u0439 \u043E\u043D\u0430
           \u0441\u043E\u0432\u0435\u0440\u0448\u0430\u043B\u0430 \u0437\u0432\u043E\u043D\u043A\u0438."
-    EditorPosition: {x: 4273, y: 773.5}
+    EditorPosition: {x: 4561, y: 967.5}
   - ID: eb165323-e4d5-4794-a4a1-5d480c7f3f88
     TypingSpeed: 0
     Conditions: 00000000
@@ -92,7 +92,7 @@ MonoBehaviour:
         MessageText: "\u0415\u0441\u043B\u0438 \u0432\u044B \u0437\u043D\u0430\u043B\u0438
           \u0435\u0451, \u0442\u043E \u043F\u0440\u0438\u043D\u043E\u0441\u0438\u043C
           \u0432\u0430\u043C \u0441\u0432\u043E\u0438 \u0441\u043E\u0431\u043E\u043B\u0435\u0437\u043D\u043E\u0432\u0430\u043D\u0438\u044F."
-    EditorPosition: {x: 4984, y: 772.5}
+    EditorPosition: {x: 5272, y: 966.5}
   - ID: 99606a0c-4603-492b-811d-6b294ecca060
     TypingSpeed: 0
     Conditions: 00000000
@@ -103,7 +103,20 @@ MonoBehaviour:
         Effect: 0
         Color: {r: 0.25882354, g: 0.29803923, b: 0.69803923, a: 1}
         MessageText: "\u041E\u043D\u0430 \u0443\u043C\u0435\u0440\u043B\u0430."
-    EditorPosition: {x: 5689, y: 771.5}
+    EditorPosition: {x: 5977, y: 965.5}
+  - ID: a945b54a-f7cc-44d8-a1b5-16abf98ec3d4
+    TypingSpeed: 0
+    Conditions: 00000000
+    Localization:
+    - Language: 0
+      Parts:
+      - Markups: 0100000002000000
+        Effect: 6
+        Color: {r: 0.25882354, g: 0.29803923, b: 0.69803923, a: 1}
+        MessageText: "\u0425\u043E\u0442\u0438\u0442\u0435 \u043B\u0438 \u0432\u044B
+          \u043F\u043E\u0441\u0435\u0442\u0438\u0442\u0438\u0442\u044C \u0435\u0451
+          \u043F\u043E\u0445\u043E............."
+    EditorPosition: {x: 6688, y: 976.5}
   Edges:
   - SourceNode: 0
     TargetNode: b3cd96e6-03bb-4a50-b0bb-bb611effa071
@@ -123,4 +136,23 @@ MonoBehaviour:
   - SourceNode: eb165323-e4d5-4794-a4a1-5d480c7f3f88
     TargetNode: 99606a0c-4603-492b-811d-6b294ecca060
     Index: 0
-  _textRus: 
+  - SourceNode: 99606a0c-4603-492b-811d-6b294ecca060
+    TargetNode: a945b54a-f7cc-44d8-a1b5-16abf98ec3d4
+    Index: 0
+  _textRus: "\u0417\u0434\u0440\u0430\u0432\u0441\u0442\u0432\u0443\u0439\u0442\u0435.\u041C\u044B
+    \u043D\u0430\u0448\u043B\u0438 \u044D\u0442\u043E\u0442 \u0442\u0435\u043B\u0435\u0444\u043E\u043D
+    \u0432 \u043A\u0432\u0430\u0440\u0442\u0438\u0440\u0435 \u043D\u0430\u0448\u0435\u0439
+    \u0441\u043E\u0441\u0435\u0434\u043A\u0438.\u041C\u044B \u043F\u043E\u0437\u0432\u043E\u043D\u0438\u043B\u0438
+    \u0432\u0430\u043C, \u043F\u043E\u0442\u043E\u043C\u0443 \u0447\u0442\u043E \u043D\u0435
+    \u0437\u043D\u0430\u043B\u0438 \u043A\u043E\u043C\u0443 \u0435\u0449\u0451 \u0437\u0432\u043E\u043D\u0438\u0442\u044C...\u041E\u043D\u0430
+    \u0431\u044B\u043B\u0430 \u0434\u043E\u0432\u043E\u043B\u044C\u043D\u043E \u0437\u0430\u043C\u043A\u043D\u0443\u0442\u043E\u0439
+    \u0436\u0435\u043D\u0449\u0438\u043D\u043E\u0439 \u0438 \u043F\u043E\u0447\u0442\u0438
+    \u043D\u0438 \u0441 \u043A\u0435\u043C \u043D\u0435 \u0440\u0430\u0437\u0433\u043E\u0432\u0430\u0440\u0438\u0432\u0430\u043B\u0430.\u0412\u0430\u0448
+    \u043D\u043E\u043C\u0435\u0440 \u0431\u044B\u043B \u0435\u0434\u0438\u043D\u0441\u0442\u0432\u0435\u043D\u043D\u044B\u043C,
+    \u043D\u0430 \u043A\u043E\u0442\u043E\u0440\u044B\u0439 \u043E\u043D\u0430 \u0441\u043E\u0432\u0435\u0440\u0448\u0430\u043B\u0430
+    \u0437\u0432\u043E\u043D\u043A\u0438.\u0415\u0441\u043B\u0438 \u0432\u044B \u0437\u043D\u0430\u043B\u0438
+    \u0435\u0451, \u0442\u043E \u043F\u0440\u0438\u043D\u043E\u0441\u0438\u043C \u0432\u0430\u043C
+    \u0441\u0432\u043E\u0438 \u0441\u043E\u0431\u043E\u043B\u0435\u0437\u043D\u043E\u0432\u0430\u043D\u0438\u044F.\u041E\u043D\u0430
+    \u0443\u043C\u0435\u0440\u043B\u0430.\u0425\u043E\u0442\u0438\u0442\u0435 \u043B\u0438
+    \u0432\u044B \u043F\u043E\u0441\u0435\u0442\u0438\u0442\u0438\u0442\u044C \u0435\u0451
+    \u043F\u043E\u0445\u043E............."
