@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Code.Game.Parts
 {
-    public class GamePart_2_BadEndingLove : GamePart, IPartTickListener, IRestarable
+    public class GamePart_2_BadEndingLove : GamePart,IGameInitListener, IPartTickListener, IRestarable
     {
         public override GamePartName GamePartName => GamePartName.Part_2__bad_ending_love;
         [Header("Components")]
@@ -17,32 +17,37 @@ namespace Code.Game.Parts
 
         [Header("Static value")] 
         [SerializeField] private float _transitionToNextLevelDelay = 1;
-        private const int MAX_ID = 13;
-        
+        private int _replicasCount;
+
         [Header("Dynamic value")]
         private int _id;
         private Coroutine _transitionCoroutine;
 
-        public override void Restart()
+        public void GameInit()
         {
-            _id = 0;
+            _replicasCount = _replicasAction.GetReplicasCount();
         }
 
         public void PartTick()
         {
             var pushTime = _pushListener.GetPushTime(); 
-            if (pushTime / 10 > _id && _id < MAX_ID)
+            if (pushTime / 10 > _id && _id < _replicasCount)
             {
                 _replicasAction.SetID(_id);
                 _replicasAction.StartAction();
                 _id++;
                 
-                if (_id == MAX_ID)
+                if (_id == _replicasCount)
                 {
                     _replicasAction.OnEnd += OnEndLastReplica;
                 }
             }
 
+        }
+
+        public override void Restart()
+        {
+            _id = 0;
         }
 
         private void OnEndLastReplica()

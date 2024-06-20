@@ -254,10 +254,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Part_2__disown_love
       objectReference: {fileID: 0}
-    - target: {fileID: 3594521318349529259, guid: ceded60e9c5e2ad4fa7d4ceb2c20269e, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3998761136201014133, guid: ceded60e9c5e2ad4fa7d4ceb2c20269e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -874,6 +870,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2518796470157301780}
     m_Modifications:
+    - target: {fileID: 972395857425151833, guid: 33f6126da8e88e04fb3ff8c0bccea943, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1680283828512306545, guid: 33f6126da8e88e04fb3ff8c0bccea943, type: 3}
+      propertyPath: _isCanRepeat
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1680283828512306545, guid: 33f6126da8e88e04fb3ff8c0bccea943, type: 3}
+      propertyPath: _isStopActionWhenDisable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2476434089354713927, guid: 33f6126da8e88e04fb3ff8c0bccea943, type: 3}
       propertyPath: _gamePart
       value: 

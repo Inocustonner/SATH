@@ -30,5 +30,10 @@ namespace Code.Game.CustomActions.Actions
                 _replicaConfig = _replicas[_currentID];
             }
         }
+
+        public int GetReplicasCount()
+        {
+            return _replicas.Length;
+        }
     }
 }
