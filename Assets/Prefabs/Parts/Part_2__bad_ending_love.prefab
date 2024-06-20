@@ -1219,6 +1219,7 @@ GameObject:
   - component: {fileID: 3961936940929218037}
   - component: {fileID: 2261359861110524773}
   - component: {fileID: 3867553079774422356}
+  - component: {fileID: 7461722510366472314}
   m_Layer: 0
   m_Name: Part_2__bad_ending_love
   m_TagString: Untagged
@@ -1291,6 +1292,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stone: {fileID: 6314658201884070892}
   _pushTime: 0
+--- !u!114 &7461722510366472314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7903678204187716947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd7e681c2c484652a104b39e10922c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _subCamera: {fileID: 7895701662127715782}
 --- !u!1 &8556850961483206189
 GameObject:
   m_ObjectHideFlags: 0
@@ -2199,6 +2213,11 @@ MonoBehaviour:
 --- !u!4 &7708455013573763782 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2641278970855691467, guid: d5e135dfe36ce7249a5836bcc27ad794, type: 3}
+  m_PrefabInstance: {fileID: 5647051883256526349}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &7895701662127715782 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 2579842478008026059, guid: d5e135dfe36ce7249a5836bcc27ad794, type: 3}
   m_PrefabInstance: {fileID: 5647051883256526349}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6922578304779906622
