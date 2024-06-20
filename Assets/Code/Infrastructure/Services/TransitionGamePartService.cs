@@ -29,6 +29,7 @@ namespace Code.Infrastructure.Services
         private Coroutine _transitionCoroutine;
         
         public event Action OnStartTransition;
+        public event Action OnTransition;
 
         public void GameInit()
         {
@@ -94,6 +95,7 @@ namespace Code.Infrastructure.Services
                     _coroutineRunner.StartActionWithDelay(() =>
                     {
                         _currentPart.gameObject.SetActive(false);
+                        OnTransition?.Invoke();
                         _currentPart = gamePart;
                         _currentPart.gameObject.SetActive(true);
                     }, _delay);
