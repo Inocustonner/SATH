@@ -19,6 +19,7 @@ namespace Code.Infrastructure.Services
 
         public event Action OnPressInteractionKey;
         public event Action OnPressPauseKey;
+        public event Action<Vector2> OnPressMove;
 
         public void GameInit()
         {
@@ -58,8 +59,18 @@ namespace Code.Infrastructure.Services
             }
             else
             {
-                _direction.x = Input.GetAxisRaw("Horizontal");
-                _direction.y = Input.GetAxisRaw("Vertical");
+                var dir = new Vector2
+                {
+                    x = Input.GetAxisRaw("Horizontal"),
+                    y = Input.GetAxisRaw("Vertical")
+                };
+                
+                if (dir != _direction)
+                {
+                    OnPressMove?.Invoke(dir);
+                }
+
+                _direction = dir;
             }
         }
     }
