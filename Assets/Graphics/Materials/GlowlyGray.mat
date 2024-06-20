@@ -127,7 +127,7 @@ Material:
     - _GhostTransparency: 0.757
     - _GlitchAmount: 3
     - _GlitchSize: 1
-    - _Glow: 10
+    - _Glow: 8.403361
     - _GlowGlobal: 1
     - _GlowTexUsed: 0
     - _GradBlend: 1
@@ -139,7 +139,7 @@ Material:
     - _GrassRadialBend: 0.1
     - _GrassSpeed: 2
     - _GrassWind: 20
-    - _GreyscaleBlend: 0
+    - _GreyscaleBlend: 0.15966387
     - _GreyscaleLuminosity: 0.01
     - _GreyscaleOutline: 0
     - _HandDrawnAmount: 10

@@ -15,6 +15,7 @@ Material:
   - DISTORT_ON
   - GLITCH_ON
   - GRADIENT2COL_ON
+  - PINCH_ON
   - TWISTUV_ON
   m_InvalidKeywords:
   - ETC1_EXTERNAL_ALPHA
@@ -191,7 +192,7 @@ Material:
     - _OutlineWidth: 0.004
     - _OverlayBlend: 1
     - _OverlayGlow: 1
-    - _PinchUvAmount: 0.06
+    - _PinchUvAmount: 0.096
     - _PixelateSize: 32
     - _PosterizeGamma: 0.75
     - _PosterizeNumColors: 8
@@ -213,7 +214,7 @@ Material:
     - _ShineWidth: 0.1
     - _TextureScrollXSpeed: 0.39
     - _TextureScrollYSpeed: 0
-    - _TwistUvAmount: 2.13
+    - _TwistUvAmount: 1.3886094
     - _TwistUvPosX: 0.5
     - _TwistUvPosY: 0.5
     - _TwistUvRadius: 0.75
