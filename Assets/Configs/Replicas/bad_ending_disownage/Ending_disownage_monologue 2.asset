@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48e56e729e8a46f58050bf2e2c16e7d8, type: 3}
-  m_Name: Ending_disownage_monologue
+  m_Name: Ending_disownage_monologue 2
   m_EditorClassIdentifier: 
   IsBlockMovement: 1
   Nodes:
@@ -20,11 +20,15 @@ MonoBehaviour:
     Localization:
     - Language: 0
       Parts:
+      - Markups: 0100000002000000
+        Effect: 6
+        Color: {r: 0.4716981, g: 0.4716981, b: 0.4716981, a: 1}
+        MessageText: "\u041E\u041D"
       - Markups: 
         Effect: 0
-        Color: {r: 0.4716981, g: 0.4716981, b: 0.4716981, a: 1}
-        MessageText: "\u0414\u043E\u0431\u0440\u043E\u0435 \u0443\u0442\u0440\u043E
-          \u043A\u043E\u043B\u043B\u0435\u0433\u0430."
-    EditorPosition: {x: 994, y: 593.5}
+        Color: {r: 0.47058827, g: 0.47058827, b: 0.47058827, a: 1}
+        MessageText: "\u043B\u0438\u0447\u043D\u043E \u043F\u043E\u0437\u0430\u0431\u043E\u0442\u0438\u043B\u0441\u044F
+          \u043E\u0431 \u044D\u0442\u043E\u043C."
+    EditorPosition: {x: 994, y: 681}
   Edges: []
   _textRus: 1233321
