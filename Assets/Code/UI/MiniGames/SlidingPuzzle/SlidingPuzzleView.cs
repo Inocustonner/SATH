@@ -7,7 +7,7 @@ namespace Code.UI.MiniGames.SlidingPuzzle
     public class SlidingPuzzleView: BaseMenuView
     {
         [SerializeField] private SlidingPuzzleTile _tilePrefab;
-        [SerializeField] private Transform _boardParent;
+        [SerializeField] private RectTransform _boardParent;
 
         private int _size;
         private SlidingPuzzleTile[,] _tiles;
@@ -59,14 +59,17 @@ namespace Code.UI.MiniGames.SlidingPuzzle
 
         private void CreateBoard()
         {
+            var size = _tilePrefab.GetSize();
+            var mapSize = _boardParent.sizeDelta;
+            var starPos = new Vector2(-(mapSize.x / 2) + size.x / 2, -(mapSize.y / 2) + size.y / 2);
             for (int y = 0; y < _size; y++)
             {
                 for (int x = 0; x < _size; x++)
                 {
                     var tile = Instantiate(_tilePrefab, _boardParent);
-                    tile.SetAnchoredPosition(new Vector2(x * 100, y * 100));
-                    tile.SetColor(isSelected: false); 
-                    tile.SetTilePosition(new Vector2Int(x,y));
+                    var tilePos = starPos + new Vector2(x * size.x, y * size.y);
+                    tile.SetAnchoredPosition(tilePos);
+                    tile.SetColor(isSelected: false);
                     _tiles[x, y] = tile;
                 }
             }

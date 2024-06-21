@@ -40,6 +40,7 @@ namespace Code.UI.MiniGames.SlidingPuzzle
                 _inputService.OnPressInteractionKey -= OnPressInteractionKey;
                 _inputService.OnPressMove -= OnPressMoveKey; 
                 Model.OnBoardChanged -= OnBoardChanged;
+                Model.OnWin -= OnWin;
             }
         }
 
@@ -68,11 +69,9 @@ namespace Code.UI.MiniGames.SlidingPuzzle
                     _selectedPosition = newPosition;
                     View.HighlightTile(_selectedPosition);
                 }
-
             }
         }
-
-
+        
         private bool IsValidPosition(Vector2Int position)
         {
             return position.x >= 0 && position.x < Model.Size && position.y >= 0 && position.y < Model.Size;
@@ -82,8 +81,7 @@ namespace Code.UI.MiniGames.SlidingPuzzle
         {
             Model.Move(_selectedPosition);
         }
-
-
+        
         private void OnBoardChanged()
         {
             View.UpdateBoard(Model.Board);

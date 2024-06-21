@@ -542,8 +542,8 @@ MonoBehaviour:
     _speed: 3
     _stoppedDistance: 0.1
   _points:
-  - {x: 13.1, y: -0.77}
-  - {x: 13.1, y: -6.26}
+  - {x: 13.6, y: -0.77}
+  - {x: 13.6, y: -6.26}
 --- !u!114 &7131159739390629135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1235,7 +1235,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5894176765689486985, guid: a9ee9451f7b8a324ba649962866faeef, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 16.63
+      value: 17.01
       objectReference: {fileID: 0}
     - target: {fileID: 5894176765689486985, guid: a9ee9451f7b8a324ba649962866faeef, type: 3}
       propertyPath: m_LocalPosition.y

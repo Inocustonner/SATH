@@ -2428,7 +2428,6 @@ MonoBehaviour:
   _curtain: {fileID: 959889576521805741}
   _darkColor: {r: 0, g: 0, b: 0, a: 0}
   _lightColor: {r: 1, g: 1, b: 1, a: 0}
-  _showDarkDuration: 0.01
   _showLightDuration: 0.05
   _hideDuration: 0.5
   _isDark: 0
