@@ -10,17 +10,15 @@ namespace Code.Game.Parts
     public class GamePart_3_Destruction : GamePart,IGameInitListener, IPartStartListener, IPartExitListener
     {
         public override GamePartName GamePartName => GamePartName.Part_3__endeavours_destruction;
-        [SerializeField] private Health _playerHealth;
+        [SerializeField] private PlayerController _player;
         [SerializeField] private EnemySpawner _enemySpawner;
 
         public void GameInit()
         {
-            _playerHealth.Set(Container.Instance.FindConfig<DestructionConfig>().PlayerHP);    
         }
 
         public void PartStart()
         {
-            _playerHealth.Reset();
             SubscribeToEvents(true);
         }
 
@@ -29,31 +27,19 @@ namespace Code.Game.Parts
             SubscribeToEvents(false);
         }
 
-        public override void Restart()
-        {
-            _playerHealth.Reset();
-            base.Restart();
-        }
 
         private void SubscribeToEvents(bool flag)
         {
             if (flag)
             {
-                _enemySpawner.OnGetDamage += OnGetDamage;
                 _enemySpawner.OnEndWaves += OnEndWaves;
             }
             else
             {
-                _enemySpawner.OnGetDamage -= OnGetDamage;
                 _enemySpawner.OnEndWaves -= OnEndWaves;
             }
         }
-
-        private void OnGetDamage(int damage)
-        {
-            _playerHealth.GetDamage(damage);
-        }
-
+        
         private void OnEndWaves()
         {   
             //todo boos enter

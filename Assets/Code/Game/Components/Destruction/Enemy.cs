@@ -9,23 +9,26 @@ namespace Code.Game.Components.Destruction
         [SerializeField] private CollisionObserver _body;
         [SerializeField] private Health _health;
 
-        private Transform _player;
+        [Header("Static data")]
+        private Transform _target;
         private float _defaultDistance;
         private float _accelerationSpeed;
         private float _speed;
         private float _gameSpeed;
+        public int Damage { get; private set; }
 
         public event Action OnTakeDamage;
         public event Action OnDeath;
 
         private Vector3 _startPosition;
-       
+
         public void InitEntity(params object[] parameters)
         {
             _gameSpeed = (float)parameters[0];
             _defaultDistance = (float)parameters[1];
-            _health.Set((int)parameters[2]);
-            _player = (Transform)parameters[3];
+            _health = new Health((int)parameters[2]);
+            _target = (Transform)parameters[3];
+            Damage = (int)parameters[4];
         }
 
         public void EnableEntity()
@@ -47,10 +50,10 @@ namespace Code.Game.Components.Destruction
         
         public void Move()
         {
-            var currentSpeed = _gameSpeed * Vector3.Distance(_startPosition, _player.position) < _defaultDistance
+            var currentSpeed = _gameSpeed * Vector3.Distance(_startPosition, _target.position) < _defaultDistance
                 ? _speed
                 : _speed + _accelerationSpeed;
-            transform.position = Vector3.MoveTowards(transform.position, _player.position, currentSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, _target.position, currentSpeed * Time.deltaTime);
         }
 
         private void SubscribeToEvents(bool flag)

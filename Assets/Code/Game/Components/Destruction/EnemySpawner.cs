@@ -22,7 +22,6 @@ namespace Code.Game.Components.Destruction
         [SerializeField] private int _enemyStage;
         private bool _isEnd;
 
-        public event Action<int> OnGetDamage; 
         public event Action OnEndWaves;
 
         public void GameInit()
@@ -65,11 +64,7 @@ namespace Code.Game.Components.Destruction
                         var enemy = _monoPool.GetNext(GetInitParams());
                         enemy.transform.position = pos;
                         enemy.OnDeath += () => _monoPool.Disable(enemy);
-                        enemy.OnTakeDamage += () =>
-                        {
-                            _monoPool.Disable(enemy);
-                            OnGetDamage?.Invoke(_destructionConfig.EnemyDamage);
-                        };
+                        enemy.OnTakeDamage += () => _monoPool.Disable(enemy);
                         enemy.SetStageParam(pos,currentStageData.ColumnSpeed, currentStageData.Acceleration);
                         enemy.transform.position = pos;
                     }
@@ -96,7 +91,8 @@ namespace Code.Game.Components.Destruction
                 _destructionConfig.GameSpeed,
                 _destructionConfig.DefaultDistance,
                 _destructionConfig.EnemyHP,
-                _player
+                _player.gameObject.transform,
+                _destructionConfig.EnemyDamage
             };
         }
     }

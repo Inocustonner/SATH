@@ -1,5 +1,4 @@
 ﻿using Code.UI.Base;
-using Code.Utils;
 
 namespace Code.UI.Menu.Destruction
 {
@@ -9,20 +8,18 @@ namespace Code.UI.Menu.Destruction
         {
             if (flag)
             {
-                Model.PlayerHealth.OnChanged += OnChangedPlayerHealth;
-                this.Log("Subscribe");
+                Model.Player.Health.OnChanged += OnChangedPlayerHealth;
             }
             else
             {
                 
-                Model.PlayerHealth.OnChanged -= OnChangedPlayerHealth;
+                Model.Player.Health.OnChanged -= OnChangedPlayerHealth;
             }
         }
 
         private void OnChangedPlayerHealth()
         {
-            this.Log("OnChangedPlayerHealth");
-            View.SetPlayerHealth($"{Model.PlayerHealth.Current}/{Model.PlayerHealth.Max}");
+            View.SetPlayerHealth($"{Model.Player.Health.Current}/{Model.Player.Health.Max}");
         }
     }
 }

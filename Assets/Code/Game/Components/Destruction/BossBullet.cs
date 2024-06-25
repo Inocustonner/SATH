@@ -3,12 +3,13 @@ using UnityEngine;
 
 namespace Code.Game.Components.Destruction
 {
-    public class EnemyBullet: MonoBehaviour, IPoolEntity
+    public class BossBullet: MonoBehaviour, IPoolEntity
     {
+        public int Damage { get;private set; }
         
         public void InitEntity(params object[] parameters)
         {
-            throw new System.NotImplementedException();
+            Damage = (int)parameters[0];
         }
 
         public void EnableEntity()
@@ -20,5 +21,6 @@ namespace Code.Game.Components.Destruction
         {
             throw new System.NotImplementedException();
         }
+
     }
 }

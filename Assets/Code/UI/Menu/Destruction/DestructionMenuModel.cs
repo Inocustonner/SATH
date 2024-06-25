@@ -5,6 +5,6 @@ namespace Code.UI.Menu.Destruction
 {
     public class DestructionMenuModel: BaseMenuModel<DestructionMenuModel>
     {
-        public Health PlayerHealth;
+        public PlayerController Player;
     }
 }
