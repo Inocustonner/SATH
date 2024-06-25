@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using Code.Data.Configs;
-using Code.Data.Enums;
 using Code.Data.Interfaces;
 using Code.Data.StaticData;
 using Code.Infrastructure.DI;
@@ -10,7 +9,7 @@ using Code.UI.Enums;
 using TMPro;
 using UnityEngine;
 
-namespace Code.UI.Localization
+namespace Code.UI.Components
 {
     public class LocalizationElement : MonoBehaviour, IGameInitListener,IGameStartListener,IGameExitListener, IProgressReader
     {

@@ -6,12 +6,23 @@ namespace Code.Data.Configs
     [CreateAssetMenu(fileName = "DestructionConfig", menuName = "Config/DestructionConfig")]
     public class DestructionConfig : ScriptableObject
     {
+        [Header("Base")]
         public Vector2 DistanceBetweenEnemy;
         public float GameSpeed = 1;
         public float DefaultDistance;
-        public int BossHp, EnemyHP, PlayerHP;
-        public BulletData PlayerBullet, BossBullet;
-        public  DestructionEnemyData[] EnemyStages;
-        public  DestructionBossData[] BossStages;
+
+        [Header("Health")] 
+        public int BossHp;
+        public int EnemyHP; 
+        public int PlayerHP;
+        
+        [Header("Damage")]
+        public int EnemyDamage;
+        public BulletData PlayerBullet;
+        public BulletData BossBullet;
+        
+        [Header("Stages")]
+        public DestructionEnemyData[] EnemyStages;
+        public DestructionBossData[] BossStages;
     }
 }

@@ -8,7 +8,7 @@ using Code.Replicas.Scripts;
 using Code.UI.Enums;
 using UnityEngine;
 
-namespace Code.UI.Menu.ReplicaMenu
+namespace Code.UI.Hud.ReplicaMenu
 {
     public class ReplicaTester : MonoBehaviour, IGameInitListener
     {

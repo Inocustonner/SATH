@@ -1,9 +1,10 @@
 ﻿using System;
+using Code.Utils;
+using UnityEngine;
 
 namespace Code.Game.Components.Destruction
 {
-    [Serializable]
-    public class Health
+    public class Health : MonoBehaviour
     {
         public int Current { get; private set; }
         public int Max { get; private set;}
@@ -18,7 +19,9 @@ namespace Code.Game.Components.Destruction
 
         public void Reset()
         {
+            this.Log($"{gameObject.name} Reset");
             Current = Max;
+            OnChanged?.Invoke();    
         }
 
         public void GetDamage(int damage)

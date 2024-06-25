@@ -4,7 +4,7 @@ using Code.Infrastructure.ScreenResolution;
 using Code.Utils;
 using UnityEngine;
 
-namespace Code.UI.Menu.SettingsMenu.Graphic
+namespace Code.UI.Hud.SettingsMenu.Graphic
 {
     [Serializable]
     public class GraphicPresenter

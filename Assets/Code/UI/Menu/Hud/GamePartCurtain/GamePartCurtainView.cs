@@ -7,7 +7,7 @@ using Code.UI.Base;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Code.UI.Menu.GamePartCurtain
+namespace Code.UI.Hud.GamePartCurtain
 {
     public class GamePartCurtainView: BaseMenuView, IGameInitListener
     {

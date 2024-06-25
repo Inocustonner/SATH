@@ -1,16 +1,14 @@
 using System;
 using Code.Data.DynamicData;
 using Code.Data.Interfaces;
-using Code.Game.Components;
 using Code.Infrastructure.Cameras;
 using Code.Infrastructure.DI;
 using Code.Infrastructure.Services;
 using Code.UI.Base;
 using Code.UI.Enums;
-using Code.Utils;
 using UnityEngine;
 
-namespace Code.UI.Menu.ReplicaMenu
+namespace Code.UI.Hud.ReplicaMenu
 {
     public class ReplicaMenuPresenter : BaseMenuPresenter<ReplicaMenuModel, ReplicaMenuView>, IGameTickListener
     {

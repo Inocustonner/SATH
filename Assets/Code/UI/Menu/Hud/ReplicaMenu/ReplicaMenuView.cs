@@ -6,7 +6,7 @@ using Code.UI.Base;
 using Code.UI.Components;
 using UnityEngine;
 
-namespace Code.UI.Menu.ReplicaMenu
+namespace Code.UI.Hud.ReplicaMenu
 {
     public class ReplicaMenuView : BaseMenuView, IGameInitListener
     {

@@ -8,7 +8,7 @@ using Code.Materials;
 using Code.UI.Base;
 using UnityEngine;
 
-namespace Code.UI.Menu.TwistCurtain
+namespace Code.UI.Hud.TwistCurtain
 {
     public class EffectsCurtainView: BaseMenuView, IGameInitListener, IGameTickListener
     {

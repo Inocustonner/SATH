@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Code.UI.Menu.SettingsMenu
+namespace Code.UI.Hud.SettingsMenu
 {
     public class SettingZoneScaler : MonoBehaviour, IGameTickListener
     {

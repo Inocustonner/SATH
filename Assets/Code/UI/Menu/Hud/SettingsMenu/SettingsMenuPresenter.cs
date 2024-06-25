@@ -6,12 +6,12 @@ using Code.Infrastructure.ScreenResolution;
 using Code.Infrastructure.Services;
 using Code.UI.Base;
 using Code.UI.Enums;
-using Code.UI.Menu.SettingsMenu.Audio;
-using Code.UI.Menu.SettingsMenu.Graphic;
-using Code.UI.Menu.SettingsMenu.Language;
+using Code.UI.Hud.SettingsMenu.Audio;
+using Code.UI.Hud.SettingsMenu.Graphic;
+using Code.UI.Hud.SettingsMenu.Language;
 using UnityEngine;
 
-namespace Code.UI.Menu.SettingsMenu
+namespace Code.UI.Hud.SettingsMenu
 {
     public class SettingsMenuPresenter : BaseMenuPresenter<SettingsMenuModel,SettingsMenuView>, IProgressWriter
     {

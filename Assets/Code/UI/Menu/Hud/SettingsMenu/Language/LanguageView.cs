@@ -3,7 +3,7 @@ using Code.Data.Enums;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Code.UI.Menu.SettingsMenu.Language
+namespace Code.UI.Hud.SettingsMenu.Language
 {
     [Serializable]
     public class LanguageView

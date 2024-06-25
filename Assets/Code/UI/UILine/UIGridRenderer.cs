@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UILine
+namespace Code.UI.UILine
 {
     public class UIGridRenderer : Graphic
     {

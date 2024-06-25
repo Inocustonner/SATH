@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UILine
+namespace Code.UI.UILine
 {
 
     //https://www.youtube.com/watch?v=--LB7URk60A&ab_channel=GameDevGuide

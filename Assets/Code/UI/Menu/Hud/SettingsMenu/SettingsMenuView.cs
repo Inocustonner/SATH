@@ -3,7 +3,7 @@ using Code.UI.Base;
 using Code.UI.Components;
 using UnityEngine;
 
-namespace Code.UI.Menu.SettingsMenu
+namespace Code.UI.Hud.SettingsMenu
 {
     public class SettingsMenuView : BaseMenuView
     {

@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Code.UI.Menu.SettingsMenu.Graphic
+namespace Code.UI.Hud.SettingsMenu.Graphic
 {
     [Serializable]
     public class GraphicView

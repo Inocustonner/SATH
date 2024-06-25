@@ -4,7 +4,7 @@ using Code.Infrastructure.Services;
 using Code.Utils;
 using UnityEngine;
 
-namespace Code.UI.Menu.SettingsMenu.Language
+namespace Code.UI.Hud.SettingsMenu.Language
 {
     [Serializable]
     public class LanguagePresenter

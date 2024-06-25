@@ -1,14 +1,12 @@
 ﻿using Code.Data.Enums;
-using Code.Data.Interfaces;
 using Code.Infrastructure.DI;
 using Code.Infrastructure.Services;
 using Code.UI.Base;
 using Code.UI.Enums;
 using Code.Utils;
 using UnityEngine;
-using UnityEngine.UI;
 
-namespace Code.UI.Menu.TwistCurtain
+namespace Code.UI.Hud.TwistCurtain
 {
     public class EffectsCurtainPresenter: BaseMenuPresenter<EffectsCurtainModel,EffectsCurtainView>
     {

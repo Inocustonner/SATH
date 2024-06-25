@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UILine
+namespace Code.UI.UILine
 {
     public class LineRendererHUD : Graphic 
     {

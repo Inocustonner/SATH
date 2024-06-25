@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Code.Data.Configs;
 using Code.Data.Interfaces;
 using Code.Infrastructure.DI;
@@ -7,14 +8,23 @@ using UnityEngine;
 
 namespace Code.Game.Components.Destruction
 {
-    public class EnemySpawner: MonoBehaviour, IGameInitListener,IPartTickListener
+    public class EnemySpawner: MonoBehaviour, IGameInitListener, IPartTickListener,IRestarable
     {
+        [Header("Components")]
         [SerializeField] private Transform _player;
         [SerializeField] private MonoPool<Enemy> _monoPool;
-         private DestructionConfig _destructionConfig;
        
-        [SerializeField] private Vector3 _startPosition = new Vector2(-7, 7.5f);
+        [Header("Static data")]
+        [SerializeField] private Vector3 _startPosition = new(0, 7.5f,0);
+        private DestructionConfig _destructionConfig;
+        
+        [Header("Dinamyc data")]
         [SerializeField] private int _enemyStage;
+        private bool _isEnd;
+
+        public event Action<int> OnGetDamage; 
+        public event Action OnEndWaves;
+
         public void GameInit()
         {
             _destructionConfig = Container.Instance.FindConfig<DestructionConfig>();
@@ -28,10 +38,12 @@ namespace Code.Game.Components.Destruction
             {
                 enemy.Move();
             }
+            
             if (_enemyStage >= _destructionConfig.EnemyStages.Length)
             {
                 return;
             }
+            
             if (!_monoPool.GetAllEnabled().Any())
             {
                 var currentStageData = _destructionConfig.EnemyStages[_enemyStage];
@@ -53,7 +65,11 @@ namespace Code.Game.Components.Destruction
                         var enemy = _monoPool.GetNext(GetInitParams());
                         enemy.transform.position = pos;
                         enemy.OnDeath += () => _monoPool.Disable(enemy);
-                        enemy.OnTakeDamage += () => _monoPool.Disable(enemy);
+                        enemy.OnTakeDamage += () =>
+                        {
+                            _monoPool.Disable(enemy);
+                            OnGetDamage?.Invoke(_destructionConfig.EnemyDamage);
+                        };
                         enemy.SetStageParam(pos,currentStageData.ColumnSpeed, currentStageData.Acceleration);
                         enemy.transform.position = pos;
                     }
@@ -61,8 +77,16 @@ namespace Code.Game.Components.Destruction
 
                 _enemyStage++;
             }
+                /*if (_enemyStage == _destructionConfig.EnemyStages.Length)
+                {
+                    OnEndWaves?.Invoke();
+                }*/
+        }
 
-        
+        public void Restart()
+        {
+            _enemyStage = 0;
+            _isEnd = false;
         }
 
         private object[] GetInitParams()

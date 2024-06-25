@@ -4,7 +4,7 @@ using Code.Infrastructure.Audio.AudioSystem;
 using Code.Utils;
 using UnityEngine;
 
-namespace Code.UI.Menu.SettingsMenu.Audio
+namespace Code.UI.Hud.SettingsMenu.Audio
 {
     [Serializable]
     public class AudioPresenter

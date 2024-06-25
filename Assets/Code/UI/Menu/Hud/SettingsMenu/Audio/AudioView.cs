@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Code.UI.Menu.SettingsMenu.Audio
+namespace Code.UI.Hud.SettingsMenu.Audio
 {
     [Serializable]
     public class AudioView

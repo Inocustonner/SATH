@@ -1,6 +1,6 @@
 ﻿using Code.UI.Base;
 
-namespace Code.UI.Menu.GamePartCurtain
+namespace Code.UI.Hud.GamePartCurtain
 {
     public class GamePartCurtainModel: BaseMenuModel<GamePartCurtainModel>
     {

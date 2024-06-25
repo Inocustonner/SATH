@@ -1,6 +1,5 @@
 ﻿using System;
 using Code.Data.Interfaces;
-using Code.Infrastructure.GameLoop;
 using Code.UI.Enums;
 using UnityEngine;
 
@@ -9,25 +8,20 @@ namespace Code.UI.Base
     public abstract class BaseMenuPresenter<TModel, TView> : MonoBehaviour, 
         IMenuPresenter, 
         IGameInitListener,
-        IGameStartListener,
         IGameExitListener
         where TModel : BaseMenuModel<TModel>
         where TView : BaseMenuView
     {
         [SerializeField] protected TModel Model;
         [SerializeField] protected TView View;
-
         public event Action<MenuType> OnOtherMenuCall;
 
         public void GameInit()
         {
             Init();
-        }
-
-        public void GameStart()
-        {
             SubscribeToEvents(true);
         }
+
 
         public void GameExit()
         {

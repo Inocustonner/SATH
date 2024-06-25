@@ -18,6 +18,7 @@ MonoBehaviour:
   BossHp: 7
   EnemyHP: 1
   PlayerHP: 4
+  EnemyDamage: 1
   PlayerBullet:
     Speed: 3
     Damage: 1
