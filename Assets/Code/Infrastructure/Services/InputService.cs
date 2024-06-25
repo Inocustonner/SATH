@@ -1,12 +1,11 @@
 using System;
 using Code.Data.Interfaces;
 using Code.Infrastructure.DI;
-using Code.Infrastructure.GameLoop;
 using UnityEngine;
 
 namespace Code.Infrastructure.Services
 {
-    public class InputService :  IService, IGameInitListener,IGameTickListener
+    public class InputService : IService, IGameInitListener,IGameTickListener
     {
         [Header("Services")]
         private MoveLimiter _moveLimiter;

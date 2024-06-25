@@ -32,7 +32,9 @@ namespace Code.Infrastructure.DI
             Instance = this;
 
             _allObjects = FindAllObjectsOfType<MonoBehaviour>().ToArray();
+          
             InitList(ref _entities);
+            
             _services = _entities.OfType<IService>().ToList();
             _gameParts = _entities.OfType<GamePart>().ToList();
         }

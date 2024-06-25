@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df873f0496a740a58bbddd193a0c62a9, type: 3}
+  m_Name: DestructionConfig
+  m_EditorClassIdentifier: 
+  DistanceBetweenEnemy: {x: 5, y: 5}
+  GameSpeed: 1
+  DefaultDistance: 1
+  BossHp: 7
+  EnemyHP: 1
+  PlayerHP: 4
+  PlayerBullet:
+    Speed: 3
+    Damage: 1
+  BossBullet:
+    Speed: 0
+    Damage: 0
+  EnemyStages:
+  - {fileID: 11400000, guid: c46a7a00b4917c341b8c0444ae38d485, type: 2}
+  - {fileID: 11400000, guid: 3535c0bb608a8604fa468b54e4737edf, type: 2}
+  BossStages:
+  - {fileID: 11400000, guid: 688e704afdb0d0f48a848b8065a9d851, type: 2}
+  - {fileID: 11400000, guid: 0a5516acc378fc24bbb07bfdba37868e, type: 2}

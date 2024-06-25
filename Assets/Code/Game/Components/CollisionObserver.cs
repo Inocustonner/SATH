@@ -1,4 +1,5 @@
 ﻿using System;
+using Code.Utils;
 using UnityEngine;
 
 namespace Code.Game.Components
@@ -12,6 +13,7 @@ namespace Code.Game.Components
 
         private void OnTriggerEnter2D(Collider2D col)
         {
+            this.Log("ENTER");
             OnEnter?.Invoke(col.gameObject);
         }
 
