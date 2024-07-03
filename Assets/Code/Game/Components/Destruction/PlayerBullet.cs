@@ -1,10 +1,8 @@
-﻿using System;
-using Code.Data.Interfaces;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Code.Game.Components.Destruction
 {
-    public class PlayerBullet : MonoBehaviour, IPoolEntity
+    public class PlayerBullet : Bullet
     {
         [Header("Components")] 
         [SerializeField] private CollisionObserver _collisionObserver;
@@ -15,32 +13,31 @@ namespace Code.Game.Components.Destruction
         private float _speed;
         
         public int Damage { get; private set; }
-        public event Action OnTouched;
-        
-        public void InitEntity(params object[] parameters)
+
+        public override  void InitEntity(params object[] parameters)
         {
             Damage = (int)parameters[0];
             _speed = (float)parameters[1];
         }
 
-        public void EnableEntity()
+        public override void EnableEntity()
         {
             _collisionObserver.OnEnter += OnCollision;
         }
 
-        public void DisableEntity()
+        public override void DisableEntity()
         {
             _collisionObserver.OnEnter -= OnCollision;
         }
 
-        public void Move()
+        public override void Move()
         {
             _rigidbody.velocity += new Vector2(0, _speed * Time.deltaTime);
         }
 
         private void OnCollision(GameObject obj)
         {
-            OnTouched?.Invoke();    
+            InvokeTouchedEvent(obj);
         }
     }
 }

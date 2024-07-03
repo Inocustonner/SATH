@@ -19,12 +19,13 @@ MonoBehaviour:
   EnemyHP: 1
   PlayerHP: 4
   EnemyDamage: 1
-  PlayerBullet:
-    Speed: 3
+  Bullets:
+  - Type: 1
+    Speed: 2
     Damage: 1
-  BossBullet:
-    Speed: 0
-    Damage: 0
+  - Type: 2
+    Speed: 1
+    Damage: 1
   EnemyStages:
   - {fileID: 11400000, guid: c46a7a00b4917c341b8c0444ae38d485, type: 2}
   - {fileID: 11400000, guid: 3535c0bb608a8604fa468b54e4737edf, type: 2}

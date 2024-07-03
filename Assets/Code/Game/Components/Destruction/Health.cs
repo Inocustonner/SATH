@@ -3,7 +3,7 @@
 namespace Code.Game.Components.Destruction
 {
     [Serializable]
-    public class Health 
+    public class Health
     {
         public int Current { get; private set; }
         public int Max { get; private set;}

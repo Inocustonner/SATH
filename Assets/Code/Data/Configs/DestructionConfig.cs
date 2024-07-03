@@ -18,11 +18,10 @@ namespace Code.Data.Configs
         
         [Header("Damage")]
         public int EnemyDamage;
-        public BulletData PlayerBullet;
-        public BulletData BossBullet;
+        public BulletData[] Bullets;
         
         [Header("Stages")]
         public DestructionEnemyData[] EnemyStages;
-        public DestructionBossData[] BossStages;
+        public DestructionBossStageData[] BossStages;
     }
 }

@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsValidating: 1
-  Player: {fileID: 0}
+  Player: {fileID: 8974852024113942575}
 --- !u!1 &1892229475788258183
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,6 +180,7 @@ Transform:
   - {fileID: 5587792740717733751}
   - {fileID: 8166510316148512577}
   - {fileID: 1415473616540682216}
+  - {fileID: 6829160488302312646}
   m_Father: {fileID: 5521867871875921724}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2059869366275479200
@@ -370,6 +371,56 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &4662895581918913661
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6829160488302312646}
+  - component: {fileID: 8415198072909785319}
+  m_Layer: 0
+  m_Name: BossBulletPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6829160488302312646
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4662895581918913661}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3067286840758272184}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8415198072909785319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4662895581918913661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 201c7c5e82794a4bac7ec207986bb6ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pool:
+    _root: {fileID: 6829160488302312646}
+    _prefab: {fileID: 3328163033436493316, guid: 3351c1d665756db459bd10ae6d908715, type: 3}
+    _all: []
+    _enabled: []
+  _type: 2
 --- !u!1 &4955208880972426553
 GameObject:
   m_ObjectHideFlags: 0
@@ -432,7 +483,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f2a136bc9df421fb792aaaf449f00c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
+  _player: {fileID: 8974852024113942575}
   _enemySpawner: {fileID: 1777142201953391186}
 --- !u!1 &5177040276252804924
 GameObject:
@@ -546,13 +597,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 201c7c5e82794a4bac7ec207986bb6ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 5587792740717733751}
   _pool:
     _root: {fileID: 1415473616540682216}
     _prefab: {fileID: 8887601661066335497, guid: 407b254ed831126419334d9986554219, type: 3}
     _all: []
     _enabled: []
-  _spawnOffset: {x: 0, y: 1.5, z: 0}
+  _type: 1
 --- !u!1001 &5916573884315634762
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -802,6 +852,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5657927337862498258, guid: eb65986657fdd7540aa7cb296b9d89cd, type: 3}
       insertIndex: -1
       addedObject: {fileID: 301479698600074337}
+    - targetCorrespondingSourceObject: {fileID: 5657927337862498258, guid: eb65986657fdd7540aa7cb296b9d89cd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 799522734139988985}
   m_SourcePrefab: {fileID: 100100000, guid: eb65986657fdd7540aa7cb296b9d89cd, type: 3}
 --- !u!1 &4030640905228971428 stripped
 GameObject:
@@ -820,6 +873,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26eb027227dd43849af8abbe33dd5467, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &799522734139988985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4030640905228971428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40e72741a3214babb22607f4cc980ac7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bulletSpawner: {fileID: 8415198072909785319}
+  _bulletsShootCount: 0
+  _spawnOffset: {x: 0, y: 0, z: 0}
 --- !u!4 &6833440898090925080 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2863737585124316782, guid: eb65986657fdd7540aa7cb296b9d89cd, type: 3}

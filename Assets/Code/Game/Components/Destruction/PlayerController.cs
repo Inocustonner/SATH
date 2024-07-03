@@ -35,15 +35,15 @@ namespace Code.Game.Components.Destruction
         {
             if (flag)
             {
-                _collisionObserver.OnEnter += OnCollisionEnter;
+                _collisionObserver.OnEnter += OnCollision;
             }
             else
             {
-                _collisionObserver.OnEnter -= OnCollisionEnter;
+                _collisionObserver.OnEnter -= OnCollision;
             }
         }
 
-        private void OnCollisionEnter(GameObject obj)
+        private void OnCollision(GameObject obj)
         {
             if (obj.TryGetComponent(out Enemy enemy))
             {
@@ -52,13 +52,7 @@ namespace Code.Game.Components.Destruction
             else if(obj.TryGetComponent(out BossBullet bossBullet))
             {
                 Health.GetDamage(bossBullet.Damage);
-                
             }
         }
-
-        /*p void OnGetDamage(int damage)
-        {
-            Health.GetDamage(damage);
-        }*/
     }
 }

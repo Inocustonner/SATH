@@ -1,6 +1,7 @@
 using System;
 using Code.Data.Interfaces;
 using Code.Infrastructure.DI;
+using Code.Utils;
 using UnityEngine;
 
 namespace Code.Infrastructure.Services
@@ -64,8 +65,10 @@ namespace Code.Infrastructure.Services
                     y = Input.GetAxisRaw("Vertical")
                 };
                 
+             
                 if (dir != _direction)
                 {
+                this.Log($"invoke press new dir {dir}");
                     OnPressMove?.Invoke(dir);
                 }
 
