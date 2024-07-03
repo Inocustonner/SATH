@@ -24,13 +24,13 @@ public class ChessBoard
         // Инициализация белых фигур
         Board[0, 5] = new ChessPiece(ChessPieceType.Rook, true, new Vector2Int(0, 5));
         Board[2, 7] = new ChessPiece(ChessPieceType.Rook, true, new Vector2Int(2, 7));
-        Board[6, 6] = new ChessPiece(ChessPieceType.Knight, true, new Vector2Int(6, 6));
+        Board[6, 1] = new ChessPiece(ChessPieceType.Knight, true, new Vector2Int(6, 1));
         Board[6, 2] = new ChessPiece(ChessPieceType.King, true, new Vector2Int(6, 2));
-        Board[1, 1] = new ChessPiece(ChessPieceType.Queen, true, new Vector2Int(1, 1));
-        Board[6, 3] = new ChessPiece(ChessPieceType.Queen, true, new Vector2Int(6, 3));
+        Board[1, 0] = new ChessPiece(ChessPieceType.Queen, true, new Vector2Int(1, 0));
+        Board[6, 5] = new ChessPiece(ChessPieceType.Queen, true, new Vector2Int(6, 5));
 
         // Инициализация черных фигур
-        Board[3, 7] = new ChessPiece(ChessPieceType.Bishop, false, new Vector2Int(3, 7));
+        Board[3, 6] = new ChessPiece(ChessPieceType.Bishop, false, new Vector2Int(3, 6));
         Board[5, 7] = new ChessPiece(ChessPieceType.Rook, false, new Vector2Int(5, 7));
         Board[5, 6] = new ChessPiece(ChessPieceType.Knight, false, new Vector2Int(5, 6));
         Board[3, 4] = new ChessPiece(ChessPieceType.King, false, new Vector2Int(3, 4));
