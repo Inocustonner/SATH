@@ -9,6 +9,10 @@ public class ChessPieceView : MonoBehaviour
     [SerializeField] private Image _image;
     [SerializeField] private Image _background;
 
+    private Color _defaultColor = Color.clear;
+    private Color _selectedColor = Color.red;
+    private Color _highlightColor = Color.yellow;
+
     public void SetPiece(ChessPiece piece)
     {
         if (piece == null)
@@ -23,13 +27,22 @@ public class ChessPieceView : MonoBehaviour
             _image.color = piece.IsWhite ? Color.white : Color.black;
         }
 
-        gameObject.name = "ChestPiece " + _text.text;
+        gameObject.name = "ChessPiece " + _text.text;
+        SetDefault();
     }
 
-    public void SetSelected(bool isSelected)
+    public void SetDefault()
     {
-        _background.color = isSelected ?  Color.red : Color.clear;
+        _background.color = _defaultColor;
     }
-    
 
-} 
+    public void SetSelected()
+    {
+        _background.color = _selectedColor;
+    }
+
+    public void SetHighlighted()
+    {
+        _background.color = _highlightColor;
+    }
+}

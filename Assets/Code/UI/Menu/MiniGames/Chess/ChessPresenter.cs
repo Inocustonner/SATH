@@ -3,6 +3,7 @@ using Code.Infrastructure.Services;
 using Code.UI.Base;
 using Code.Utils;
 using UnityEngine;
+using System.Collections.Generic;
 
 namespace Code.UI.Menu.MiniGames.Chess
 {
@@ -11,6 +12,7 @@ namespace Code.UI.Menu.MiniGames.Chess
         private ChessBoard _chessBoard;
         private InputService _inputService;
         private Vector2Int _selectedPosition;
+        private List<Vector2Int> _validMoves;
 
         protected override void Init()
         {
@@ -49,10 +51,10 @@ namespace Code.UI.Menu.MiniGames.Chess
         {
             if (direction != Vector2.zero)
             {
-                Vector2Int moveDirection = new Vector2Int((int)direction.x, (int)direction.y);
+                Vector2Int moveDirection = new Vector2Int((int)direction.x, (int)direction.y * -1);
                 Vector2Int newPosition = _selectedPosition + moveDirection;
 
-                this.Log($"press direction {direction} | new position {newPosition} | is valis {IsValidPosition(newPosition)}", Color.cyan);
+                this.Log($"press direction {direction} | new position {newPosition} | is valid {IsValidPosition(newPosition)}", Color.cyan);
                 if (IsValidPosition(newPosition))
                 {
                     _selectedPosition = newPosition;
@@ -65,7 +67,20 @@ namespace Code.UI.Menu.MiniGames.Chess
         {
             if (!_chessBoard.SelectPiece(_selectedPosition))
             {
-                _chessBoard.MoveSelectedPiece(_selectedPosition);
+                if (_validMoves != null && _validMoves.Contains(_selectedPosition))
+                {
+                    _chessBoard.MoveSelectedPiece(_selectedPosition);
+                    View.ClearHighlights();
+                }
+                else
+                {
+                    View.ClearHighlights();
+                }
+            }
+            else
+            {
+                _validMoves = _chessBoard.GetValidMoves(_selectedPosition);
+                View.HighlightMoves(_validMoves);
             }
         }
 

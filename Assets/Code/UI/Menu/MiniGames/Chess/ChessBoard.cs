@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Code.UI.Menu.MiniGames.Chess;
 using UnityEngine;
 
@@ -51,13 +52,15 @@ public class ChessBoard
             _isPieceSelected = true;
             return true;
         }
+
         _isPieceSelected = false;
         return false;
     }
 
     public bool MoveSelectedPiece(Vector2Int targetPosition)
     {
-        if (_isPieceSelected && Board[SelectedPiecePosition.x, SelectedPiecePosition.y].IsMoveValid(targetPosition, Board))
+        if (_isPieceSelected && Board[SelectedPiecePosition.x, SelectedPiecePosition.y]
+                .IsMoveValid(targetPosition, Board))
         {
             ChessPiece piece = Board[SelectedPiecePosition.x, SelectedPiecePosition.y];
             Board[SelectedPiecePosition.x, SelectedPiecePosition.y] = null;
@@ -78,6 +81,30 @@ public class ChessBoard
 
             return true;
         }
+
         return false;
+    }
+
+    public List<Vector2Int> GetValidMoves(Vector2Int piecePosition)
+    {
+        List<Vector2Int> validMoves = new List<Vector2Int>();
+        ChessPiece piece = Board[piecePosition.x, piecePosition.y];
+
+        if (piece != null)
+        {
+            for (int y = 0; y < 8; y++)
+            {
+                for (int x = 0; x < 8; x++)
+                {
+                    Vector2Int targetPosition = new Vector2Int(x, y);
+                    if (piece.IsMoveValid(targetPosition, Board))
+                    {
+                        validMoves.Add(targetPosition);
+                    }
+                }
+            }
+        }
+
+        return validMoves;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Code.UI.Base;
 using Code.UI.Menu.MiniGames.Chess;
 using UnityEngine;
@@ -39,11 +40,25 @@ public class ChessView : BaseMenuView
 
     public void HighlightTile(Vector2Int position)
     {
+        ClearHighlights();
+        _pieceViews[position.x, position.y].SetSelected();
+    }
+
+    public void HighlightMoves(List<Vector2Int> moves)
+    {
+        foreach (var move in moves)
+        {
+            _pieceViews[move.x, move.y].SetHighlighted();
+        }
+    }
+
+    public void ClearHighlights()
+    {
         for (int y = 0; y < _pieceViews.GetLength(1); y++)
         {
             for (int x = 0; x < _pieceViews.GetLength(0); x++)
             {
-                _pieceViews[x, y].SetSelected(new Vector2Int(x, y) == position);
+                _pieceViews[x, y].SetDefault();
             }
         }
     }
