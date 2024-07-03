@@ -39,16 +39,24 @@ public class ChessView : BaseMenuView
 
     public void HighlightTile(Vector2Int position)
     {
-        // Подсветка тайла
+        for (int y = 0; y < _pieceViews.GetLength(1); y++)
+        {
+            for (int x = 0; x < _pieceViews.GetLength(0); x++)
+            {
+                _pieceViews[x, y].SetSelected(new Vector2Int(x, y) == position);
+            }
+        }
     }
 
     public override void OpenMenu(Action onComplete = null)
     {
         windowTransform.gameObject.SetActive(true);
+        onComplete?.Invoke();
     }
 
     public override void CloseMenu(Action onComplete = null)
     {
         windowTransform.gameObject.SetActive(false);
+        onComplete?.Invoke();
     }
 }

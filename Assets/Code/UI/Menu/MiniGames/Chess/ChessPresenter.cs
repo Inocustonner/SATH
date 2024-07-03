@@ -4,7 +4,6 @@ using Code.UI.Base;
 using Code.Utils;
 using UnityEngine;
 
-
 namespace Code.UI.Menu.MiniGames.Chess
 {
     public class ChessPresenter : BaseMenuPresenter<ChessModel, ChessView>
@@ -50,7 +49,7 @@ namespace Code.UI.Menu.MiniGames.Chess
         {
             if (direction != Vector2.zero)
             {
-                Vector2Int moveDirection = new Vector2Int((int)direction.x, (int)direction.y * -1);
+                Vector2Int moveDirection = new Vector2Int((int)direction.x, (int)direction.y);
                 Vector2Int newPosition = _selectedPosition + moveDirection;
 
                 this.Log($"press direction {direction} | new position {newPosition} | is valis {IsValidPosition(newPosition)}", Color.cyan);
@@ -69,7 +68,6 @@ namespace Code.UI.Menu.MiniGames.Chess
                 _chessBoard.MoveSelectedPiece(_selectedPosition);
             }
         }
-
 
         private bool IsValidPosition(Vector2Int position)
         {

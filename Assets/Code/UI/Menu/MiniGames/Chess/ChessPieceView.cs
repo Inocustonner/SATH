@@ -28,7 +28,7 @@ public class ChessPieceView : MonoBehaviour
 
     public void SetSelected(bool isSelected)
     {
-        _background.color = isSelected ? Color.clear : Color.red;
+        _background.color = isSelected ?  Color.red : Color.clear;
     }
     
 
