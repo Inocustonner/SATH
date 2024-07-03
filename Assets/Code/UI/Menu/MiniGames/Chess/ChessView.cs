@@ -11,6 +11,7 @@ public class ChessView : BaseMenuView
     [SerializeField] private Transform _boardParent;
 
     private ChessPieceView[,] _pieceViews;
+    private Vector2Int? _selectedPosition; // Добавим поле для хранения позиции выделенной клетки
 
     public void InitializeBoard(int size)
     {
@@ -40,19 +41,22 @@ public class ChessView : BaseMenuView
 
     public void HighlightTile(Vector2Int position)
     {
-        ClearHighlights();
-        _pieceViews[position.x, position.y].SetSelected();
+        if (_selectedPosition.HasValue) _pieceViews[_selectedPosition.Value.x, _selectedPosition.Value.y].SetDefault();
+        _selectedPosition = position;
+        UpdateHighlights();
     }
 
     public void HighlightMoves(List<Vector2Int> moves)
     {
+        ClearHighlights(false); // Очистим только подсветку возможных ходов, оставив подсветку выбранной клетки
         foreach (var move in moves)
         {
             _pieceViews[move.x, move.y].SetHighlighted();
         }
+        UpdateHighlights(); // Обновим подсветки, чтобы выбранная клетка оставалась красной
     }
 
-    public void ClearHighlights()
+    public void ClearHighlights(bool clearSelected = true)
     {
         for (int y = 0; y < _pieceViews.GetLength(1); y++)
         {
@@ -60,6 +64,18 @@ public class ChessView : BaseMenuView
             {
                 _pieceViews[x, y].SetDefault();
             }
+        }
+        if (clearSelected)
+        {
+            _selectedPosition = null;
+        }
+    }
+
+    private void UpdateHighlights()
+    {
+        if (_selectedPosition.HasValue)
+        {
+            _pieceViews[_selectedPosition.Value.x, _selectedPosition.Value.y].SetSelected();
         }
     }
 

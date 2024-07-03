@@ -68,7 +68,6 @@ namespace Code.Infrastructure.Services
              
                 if (dir != _direction)
                 {
-                this.Log($"invoke press new dir {dir}");
                     OnPressMove?.Invoke(dir);
                 }
 

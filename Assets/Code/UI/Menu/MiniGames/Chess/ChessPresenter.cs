@@ -9,19 +9,18 @@ namespace Code.UI.Menu.MiniGames.Chess
 {
     public class ChessPresenter : BaseMenuPresenter<ChessModel, ChessView>
     {
-        private ChessBoard _chessBoard;
         private InputService _inputService;
         private Vector2Int _selectedPosition;
         private List<Vector2Int> _validMoves;
 
         protected override void Init()
         {
-            _chessBoard = new ChessBoard();
+            Model.InitializeBoard();
             View.InitializeBoard(8);
 
             _inputService = Container.Instance.FindService<InputService>();
 
-            OnBoardChanged();
+            OnModelChanged();
             _selectedPosition = new Vector2Int(0, 0);
             View.HighlightTile(_selectedPosition);
             base.Init();
@@ -33,17 +32,17 @@ namespace Code.UI.Menu.MiniGames.Chess
             {
                 _inputService.OnPressMove += OnPressMove;
                 _inputService.OnPressInteractionKey += OnPressInteractionKey;
-                _chessBoard.OnBoardChanged += OnBoardChanged;
-                _chessBoard.OnWin += OnWin;
-                _chessBoard.OnLose += OnLose;
+                Model.OnBoardChanged += OnModelChanged;
+                Model.OnWin += OnWin;
+                Model.OnLose += OnLose;
             }
             else
             {
                 _inputService.OnPressMove -= OnPressMove;
                 _inputService.OnPressInteractionKey -= OnPressInteractionKey;
-                _chessBoard.OnBoardChanged -= OnBoardChanged;
-                _chessBoard.OnWin -= OnWin;
-                _chessBoard.OnLose -= OnLose;
+                Model.OnBoardChanged -= OnModelChanged;
+                Model.OnWin -= OnWin;
+                Model.OnLose -= OnLose;
             }
         }
 
@@ -51,36 +50,39 @@ namespace Code.UI.Menu.MiniGames.Chess
         {
             if (direction != Vector2.zero)
             {
-                Vector2Int moveDirection = new Vector2Int((int)direction.x, (int)direction.y * -1);
+                Vector2Int moveDirection = new Vector2Int((int)direction.x, (int)direction.y);
                 Vector2Int newPosition = _selectedPosition + moveDirection;
 
-                this.Log($"press direction {direction} | new position {newPosition} | is valid {IsValidPosition(newPosition)}", Color.cyan);
                 if (IsValidPosition(newPosition))
                 {
                     _selectedPosition = newPosition;
                     View.HighlightTile(_selectedPosition);
+                    // Подсветим возможные ходы, если фигура выбрана
+                    if (_validMoves != null && _validMoves.Count > 0)
+                    {
+                        View.HighlightMoves(_validMoves);
+                    }
                 }
             }
         }
 
         private void OnPressInteractionKey()
         {
-            if (!_chessBoard.SelectPiece(_selectedPosition))
+            if (Model.SelectPiece(_selectedPosition))
             {
-                if (_validMoves != null && _validMoves.Contains(_selectedPosition))
-                {
-                    _chessBoard.MoveSelectedPiece(_selectedPosition);
-                    View.ClearHighlights();
-                }
-                else
-                {
-                    View.ClearHighlights();
-                }
+                _validMoves = Model.GetValidMoves(_selectedPosition);
+                View.HighlightMoves(_validMoves);
+            }
+            else if (_validMoves != null && _validMoves.Contains(_selectedPosition))
+            {
+                Model.MoveSelectedPiece(_selectedPosition);
+                View.ClearHighlights();
+                _validMoves = null; // Сбросим список возможных ходов после выполнения хода
             }
             else
             {
-                _validMoves = _chessBoard.GetValidMoves(_selectedPosition);
-                View.HighlightMoves(_validMoves);
+                View.ClearHighlights();
+                _validMoves = null; // Сбросим список возможных ходов при снятии выделения
             }
         }
 
@@ -89,9 +91,9 @@ namespace Code.UI.Menu.MiniGames.Chess
             return position.x >= 0 && position.x < 8 && position.y >= 0 && position.y < 8;
         }
 
-        private void OnBoardChanged()
+        private void OnModelChanged()
         {
-            View.UpdateBoard(_chessBoard.Board);
+            View.UpdateBoard(Model.Board);
         }
 
         private void OnWin()
@@ -104,8 +106,8 @@ namespace Code.UI.Menu.MiniGames.Chess
         {
             Debug.Log("You Lose!");
             // Логика поражения
-            _chessBoard = new ChessBoard(); // Перезапуск игры
-            OnBoardChanged();
+            /*Model.InitializeBoard(); // Перезапуск игры
+            OnModelChanged();*/
         }
     }
 }
