@@ -13,9 +13,10 @@ namespace Code.Game.Components.Destruction
         [Header("Components")]
         [SerializeField] private Transform _player;
         [SerializeField] private MonoPool<Enemy> _monoPool;
-       
+        
         [Header("Static data")]
-        [SerializeField] private Vector3 _startPosition = new(0, 7.5f,0);
+        [SerializeField] private Vector2 _distanceBetweenEnemy;
+        [SerializeField] private Vector3 _startPosition = new(0, 8.5f,0);
         private DestructionConfig _destructionConfig;
         
         [Header("Dinamyc data")]
@@ -58,7 +59,7 @@ namespace Code.Game.Components.Destruction
                             continue;
                         }
 
-                        var dis = _destructionConfig.DistanceBetweenEnemy;
+                        var dis = _distanceBetweenEnemy;
                         var offsetX = (x - centerX) * dis.x;  
                         var pos = _startPosition + new Vector3(offsetX, -y * dis.y, 0);
                         var enemy = _monoPool.GetNext(GetInitParams());

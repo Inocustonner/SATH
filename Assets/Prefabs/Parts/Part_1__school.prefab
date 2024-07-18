@@ -513,6 +513,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _replicaConfig: {fileID: 11400000, guid: 97b0c4c5ff3824f4d8bbbe3aed7c7bc8, type: 2}
+  _voice:
+    _eventReference:
+      Guid:
+        Data1: -1803985537
+        Data2: 1206632188
+        Data3: -221127236
+        Data4: 118679459
+      Path: event:/Effects/Voices/School_Teacher
+    _playOnAwake: 0
+  _text: "\u041C\u043D\u0435 \u043A\u0430\u0436\u0435\u0442\u0441\u044F \u0442\u044B
+    \u043D\u0435 \u0441\u043E\u0432\u0441\u0435\u043C \u043F\u043E\u043D\u044F\u043B,
+    \u0447\u0442\u043E \u043E\u0442 \u0442\u0435\u0431\u044F \u0442\u0440\u0435\u0431\u0443\u0435\u0442\u0441\u044F."
   _allReplicas:
   - {fileID: 11400000, guid: 97b0c4c5ff3824f4d8bbbe3aed7c7bc8, type: 2}
   - {fileID: 11400000, guid: a419e3b86f6cf3841980d640770bce36, type: 2}
@@ -1025,6 +1037,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _replicaConfig: {fileID: 11400000, guid: 77f16eecc24890f49842bdfba619b81c, type: 2}
+  _voice:
+    _eventReference:
+      Guid:
+        Data1: 2091223326
+        Data2: 1312173765
+        Data3: -1791652680
+        Data4: -1265591616
+      Path: event:/Effects/Voices/School_Teacher_Collision
+    _playOnAwake: 0
+  _text: "\u041F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430, \u0441\u044F\u0434\u044C..."
 --- !u!1 &2472132443426586817
 GameObject:
   m_ObjectHideFlags: 0
@@ -6493,6 +6515,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _replicaConfig: {fileID: 11400000, guid: 781f13c1d34373c4480f4b8fce23ae64, type: 2}
+  _voice:
+    _eventReference:
+      Guid:
+        Data1: -1803985537
+        Data2: 1206632188
+        Data3: -221127236
+        Data4: 118679459
+      Path: event:/Effects/Voices/School_Teacher
+    _playOnAwake: 0
+  _text: "\u0422\u044B \u0434\u043E\u043B\u0436\u0435\u043D\u0432\u0435\u0440\u043D\u0443\u0442\u044C
+    \u044D\u0442\u043E\u0442 \u043E\u0431\u044A\u0435\u043A\u0442\u043D\u0430\u0435\u0433\u043E\u043C\u0435\u0441\u0442\u043E.\u0421\u043F\u0440\u0430\u0432\u0438\u0448\u044C\u0441\u044F?"
 --- !u!1 &4651916153012828918
 GameObject:
   m_ObjectHideFlags: 0
@@ -7121,6 +7154,148 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 1
   m_SpriteSortPoint: 0
+--- !u!1 &5724951254715652081
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 161931310848686190}
+  - component: {fileID: 172284310934004553}
+  - component: {fileID: 8755651619225596116}
+  - component: {fileID: 1673644319854299467}
+  - component: {fileID: 1005912480421553674}
+  - component: {fileID: 7361030113609984359}
+  m_Layer: 9
+  m_Name: TriggerObserver_Audio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &161931310848686190
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5724951254715652081}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8927145257836921126}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &172284310934004553
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5724951254715652081}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.7
+--- !u!114 &8755651619225596116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5724951254715652081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f69b81ab65c6479e9ecb86b8d97b32e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collider: {fileID: 172284310934004553}
+--- !u!114 &1673644319854299467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5724951254715652081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a661f24c336e4080aaf735b361dd3fa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collisionObserver: {fileID: 8755651619225596116}
+  _customActions:
+  - {fileID: 1005912480421553674}
+  _isStartInsideTrigger: 1
+  _isCanRepeat: 1
+  _isInvoke: 0
+  _isOnTrigger: 0
+--- !u!114 &1005912480421553674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5724951254715652081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0016c6b2c9a742b1b63af6424c2cc5b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioEvent:
+    _eventReference:
+      Guid:
+        Data1: -1048027970
+        Data2: 1197489171
+        Data3: -1033975638
+        Data4: -764420921
+      Path: event:/Effects/Ball
+    _playOnAwake: 0
+--- !u!114 &7361030113609984359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5724951254715652081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38d79311e12446df8d1fedc681592238, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioParameter:
+    _paramName: 2
+  _rigidbody: {fileID: 5978787538294026711}
+  _lerpSpeed: 2
+  _currentValue: 0
+  _magnitude: 0
 --- !u!1 &5738194429665987368
 GameObject:
   m_ObjectHideFlags: 0
@@ -7303,6 +7478,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _replicaConfig: {fileID: 11400000, guid: 7921a8f72cfb151459110435cac5a2e5, type: 2}
+  _voice:
+    _eventReference:
+      Guid:
+        Data1: -1803985537
+        Data2: 1206632188
+        Data3: -221127236
+        Data4: 118679459
+      Path: event:/Effects/Voices/School_Teacher
+    _playOnAwake: 0
+  _text: "\u0414\u0430\u0432\u0430\u0439 \u043F\u043E\u0432\u0442\u043E\u0440\u0438\u043C
+    \u044D\u0442\u043E \u0437\u0430\u0434\u0430\u043D\u0438\u0435, \u043D\u043E \u043D\u0430
+    \u044D\u0442\u043E\u0442 \u0440\u0430\u0437  \u0441\u0434\u0435\u043B\u0430\u0439
+    \u0435\u0433\u043E\u043F\u0440\u0430\u0432\u0438\u043B\u044C\u043D\u043E."
 --- !u!1 &5890314534653522792
 GameObject:
   m_ObjectHideFlags: 0
@@ -7407,6 +7595,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _replicaConfig: {fileID: 11400000, guid: 66a85c1722d90b1419b13305ef40f23d, type: 2}
+  _voice:
+    _eventReference:
+      Guid:
+        Data1: -1803985537
+        Data2: 1206632188
+        Data3: -221127236
+        Data4: 118679459
+      Path: event:/Effects/Voices/School_Teacher
+    _playOnAwake: 0
+  _text: "\u041E\u0442\u043B\u0438\u0447\u043D\u043E,\u0442\u044B \u0441\u043F\u0440\u0430\u0432\u0438\u043B\u0441\u044F!\u0412\u043E\u0437\u0432\u0440\u0430\u0449\u0430\u0439\u0441\u044F
+    \u043D\u0430 \u0441\u0432\u043E\u0451 \u043C\u0435\u0441\u0442\u043E."
 --- !u!114 &5784531304426333408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7435,7 +7634,7 @@ GameObject:
   - component: {fileID: 9134334550004558788}
   - component: {fileID: 7107476902854990105}
   m_Layer: 6
-  m_Name: TriggerObserver
+  m_Name: TriggerObserver_Touch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8050,6 +8249,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _replicaConfig: {fileID: 11400000, guid: 38e4b35479a0a7d4696a219cc50715bd, type: 2}
+  _voice:
+    _eventReference:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    _playOnAwake: 0
+  _text: "\u0412\u0430\u0448\u0438\u043C \u043F\u0435\u0440\u0432\u044B\u043C \u0437\u0430\u0434\u0430\u043D\u0438\u0435\u043C
+    \u0431\u0443\u0434\u0435\u0442 \u0432\u0435\u0440\u043D\u0443\u0442\u044C \u044D\u0442\u043E\u0442
+    \u0448\u0430\u0440 \u043D\u0430 \u0435\u0433\u043E \u0438\u0441\u0445\u043E\u0434\u043D\u043E\u0435
+    \u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435.\u041F\u0435\u0440\u0432\u044B\u043C
+    \u0432\u044B\u0441\u0442\u0443\u043F\u0438\u0442\u043E\u043F\u043E\u0437\u0434\u0430\u0432\u0448\u0438\u0439.\u0421\u0435\u0433\u043E\u0434\u043D\u044F
+    \u043F\u043E\u0439\u0434\u0451\u043C \u043F\u043E \u0441\u043F\u0438\u0441\u043A\u0443.
+    \u041D\u0430\u0447\u0438\u043D\u0430\u0435\u0442 \u043F\u043E\u0441\u043B\u0435\u0434\u043D\u044F\u044F
+    \u043F\u0430\u0440\u0442\u0430."
 --- !u!114 &2848859472751840061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8232,6 +8448,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _replicaConfig: {fileID: 11400000, guid: 29785fd78e5ae914eb62027974e2b098, type: 2}
+  _voice:
+    _eventReference:
+      Guid:
+        Data1: 2091223326
+        Data2: 1312173765
+        Data3: -1791652680
+        Data4: -1265591616
+      Path: event:/Effects/Voices/School_Teacher_Collision
+    _playOnAwake: 0
+  _text: "\u042D\u0442\u043E \u043D\u0435 \u0435\u0433\u043E \u043C\u0435\u0441\u0442\u043E.\u0412\u0435\u0440\u043D\u0438\u0441\u044C
+    \u0437\u0430 \u043F\u0430\u0440\u0442\u0443."
 --- !u!1 &6994324588979256666
 GameObject:
   m_ObjectHideFlags: 0
@@ -8414,6 +8641,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _replicaConfig: {fileID: 11400000, guid: 2cb340c64e38bf04bbcb330b41e935cb, type: 2}
+  _voice:
+    _eventReference:
+      Guid:
+        Data1: 2091223326
+        Data2: 1312173765
+        Data3: -1791652680
+        Data4: -1265591616
+      Path: event:/Effects/Voices/School_Teacher_Collision
+    _playOnAwake: 0
+  _text: "\u041D\u0443 \u0436\u0435.\u041C\u044B \u0436\u0434\u0451\u043C."
 --- !u!1 &7435896567209664096
 GameObject:
   m_ObjectHideFlags: 0
@@ -8477,6 +8714,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _replicaConfig: {fileID: 11400000, guid: 11ec0efab67fe0e44bf84db376000c6e, type: 2}
+  _voice:
+    _eventReference:
+      Guid:
+        Data1: -1803985537
+        Data2: 1206632188
+        Data3: -221127236
+        Data4: 118679459
+      Path: event:/Effects/Voices/School_Teacher
+    _playOnAwake: 0
+  _text: "\u0417\u0434\u0440\u0430\u0432\u0441\u0442\u0432\u0443\u0439\u0442\u0435
+    \u0434\u0435\u0442\u0438.\u042F \u043E\u0447\u0435\u043D\u044C \u0440\u0430\u0434\u0430,
+    \u0447\u0442\u043E \u0432 \u044D\u0442\u043E\u0442 \u0440\u0430\u0437 \u0432\u0441\u0435
+    \u0432\u043E\u0432\u0440\u0435\u043C\u044F \u043F\u0440\u0438\u0448\u043B\u0438
+    \u043D\u0430 \u0443\u0440\u043E\u043A.\u0412\u0441\u0442\u0430\u0432\u0430\u0439\u0442\u0435
+    \u0437\u0430 \u043F\u0430\u0440\u0442\u044B. \u041D\u0430\u043C \u043F\u043E\u0440\u0430
+    \u043D\u0430\u0447\u0438\u043D\u0430\u0442\u044C.\u0422\u044B \u043D\u0430\u043A\u043E\u043D\u0435\u0446
+    \u0441\u043E\u0438\u0437\u0432\u043E\u043B\u0438\u043B \u044F\u0432\u0438\u0442\u0441\u044F.\u0412\u0441\u0435
+    \u0437\u0434\u0435\u0441\u044C \u0436\u0434\u0430\u043B\u0438 \u0442\u043E\u043B\u044C\u043A\u043E
+    \u0442\u0435\u0431\u044F.\u0412\u0441\u0442\u0430\u0432\u0430\u0439 \u0437\u0430
+    \u043F\u0430\u0440\u0442\u0443. \u041D\u0430\u043C \u043F\u043E\u0440\u0430 \u043D\u0430\u0447\u0438\u043D\u0430\u0442\u044C
+    \u0443\u0440\u043E\u043A."
 --- !u!1 &7439380141191887693
 GameObject:
   m_ObjectHideFlags: 0
@@ -8735,6 +8993,7 @@ Transform:
   m_Children:
   - {fileID: 9094760840551111484}
   - {fileID: 2895052132423163318}
+  - {fileID: 161931310848686190}
   m_Father: {fileID: 6555591077990419161}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &5430029994954228105
@@ -8813,6 +9072,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 5978787538294026711}
   _collider: {fileID: 5430029994954228105}
+  _audioObject: {fileID: 5724951254715652081}
   _teacher: {fileID: 8070564797521736398}
   _isFollow: 0
 --- !u!114 &3112170986592883456
@@ -9208,6 +9468,139 @@ Transform:
   - {fileID: 8942423897203353434}
   m_Father: {fileID: 1223689189633527318}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &9066733404612629851
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5261478021941414682}
+  - component: {fileID: 5545843658163758443}
+  - component: {fileID: 3573661211354570678}
+  - component: {fileID: 2320201583091062640}
+  - component: {fileID: 5823049299924038147}
+  m_Layer: 6
+  m_Name: Collision_Voice
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5261478021941414682
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9066733404612629851}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8070564797521736398}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &5545843658163758443
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9066733404612629851}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 4, y: 2}
+  m_EdgeRadius: 0
+--- !u!114 &3573661211354570678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9066733404612629851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f69b81ab65c6479e9ecb86b8d97b32e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collider: {fileID: 964202060807157713}
+--- !u!114 &2320201583091062640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9066733404612629851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a661f24c336e4080aaf735b361dd3fa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collisionObserver: {fileID: 3573661211354570678}
+  _customActions:
+  - {fileID: 5823049299924038147}
+  _isStartInsideTrigger: 1
+  _isCanRepeat: 1
+  _isInvoke: 0
+  _isOnTrigger: 0
+--- !u!114 &5823049299924038147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9066733404612629851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0016c6b2c9a742b1b63af6424c2cc5b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioEvent:
+    _eventReference:
+      Guid:
+        Data1: 2091223326
+        Data2: 1312173765
+        Data3: -1791652680
+        Data4: -1265591616
+      Path: event:/Effects/Voices/School_Teacher_Collision
+    _playOnAwake: 0
 --- !u!1001 &244191997827189711
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9718,6 +10111,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _replicaConfig: {fileID: 11400000, guid: 82078beac2d9c544ea46c6ac83f6ce0a, type: 2}
+  _voice:
+    _eventReference:
+      Guid:
+        Data1: 1362967816
+        Data2: 1172850364
+        Data3: 1608432063
+        Data4: 1759785076
+      Path: event:/Effects/Voices/School_Boy_normal
+    _playOnAwake: 0
+  _text: "\u042F \u0432 \u0442\u0435\u0431\u0435 \u0438 \u043D\u0435 \u0441\u043E\u043C\u043D\u0435\u0432\u0430\u043B\u0441\u044F.\u041D\u043E
+    \u043D\u0430 \u044D\u0442\u043E\u0442 \u0440\u0430\u0437 \u043D\u0430 \u043F\u043E\u0440\u0443\u0447\u0438\u043B\u0438
+    \u0438\u043D\u0434\u0432\u0438\u0434\u0443\u0430\u043B\u044C\u043D\u043E\u0435
+    \u0437\u0430\u0434\u0430\u043D\u0438\u0435.\u0422\u044B \u0436\u0435 \u0437\u043D\u0430\u0435\u0448\u044C.
+    \u042F \u0432\u0441\u0435\u0433\u0434\u0430 \u0433\u043E\u0442\u043E\u0432 \u043F\u0440\u0438\u0439\u0442\u0438
+    \u0442\u0435\u0431\u0435 \u043D\u0430 \u043F\u043E\u043C\u043E\u0449\u044C.\u0412\u044B\u043F\u043E\u043B\u043D\u0438
+    \u0435\u0433\u043E.\u0414\u0430\u0432\u0430\u0439 \u0434\u0440\u0443\u0436\u0438\u0449\u0435.
+    \u042D\u0442\u043E \u043D\u0435\u0441\u043B\u043E\u0436\u043D\u043E."
 --- !u!114 &5113877934590049956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9891,7 +10301,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d91308c178e49f3871abf115f96ecf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _replicaConfig: {fileID: 11400000, guid: f3b70fdf7c5909046bbef5db513bdfe0, type: 2}
+  _replicaConfig: {fileID: 11400000, guid: e3805811ec615034083043ec8e4b8dc6, type: 2}
+  _voice:
+    _eventReference:
+      Guid:
+        Data1: 1464531834
+        Data2: 1292232719
+        Data3: 943412626
+        Data4: 1881949184
+      Path: event:/Effects/Voices/School_Girl_good
+    _playOnAwake: 0
+  _text: "\u042F \u043E\u0447\u0435\u043D\u044C \u0440\u0430\u0434\u0430, \u0447\u0442\u043E
+    \u0443 \u0442\u0435\u0431\u044F \u043F\u043E\u043B\u0443\u0447\u0438\u043B\u043E\u0441\u044C!"
 --- !u!114 &1086376000867363392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10066,6 +10487,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _replicaConfig: {fileID: 11400000, guid: f3b70fdf7c5909046bbef5db513bdfe0, type: 2}
+  _voice:
+    _eventReference:
+      Guid:
+        Data1: 808861083
+        Data2: 1149837564
+        Data3: 2003557530
+        Data4: -1045388214
+      Path: event:/Effects/Voices/School_Girl_normal
+    _playOnAwake: 0
+  _text: "\u041C\u043D\u0435 \u043D\u0435 \u0445\u043E\u0442\u0435\u043B\u043E\u0441\u044C
+    \u0431\u044B \u0440\u0430\u0441\u0441\u0442\u0440\u043E\u0438\u0442\u044C \u0443\u0447\u0438\u0442\u0435\u043B\u044F.\u0423\u0432\u0435\u0440\u0435\u043D\u0430\u0442\u044B
+    \u0441\u043F\u0440\u0430\u0432\u0438\u0448\u044C\u0441\u044F\u042F \u043E\u0447\u0435\u043D\u044C
+    \u0440\u0430\u0434\u0430, \u0447\u0442\u043E \u0443 \u0442\u0435\u0431\u044F
+    \u043F\u043E\u043B\u0443\u0447\u0438\u043B\u043E\u0441\u044C!\u041F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430,\u0441\u0434\u0435\u043B\u0430\u0439\u0442\u043E\u0447\u0442\u043E\u043E\u043D
+    \u043E\u0442 \u0442\u0435\u0431\u044F\u043F\u0440\u043E\u0441\u0438\u0442."
 --- !u!114 &6568105147809292746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10251,6 +10687,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _replicaConfig: {fileID: 11400000, guid: 82078beac2d9c544ea46c6ac83f6ce0a, type: 2}
+  _voice:
+    _eventReference:
+      Guid:
+        Data1: 1515208479
+        Data2: 1144133616
+        Data3: -1697291893
+        Data4: -335713564
+      Path: event:/Effects/Voices/School_Boy_bad
+    _playOnAwake: 0
+  _text: "\u042F \u0432 \u0442\u0435\u0431\u0435 \u0438 \u043D\u0435 \u0441\u043E\u043C\u043D\u0435\u0432\u0430\u043B\u0441\u044F.\u041D\u043E
+    \u043D\u0430 \u044D\u0442\u043E\u0442 \u0440\u0430\u0437 \u043D\u0430 \u043F\u043E\u0440\u0443\u0447\u0438\u043B\u0438
+    \u0438\u043D\u0434\u0432\u0438\u0434\u0443\u0430\u043B\u044C\u043D\u043E\u0435
+    \u0437\u0430\u0434\u0430\u043D\u0438\u0435.\u0422\u044B \u0436\u0435 \u0437\u043D\u0430\u0435\u0448\u044C.
+    \u042F \u0432\u0441\u0435\u0433\u0434\u0430 \u0433\u043E\u0442\u043E\u0432 \u043F\u0440\u0438\u0439\u0442\u0438
+    \u0442\u0435\u0431\u0435 \u043D\u0430 \u043F\u043E\u043C\u043E\u0449\u044C.\u0412\u044B\u043F\u043E\u043B\u043D\u0438
+    \u0435\u0433\u043E.\u0414\u0430\u0432\u0430\u0439 \u0434\u0440\u0443\u0436\u0438\u0449\u0435.
+    \u042D\u0442\u043E \u043D\u0435\u0441\u043B\u043E\u0436\u043D\u043E."
 --- !u!114 &8213953377636484962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10424,7 +10877,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d91308c178e49f3871abf115f96ecf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _replicaConfig: {fileID: 11400000, guid: 82078beac2d9c544ea46c6ac83f6ce0a, type: 2}
+  _replicaConfig: {fileID: 11400000, guid: 40ac06ee3ada1094c835b3eaf0cd54e3, type: 2}
+  _voice:
+    _eventReference:
+      Guid:
+        Data1: -72195230
+        Data2: 1075698248
+        Data3: 1935245231
+        Data4: -47837581
+      Path: event:/Effects/Voices/School_Boy_good
+    _playOnAwake: 0
+  _text: "\u042F \u0432 \u0442\u0435\u0431\u0435 \u0438 \u043D\u0435 \u0441\u043E\u043C\u043D\u0435\u0432\u0430\u043B\u0441\u044F."
 --- !u!114 &8251017873336322294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10612,6 +11075,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _replicaConfig: {fileID: 11400000, guid: 05b813c9ac4e40947819b6dc4ff873a4, type: 2}
+  _voice:
+    _eventReference:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    _playOnAwake: 0
+  _text: "\u041D\u0430\u0434\u0435\u044E\u0441\u044C, \u0447\u0442\u043E \u0441\u0435\u0433\u043E\u0434\u043D\u044F
+    \u0432\u044B \u043C\u043D\u043E\u0433\u043E\u043C\u0443 \u043D\u0430\u0443\u0447\u0438\u043B\u0438\u0441\u044C.\u0423\u0440\u043E\u043A
+    \u043E\u043A\u043E\u043D\u0447\u0435\u043D."
 --- !u!1001 &3405308462183834906
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10747,6 +11222,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _replicaConfig: {fileID: 11400000, guid: 83673d8f216354b46b6031ab81e909bd, type: 2}
+  _voice:
+    _eventReference:
+      Guid:
+        Data1: -1803985537
+        Data2: 1206632188
+        Data3: -221127236
+        Data4: 118679459
+      Path: event:/Effects/Voices/School_Teacher
+    _playOnAwake: 0
+  _text: "\u0421\u0432\u043E\u044E \u0440\u0430\u0431\u043E\u0442\u0443.\u0421\u0435\u0433\u043E\u0434\u043D\u044F
+    \u0432\u044B \u043D\u0430\u0443\u0447\u0438\u0442\u0435\u0441\u044C \u0432\u044B\u043F\u043E\u043B\u043D\u044F\u0442\u044C
+    \u0441\u0430\u043C\u043E\u0435 \u0432\u0430\u0436\u043D\u043E\u0435 \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0435
+    \u0432 \u0432\u0430\u0448\u0435\u0439 \u0436\u0438\u0437\u043D\u0438."
 --- !u!114 &1052046406650369336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11106,6 +11594,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _replicaConfig: {fileID: 11400000, guid: f3b70fdf7c5909046bbef5db513bdfe0, type: 2}
+  _voice:
+    _eventReference:
+      Guid:
+        Data1: -1958989509
+        Data2: 1248287977
+        Data3: -1850027610
+        Data4: -2128399086
+      Path: event:/Effects/Voices/School_Girl_bad
+    _playOnAwake: 0
+  _text: "\u041C\u043D\u0435 \u043D\u0435 \u0445\u043E\u0442\u0435\u043B\u043E\u0441\u044C
+    \u0431\u044B \u0440\u0430\u0441\u0441\u0442\u0440\u043E\u0438\u0442\u044C \u0443\u0447\u0438\u0442\u0435\u043B\u044F.\u0423\u0432\u0435\u0440\u0435\u043D\u0430\u0442\u044B
+    \u0441\u043F\u0440\u0430\u0432\u0438\u0448\u044C\u0441\u044F\u042F \u043E\u0447\u0435\u043D\u044C
+    \u0440\u0430\u0434\u0430, \u0447\u0442\u043E \u0443 \u0442\u0435\u0431\u044F
+    \u043F\u043E\u043B\u0443\u0447\u0438\u043B\u043E\u0441\u044C!\u041F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430,\u0441\u0434\u0435\u043B\u0430\u0439\u0442\u043E\u0447\u0442\u043E\u043E\u043D
+    \u043E\u0442 \u0442\u0435\u0431\u044F\u043F\u0440\u043E\u0441\u0438\u0442."
 --- !u!114 &2730482223517489434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11390,9 +11893,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 2863737585124316782, guid: eb65986657fdd7540aa7cb296b9d89cd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5261478021941414682}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb65986657fdd7540aa7cb296b9d89cd, type: 3}
+--- !u!70 &964202060807157713 stripped
+CapsuleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 6548204648800916337, guid: eb65986657fdd7540aa7cb296b9d89cd, type: 3}
+  m_PrefabInstance: {fileID: 6322611620930069664}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8070564797521736398 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2863737585124316782, guid: eb65986657fdd7540aa7cb296b9d89cd, type: 3}
@@ -11621,6 +12132,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _replicaConfig: {fileID: 11400000, guid: 97b0c4c5ff3824f4d8bbbe3aed7c7bc8, type: 2}
+  _voice:
+    _eventReference:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    _playOnAwake: 0
+  _text: "\u041C\u043D\u0435 \u043A\u0430\u0436\u0435\u0442\u0441\u044F \u0442\u044B
+    \u043D\u0435 \u0441\u043E\u0432\u0441\u0435\u043C \u043F\u043E\u043D\u044F\u043B,
+    \u0447\u0442\u043E \u043E\u0442 \u0442\u0435\u0431\u044F \u0442\u0440\u0435\u0431\u0443\u0435\u0442\u0441\u044F."
 --- !u!114 &4633345787558102225
 MonoBehaviour:
   m_ObjectHideFlags: 0

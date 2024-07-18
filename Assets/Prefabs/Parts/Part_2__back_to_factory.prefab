@@ -958,6 +958,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _replicaConfig: {fileID: 0}
+  _voice:
+    _eventReference:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    _playOnAwake: 0
+  _text: 
   _randomReplicas:
   - {fileID: 11400000, guid: b273b9bc03f46ab409f1b6dc2e176424, type: 2}
   - {fileID: 11400000, guid: 39d72285c05fae944881e9f916f415b7, type: 2}
@@ -1006,6 +1016,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _replicaConfig: {fileID: 11400000, guid: 0925368a2e8946e4a8d3f56d81a06a39, type: 2}
+  _voice:
+    _eventReference:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    _playOnAwake: 0
+  _text: 
   _currentID: 0
   _replicas:
   - {fileID: 11400000, guid: 0925368a2e8946e4a8d3f56d81a06a39, type: 2}
@@ -2757,6 +2777,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _replicaConfig: {fileID: 11400000, guid: 149cca64c8938d442bfc3acb651e1e32, type: 2}
+  _voice:
+    _eventReference:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    _playOnAwake: 0
+  _text: 
   _currentID: 0
   _replicas:
   - {fileID: 11400000, guid: 149cca64c8938d442bfc3acb651e1e32, type: 2}
@@ -2939,6 +2969,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _replicaConfig: {fileID: 0}
+  _voice:
+    _eventReference:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    _playOnAwake: 0
+  _text: 
   _randomReplicas:
   - {fileID: 11400000, guid: c13d8c4660b6cae47953a90c9458e385, type: 2}
   - {fileID: 11400000, guid: f94b4622d39fcfc4f89ac162514300b1, type: 2}

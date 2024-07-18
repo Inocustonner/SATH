@@ -272,11 +272,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _event:
     Guid:
-      Data1: 1925408088
-      Data2: 1190779812
-      Data3: 1289914254
-      Data4: 2005927639
-    Path: event:/Music/Music
+      Data1: -2028901374
+      Data2: 1134792664
+      Data3: -991888253
+      Data4: 1625013476
+    Path: event:/Music/Music_0
 --- !u!1 &6211526373503239141
 GameObject:
   m_ObjectHideFlags: 0

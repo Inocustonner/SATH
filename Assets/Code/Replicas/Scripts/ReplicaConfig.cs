@@ -14,7 +14,7 @@ namespace Code.Replicas.Scripts
         public List<ReplicaEdgeSerialized> Edges;
 
         [Header("Debug")] 
-        [TextArea,SerializeField] private string _textRus;
+        [TextArea] public string DebugText;
         
         public bool TryFindStartNode(out ReplicaNodeSerialized node)
         {
@@ -66,14 +66,14 @@ namespace Code.Replicas.Scripts
         {
             if (Nodes != null && Nodes.Count > 0)
             {
-                _textRus = "";
+                DebugText = "";
                 foreach (var node in Nodes)
                 {
                     foreach (var localization in node.Localization)
                     {
                         foreach (var part in localization.Parts)
                         {
-                            _textRus += part.MessageText;
+                            DebugText += part.MessageText;
                         }
                     }
                 }

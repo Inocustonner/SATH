@@ -190,10 +190,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Part_1__school
       objectReference: {fileID: 0}
-    - target: {fileID: 3247211309216558460, guid: ee39babaa7f160947b056e9deb2ec2d0, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6595467092248725445, guid: ee39babaa7f160947b056e9deb2ec2d0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -945,6 +941,10 @@ PrefabInstance:
     - target: {fileID: 4955208880972426553, guid: 3d41238157c54c8498b5983405e22e8d, type: 3}
       propertyPath: m_Name
       value: Part_3__endeavours_destruction
+      objectReference: {fileID: 0}
+    - target: {fileID: 4955208880972426553, guid: 3d41238157c54c8498b5983405e22e8d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5521867871875921724, guid: 3d41238157c54c8498b5983405e22e8d, type: 3}
       propertyPath: m_LocalPosition.x

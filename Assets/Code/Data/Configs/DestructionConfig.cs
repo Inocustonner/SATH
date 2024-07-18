@@ -7,7 +7,6 @@ namespace Code.Data.Configs
     public class DestructionConfig : ScriptableObject
     {
         [Header("Base")]
-        public Vector2 DistanceBetweenEnemy;
         public float GameSpeed = 1;
         public float DefaultDistance;
 

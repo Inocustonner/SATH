@@ -14,8 +14,8 @@ TagManager:
   - PlayerCollision
   - InteractionObject
   - InteractionCollision
-  - 
-  - 
+  - DefaultCollision
+  - Character
   - 
   - 
   - 

@@ -744,6 +744,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _replicaConfig: {fileID: 11400000, guid: 930a370336a3c29489030f2452eef71f, type: 2}
+  _voice:
+    _eventReference:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    _playOnAwake: 0
+  _text: 
   _currentID: 0
   _replicas:
   - {fileID: 11400000, guid: 930a370336a3c29489030f2452eef71f, type: 2}

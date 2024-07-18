@@ -9,6 +9,7 @@ namespace Code.Game.Components.School
         [Header("Ball Components")]
         [SerializeField] private Rigidbody2D _rigidbody;
         [SerializeField] private Collider2D _collider;
+        [SerializeField] private GameObject _audioObject;
 
         [Header("Scene Components")] 
         [SerializeField] private Transform _teacher;
@@ -43,6 +44,7 @@ namespace Code.Game.Components.School
             _isFollow = isFollow;
             SetPhysicState(!_isFollow);
             SetColliderState(!_isFollow);
+            _audioObject.SetActive(!_isFollow);
         }
 
         private void SetPhysicState(bool isEnabled)

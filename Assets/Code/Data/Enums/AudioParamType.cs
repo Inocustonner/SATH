@@ -3,6 +3,7 @@
     public enum AudioParamType
     {
         None,
-        PushVelocity
+        PushVelocity,
+        BallVelocity
     }
 }
