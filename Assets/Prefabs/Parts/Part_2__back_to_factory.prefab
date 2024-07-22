@@ -329,7 +329,6 @@ MonoBehaviour:
         Data3: 1314322310
         Data4: 1547368642
       Path: event:/Effects/StonePush
-    _playOnAwake: 0
   _audioParameter:
     _paramName: 1
   _paramChangeSpeed: 7
@@ -966,7 +965,6 @@ MonoBehaviour:
         Data3: 0
         Data4: 0
       Path: 
-    _playOnAwake: 0
   _text: 
   _randomReplicas:
   - {fileID: 11400000, guid: b273b9bc03f46ab409f1b6dc2e176424, type: 2}
@@ -1024,7 +1022,6 @@ MonoBehaviour:
         Data3: 0
         Data4: 0
       Path: 
-    _playOnAwake: 0
   _text: 
   _currentID: 0
   _replicas:
@@ -2785,7 +2782,6 @@ MonoBehaviour:
         Data3: 0
         Data4: 0
       Path: 
-    _playOnAwake: 0
   _text: 
   _currentID: 0
   _replicas:
@@ -2977,7 +2973,6 @@ MonoBehaviour:
         Data3: 0
         Data4: 0
       Path: 
-    _playOnAwake: 0
   _text: 
   _randomReplicas:
   - {fileID: 11400000, guid: c13d8c4660b6cae47953a90c9458e385, type: 2}

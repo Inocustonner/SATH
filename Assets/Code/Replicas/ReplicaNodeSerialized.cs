@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Code.Data.Configs;
 using Code.Data.Enums;
+using FMODUnity;
 using UnityEngine;
 
 namespace Code.Replicas.Scripts
@@ -11,6 +12,7 @@ namespace Code.Replicas.Scripts
     {
         public string ID;
         public float TypingSpeed;
+        public TextTypingAudioType TextTypeAudio;
         public List<GameCondition> Conditions;
         public List<LocalizationSerialized> Localization;
         public Vector2 EditorPosition;

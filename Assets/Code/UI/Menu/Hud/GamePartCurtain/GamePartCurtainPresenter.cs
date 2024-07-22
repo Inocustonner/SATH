@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Code.Data.Enums;
 using Code.Infrastructure.DI;
 using Code.Infrastructure.Services;
 using Code.UI.Base;
@@ -37,7 +38,7 @@ namespace Code.UI.Hud.GamePartCurtain
             }
         }
 
-        private void OnStartTransition()
+        private void OnStartTransition(GamePartName from,GamePartName to)
         {
             if (_coroutine != null)
             {

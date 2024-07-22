@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections;
+using System.Linq;
 using Code.Data.Configs;
 using Code.Data.DynamicData;
+using Code.Data.Enums;
 using Code.Data.Interfaces;
+using Code.Data.StaticData;
 using Code.Infrastructure.Audio.AudioEvents;
 using Code.Infrastructure.DI;
 using Code.Infrastructure.Services;
 using Febucci.UI;
+using FMODUnity;
 using TMPro;
 using UnityEngine;
 
@@ -27,9 +31,11 @@ namespace Code.UI.Components
         
         [Header("Static data")]
         private float _defaultSpeed;
-        
+        private TextTypingAudioData[] _textTypingAudios;
+
         [Header("Dinamyc data")]
         private int _index;
+        private TextTypingAudioType _currentAudioType;
         private AcceleratedTextData[] _acceleratedTexts;
         private Coroutine _coroutine;
 
@@ -42,6 +48,7 @@ namespace Code.UI.Components
             
             var uiConfig = Container.Instance.FindConfig<UIConfig>();
             _defaultSpeed = uiConfig.DefaultTypingSpeed;
+            _textTypingAudios = uiConfig.TypingAudios;
             
             _textAnimatorPlayer.onCharacterVisible.AddListener(PlayTypeAudio);
             _textAnimatorPlayer.onTypewriterStart.AddListener(() => IsTyping = true);
@@ -113,18 +120,27 @@ namespace Code.UI.Components
             _acceleratedTexts = replicas;
             _animatedTextWaiter.SetMode(waitedMode);
             var currentReplica = replicas[_index];
-            StartWrite(currentReplica.Text, currentReplica.Speed);
+            StartWrite(currentReplica.Text, currentReplica.Speed,currentReplica.TextTypingAudioType);
         }
 
         private void StartWriteNext()
         {
             _index++;
             var currentReplica = _acceleratedTexts[_index];
-            StartWrite(currentReplica.Text, currentReplica.Speed);
+            StartWrite(currentReplica.Text, currentReplica.Speed,currentReplica.TextTypingAudioType);
         }
 
-        private void StartWrite(string text, float speed)
+        private void StartWrite(string text, float speed, TextTypingAudioType audioType)
         {
+            if (audioType != _currentAudioType)
+            {
+                _currentAudioType = audioType;
+                var eventReference = _textTypingAudios.FirstOrDefault(a => a.Type == _currentAudioType).Audio;
+                if (!eventReference.IsNull)
+                {
+                    _audioEvent.SetEventReference(eventReference);
+                }
+            }
             _animatedTextWaiter.ResetSkipDelay();
             _animatedTextWaiter.Reset();
             _textAnimatorPlayer.waitForNormalChars = speed > 0 ? speed : _defaultSpeed;

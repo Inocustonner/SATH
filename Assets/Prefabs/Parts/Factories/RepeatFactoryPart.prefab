@@ -127,6 +127,7 @@ GameObject:
   m_Component:
   - component: {fileID: 156192165851934971}
   - component: {fileID: 283031003850050017}
+  - component: {fileID: 1761177605227261952}
   m_Layer: 0
   m_Name: FactoryLight
   m_TagString: Untagged
@@ -201,3 +202,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1761177605227261952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7604851671476032705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c5a785f5c8bf84479c7c73bc4004757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _event:
+    Guid:
+      Data1: 222179693
+      Data2: 1256176846
+      Data3: 1589662643
+      Data4: -1590663476
+    Path: event:/Effects/GameParts/Factory/Lamp

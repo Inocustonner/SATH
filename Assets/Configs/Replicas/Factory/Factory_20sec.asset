@@ -16,6 +16,7 @@ MonoBehaviour:
   Nodes:
   - ID: 0
     TypingSpeed: 0
+    TextTypeAudio: 1
     Conditions: 00000000
     Localization:
     - Language: 0
@@ -24,6 +25,6 @@ MonoBehaviour:
         Effect: 0
         Color: {r: 0.5660378, g: 0.018689938, b: 0.018689938, a: 1}
         MessageText: "\u0422\u044B \u043E\u0442\u043B\u0438\u0447\u043D\u043E \u0441\u043F\u0440\u0430\u0432\u043B\u044F\u0435\u0448\u044C\u0441\u044F!"
-    EditorPosition: {x: 2140, y: 1055.5}
+    EditorPosition: {x: 2428, y: 1259.5}
   Edges: []
-  _textRus: "\u0422\u044B \u043E\u0442\u043B\u0438\u0447\u043D\u043E \u0441\u043F\u0440\u0430\u0432\u043B\u044F\u0435\u0448\u044C\u0441\u044F!"
+  DebugText: "\u0422\u044B \u043E\u0442\u043B\u0438\u0447\u043D\u043E \u0441\u043F\u0440\u0430\u0432\u043B\u044F\u0435\u0448\u044C\u0441\u044F!"

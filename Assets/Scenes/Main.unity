@@ -488,9 +488,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: -Parts-
       objectReference: {fileID: 0}
+    - target: {fileID: 906575968594295647, guid: 5c8eaf887f728564996cea2648a0fcc6, type: 3}
+      propertyPath: _audioEvent._eventReference.Path
+      value: event:/Effects/GameParts/Factory/StonePush
+      objectReference: {fileID: 0}
     - target: {fileID: 1194232044110357157, guid: 5c8eaf887f728564996cea2648a0fcc6, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404528780569288669, guid: 5c8eaf887f728564996cea2648a0fcc6, type: 3}
+      propertyPath: _audioEvent._eventReference.Path
+      value: event:/Effects/GameParts/Factory/StonePush
       objectReference: {fileID: 0}
     - target: {fileID: 2518796470157301780, guid: 5c8eaf887f728564996cea2648a0fcc6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -532,7 +540,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2877153377807803538, guid: 5c8eaf887f728564996cea2648a0fcc6, type: 3}
+      propertyPath: _audioEvent._eventReference.Path
+      value: event:/Effects/GameParts/Factory/StonePush
+      objectReference: {fileID: 0}
+    - target: {fileID: 3525997905603021769, guid: 5c8eaf887f728564996cea2648a0fcc6, type: 3}
+      propertyPath: _customActions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3525997905603021769, guid: 5c8eaf887f728564996cea2648a0fcc6, type: 3}
+      propertyPath: _customActions.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3869325110527195392, guid: 5c8eaf887f728564996cea2648a0fcc6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4337157054908554604, guid: 5c8eaf887f728564996cea2648a0fcc6, type: 3}
+      propertyPath: _audioEvent._eventReference.Path
+      value: event:/Effects/GameParts/Factory/StonePush
+      objectReference: {fileID: 0}
+    - target: {fileID: 6308034950145183033, guid: 5c8eaf887f728564996cea2648a0fcc6, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -668,7 +696,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6604801957891004655, guid: 4447e7491f351b34780511ed0625dd8d, type: 3}
       propertyPath: IsValidating
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7852720397042103415, guid: 4447e7491f351b34780511ed0625dd8d, type: 3}
       propertyPath: IsValidating

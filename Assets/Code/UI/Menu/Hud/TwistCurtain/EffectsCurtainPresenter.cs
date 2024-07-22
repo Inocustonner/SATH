@@ -33,7 +33,7 @@ namespace Code.UI.Hud.TwistCurtain
             }
         }
 
-        private void OnPartTransition()
+        private void OnPartTransition(GamePartName from,GamePartName to)
         {
             if (Model.IsValidating)
             {

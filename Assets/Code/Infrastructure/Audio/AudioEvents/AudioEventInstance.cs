@@ -1,3 +1,5 @@
+using Code.Utils;
+using FMOD;
 using FMOD.Studio;
 using FMODUnity;
 using UnityEngine;
@@ -20,13 +22,20 @@ namespace Code.Infrastructure.Audio.AudioEvents
             StopEvent();
         }
         
+        [ContextMenu("Play")]
         private void PlayEvent()
         {
-            if(_event.IsNull)
+            if (_event.IsNull)
+            {
+                this.LogError($"{gameObject.name} event reference is null");
                 return;
+            }
             
+            this.Log($"Play {_event.Path}");
             _instance = RuntimeManager.CreateInstance(_event);
+            _instance.set3DAttributes(transform.position.To3DAttributes());
             _instance.start();
+            _instance.release();
         }
 
         private void StopEvent()

@@ -16,6 +16,7 @@ MonoBehaviour:
   Nodes:
   - ID: 0
     TypingSpeed: 0
+    TextTypeAudio: 1
     Conditions: 00000000
     Localization:
     - Language: 0
@@ -25,9 +26,10 @@ MonoBehaviour:
         Color: {r: 0.5660378, g: 0.018689938, b: 0.018689938, a: 1}
         MessageText: "\u041D\u0430 \u0441\u0435\u0433\u043E\u0434\u043D\u044F \u0442\u044B
           \u043C\u043E\u0436\u0435\u0448\u044C \u0431\u044B\u0442\u044C \u0441\u0432\u043E\u0431\u043E\u0434\u0435\u043D."
-    EditorPosition: {x: 4837, y: 2885.5}
+    EditorPosition: {x: 5413, y: 3293.5}
   - ID: 0ec6e0a4-0881-4f63-a09b-2ee82e2eb8f9
     TypingSpeed: 0
+    TextTypeAudio: 1
     Conditions: 00000000
     Localization:
     - Language: 0
@@ -37,9 +39,10 @@ MonoBehaviour:
         Color: {r: 0.5647059, g: 0.019607844, b: 0.019607844, a: 1}
         MessageText: "\u041F\u043E\u0439\u0434\u0438 \u0434\u043E\u043C\u043E\u0439
           \u0438 \u0445\u043E\u0440\u043E\u0448\u0435\u043D\u044C\u043A\u043E \u043E\u0442\u0434\u043E\u0445\u043D\u0438!"
-    EditorPosition: {x: 5595, y: 2883.5}
+    EditorPosition: {x: 6171, y: 3291.5}
   - ID: 2318749f-d086-4b83-be2b-3a4905eec05b
     TypingSpeed: 0.09
+    TextTypeAudio: 1
     Conditions: 00000000
     Localization:
     - Language: 0
@@ -48,7 +51,7 @@ MonoBehaviour:
         Effect: 0
         Color: {r: 0.5647059, g: 0.019607844, b: 0.019607844, a: 1}
         MessageText: "\u041F\u0440\u043E\u0434\u043E\u043B\u0436\u0438\u043C \u0437\u0430\u0432\u0442\u0440\u0430."
-    EditorPosition: {x: 6297, y: 2885.5}
+    EditorPosition: {x: 6873, y: 3293.5}
   Edges:
   - SourceNode: 0
     TargetNode: 0ec6e0a4-0881-4f63-a09b-2ee82e2eb8f9
@@ -56,7 +59,7 @@ MonoBehaviour:
   - SourceNode: 0ec6e0a4-0881-4f63-a09b-2ee82e2eb8f9
     TargetNode: 2318749f-d086-4b83-be2b-3a4905eec05b
     Index: 0
-  _textRus: "\u041D\u0430 \u0441\u0435\u0433\u043E\u0434\u043D\u044F \u0442\u044B
+  DebugText: "\u041D\u0430 \u0441\u0435\u0433\u043E\u0434\u043D\u044F \u0442\u044B
     \u043C\u043E\u0436\u0435\u0448\u044C \u0431\u044B\u0442\u044C \u0441\u0432\u043E\u0431\u043E\u0434\u0435\u043D.\u041F\u043E\u0439\u0434\u0438
     \u0434\u043E\u043C\u043E\u0439 \u0438 \u0445\u043E\u0440\u043E\u0448\u0435\u043D\u044C\u043A\u043E
     \u043E\u0442\u0434\u043E\u0445\u043D\u0438!\u041F\u0440\u043E\u0434\u043E\u043B\u0436\u0438\u043C

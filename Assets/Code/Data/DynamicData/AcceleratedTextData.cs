@@ -1,4 +1,6 @@
 ﻿using System;
+using Code.Data.Enums;
+using FMODUnity;
 
 namespace Code.Data.DynamicData
 {
@@ -7,5 +9,6 @@ namespace Code.Data.DynamicData
     {
         public string Text;
         public float Speed;
+        public TextTypingAudioType TextTypingAudioType;
     }
 }

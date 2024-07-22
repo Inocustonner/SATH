@@ -14,12 +14,10 @@ namespace Code.Infrastructure.Audio.Editor
 
             // Calculate rects
             var eventReferenceRect = new Rect(position.x, position.y, position.width, EditorGUIUtility.singleLineHeight);
-            var playOnAwakeRect = new Rect(position.x, position.y + EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing, position.width, EditorGUIUtility.singleLineHeight);
             var playButtonRect = new Rect(position.x, position.y + (EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing) * 2, position.width, EditorGUIUtility.singleLineHeight);
 
             // Draw fields
             EditorGUI.PropertyField(eventReferenceRect, property.FindPropertyRelative("_eventReference"), new GUIContent("Event Reference"));
-            EditorGUI.PropertyField(playOnAwakeRect, property.FindPropertyRelative("_playOnAwake"), new GUIContent("Play On Awake"));
 
             // Draw Play button
             if (GUI.Button(playButtonRect, "Play Audio Event"))

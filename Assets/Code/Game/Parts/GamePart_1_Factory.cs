@@ -3,6 +3,8 @@ using Code.Data.Enums;
 using Code.Data.Interfaces;
 using Code.Game.Components.Factory;
 using Code.Game.CustomActions.Actions;
+using Code.Infrastructure.Audio.AudioEvents;
+using Code.Utils;
 using UnityEngine;
 
 namespace Code.Game.Parts
@@ -10,11 +12,13 @@ namespace Code.Game.Parts
     public class GamePart_1_Factory: GamePart, IPartTickListener
     {
         public override GamePartName GamePartName => GamePartName.Part_1__factory;
+        
         [Header("Components")]
         [SerializeField] private ReplicaNumerableAction _replicasAction;
         [SerializeField] private PushListener _pushListener;
         [SerializeField] private TransitionNextGamePartAction _nextGamePart;
-
+        [SerializeField] private AudioEvent _endAudio;
+        
         [Header("Static value")] 
         [SerializeField] private float _transitionToNextLevelDelay = 1;
         private const int MAX_ID = 13;
@@ -38,7 +42,8 @@ namespace Code.Game.Parts
                 _id++;
                 
                 if (_id == MAX_ID)
-                {
+                { 
+                    _endAudio.PlayAudioEvent();
                     _replicasAction.OnEnd += OnEndLastReplica;
                 }
             }

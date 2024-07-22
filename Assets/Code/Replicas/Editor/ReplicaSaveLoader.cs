@@ -81,7 +81,7 @@ namespace Code.Replicas.Editor
                             Color = part.Color,
                             Effect = part.Effect,
                             Markups = part.Markups,
-                            MessageText = part.MessageText
+                            MessageText = part.MessageText,
                         });
                     }
                     
@@ -98,7 +98,8 @@ namespace Code.Replicas.Editor
                     TypingSpeed = replicaNode.TypingSpeed,
                     Localization = localizationsSerialized,
                     EditorPosition = replicaNode.GetPosition().center,
-                    Conditions = ConvertConditionsToData(replicaNode)
+                    Conditions = ConvertConditionsToData(replicaNode),
+                    TextTypeAudio = replicaNode.TextTypeAudio
                 };
 
                 result.Add(serializedNode);

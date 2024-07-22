@@ -15,6 +15,23 @@ MonoBehaviour:
   ReplicaDelaySeconds: 0.7
   DefaultTypingSpeed: 0.05
   ReplicaSkipDelaySeconds: 0.5
+  TypingAudios:
+  - Type: 0
+    Audio:
+      Guid:
+        Data1: 1766413714
+        Data2: 1118394445
+        Data3: 557347979
+        Data4: 1236171948
+      Path: event:/UI/Typewrite_Default
+  - Type: 1
+    Audio:
+      Guid:
+        Data1: -333044025
+        Data2: 1078802009
+        Data3: 964551557
+        Data4: -254409972
+      Path: event:/UI/Typewrite_FactorySpeaker
   CurtainColor: {r: 0, g: 0, b: 0, a: 1}
   CurtainDuration: 2
   ClickButtonAudio:

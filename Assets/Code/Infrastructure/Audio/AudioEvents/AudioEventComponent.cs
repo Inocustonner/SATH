@@ -7,6 +7,7 @@ namespace Code.Infrastructure.Audio.AudioEvents
     {
         [SerializeField] private EventReference _eventReference;
         [SerializeField] private bool _playOnAwake;
+        
 
         private void OnEnable()
         {

@@ -279,5 +279,4 @@ MonoBehaviour:
         Data2: 1118394445
         Data3: 557347979
         Data4: 1236171948
-      Path: event:/Text/Typewrite
-    _playOnAwake: 0
+      Path: event:/UI/Typewrite_Default

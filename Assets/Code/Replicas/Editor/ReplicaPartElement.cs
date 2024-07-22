@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Code.Data.Enums;
 using Code.Utils;
+using FMODUnity;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -15,6 +16,7 @@ namespace Code.Replicas.Editor
         public TextEffect Effect { get; private set; }
         public Color Color { get; private set; }
         public string MessageText { get; private set; }
+
         public event Action<ReplicaPartElement> OnPressDeletePart; 
         
         public ReplicaPartElement()

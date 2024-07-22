@@ -85,7 +85,7 @@ namespace Code.Replicas.Editor
                 localizations.Add(new LocalizedReplicaElement(localization.Language, parts));
             }
 
-            ReplicaNode node = new ReplicaNode(replicaNodeSerialized.ID, replicaNodeSerialized.TypingSpeed, conditions, localizations);
+            ReplicaNode node = new ReplicaNode(replicaNodeSerialized.ID, replicaNodeSerialized.TypingSpeed,replicaNodeSerialized.TextTypeAudio ,conditions, localizations);
             node.SetPosition(new Rect(replicaNodeSerialized.EditorPosition, Vector2.zero));
             AddElement(node);
             return node;

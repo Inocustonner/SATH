@@ -2,9 +2,9 @@
 {
     public enum GamePartName
     {
-        None,
-        Part_1__home,
-        Part_1__school,
+        None = 0,
+        Part_1__home = 1,
+        Part_1__school = 2,
         Part_1__factory,
         Part_2__friendship,
         Part_2__love,

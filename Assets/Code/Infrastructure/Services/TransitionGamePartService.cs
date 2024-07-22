@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Linq;
 using Code.Data.Configs;
+using Code.Data.Enums;
 using Code.Data.Interfaces;
 using Code.Data.StaticData;
 using Code.Game.Conditions;
 using Code.Game.CustomActions.Actions;
 using Code.Game.Parts;
+using Code.Infrastructure.Audio.AudioEvents;
 using Code.Infrastructure.DI;
 using UnityEngine;
 
@@ -27,9 +29,8 @@ namespace Code.Infrastructure.Services
         [Header("Dinamyc data")] 
         private GamePart _currentPart;
         private Coroutine _transitionCoroutine;
-        
-        public event Action OnStartTransition;
-        public event Action OnTransition;
+        public event Action<GamePartName,GamePartName> OnStartTransition;
+        public event Action<GamePartName,GamePartName> OnTransition;
 
         public void GameInit()
         {
@@ -79,7 +80,7 @@ namespace Code.Infrastructure.Services
 
         private void OnTryRestartGamePart(GamePart part)
         {
-            OnStartTransition?.Invoke();
+            OnStartTransition?.Invoke(_currentPart.GamePartName,_currentPart.GamePartName);
             _coroutineRunner.StopRoutine(_transitionCoroutine);
             _transitionCoroutine = _coroutineRunner.StartActionWithDelay(part.Restart, _delay);
         }
@@ -91,11 +92,11 @@ namespace Code.Infrastructure.Services
                 if (_gameConditionProvider.GetValue(nextPart.Condition))
                 {
                     var gamePart = _gameParts.FirstOrDefault(p => p.GamePartName == nextPart.GamePartName);
-                    OnStartTransition?.Invoke();
+                    OnStartTransition?.Invoke(_currentPart.GamePartName, gamePart.GamePartName);
                     _coroutineRunner.StartActionWithDelay(() =>
                     {
                         _currentPart.gameObject.SetActive(false);
-                        OnTransition?.Invoke();
+                        OnTransition?.Invoke(_currentPart.GamePartName, gamePart.GamePartName);
                         _currentPart = gamePart;
                         _currentPart.gameObject.SetActive(true);
                     }, _delay);

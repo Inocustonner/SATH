@@ -53,7 +53,6 @@ MonoBehaviour:
         Data3: 0
         Data4: 0
       Path: 
-    _playOnAwake: 0
   _text: 
   _currentID: 0
   _replicas:
@@ -800,7 +799,6 @@ MonoBehaviour:
         Data3: 1314322310
         Data4: 1547368642
       Path: event:/Effects/StonePush
-    _playOnAwake: 0
   _audioParameter:
     _paramName: 1
   _paramChangeSpeed: 7

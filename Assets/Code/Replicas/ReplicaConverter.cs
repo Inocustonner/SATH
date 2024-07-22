@@ -94,6 +94,7 @@ namespace Code.Replicas.Scripts
 
                 replicas.Text = text;
                 replicas.Speed = _currentNode.TypingSpeed;
+                replicas.TextTypingAudioType = _currentNode.TextTypeAudio;
                 return true;
             }
 

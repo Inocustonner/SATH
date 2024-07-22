@@ -56,6 +56,14 @@ MonoBehaviour:
   _replicasAction: {fileID: 8497841260626744550}
   _pushListener: {fileID: 6906215063403763428}
   _nextGamePart: {fileID: 6326038636071255070}
+  _endAudio:
+    _eventReference:
+      Guid:
+        Data1: -270648867
+        Data2: 1330797057
+        Data3: 144700067
+        Data4: 1639681078
+      Path: event:/Effects/GameParts/Factory/End
   _transitionToNextLevelDelay: 1
 --- !u!114 &6906215063403763428
 MonoBehaviour:
@@ -355,11 +363,10 @@ MonoBehaviour:
         Data2: 1232339356
         Data3: 1314322310
         Data4: 1547368642
-      Path: event:/Effects/StonePush
-    _playOnAwake: 0
+      Path: event:/Effects/GameParts/Factory/StonePush
   _audioParameter:
     _paramName: 1
-  _paramChangeSpeed: 7
+  _paramChangeSpeed: 100
 --- !u!114 &4529657271952748315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -540,7 +547,6 @@ MonoBehaviour:
         Data3: 0
         Data4: 0
       Path: 
-    _playOnAwake: 0
   _text: 
   _currentID: 0
   _replicas:
@@ -1013,6 +1019,57 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!1 &5032954982412818018
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2207128316232984183}
+  - component: {fileID: 6384890804707026408}
+  m_Layer: 0
+  m_Name: EnabledAction_RoomTone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2207128316232984183
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5032954982412818018}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1754723697973063194}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6384890804707026408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5032954982412818018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c5a785f5c8bf84479c7c73bc4004757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _event:
+    Guid:
+      Data1: 1916543096
+      Data2: 1334865698
+      Data3: -821620821
+      Data4: -1444786612
+    Path: event:/Effects/GameParts/Factory/RoomTone
 --- !u!1 &5164360275716719718
 GameObject:
   m_ObjectHideFlags: 0
@@ -1188,8 +1245,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7675529029339466661}
   - {fileID: 4429252395209447720}
+  - {fileID: 2207128316232984183}
+  - {fileID: 7675529029339466661}
   - {fileID: 2084558885376768773}
   m_Father: {fileID: 6378000709541742720}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1621,7 +1679,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7604851671476032705, guid: 768fb89307ac86e498ef501b6e85bb70, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1889,6 +1947,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6378000709541742720}
     m_Modifications:
+    - target: {fileID: -7689726756455861821, guid: d5e135dfe36ce7249a5836bcc27ad794, type: 3}
+      propertyPath: attenuationObject
+      value: 
+      objectReference: {fileID: 3702917405698107788}
     - target: {fileID: 2641278970855691467, guid: d5e135dfe36ce7249a5836bcc27ad794, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2227,6 +2289,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c917615f005ef64089126ad9da7c490, type: 3}
+--- !u!1 &3702917405698107788 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7883257311033183853, guid: 0c917615f005ef64089126ad9da7c490, type: 3}
+  m_PrefabInstance: {fileID: 6774982856182425569}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9085473593831281906 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2311337388650803987, guid: 0c917615f005ef64089126ad9da7c490, type: 3}

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using Code.Data.Enums;
 using Code.Utils;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -11,6 +13,7 @@ namespace Code.Replicas.Editor
     {
         public string ID { get; private set; }
         public float TypingSpeed { get; private set; }
+        public TextTypingAudioType TextTypeAudio { get; private set; }
         public Port InputPort{ get; private set; }
         public List<ReplicaConditionElement> Conditions { get; private set; } = new();
         public List<LocalizedReplicaElement> Localizations { get; private set; } = new();
@@ -21,17 +24,20 @@ namespace Code.Replicas.Editor
         {
             AddIdText(0);
             AddTypingSpeedProperty(1);
-            AddConditionButton(2);
+            AddTextTypeAudio(2);
+            AddConditionButton(3);
             AddConditionElement();
             AddInputPort();
             AddListLocalizedReplicas();
         }
-        
-        public ReplicaNode(string id, float typingSpeed,List<ReplicaConditionElement> conditions,List<LocalizedReplicaElement> localizations)
+
+        public ReplicaNode(string id, float typingSpeed, TextTypingAudioType textTypingAudioType,
+            List<ReplicaConditionElement> conditions, List<LocalizedReplicaElement> localizations)
         {
             AddIdText(0, id);
             AddTypingSpeedProperty(1, typingSpeed);
-            AddConditionButton(2);
+            AddTextTypeAudio(2,textTypingAudioType);
+            AddConditionButton(3);
             AddInputPort();
             AddListLocalizedReplicas();
 
@@ -44,6 +50,26 @@ namespace Code.Replicas.Editor
             {
                 AddLocalizedReplicaElement(localization);
             }
+        }
+
+        private void AddTextTypeAudio(int index, TextTypingAudioType textTypeAudio = TextTypingAudioType.Default)
+        {
+            var property = new PopupField<TextTypingAudioType>(Enum.GetValues(typeof(TextEffect)).Cast<TextTypingAudioType>().ToList(), 0)
+            {
+                label = "TextTypeAudio",
+                style =
+                {
+                    width = 300,
+                }
+            };
+            property.labelElement.style.color = new StyleColor(Color.white);
+
+            property.RegisterValueChangedCallback(evt => { TextTypeAudio = evt.newValue; });
+            property.SetValueWithoutNotify(textTypeAudio);
+            property.value = textTypeAudio;
+            TextTypeAudio = textTypeAudio;
+            
+            mainContainer.Insert(index, property);
         }
 
         private void AddIdText(int index, string id = "")
